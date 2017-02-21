@@ -17,10 +17,11 @@
 		93C20EBF1E5B99E900B56982 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93C20EB31E5B99E900B56982 /* LaunchScreen.storyboard */; };
 		93C20EC01E5B99E900B56982 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93C20EB51E5B99E900B56982 /* Main.storyboard */; };
 		93C20EC11E5B99E900B56982 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93C20EB51E5B99E900B56982 /* Main.storyboard */; };
-		93C20EC21E5B99E900B56982 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C20EB91E5B99E900B56982 /* AppDelegate.m */; };
-		93C20EC31E5B99E900B56982 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C20EB91E5B99E900B56982 /* AppDelegate.m */; };
-		93C20EC41E5B99E900B56982 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C20EBB1E5B99E900B56982 /* ViewController.m */; };
-		93C20EC51E5B99E900B56982 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C20EBB1E5B99E900B56982 /* ViewController.m */; };
+		93C20EC81E5CC8A100B56982 /* ITAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C20EC71E5CC8A100B56982 /* ITAppDelegate.m */; };
+		93C20ECD1E5CC9A500B56982 /* ITSquareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C20ECB1E5CC9A500B56982 /* ITSquareViewController.m */; };
+		93C20ECE1E5CC9A500B56982 /* ITSquareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93C20ECC1E5CC9A500B56982 /* ITSquareViewController.xib */; };
+		93C20ED11E5CCA8300B56982 /* ITSquareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C20ED01E5CCA8300B56982 /* ITSquareView.m */; };
+		93C20ED41E5CDE5F00B56982 /* ITSquare.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C20ED31E5CDE5F00B56982 /* ITSquare.m */; };
 		F90D59E8A4E6D833288C12AA /* libPods-ITObjCUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03AF09BAA2BA61E48268062F /* libPods-ITObjCUITests.a */; };
 /* End PBXBuildFile section */
 
@@ -47,10 +48,15 @@
 		93C20EB21E5B99E900B56982 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93C20EB41E5B99E900B56982 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		93C20EB61E5B99E900B56982 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		93C20EB81E5B99E900B56982 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		93C20EB91E5B99E900B56982 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		93C20EBA1E5B99E900B56982 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		93C20EBB1E5B99E900B56982 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		93C20EC61E5CC8A100B56982 /* ITAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITAppDelegate.h; sourceTree = "<group>"; };
+		93C20EC71E5CC8A100B56982 /* ITAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITAppDelegate.m; sourceTree = "<group>"; };
+		93C20ECA1E5CC9A500B56982 /* ITSquareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITSquareViewController.h; sourceTree = "<group>"; };
+		93C20ECB1E5CC9A500B56982 /* ITSquareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITSquareViewController.m; sourceTree = "<group>"; };
+		93C20ECC1E5CC9A500B56982 /* ITSquareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ITSquareViewController.xib; sourceTree = "<group>"; };
+		93C20ECF1E5CCA8300B56982 /* ITSquareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITSquareView.h; sourceTree = "<group>"; };
+		93C20ED01E5CCA8300B56982 /* ITSquareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITSquareView.m; sourceTree = "<group>"; };
+		93C20ED21E5CDE5F00B56982 /* ITSquare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITSquare.h; sourceTree = "<group>"; };
+		93C20ED31E5CDE5F00B56982 /* ITSquare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITSquare.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +112,8 @@
 		93C20EA71E5B99CA00B56982 /* ITObjCUI */ = {
 			isa = PBXGroup;
 			children = (
+				93C20EC61E5CC8A100B56982 /* ITAppDelegate.h */,
+				93C20EC71E5CC8A100B56982 /* ITAppDelegate.m */,
 				93C20EA81E5B99CA00B56982 /* Info.plist */,
 				93C20EA91E5B99CA00B56982 /* main.m */,
 			);
@@ -134,12 +142,23 @@
 		93C20EB71E5B99E900B56982 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				93C20EB81E5B99E900B56982 /* AppDelegate.h */,
-				93C20EB91E5B99E900B56982 /* AppDelegate.m */,
-				93C20EBA1E5B99E900B56982 /* ViewController.h */,
-				93C20EBB1E5B99E900B56982 /* ViewController.m */,
+				93C20EC91E5CC98000B56982 /* ITSquareViewController */,
 			);
 			path = Source;
+			sourceTree = "<group>";
+		};
+		93C20EC91E5CC98000B56982 /* ITSquareViewController */ = {
+			isa = PBXGroup;
+			children = (
+				93C20ECA1E5CC9A500B56982 /* ITSquareViewController.h */,
+				93C20ECB1E5CC9A500B56982 /* ITSquareViewController.m */,
+				93C20ECC1E5CC9A500B56982 /* ITSquareViewController.xib */,
+				93C20ECF1E5CCA8300B56982 /* ITSquareView.h */,
+				93C20ED01E5CCA8300B56982 /* ITSquareView.m */,
+				93C20ED21E5CDE5F00B56982 /* ITSquare.h */,
+				93C20ED31E5CDE5F00B56982 /* ITSquare.m */,
+			);
+			path = ITSquareViewController;
 			sourceTree = "<group>";
 		};
 		C389A0FADBCBD0EADA4214AE /* Frameworks */ = {
@@ -197,6 +216,7 @@
 		93C20E771E5B95BF00B56982 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = IT;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Ivan Tsyganok";
 				TargetAttributes = {
@@ -238,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93C20EBE1E5B99E900B56982 /* LaunchScreen.storyboard in Resources */,
+				93C20ECE1E5CC9A500B56982 /* ITSquareViewController.xib in Resources */,
 				93C20EBC1E5B99E900B56982 /* Assets.xcassets in Resources */,
 				93C20EAA1E5B99CA00B56982 /* Info.plist in Resources */,
 				93C20EC01E5B99E900B56982 /* Main.storyboard in Resources */,
@@ -310,9 +331,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93C20EC41E5B99E900B56982 /* ViewController.m in Sources */,
-				93C20EC21E5B99E900B56982 /* AppDelegate.m in Sources */,
+				93C20ED41E5CDE5F00B56982 /* ITSquare.m in Sources */,
+				93C20ECD1E5CC9A500B56982 /* ITSquareViewController.m in Sources */,
 				93C20EAB1E5B99CA00B56982 /* main.m in Sources */,
+				93C20ED11E5CCA8300B56982 /* ITSquareView.m in Sources */,
+				93C20EC81E5CC8A100B56982 /* ITAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,8 +343,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93C20EC51E5B99E900B56982 /* ViewController.m in Sources */,
-				93C20EC31E5B99E900B56982 /* AppDelegate.m in Sources */,
 				93C20EB01E5B99D900B56982 /* ITObjCUITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

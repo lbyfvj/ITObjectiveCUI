@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  ITAppDelegate.h
 //  ITObjCUI
 //
 //  Created by Ivan Tsyganok on 20.02.17.
@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
+@interface ITAppDelegate : UIResponder <UIApplicationDelegate>
 @property (strong, nonatomic) UIWindow *window;
 
 

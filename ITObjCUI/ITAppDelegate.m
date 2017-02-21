@@ -1,22 +1,32 @@
 //
-//  AppDelegate.m
+//  ITAppDelegate.m
 //  ITObjCUI
 //
 //  Created by Ivan Tsyganok on 20.02.17.
 //  Copyright © 2017 Ivan Tsyganok. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "ITAppDelegate.h"
 
-@interface AppDelegate ()
+#import "ITSquareViewController.h"
+
+@interface ITAppDelegate ()
 
 @end
 
-@implementation AppDelegate
-
+@implementation ITAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window = window;
+    
+    ITSquareViewController *controller = [ITSquareViewController new];
+    window.backgroundColor = [UIColor greenColor];
+    window.rootViewController = controller;
+    
+    [window makeKeyAndVisible];
+    
     return YES;
 }
 
