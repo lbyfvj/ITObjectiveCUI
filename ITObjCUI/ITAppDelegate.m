@@ -22,7 +22,7 @@
     self.window = window;
     
     ITSquareViewController *controller = [ITSquareViewController new];
-    window.backgroundColor = [UIColor greenColor];
+    controller.square = [[ITSquare alloc] initWithSquarePosition:ITTopRightCorner];
     window.rootViewController = controller;
     
     [window makeKeyAndVisible];

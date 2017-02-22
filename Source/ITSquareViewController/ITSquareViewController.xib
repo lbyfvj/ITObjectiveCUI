@@ -32,7 +32,15 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Next"/>
                     <connections>
-                        <action selector="nextButtonClicked:" destination="-1" eventType="touchUpInside" id="IG4-9l-j7u"/>
+                        <action selector="onNextButtonClicked:" destination="-1" eventType="touchUpInside" id="IG4-9l-j7u"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="X3i-z1-SEc">
+                    <rect key="frame" x="164" y="356" width="46" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Stop"/>
+                    <connections>
+                        <action selector="onStopButtonClicked:" destination="-1" eventType="touchUpInside" id="fW0-1F-t4U"/>
                     </connections>
                 </button>
             </subviews>

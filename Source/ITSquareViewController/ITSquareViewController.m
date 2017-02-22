@@ -11,13 +11,19 @@
 #import "ITSquareView.h"
 
 @interface ITSquareViewController ()
-@property (nonatomic, strong)   ITSquareView    *squareView;
+@property (nonatomic, readonly)   ITSquareView    *squareView;
+
+@property (nonatomic, getter=isRunning)   BOOL running;
 
 - (void)moveSquareOnPosition:(ITSquarePosition)squarePosition;
+
+- (ITSquarePosition)nextPosition;
 
 @end
 
 @implementation ITSquareViewController
+
+@dynamic squareView;
 
 #pragma mark -
 #pragma mark Accessors
@@ -42,7 +48,12 @@
 #pragma mark Private
 
 - (void)moveSquareOnPosition:(ITSquarePosition)squarePosition {
-    [self.squareView setSquarePosition:squarePosition animated:YES completionHandler:YES];
+    if (self.running) {
+        [self.squareView setSquarePosition:squarePosition animated:YES completionHandler:^(void){
+            self.square.squarePosition = squarePosition;
+            [self moveSquareOnPosition:squarePosition];
+        }];
+    }
 }
 
 - (ITSquarePosition)nextPosition {
@@ -68,9 +79,13 @@
 #pragma mark -
 #pragma mark Interface Handling
 
-- (IBAction)nextButtonClicked:(id)sender {
+- (IBAction)onNextButtonClicked:(id)sender {
+    self.running = YES;
     [self moveSquareOnPosition:[self nextPosition]];
 }
 
+- (IBAction)onStopButtonClicked:(id)sender {
+    self.running = NO;
+}
 
 @end

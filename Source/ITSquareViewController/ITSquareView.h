@@ -23,7 +23,7 @@
 
 - (void)setSquarePosition:(ITSquarePosition)squarePosition
                  animated:(BOOL)animated
-        completionHandler:(BOOL)completionHandler;
+        completionHandler:(void(^)(void))block;
 
 
 @end

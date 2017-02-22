@@ -45,7 +45,7 @@ static const NSTimeInterval ITDelay = 0.0;
 
 - (void)setSquarePosition:(ITSquarePosition)squarePosition
                  animated:(BOOL)animated
-        completionHandler:(BOOL)completionHandler
+        completionHandler:(void(^)(void))block
 {
     if (self.square.squarePosition != squarePosition) {
         UILabel *label = self.label;
@@ -57,12 +57,9 @@ static const NSTimeInterval ITDelay = 0.0;
                              label.frame = rect;
                          }
                          completion:^(BOOL finished) {
-                             if (completionHandler) {
-                                 self.square.squarePosition = squarePosition;
-                                 CGPoint coordinates = self.label.frame.origin;
-                                 NSLog(@"Square Position: %lu", self.square.squarePosition);
-                                 NSLog(@"Square coordinates: x: %f, y: %f", coordinates.x, coordinates.y);
-                             };
+                             if (finished) {
+                                 block();
+                             }
                          }];
     }
 }
@@ -87,13 +84,13 @@ static const NSTimeInterval ITDelay = 0.0;
             break;
         
         case ITBottomRightCorner:
-            origin.x = height;
-            origin.y = width;
+            origin.x = width;
+            origin.y = height;
             break;
         
-        case ITBottonLeftCorner:
-            origin.x = height;
-            origin.y = 0;
+        case ITBottomLeftCorner:
+            origin.x = 0;
+            origin.y = height;
             break;
     }
     

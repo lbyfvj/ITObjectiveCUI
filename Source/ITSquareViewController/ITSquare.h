@@ -12,7 +12,7 @@ typedef NS_ENUM(NSUInteger, ITSquarePosition){
     ITTopLeftCorner,
     ITTopRightCorner,
     ITBottomRightCorner,
-    ITBottonLeftCorner
+    ITBottomLeftCorner
 };
 
 @interface ITSquare : NSObject

@@ -13,6 +13,7 @@
 @interface ITSquareViewController : UIViewController
 @property (nonatomic, strong)   ITSquare    *square;
 
-- (IBAction)nextButtonClicked:(id)sender;
+- (IBAction)onNextButtonClicked:(id)sender;
+- (IBAction)onStopButtonClicked:(id)sender;
 
 @end

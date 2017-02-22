@@ -7,16 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		93C20EAA1E5B99CA00B56982 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 93C20EA81E5B99CA00B56982 /* Info.plist */; };
 		93C20EAB1E5B99CA00B56982 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C20EA91E5B99CA00B56982 /* main.m */; };
-		93C20EAF1E5B99D900B56982 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 93C20EAD1E5B99D900B56982 /* Info.plist */; };
 		93C20EB01E5B99D900B56982 /* ITObjCUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C20EAE1E5B99D900B56982 /* ITObjCUITests.m */; };
 		93C20EBC1E5B99E900B56982 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93C20EB21E5B99E900B56982 /* Assets.xcassets */; };
 		93C20EBD1E5B99E900B56982 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93C20EB21E5B99E900B56982 /* Assets.xcassets */; };
 		93C20EBE1E5B99E900B56982 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93C20EB31E5B99E900B56982 /* LaunchScreen.storyboard */; };
 		93C20EBF1E5B99E900B56982 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93C20EB31E5B99E900B56982 /* LaunchScreen.storyboard */; };
-		93C20EC01E5B99E900B56982 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93C20EB51E5B99E900B56982 /* Main.storyboard */; };
-		93C20EC11E5B99E900B56982 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93C20EB51E5B99E900B56982 /* Main.storyboard */; };
 		93C20EC81E5CC8A100B56982 /* ITAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C20EC71E5CC8A100B56982 /* ITAppDelegate.m */; };
 		93C20ECD1E5CC9A500B56982 /* ITSquareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C20ECB1E5CC9A500B56982 /* ITSquareViewController.m */; };
 		93C20ECE1E5CC9A500B56982 /* ITSquareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93C20ECC1E5CC9A500B56982 /* ITSquareViewController.xib */; };
@@ -47,7 +43,6 @@
 		93C20EAE1E5B99D900B56982 /* ITObjCUITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITObjCUITests.m; sourceTree = "<group>"; };
 		93C20EB21E5B99E900B56982 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93C20EB41E5B99E900B56982 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		93C20EB61E5B99E900B56982 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		93C20EC61E5CC8A100B56982 /* ITAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITAppDelegate.h; sourceTree = "<group>"; };
 		93C20EC71E5CC8A100B56982 /* ITAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITAppDelegate.m; sourceTree = "<group>"; };
 		93C20ECA1E5CC9A500B56982 /* ITSquareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITSquareViewController.h; sourceTree = "<group>"; };
@@ -134,7 +129,6 @@
 			children = (
 				93C20EB21E5B99E900B56982 /* Assets.xcassets */,
 				93C20EB31E5B99E900B56982 /* LaunchScreen.storyboard */,
-				93C20EB51E5B99E900B56982 /* Main.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -260,8 +254,6 @@
 				93C20EBE1E5B99E900B56982 /* LaunchScreen.storyboard in Resources */,
 				93C20ECE1E5CC9A500B56982 /* ITSquareViewController.xib in Resources */,
 				93C20EBC1E5B99E900B56982 /* Assets.xcassets in Resources */,
-				93C20EAA1E5B99CA00B56982 /* Info.plist in Resources */,
-				93C20EC01E5B99E900B56982 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,8 +263,6 @@
 			files = (
 				93C20EBF1E5B99E900B56982 /* LaunchScreen.storyboard in Resources */,
 				93C20EBD1E5B99E900B56982 /* Assets.xcassets in Resources */,
-				93C20EAF1E5B99D900B56982 /* Info.plist in Resources */,
-				93C20EC11E5B99E900B56982 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,14 +354,6 @@
 				93C20EB41E5B99E900B56982 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		93C20EB51E5B99E900B56982 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				93C20EB61E5B99E900B56982 /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
