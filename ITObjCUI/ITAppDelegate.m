@@ -10,6 +10,8 @@
 
 #import "ITSquareViewController.h"
 
+#import "ITRandomStringViewController.h"
+
 @interface ITAppDelegate ()
 
 @end
@@ -21,8 +23,10 @@
     UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window = window;
     
-    ITSquareViewController *controller = [ITSquareViewController new];
-    controller.square = [[ITSquare alloc] initWithSquarePosition:ITTopRightCorner];
+//    ITSquareViewController *controller = [ITSquareViewController new];
+//    controller.square = [[ITSquare alloc] initWithSquarePosition:ITTopRightCorner];
+    ITRandomStringViewController *controller = [ITRandomStringViewController new];
+    controller.randomString = [[ITRandomString alloc] init];
     window.rootViewController = controller;
     
     [window makeKeyAndVisible];
