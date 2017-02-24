@@ -10,7 +10,7 @@
 
 #import "ITSquareViewController.h"
 
-#import "ITRandomStringViewController.h"
+#import "ITRandomDataViewController.h"
 
 @interface ITAppDelegate ()
 
@@ -25,8 +25,8 @@
     
 //    ITSquareViewController *controller = [ITSquareViewController new];
 //    controller.square = [[ITSquare alloc] initWithSquarePosition:ITTopRightCorner];
-    ITRandomStringViewController *controller = [ITRandomStringViewController new];
-    controller.randomString = [[ITRandomString alloc] init];
+    ITRandomDataViewController *controller = [ITRandomDataViewController new];
+    controller.randomData = [ITRandomData new];
     window.rootViewController = controller;
     
     [window makeKeyAndVisible];

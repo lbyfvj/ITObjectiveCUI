@@ -1,5 +1,5 @@
 //
-//  ITRandomString.h
+//  ITRandomData.h
 //  ITObjCUI
 //
 //  Created by Ivan Tsyganok on 23.02.17.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ITRandomString : NSObject
-@property (nonatomic, readonly)     NSString    *randomString;
+@interface ITRandomData : NSObject
+@property (nonatomic, strong)     NSString    *string;
 
 @end

@@ -1,5 +1,5 @@
 //
-//  ITRandomStringView.h
+//  ITRandomDataView.h
 //  ITObjCUI
 //
 //  Created by Ivan Tsyganok on 24.02.17.
@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-#import "ITRandomString.h"
+#import "ITRandomData.h"
 
-@interface ITRandomStringView : UIView
-@property (nonatomic, strong)   ITRandomString    *randomString;
+@interface ITRandomDataView : UIView
+@property (nonatomic, strong)   ITRandomData    *randomData;
 
 @property (nonatomic, strong)   IBOutlet    UITableView     *tableView;
 
