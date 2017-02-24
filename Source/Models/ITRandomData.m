@@ -12,12 +12,23 @@
 
 @implementation ITRandomData
 
+@dynamic image;
+
+#pragma mark -
+#pragma mark Initializations and Deallocations
+
 - (instancetype)init {
     self = [super init];
     if (self) {
         self.string = [NSString randomString];
     }
     return self;
+}
+
+- (UIImage *)image {
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"image" ofType:@"jpg"];
+    
+    return [UIImage imageWithContentsOfFile:path];
 }
 
 @end

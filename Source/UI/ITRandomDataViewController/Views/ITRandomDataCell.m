@@ -13,6 +13,21 @@
 @implementation ITRandomDataCell
 
 #pragma mark -
+#pragma mark Initializations and Deallocations
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    return [super initWithCoder:aDecoder];
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [super encodeWithCoder:aCoder];
+}
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+}
+
+#pragma mark -
 #pragma mark Accessors
 
 - (void)setRandomData:(ITRandomData *)randomData {
@@ -28,6 +43,7 @@
 
 - (void)fillWithDataModel:(ITRandomData *)data {
     self.stringLabel.text = data.string;
+    self.image.image = data.image;
 }
 
 @end

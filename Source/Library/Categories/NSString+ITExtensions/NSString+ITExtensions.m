@@ -22,19 +22,19 @@ static const NSUInteger kDefaultRandomStringLength = 30;
 }
 
 + (instancetype)capitalizedCharacters {
-    NSRange range = {'A', 'Z'};
+    NSRange range = {'A', 26};
     
     return [self charactersWithUnicodeRange:range];
 }
 
 + (instancetype)lowercaseCharacters {
-    NSRange range = {'a', 'z'};
+    NSRange range = {'a', 26};
     
     return [self charactersWithUnicodeRange:range];
 }
 
 + (instancetype)numericCharacters {
-    NSRange range = {'0', '9'};
+    NSRange range = {'0', 10};
     
     return [self charactersWithUnicodeRange:range];
 }

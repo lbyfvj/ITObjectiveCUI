@@ -7,8 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface ITRandomData : NSObject
-@property (nonatomic, strong)     NSString    *string;
+@property (nonatomic, strong)       NSString    *string;
+@property (nonatomic, readonly)     UIImage     *image;
 
 @end

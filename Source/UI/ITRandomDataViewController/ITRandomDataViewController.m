@@ -68,7 +68,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //self.randomDataView.string = self.string;
+    [self.randomDataView.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {

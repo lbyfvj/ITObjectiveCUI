@@ -15,7 +15,7 @@ static const NSUInteger kITDefaultRandomStringLength = 10;
 @implementation NSString (ITRandomString)
 
 + (instancetype)randomString {    
-    return [NSString randomStringWithLength:kITDefaultRandomStringLength ofCharacters:[self capitalizedCharacters]];
+    return [NSString randomStringWithLength:kITDefaultRandomStringLength ofCharacters:[self lowercaseCharacters]];
 }
 
 @end
