@@ -28,10 +28,10 @@ typedef NS_ENUM(NSUInteger, ITSquarePosition){
 
 - (void)setSquarePosition:(ITSquarePosition)squarePosition
                  animated:(BOOL)animated
-        completionHandler:(void(^)(void))block;
+        completionHandler:(void (^)(BOOL finished))block;
 
-- (void)moveToNextPositionWithBlock:(void(^)(void))block;
+- (void)moveToNextPositionWithBlock:(void (^)(BOOL finished))block;
 
-- (void)moveSequantialyToNextPosition;
+- (void)moveSequantialy;
 
 @end

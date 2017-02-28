@@ -49,7 +49,7 @@
 #pragma mark Interface Handling
 
 - (IBAction)onNextButtonClicked:(id)sender {
-    [self.squareView moveToNextPositionWithBlock:^(void) {
+    [self.squareView moveToNextPositionWithBlock:^(BOOL finished) {
         
     }];
 }
@@ -60,7 +60,7 @@
 
 - (IBAction)onStartButtonClicked:(id)sender {
     self.squareView.running = YES;
-    [self.squareView moveSequantialyToNextPosition];
+//    [self.squareView moveSequantialyToNextPosition];
 }
 
 @end

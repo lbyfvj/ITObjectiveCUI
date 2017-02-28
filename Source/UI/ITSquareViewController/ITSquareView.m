@@ -8,7 +8,7 @@
 
 #import "ITSquareView.h"
 
-static const NSTimeInterval ITAnimationDuration = 1.0;
+static const NSTimeInterval ITAnimationDuration = 0.5;
 static const NSTimeInterval ITDelay = 0.0;
 
 @interface ITSquareView ()
@@ -33,7 +33,7 @@ static const NSTimeInterval ITDelay = 0.0;
         _running = running;
     }
     
-    [self moveSequantialyToNextPosition];
+    [self moveSequantialy];
 }
 
 #pragma mark -
@@ -47,7 +47,7 @@ static const NSTimeInterval ITDelay = 0.0;
 
 - (void)setSquarePosition:(ITSquarePosition)squarePosition
                  animated:(BOOL)animated
-        completionHandler:(void(^)(void))block
+        completionHandler:(void (^)(BOOL finished))block
 {
     if (self.squarePosition != squarePosition) {
         CGRect rect = [self squarePositionRect:squarePosition];
@@ -58,22 +58,24 @@ static const NSTimeInterval ITDelay = 0.0;
                              self.label.frame = rect;
                          }
                          completion:^(BOOL finished) {
-                             if (finished) {
+                             if (block) {
                                  _squarePosition = squarePosition;
-                                 block();
+                                 block(finished);
                              }
                          }];
     }
 }
 
-- (void)moveToNextPositionWithBlock:(void(^)(void))block {
+- (void)moveToNextPositionWithBlock:(void (^)(BOOL finished))block {
     ITSquarePosition nextPosition = [self nextPosition];
     [self setSquarePosition:nextPosition animated:YES completionHandler:block];
 }
 
-- (void)moveSequantialyToNextPosition {
-    [self moveToNextPositionWithBlock:^{
-        [self moveSequantialyToNextPosition];
+- (void)moveSequantialy {
+    [self moveToNextPositionWithBlock:^(BOOL finished) {
+        if (self.running && finished) {
+            [self moveSequantialy];
+        }
     }];
 }
 
