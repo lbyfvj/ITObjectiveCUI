@@ -12,8 +12,11 @@ static const NSTimeInterval ITAnimationDuration = 1.0;
 static const NSTimeInterval ITDelay = 0.0;
 
 @interface ITSquareView ()
+@property (nonatomic, assign, getter=isRunning)   BOOL running;
 
-- (CGRect)calculateSquareCoordinates:(ITSquarePosition)squarePosition;
+- (ITSquarePosition)nextPosition;
+
+- (CGRect)squarePositionRect:(ITSquarePosition)squarePosition;
 
 @end
 
@@ -22,20 +25,12 @@ static const NSTimeInterval ITDelay = 0.0;
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setSquare:(ITSquare *)square {    
-    if (_square != square) {
-        _square = square;
-    }
-    
-    self.label.frame = [self calculateSquareCoordinates:square.squarePosition];
+- (void)setSquarePosition:(ITSquarePosition)squarePosition {
+    [self setSquarePosition:squarePosition animated:NO];
 }
 
 #pragma mark -
 #pragma mark Public
-
-- (void)setSquarePosition:(ITSquarePosition)squarePosition {
-    [self setSquarePosition:squarePosition animated:NO];
-}
 
 - (void)setSquarePosition:(ITSquarePosition)squarePosition
                  animated:(BOOL)animated
@@ -47,52 +42,64 @@ static const NSTimeInterval ITDelay = 0.0;
                  animated:(BOOL)animated
         completionHandler:(void(^)(void))block
 {
-    if (self.square.squarePosition != squarePosition) {
-        UILabel *label = self.label;
-        CGRect rect = [self calculateSquareCoordinates:squarePosition];
+    if (self.squarePosition != squarePosition) {
+        CGRect rect = [self squarePositionRect:squarePosition];
         [UIView animateWithDuration: (animated) ? ITAnimationDuration : 0
                               delay:ITDelay
                             options:UIViewAnimationOptionBeginFromCurrentState
                          animations:^{
-                             label.frame = rect;
+                             self.label.frame = rect;
                          }
                          completion:^(BOOL finished) {
                              if (finished) {
-                                 block();
+                                 _squarePosition = squarePosition;
+                                 //block();
                              }
                          }];
     }
 }
 
+- (void)moveToNextPosition {
+    ITSquarePosition nextPosition = [self nextPosition];
+    [self setSquarePosition:nextPosition animated:YES completionHandler:nil];
+}
+
 #pragma mark -
 #pragma mark Private
 
-- (CGRect)calculateSquareCoordinates:(ITSquarePosition)squarePosition {
-    CGPoint origin = CGPointZero;
-    CGFloat width = self.bounds.size.width - self.label.frame.size.width;;
-    CGFloat height = self.bounds.size.height - self.label.frame.size.height;
+- (ITSquarePosition)nextPosition {
+    ITSquarePosition squarePosition = (self.squarePosition + 1) % 4;
+    
+    return squarePosition;
+}
+
+- (CGRect)squarePositionRect:(ITSquarePosition)squarePosition {
+    CGPoint origin;
+    CGRect bounds = self.bounds;
+    CGRect frame = self.label.frame;
+    
+    CGPoint bottomRight = CGPointMake(CGRectGetWidth(bounds) - CGRectGetWidth(frame),
+                                      CGRectGetHeight(bounds) - CGRectGetHeight(frame));
         
     switch (squarePosition) {
         case ITTopLeftCorner:
-            origin.x = 0;
-            origin.y = 0;
+            origin = CGPointZero;
             break;
-        
+            
         case ITTopRightCorner:
-            origin.x = width;
-            origin.y = 0;
+            origin.x = bottomRight.x;
             break;
         
         case ITBottomRightCorner:
-            origin.x = width;
-            origin.y = height;
+            origin = bottomRight;
             break;
         
         case ITBottomLeftCorner:
-            origin.x = 0;
-            origin.y = height;
+            origin.y = bottomRight.y;
             break;
     }
+    
+    frame.origin = origin;
     
     CGSize size = self.label.frame.size;
     CGRect rect = {origin, size};

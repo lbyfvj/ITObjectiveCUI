@@ -27,20 +27,28 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lUJ-cS-mT5">
-                    <rect key="frame" x="164" y="318" width="46" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Next"/>
-                    <connections>
-                        <action selector="onNextButtonClicked:" destination="-1" eventType="touchUpInside" id="IG4-9l-j7u"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="X3i-z1-SEc">
                     <rect key="frame" x="164" y="356" width="46" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Stop"/>
                     <connections>
                         <action selector="onStopButtonClicked:" destination="-1" eventType="touchUpInside" id="fW0-1F-t4U"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="iSY-FF-uhM">
+                    <rect key="frame" x="164" y="318" width="46" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Start"/>
+                    <connections>
+                        <action selector="onStartButtonClicked:" destination="-1" eventType="touchDragInside" id="8kF-8f-qUu"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lUJ-cS-mT5">
+                    <rect key="frame" x="164" y="280" width="46" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Next"/>
+                    <connections>
+                        <action selector="onNextButtonClicked:" destination="-1" eventType="touchUpInside" id="IG4-9l-j7u"/>
                     </connections>
                 </button>
             </subviews>

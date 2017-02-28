@@ -23,10 +23,10 @@
     UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window = window;
     
-//    ITSquareViewController *controller = [ITSquareViewController new];
-//    controller.square = [[ITSquare alloc] initWithSquarePosition:ITTopRightCorner];
-    ITRandomDataViewController *controller = [ITRandomDataViewController new];
-    controller.randomData = [ITRandomData new];
+    ITSquareViewController *controller = [ITSquareViewController new];
+    //controller.square = [[ITSquare alloc] initWithSquarePosition:ITTopRightCorner];
+//    ITRandomDataViewController *controller = [ITRandomDataViewController new];
+//    controller.randomData = [ITRandomData new];
     window.rootViewController = controller;
     
     [window makeKeyAndVisible];
