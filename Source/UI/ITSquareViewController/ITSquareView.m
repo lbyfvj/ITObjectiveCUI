@@ -12,7 +12,6 @@ static const NSTimeInterval ITAnimationDuration = 1.0;
 static const NSTimeInterval ITDelay = 0.0;
 
 @interface ITSquareView ()
-@property (nonatomic, assign, getter=isRunning)   BOOL running;
 
 - (ITSquarePosition)nextPosition;
 
@@ -27,6 +26,14 @@ static const NSTimeInterval ITDelay = 0.0;
 
 - (void)setSquarePosition:(ITSquarePosition)squarePosition {
     [self setSquarePosition:squarePosition animated:NO];
+}
+
+- (void)setRunning:(BOOL)running {
+    if (_running != running) {
+        _running = running;
+    }
+    
+    [self moveSequantialyToNextPosition];
 }
 
 #pragma mark -
@@ -53,15 +60,21 @@ static const NSTimeInterval ITDelay = 0.0;
                          completion:^(BOOL finished) {
                              if (finished) {
                                  _squarePosition = squarePosition;
-                                 //block();
+                                 block();
                              }
                          }];
     }
 }
 
-- (void)moveToNextPosition {
+- (void)moveToNextPositionWithBlock:(void(^)(void))block {
     ITSquarePosition nextPosition = [self nextPosition];
-    [self setSquarePosition:nextPosition animated:YES completionHandler:nil];
+    [self setSquarePosition:nextPosition animated:YES completionHandler:block];
+}
+
+- (void)moveSequantialyToNextPosition {
+    [self moveToNextPositionWithBlock:^{
+        [self moveSequantialyToNextPosition];
+    }];
 }
 
 #pragma mark -

@@ -13,7 +13,7 @@
 @interface ITSquareViewController ()
 @property (nonatomic, readonly)   ITSquareView    *squareView;
 
-@property (nonatomic, assign, getter=isRunning)   BOOL running;
+//@property (nonatomic, assign, getter=isRunning)   BOOL running;
 
 @end
 
@@ -49,15 +49,18 @@
 #pragma mark Interface Handling
 
 - (IBAction)onNextButtonClicked:(id)sender {
-    [self.squareView moveToNextPosition];
+    [self.squareView moveToNextPositionWithBlock:^(void) {
+        
+    }];
 }
 
 - (IBAction)onStopButtonClicked:(id)sender {
-    self.running = NO;
+    self.squareView.running = NO;
 }
 
 - (IBAction)onStartButtonClicked:(id)sender {
-    self.running = YES;
+    self.squareView.running = YES;
+    [self.squareView moveSequantialyToNextPosition];
 }
 
 @end
