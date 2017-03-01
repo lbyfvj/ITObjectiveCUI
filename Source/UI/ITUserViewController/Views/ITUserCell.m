@@ -10,22 +10,13 @@
 
 #import "ITUser.h"
 
+@interface ITUserCell ()
+
+- (void)fillWithUserModel:(ITUser *)data;
+
+@end
+
 @implementation ITUserCell
-
-#pragma mark -
-#pragma mark Initializations and Deallocations
-
-- (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    return [super initWithCoder:aDecoder];
-}
-
-- (void)encodeWithCoder:(NSCoder *)aCoder {
-    [super encodeWithCoder:aCoder];
-}
-
-- (void)awakeFromNib {
-    [super awakeFromNib];
-}
 
 #pragma mark -
 #pragma mark Accessors
@@ -42,8 +33,8 @@
 #pragma mark Public
 
 - (void)fillWithUserModel:(ITUser *)user {
-    self.stringLabel.text = user.name;
-    self.image.image = user.userImage;
+    self.userLabel.text = user.name;
+    self.userImageView.image = user.userImage;
 }
 
 @end

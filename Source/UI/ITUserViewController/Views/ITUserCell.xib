@@ -32,8 +32,8 @@
                 </subviews>
             </tableViewCellContentView>
             <connections>
-                <outlet property="image" destination="IJz-w6-ilA" id="7r0-s9-CwG"/>
-                <outlet property="stringLabel" destination="vTo-NQ-MV1" id="3A7-Q7-7G5"/>
+                <outlet property="userImageView" destination="IJz-w6-ilA" id="xt5-VH-RRE"/>
+                <outlet property="userLabel" destination="vTo-NQ-MV1" id="Kem-fr-66C"/>
             </connections>
         </tableViewCell>
     </objects>

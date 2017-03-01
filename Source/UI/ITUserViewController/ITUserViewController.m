@@ -16,23 +16,6 @@
 
 ITBaseViewController(ITUserViewController, userView, ITUserView)
 
-//@interface ITUserViewController ()
-//@property (nonatomic, readonly)     ITUserView    *userView;
-//
-//@end
-//
-//@implementation ITUserViewController
-//
-//@dynamic userView;
-//
-//- (ITUserView *)userView {
-//    if ([self isViewLoaded] && [self.view isKindOfClass:[ITUserView class]]) {
-//        return (ITUserView *)self.view;
-//    }
-//    
-//    return nil;
-//}
-
 #pragma mark -
 #pragma mark Accessors
 
@@ -47,12 +30,16 @@ ITBaseViewController(ITUserViewController, userView, ITUserView)
 #pragma mark -
 #pragma mark UITableViewDataSource
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)   tableView:(UITableView *)tableView
+    numberOfRowsInSection:(NSInteger)section
+{
     
-    return 100;
+    return 10;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)   tableView:(UITableView *)tableView
+            cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     
     NSString *cellClass = NSStringFromClass([ITUserCell class]);
     
@@ -68,6 +55,9 @@ ITBaseViewController(ITUserViewController, userView, ITUserView)
     
     return cell;
 }
+
+#pragma mark -
+#pragma mark View Lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];

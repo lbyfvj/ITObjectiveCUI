@@ -12,6 +12,8 @@
 
 #import "ITUserViewController.h"
 
+#import "UIWindow+ITExtensions.h"
+
 @interface ITAppDelegate ()
 
 @end
@@ -20,7 +22,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    UIWindow *window = [UIWindow window];
     self.window = window;
     
 //    ITSquareViewController *controller = [ITSquareViewController new];

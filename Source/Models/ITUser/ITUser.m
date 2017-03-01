@@ -8,7 +8,10 @@
 
 #import "ITUser.h"
 
-#import "NSString+ITRandomString.h"
+#import "NSString+ITRandomName.h"
+
+static NSString const *kITImageName = @"image";
+static NSString const *kITImageType = @"jpg";
 
 @implementation ITUser
 
@@ -20,13 +23,14 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.name = [NSString randomString];
+        self.name = [NSString randomName];
     }
     return self;
 }
 
 - (UIImage *)userImage {
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"image" ofType:@"jpg"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@", kITImageName]
+                                                     ofType:[NSString stringWithFormat:@"%@", kITImageType]];
     
     return [UIImage imageWithContentsOfFile:path];
 }

@@ -1,5 +1,5 @@
 //
-//  NSString+ITRandomString.h
+//  NSString+ITRandomName.h
 //  ITObjCUI
 //
 //  Created by Ivan Tsyganok on 24.02.17.
@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSString (ITRandomString)
+@interface NSString (ITRandomName)
 
-+ (instancetype)randomString;
++ (instancetype)randomName;
 
 @end

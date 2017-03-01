@@ -11,11 +11,9 @@
 @class ITUser;
 
 @interface ITUserCell : UITableViewCell
-@property (nonatomic, strong)   IBOutlet    UILabel         *stringLabel;
-@property (nonatomic, strong)   IBOutlet    UIImageView     *image;
+@property (nonatomic, strong)   IBOutlet    UILabel         *userLabel;
+@property (nonatomic, strong)   IBOutlet    UIImageView     *userImageView;
 
 @property (nonatomic, strong)   ITUser    *user;
-
-- (void)fillWithUserModel:(ITUser *)data;
 
 @end
