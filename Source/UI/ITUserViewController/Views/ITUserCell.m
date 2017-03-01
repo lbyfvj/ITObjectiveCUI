@@ -1,16 +1,16 @@
 //
-//  ITRandomDataCell.m
+//  ITUserCell.m
 //  ITObjCUI
 //
 //  Created by Ivan Tsyganok on 24.02.17.
 //  Copyright © 2017 Ivan Tsyganok. All rights reserved.
 //
 
-#import "ITRandomDataCell.h"
+#import "ITUserCell.h"
 
-#import "ITRandomData.h"
+#import "ITUser.h"
 
-@implementation ITRandomDataCell
+@implementation ITUserCell
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
@@ -30,20 +30,20 @@
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setRandomData:(ITRandomData *)randomData {
-    if (_randomData != randomData) {
-        _randomData = randomData;
+- (void)setUser:(ITUser *)user {
+    if (_user != user) {
+        _user = user;
     }
     
-    [self fillWithDataModel:randomData];
+    [self fillWithUserModel:user];
 }
 
 #pragma mark -
 #pragma mark Public
 
-- (void)fillWithDataModel:(ITRandomData *)data {
-    self.stringLabel.text = data.string;
-    self.image.image = data.image;
+- (void)fillWithUserModel:(ITUser *)user {
+    self.stringLabel.text = user.name;
+    self.image.image = user.userImage;
 }
 
 @end

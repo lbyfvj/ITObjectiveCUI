@@ -10,7 +10,7 @@
 
 #import "ITSquareViewController.h"
 
-#import "ITRandomDataViewController.h"
+#import "ITUserViewController.h"
 
 @interface ITAppDelegate ()
 
@@ -23,10 +23,9 @@
     UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window = window;
     
-    ITSquareViewController *controller = [ITSquareViewController new];
-    //controller.square = [[ITSquare alloc] initWithSquarePosition:ITTopRightCorner];
-//    ITRandomDataViewController *controller = [ITRandomDataViewController new];
-//    controller.randomData = [ITRandomData new];
+//    ITSquareViewController *controller = [ITSquareViewController new];
+    ITUserViewController *controller = [ITUserViewController new];
+    controller.user = [ITUser new];
     window.rootViewController = controller;
     
     [window makeKeyAndVisible];

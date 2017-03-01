@@ -1,5 +1,5 @@
 //
-//  ITRandomDataView.h
+//  ITUserView.h
 //  ITObjCUI
 //
 //  Created by Ivan Tsyganok on 24.02.17.
@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-#import "ITRandomData.h"
+#import "ITUser.h"
 
-@interface ITRandomDataView : UIView
-@property (nonatomic, strong)   ITRandomData    *randomData;
+@interface ITUserView : UIView
+@property (nonatomic, strong)   ITUser    *user;
 
 @property (nonatomic, strong)   IBOutlet    UITableView     *tableView;
 

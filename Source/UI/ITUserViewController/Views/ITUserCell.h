@@ -1,5 +1,5 @@
 //
-//  ITRandomDataCell.h
+//  ITUserCell.h
 //  ITObjCUI
 //
 //  Created by Ivan Tsyganok on 24.02.17.
@@ -8,14 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@class ITRandomData;
+@class ITUser;
 
-@interface ITRandomDataCell : UITableViewCell
+@interface ITUserCell : UITableViewCell
 @property (nonatomic, strong)   IBOutlet    UILabel         *stringLabel;
 @property (nonatomic, strong)   IBOutlet    UIImageView     *image;
 
-@property (nonatomic, strong)   ITRandomData    *randomData;
+@property (nonatomic, strong)   ITUser    *user;
 
-- (void)fillWithDataModel:(ITRandomData *)data;
+- (void)fillWithUserModel:(ITUser *)data;
 
 @end

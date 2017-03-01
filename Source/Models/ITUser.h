@@ -1,5 +1,5 @@
 //
-//  ITRandomData.h
+//  ITUser.h
 //  ITObjCUI
 //
 //  Created by Ivan Tsyganok on 23.02.17.
@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface ITRandomData : NSObject
-@property (nonatomic, strong)       NSString    *string;
-@property (nonatomic, readonly)     UIImage     *image;
+@interface ITUser : NSObject
+@property (nonatomic, strong)       NSString    *name;
+@property (nonatomic, readonly)     UIImage     *userImage;
 
 @end
