@@ -10,27 +10,9 @@
 
 #import "ITSquareView.h"
 
-@interface ITSquareViewController ()
-@property (nonatomic, readonly)   ITSquareView    *squareView;
+#import "ITMacro.h"
 
-//@property (nonatomic, assign, getter=isRunning)   BOOL running;
-
-@end
-
-@implementation ITSquareViewController
-
-@dynamic squareView;
-
-#pragma mark -
-#pragma mark Accessors
-
-- (ITSquareView *)squareView {
-    if ([self isViewLoaded] && [self.view isKindOfClass:[ITSquareView class]]) {
-        return (ITSquareView *)self.view;
-    }
-    
-    return nil;
-}
+ITBaseViewController(ITSquareViewController, squareView, ITSquareView)
 
 #pragma mark -
 #pragma mark Lifecycle
@@ -50,7 +32,7 @@
 
 - (IBAction)onNextButtonClicked:(id)sender {
     [self.squareView moveToNextPositionWithBlock:^(BOOL finished) {
-        
+
     }];
 }
 
@@ -60,7 +42,6 @@
 
 - (IBAction)onStartButtonClicked:(id)sender {
     self.squareView.running = YES;
-//    [self.squareView moveSequantialyToNextPosition];
 }
 
 @end

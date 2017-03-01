@@ -33,7 +33,9 @@ static const NSTimeInterval ITDelay = 0.0;
         _running = running;
     }
     
-    [self moveSequantialy];
+    if (running) {
+        [self moveSequantialy];
+    }
 }
 
 #pragma mark -
@@ -67,8 +69,10 @@ static const NSTimeInterval ITDelay = 0.0;
 }
 
 - (void)moveToNextPositionWithBlock:(void (^)(BOOL finished))block {
-    ITSquarePosition nextPosition = [self nextPosition];
-    [self setSquarePosition:nextPosition animated:YES completionHandler:block];
+    [self setSquarePosition:[self nextPosition]
+                   animated:YES
+          completionHandler:block];
+    NSLog(@"New Position: %lu", self.squarePosition);
 }
 
 - (void)moveSequantialy {

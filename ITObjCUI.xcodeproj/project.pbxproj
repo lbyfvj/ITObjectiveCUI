@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		932D37741E60EB2D00C435F2 /* image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 932D37731E60EB2D00C435F2 /* image.jpg */; };
+		93462D571E67525B00FE1BC9 /* ITMacro.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462D561E67525B00FE1BC9 /* ITMacro.m */; };
 		93C20EAB1E5B99CA00B56982 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C20EA91E5B99CA00B56982 /* main.m */; };
 		93C20EB01E5B99D900B56982 /* ITObjCUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C20EAE1E5B99D900B56982 /* ITObjCUITests.m */; };
 		93C20EBC1E5B99E900B56982 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93C20EB21E5B99E900B56982 /* Assets.xcassets */; };
@@ -44,6 +45,8 @@
 		0EA2B8ECE02122042CE1B119 /* Pods-ITObjCUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITObjCUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ITObjCUITests/Pods-ITObjCUITests.release.xcconfig"; sourceTree = "<group>"; };
 		152055A6E55FFE461BCFA8C6 /* Pods-ITObjCUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITObjCUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ITObjCUITests/Pods-ITObjCUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		932D37731E60EB2D00C435F2 /* image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.jpg; sourceTree = "<group>"; };
+		93462D551E67525B00FE1BC9 /* ITMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITMacro.h; sourceTree = "<group>"; };
+		93462D561E67525B00FE1BC9 /* ITMacro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITMacro.m; sourceTree = "<group>"; };
 		93C20E7F1E5B95BF00B56982 /* ITObjCUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITObjCUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C20E981E5B95BF00B56982 /* ITObjCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ITObjCUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C20EA81E5B99CA00B56982 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -207,6 +210,8 @@
 			isa = PBXGroup;
 			children = (
 				93C20EFB1E5F765900B56982 /* Categories */,
+				93462D551E67525B00FE1BC9 /* ITMacro.h */,
+				93462D561E67525B00FE1BC9 /* ITMacro.m */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -424,6 +429,7 @@
 			files = (
 				93C20F2F1E60CEFD00B56982 /* ITRandomDataCell.m in Sources */,
 				93C20F211E60CAD400B56982 /* NSString+ITRandomString.m in Sources */,
+				93462D571E67525B00FE1BC9 /* ITMacro.m in Sources */,
 				93C20F291E60CD0C00B56982 /* ITRandomDataViewController.m in Sources */,
 				93C20EAB1E5B99CA00B56982 /* main.m in Sources */,
 				93C20EE81E5F72DD00B56982 /* ITSquareViewController.m in Sources */,
