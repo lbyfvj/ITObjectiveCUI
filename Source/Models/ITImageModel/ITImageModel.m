@@ -8,9 +8,14 @@
 
 #import "ITImageModel.h"
 
+#import "ITImageModelDispatcher.h"
+
 @interface ITImageModel ()
-@property (nonatomic, strong)     UIImage     *image;
-@property (nonatomic, strong)     NSURL       *url;
+@property (nonatomic, strong)     UIImage       *image;
+@property (nonatomic, strong)     NSURL         *url;
+@property (nonatomic, strong)     NSOperation   *operation;
+
+- (NSOperation *)imageLoadingOperation;
 
 @end
 
@@ -20,12 +25,15 @@
 #pragma marl Class Methods
 
 + (instancetype)imageWithURL:(NSURL *)url {
-    
     return [[self alloc] initWithURL:url];
 }
 
 #pragma mark - 
 #pragma mark Initializations and Deallocations
+
+- (void)dealloc {
+    self.operation = nil;
+}
 
 - (instancetype)initWithURL:(NSURL *)url {
     self = [super init];
@@ -34,6 +42,69 @@
     }
     
     return self;
+}
+
+#pragma mark -
+#pragma mark Accessors
+
+- (void)setOperation:(NSOperation *)operation {
+    if (_operation != operation) {
+        [_operation cancel];
+        
+        _operation = operation;
+        
+        if (operation) {
+            ITImageModelDispatcher *dispatcher = [ITImageModelDispatcher sharedDispatcher];
+            [[dispatcher queue] addOperation:operation];
+        }
+    }
+}
+
+#pragma mark -
+#pragma mark Public
+
+- (void)load {
+    
+    @synchronized (self) {
+        if (ITImageModelLoading == self.state) {
+            return;
+        }
+        
+        if (ITImageModelLoaded == self.state) {
+            [self notifyOfState:ITImageModelLoaded];
+            return;
+        }
+        
+        self.state = ITImageModelLoading;
+    }
+
+    self.operation = [self imageLoadingOperation];
+}
+
+- (void)dump {
+    self.operation = nil;
+    self.image = nil;
+    self.state = ITImageModelUnloaded;
+}
+
+#pragma mark -
+#pragma mark Private
+
+- (NSOperation *)imageLoadingOperation {
+    __weak ITImageModel *weakSelf = self;
+    NSBlockOperation *operation = [NSBlockOperation blockOperationWithBlock:^{
+        __strong ITImageModel *strongSelf = weakSelf;
+        strongSelf.image = [UIImage imageWithContentsOfFile:[strongSelf.url absoluteString]];
+    }];
+    
+    operation.completionBlock = ^{
+        __strong ITImageModel *strongSelf = weakSelf;
+        @synchronized (strongSelf) {
+            strongSelf.state = strongSelf.image ? ITImageModelLoaded : ITImageModelFailedLoading;
+        }
+    };
+    
+    return operation;
 }
 
 

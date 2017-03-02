@@ -42,7 +42,7 @@ ITBaseViewController(ITUserViewController, userView, ITUserView)
 - (UITableViewCell *)   tableView:(UITableView *)tableView
             cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ITUserCell *cell = [tableView reusableCellWithClass:[ITUserCell class]];    
+    ITUserCell *cell = [tableView reusableCellWithClass:[ITUserCell class]];
     cell.user = self.user;
     
     return cell;
