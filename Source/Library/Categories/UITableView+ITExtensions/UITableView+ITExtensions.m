@@ -1,0 +1,13 @@
+//
+//  UITableView+ITExtensions.m
+//  ITObjCUI
+//
+//  Created by Ivan Tsyganok on 02.03.17.
+//  Copyright © 2017 Ivan Tsyganok. All rights reserved.
+//
+
+#import "UITableView+ITExtensions.h"
+
+@implementation UITableView (ITExtensions)
+
+@end
