@@ -14,7 +14,7 @@
 
 #import "ITMacro.h"
 
-#import "UINib+ITExtensions.h"
+#import "UITableView+ITExtensions.h"
 
 ITBaseViewController(ITUserViewController, userView, ITUserView)
 
@@ -42,19 +42,7 @@ ITBaseViewController(ITUserViewController, userView, ITUserView)
 - (UITableViewCell *)   tableView:(UITableView *)tableView
             cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    NSString *cellClass = NSStringFromClass([ITUserCell class]);
-    
-    ITUserCell *cell = [tableView dequeueReusableCellWithIdentifier:cellClass];
-    
-    if (!cell) {
-//        UINib *nib = [UINib nibWithNibName:cellClass bundle:nil];
-//        NSArray *cells = [nib instantiateWithOwner:nil options:nil];
-//        cell = [cells firstObject];
-        
-        cell = [UINib objectWithClass:[ITUserCell class]];
-    }
-    
+    ITUserCell *cell = [tableView reusableCellWithClass:[ITUserCell class]];    
     cell.user = self.user;
     
     return cell;

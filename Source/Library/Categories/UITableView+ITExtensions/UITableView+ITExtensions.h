@@ -10,4 +10,8 @@
 
 @interface UITableView (ITExtensions)
 
+- (id)dequeueReusableCellWithClass:(Class)class;
+
+- (id)reusableCellWithClass:(Class)class;
+
 @end
