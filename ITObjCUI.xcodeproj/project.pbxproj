@@ -18,6 +18,9 @@
 		93462D6E1E67739D00FE1BC9 /* ITUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462D6D1E67739D00FE1BC9 /* ITUser.m */; };
 		93462D721E67740000FE1BC9 /* ITImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462D711E67740000FE1BC9 /* ITImageModel.m */; };
 		93462D761E67745200FE1BC9 /* ITObservableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462D751E67745200FE1BC9 /* ITObservableObject.m */; };
+		93462D7B1E68965D00FE1BC9 /* ITTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462D7A1E68965D00FE1BC9 /* ITTableViewCell.m */; };
+		93462D7F1E689D5A00FE1BC9 /* UINib+ITExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462D7E1E689D5A00FE1BC9 /* UINib+ITExtensions.m */; };
+		93462D831E68A14D00FE1BC9 /* NSArray+ITArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462D821E68A14D00FE1BC9 /* NSArray+ITArray.m */; };
 		93C20EAB1E5B99CA00B56982 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C20EA91E5B99CA00B56982 /* main.m */; };
 		93C20EB01E5B99D900B56982 /* ITObjCUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C20EAE1E5B99D900B56982 /* ITObjCUITests.m */; };
 		93C20EBC1E5B99E900B56982 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93C20EB21E5B99E900B56982 /* Assets.xcassets */; };
@@ -66,6 +69,12 @@
 		93462D711E67740000FE1BC9 /* ITImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITImageModel.m; sourceTree = "<group>"; };
 		93462D741E67745200FE1BC9 /* ITObservableObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITObservableObject.h; sourceTree = "<group>"; };
 		93462D751E67745200FE1BC9 /* ITObservableObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITObservableObject.m; sourceTree = "<group>"; };
+		93462D791E68965D00FE1BC9 /* ITTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITTableViewCell.h; sourceTree = "<group>"; };
+		93462D7A1E68965D00FE1BC9 /* ITTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITTableViewCell.m; sourceTree = "<group>"; };
+		93462D7D1E689D5A00FE1BC9 /* UINib+ITExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINib+ITExtensions.h"; sourceTree = "<group>"; };
+		93462D7E1E689D5A00FE1BC9 /* UINib+ITExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINib+ITExtensions.m"; sourceTree = "<group>"; };
+		93462D811E68A14D00FE1BC9 /* NSArray+ITArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ITArray.h"; sourceTree = "<group>"; };
+		93462D821E68A14D00FE1BC9 /* NSArray+ITArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ITArray.m"; sourceTree = "<group>"; };
 		93C20E7F1E5B95BF00B56982 /* ITObjCUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITObjCUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C20E981E5B95BF00B56982 /* ITObjCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ITObjCUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C20EA81E5B99CA00B56982 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -182,6 +191,41 @@
 			path = ITObservableObject;
 			sourceTree = "<group>";
 		};
+		93462D771E68963F00FE1BC9 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				93462D781E68963F00FE1BC9 /* ITTableViewCell */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		93462D781E68963F00FE1BC9 /* ITTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				93462D791E68965D00FE1BC9 /* ITTableViewCell.h */,
+				93462D7A1E68965D00FE1BC9 /* ITTableViewCell.m */,
+			);
+			path = ITTableViewCell;
+			sourceTree = "<group>";
+		};
+		93462D7C1E689D4200FE1BC9 /* UINib+ITExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				93462D7D1E689D5A00FE1BC9 /* UINib+ITExtensions.h */,
+				93462D7E1E689D5A00FE1BC9 /* UINib+ITExtensions.m */,
+			);
+			path = "UINib+ITExtensions";
+			sourceTree = "<group>";
+		};
+		93462D801E68A14D00FE1BC9 /* NSArray+ITExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				93462D811E68A14D00FE1BC9 /* NSArray+ITArray.h */,
+				93462D821E68A14D00FE1BC9 /* NSArray+ITArray.m */,
+			);
+			path = "NSArray+ITExtensions";
+			sourceTree = "<group>";
+		};
 		93C20E761E5B95BF00B56982 = {
 			isa = PBXGroup;
 			children = (
@@ -277,6 +321,7 @@
 		93C20EFA1E5F765900B56982 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				93462D771E68963F00FE1BC9 /* Classes */,
 				93C20EFB1E5F765900B56982 /* Categories */,
 				93462D731E67745200FE1BC9 /* ITObservableObject */,
 				93462D551E67525B00FE1BC9 /* ITMacro.h */,
@@ -288,6 +333,8 @@
 		93C20EFB1E5F765900B56982 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				93462D801E68A14D00FE1BC9 /* NSArray+ITExtensions */,
+				93462D7C1E689D4200FE1BC9 /* UINib+ITExtensions */,
 				93462D671E6769AD00FE1BC9 /* UIWindow+ITExtensions */,
 				93C20F1A1E60C43D00B56982 /* NSString+ITExtensions */,
 				93C20F1F1E60CAD400B56982 /* NSString+ITRandomName.h */,
@@ -478,15 +525,18 @@
 				93462D621E675E9400FE1BC9 /* ITUserView.m in Sources */,
 				93C20F211E60CAD400B56982 /* NSString+ITRandomName.m in Sources */,
 				93462D571E67525B00FE1BC9 /* ITMacro.m in Sources */,
+				93462D831E68A14D00FE1BC9 /* NSArray+ITArray.m in Sources */,
 				93462D651E675E9400FE1BC9 /* ITUserCell.m in Sources */,
 				93C20EAB1E5B99CA00B56982 /* main.m in Sources */,
 				93462D761E67745200FE1BC9 /* ITObservableObject.m in Sources */,
 				93C20EE81E5F72DD00B56982 /* ITSquareViewController.m in Sources */,
 				93462D721E67740000FE1BC9 /* ITImageModel.m in Sources */,
 				93462D6E1E67739D00FE1BC9 /* ITUser.m in Sources */,
+				93462D7B1E68965D00FE1BC9 /* ITTableViewCell.m in Sources */,
 				93C20EE71E5F72DD00B56982 /* ITSquareView.m in Sources */,
 				93462D6A1E6769CB00FE1BC9 /* UIWindow+ITExtensions.m in Sources */,
 				93C20EC81E5CC8A100B56982 /* ITAppDelegate.m in Sources */,
+				93462D7F1E689D5A00FE1BC9 /* UINib+ITExtensions.m in Sources */,
 				93C20F1E1E60C49700B56982 /* NSString+ITExtensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

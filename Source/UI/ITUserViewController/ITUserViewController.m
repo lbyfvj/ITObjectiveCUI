@@ -14,6 +14,8 @@
 
 #import "ITMacro.h"
 
+#import "UINib+ITExtensions.h"
+
 ITBaseViewController(ITUserViewController, userView, ITUserView)
 
 #pragma mark -
@@ -46,9 +48,11 @@ ITBaseViewController(ITUserViewController, userView, ITUserView)
     ITUserCell *cell = [tableView dequeueReusableCellWithIdentifier:cellClass];
     
     if (!cell) {
-        UINib *nib = [UINib nibWithNibName:cellClass bundle:nil];
-        NSArray *cells = [nib instantiateWithOwner:nil options:nil];
-        cell = [cells firstObject];
+//        UINib *nib = [UINib nibWithNibName:cellClass bundle:nil];
+//        NSArray *cells = [nib instantiateWithOwner:nil options:nil];
+//        cell = [cells firstObject];
+        
+        cell = [UINib objectWithClass:[ITUserCell class]];
     }
     
     cell.user = self.user;

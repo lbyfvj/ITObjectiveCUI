@@ -6,11 +6,11 @@
 //  Copyright © 2017 Ivan Tsyganok. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "ITTableViewCell.h"
 
 @class ITUser;
 
-@interface ITUserCell : UITableViewCell
+@interface ITUserCell : ITTableViewCell
 @property (nonatomic, strong)   IBOutlet    UILabel         *userLabel;
 @property (nonatomic, strong)   IBOutlet    UIImageView     *userImageView;
 
