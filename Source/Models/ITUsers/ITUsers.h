@@ -16,6 +16,8 @@
 
 - (void)addUser;
 
+- (void)addUser:(ITUser*)user atIndex:(NSUInteger)index;
+
 - (void)removeUserAtIndex:(NSUInteger)index;
 
 - (id)objectAtIndexedSubscript:(NSUInteger)index;

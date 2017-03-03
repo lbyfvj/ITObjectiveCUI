@@ -52,6 +52,10 @@ static const NSUInteger kITUsersCount = 7;
     [self.users addObject:user];
 }
 
+- (void)addUser:(ITUser*)user atIndex:(NSUInteger)index {
+    [self.users insertObject:user atIndex:index];
+}
+
 - (void)removeUserAtIndex:(NSUInteger)index {
     [self.users removeObjectAtIndex:index];
 }
