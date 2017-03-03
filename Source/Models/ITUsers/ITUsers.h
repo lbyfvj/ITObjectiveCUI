@@ -8,6 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ITUsers : NSObject
+@class ITUser;
+
+@interface ITUsers : NSObject <NSFastEnumeration>
+
+- (NSUInteger)count;
+
+- (void)addUser;
+
+- (void)removeUserAtIndex:(NSUInteger)index;
+
+- (id)objectAtIndexedSubscript:(NSUInteger)index;
 
 @end

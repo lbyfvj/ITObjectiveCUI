@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#import "ITImageModel.h"
+
 @interface ITImageView : UIView
+@property (nonatomic, strong)       IBOutlet ITImageModel    *imageModel;
+@property (nonatomic, strong)       UIImageView     *contentImageView;
 
 @end

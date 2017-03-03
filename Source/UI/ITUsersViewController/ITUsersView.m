@@ -13,7 +13,7 @@
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setUser:(ITUsers *)users {
+- (void)setUsers:(ITUsers *)users {
     if (_users != users) {
         _users = users;
     }

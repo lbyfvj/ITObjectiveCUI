@@ -9,20 +9,23 @@
 /* Begin PBXBuildFile section */
 		932D37741E60EB2D00C435F2 /* image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 932D37731E60EB2D00C435F2 /* image.jpg */; };
 		93462D571E67525B00FE1BC9 /* ITMacro.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462D561E67525B00FE1BC9 /* ITMacro.m */; };
-		93462D621E675E9400FE1BC9 /* ITUserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462D5A1E675E9400FE1BC9 /* ITUserView.m */; };
-		93462D631E675E9400FE1BC9 /* ITUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462D5C1E675E9400FE1BC9 /* ITUserViewController.m */; };
-		93462D641E675E9400FE1BC9 /* ITUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93462D5D1E675E9400FE1BC9 /* ITUserViewController.xib */; };
-		93462D651E675E9400FE1BC9 /* ITUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462D601E675E9400FE1BC9 /* ITUserCell.m */; };
-		93462D661E675E9400FE1BC9 /* ITUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93462D611E675E9400FE1BC9 /* ITUserCell.xib */; };
 		93462D6A1E6769CB00FE1BC9 /* UIWindow+ITExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462D691E6769CB00FE1BC9 /* UIWindow+ITExtensions.m */; };
 		93462D6E1E67739D00FE1BC9 /* ITUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462D6D1E67739D00FE1BC9 /* ITUser.m */; };
 		93462D721E67740000FE1BC9 /* ITImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462D711E67740000FE1BC9 /* ITImageModel.m */; };
 		93462D7B1E68965D00FE1BC9 /* ITTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462D7A1E68965D00FE1BC9 /* ITTableViewCell.m */; };
 		93462D7F1E689D5A00FE1BC9 /* UINib+ITExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462D7E1E689D5A00FE1BC9 /* UINib+ITExtensions.m */; };
-		93462D831E68A14D00FE1BC9 /* NSArray+ITArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462D821E68A14D00FE1BC9 /* NSArray+ITArray.m */; };
+		93462D831E68A14D00FE1BC9 /* NSArray+ITExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462D821E68A14D00FE1BC9 /* NSArray+ITExtensions.m */; };
 		93462D8B1E68ACF400FE1BC9 /* UITableView+ITExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462D8A1E68ACF400FE1BC9 /* UITableView+ITExtensions.m */; };
 		93462D8F1E68B61C00FE1BC9 /* ITObservableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462D8E1E68B61C00FE1BC9 /* ITObservableObject.m */; };
 		93462D931E68C05500FE1BC9 /* ITImageModelDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462D921E68C05500FE1BC9 /* ITImageModelDispatcher.m */; };
+		93462D981E69E86000FE1BC9 /* ITImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462D971E69E86000FE1BC9 /* ITImageView.m */; };
+		93462D9C1E69FD3F00FE1BC9 /* ITUsers.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462D9B1E69FD3F00FE1BC9 /* ITUsers.m */; };
+		93462DA01E6A035F00FE1BC9 /* NSObject+ITExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462D9F1E6A035F00FE1BC9 /* NSObject+ITExtensions.m */; };
+		93462DAB1E6A114E00FE1BC9 /* ITUsersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462DA31E6A114E00FE1BC9 /* ITUsersView.m */; };
+		93462DAC1E6A114E00FE1BC9 /* ITUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462DA51E6A114E00FE1BC9 /* ITUsersViewController.m */; };
+		93462DAD1E6A114E00FE1BC9 /* ITUsersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93462DA61E6A114E00FE1BC9 /* ITUsersViewController.xib */; };
+		93462DAE1E6A114E00FE1BC9 /* ITUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462DA91E6A114E00FE1BC9 /* ITUserCell.m */; };
+		93462DAF1E6A114E00FE1BC9 /* ITUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93462DAA1E6A114E00FE1BC9 /* ITUserCell.xib */; };
 		93C20EAB1E5B99CA00B56982 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C20EA91E5B99CA00B56982 /* main.m */; };
 		93C20EB01E5B99D900B56982 /* ITObjCUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C20EAE1E5B99D900B56982 /* ITObjCUITests.m */; };
 		93C20EBC1E5B99E900B56982 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93C20EB21E5B99E900B56982 /* Assets.xcassets */; };
@@ -55,14 +58,6 @@
 		932D37731E60EB2D00C435F2 /* image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.jpg; sourceTree = "<group>"; };
 		93462D551E67525B00FE1BC9 /* ITMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITMacro.h; sourceTree = "<group>"; };
 		93462D561E67525B00FE1BC9 /* ITMacro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITMacro.m; sourceTree = "<group>"; };
-		93462D591E675E9400FE1BC9 /* ITUserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITUserView.h; sourceTree = "<group>"; };
-		93462D5A1E675E9400FE1BC9 /* ITUserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITUserView.m; sourceTree = "<group>"; };
-		93462D5B1E675E9400FE1BC9 /* ITUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITUserViewController.h; sourceTree = "<group>"; };
-		93462D5C1E675E9400FE1BC9 /* ITUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITUserViewController.m; sourceTree = "<group>"; };
-		93462D5D1E675E9400FE1BC9 /* ITUserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ITUserViewController.xib; sourceTree = "<group>"; };
-		93462D5F1E675E9400FE1BC9 /* ITUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITUserCell.h; sourceTree = "<group>"; };
-		93462D601E675E9400FE1BC9 /* ITUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITUserCell.m; sourceTree = "<group>"; };
-		93462D611E675E9400FE1BC9 /* ITUserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ITUserCell.xib; sourceTree = "<group>"; };
 		93462D681E6769CB00FE1BC9 /* UIWindow+ITExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+ITExtensions.h"; sourceTree = "<group>"; };
 		93462D691E6769CB00FE1BC9 /* UIWindow+ITExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+ITExtensions.m"; sourceTree = "<group>"; };
 		93462D6C1E67739D00FE1BC9 /* ITUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITUser.h; sourceTree = "<group>"; };
@@ -73,14 +68,28 @@
 		93462D7A1E68965D00FE1BC9 /* ITTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITTableViewCell.m; sourceTree = "<group>"; };
 		93462D7D1E689D5A00FE1BC9 /* UINib+ITExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINib+ITExtensions.h"; sourceTree = "<group>"; };
 		93462D7E1E689D5A00FE1BC9 /* UINib+ITExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINib+ITExtensions.m"; sourceTree = "<group>"; };
-		93462D811E68A14D00FE1BC9 /* NSArray+ITArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ITArray.h"; sourceTree = "<group>"; };
-		93462D821E68A14D00FE1BC9 /* NSArray+ITArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ITArray.m"; sourceTree = "<group>"; };
+		93462D811E68A14D00FE1BC9 /* NSArray+ITExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ITExtensions.h"; sourceTree = "<group>"; };
+		93462D821E68A14D00FE1BC9 /* NSArray+ITExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ITExtensions.m"; sourceTree = "<group>"; };
 		93462D891E68ACF400FE1BC9 /* UITableView+ITExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+ITExtensions.h"; sourceTree = "<group>"; };
 		93462D8A1E68ACF400FE1BC9 /* UITableView+ITExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+ITExtensions.m"; sourceTree = "<group>"; };
 		93462D8D1E68B61C00FE1BC9 /* ITObservableObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITObservableObject.h; sourceTree = "<group>"; };
 		93462D8E1E68B61C00FE1BC9 /* ITObservableObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITObservableObject.m; sourceTree = "<group>"; };
 		93462D911E68C05500FE1BC9 /* ITImageModelDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITImageModelDispatcher.h; sourceTree = "<group>"; };
 		93462D921E68C05500FE1BC9 /* ITImageModelDispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITImageModelDispatcher.m; sourceTree = "<group>"; };
+		93462D961E69E86000FE1BC9 /* ITImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITImageView.h; sourceTree = "<group>"; };
+		93462D971E69E86000FE1BC9 /* ITImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITImageView.m; sourceTree = "<group>"; };
+		93462D9A1E69FD3F00FE1BC9 /* ITUsers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITUsers.h; sourceTree = "<group>"; };
+		93462D9B1E69FD3F00FE1BC9 /* ITUsers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITUsers.m; sourceTree = "<group>"; };
+		93462D9E1E6A035F00FE1BC9 /* NSObject+ITExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ITExtensions.h"; sourceTree = "<group>"; };
+		93462D9F1E6A035F00FE1BC9 /* NSObject+ITExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ITExtensions.m"; sourceTree = "<group>"; };
+		93462DA21E6A114E00FE1BC9 /* ITUsersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITUsersView.h; sourceTree = "<group>"; };
+		93462DA31E6A114E00FE1BC9 /* ITUsersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITUsersView.m; sourceTree = "<group>"; };
+		93462DA41E6A114E00FE1BC9 /* ITUsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITUsersViewController.h; sourceTree = "<group>"; };
+		93462DA51E6A114E00FE1BC9 /* ITUsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITUsersViewController.m; sourceTree = "<group>"; };
+		93462DA61E6A114E00FE1BC9 /* ITUsersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ITUsersViewController.xib; sourceTree = "<group>"; };
+		93462DA81E6A114E00FE1BC9 /* ITUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITUserCell.h; sourceTree = "<group>"; };
+		93462DA91E6A114E00FE1BC9 /* ITUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITUserCell.m; sourceTree = "<group>"; };
+		93462DAA1E6A114E00FE1BC9 /* ITUserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ITUserCell.xib; sourceTree = "<group>"; };
 		93C20E7F1E5B95BF00B56982 /* ITObjCUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITObjCUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C20E981E5B95BF00B56982 /* ITObjCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ITObjCUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C20EA81E5B99CA00B56982 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -136,29 +145,6 @@
 				932D37731E60EB2D00C435F2 /* image.jpg */,
 			);
 			path = Images;
-			sourceTree = "<group>";
-		};
-		93462D581E675E9400FE1BC9 /* ITUserViewController */ = {
-			isa = PBXGroup;
-			children = (
-				93462D591E675E9400FE1BC9 /* ITUserView.h */,
-				93462D5A1E675E9400FE1BC9 /* ITUserView.m */,
-				93462D5B1E675E9400FE1BC9 /* ITUserViewController.h */,
-				93462D5C1E675E9400FE1BC9 /* ITUserViewController.m */,
-				93462D5D1E675E9400FE1BC9 /* ITUserViewController.xib */,
-				93462D5E1E675E9400FE1BC9 /* Views */,
-			);
-			path = ITUserViewController;
-			sourceTree = "<group>";
-		};
-		93462D5E1E675E9400FE1BC9 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				93462D5F1E675E9400FE1BC9 /* ITUserCell.h */,
-				93462D601E675E9400FE1BC9 /* ITUserCell.m */,
-				93462D611E675E9400FE1BC9 /* ITUserCell.xib */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		93462D671E6769AD00FE1BC9 /* UIWindow+ITExtensions */ = {
@@ -219,8 +205,8 @@
 		93462D801E68A14D00FE1BC9 /* NSArray+ITExtensions */ = {
 			isa = PBXGroup;
 			children = (
-				93462D811E68A14D00FE1BC9 /* NSArray+ITArray.h */,
-				93462D821E68A14D00FE1BC9 /* NSArray+ITArray.m */,
+				93462D811E68A14D00FE1BC9 /* NSArray+ITExtensions.h */,
+				93462D821E68A14D00FE1BC9 /* NSArray+ITExtensions.m */,
 			);
 			path = "NSArray+ITExtensions";
 			sourceTree = "<group>";
@@ -250,6 +236,64 @@
 				93462D921E68C05500FE1BC9 /* ITImageModelDispatcher.m */,
 			);
 			path = Private;
+			sourceTree = "<group>";
+		};
+		93462D941E69E83A00FE1BC9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				93462D951E69E83A00FE1BC9 /* ITImageView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		93462D951E69E83A00FE1BC9 /* ITImageView */ = {
+			isa = PBXGroup;
+			children = (
+				93462D961E69E86000FE1BC9 /* ITImageView.h */,
+				93462D971E69E86000FE1BC9 /* ITImageView.m */,
+			);
+			path = ITImageView;
+			sourceTree = "<group>";
+		};
+		93462D991E69FD2900FE1BC9 /* ITUsers */ = {
+			isa = PBXGroup;
+			children = (
+				93462D9A1E69FD3F00FE1BC9 /* ITUsers.h */,
+				93462D9B1E69FD3F00FE1BC9 /* ITUsers.m */,
+			);
+			path = ITUsers;
+			sourceTree = "<group>";
+		};
+		93462D9D1E6A035F00FE1BC9 /* NSObject+ITExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				93462D9E1E6A035F00FE1BC9 /* NSObject+ITExtensions.h */,
+				93462D9F1E6A035F00FE1BC9 /* NSObject+ITExtensions.m */,
+			);
+			path = "NSObject+ITExtensions";
+			sourceTree = "<group>";
+		};
+		93462DA11E6A114E00FE1BC9 /* ITUsersViewController */ = {
+			isa = PBXGroup;
+			children = (
+				93462DA21E6A114E00FE1BC9 /* ITUsersView.h */,
+				93462DA31E6A114E00FE1BC9 /* ITUsersView.m */,
+				93462DA41E6A114E00FE1BC9 /* ITUsersViewController.h */,
+				93462DA51E6A114E00FE1BC9 /* ITUsersViewController.m */,
+				93462DA61E6A114E00FE1BC9 /* ITUsersViewController.xib */,
+				93462DA71E6A114E00FE1BC9 /* Views */,
+			);
+			path = ITUsersViewController;
+			sourceTree = "<group>";
+		};
+		93462DA71E6A114E00FE1BC9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				93462DA81E6A114E00FE1BC9 /* ITUserCell.h */,
+				93462DA91E6A114E00FE1BC9 /* ITUserCell.m */,
+				93462DAA1E6A114E00FE1BC9 /* ITUserCell.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		93C20E761E5B95BF00B56982 = {
@@ -317,6 +361,7 @@
 		93C20EDC1E5F72DD00B56982 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				93462D991E69FD2900FE1BC9 /* ITUsers */,
 				93462D6F1E6773D800FE1BC9 /* ITImageModel */,
 				93462D6B1E67739D00FE1BC9 /* ITUser */,
 			);
@@ -326,8 +371,9 @@
 		93C20EDF1E5F72DD00B56982 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				93462D581E675E9400FE1BC9 /* ITUserViewController */,
+				93462DA11E6A114E00FE1BC9 /* ITUsersViewController */,
 				93C20EE01E5F72DD00B56982 /* ITSquareViewController */,
+				93462D941E69E83A00FE1BC9 /* Views */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -358,6 +404,7 @@
 		93C20EFB1E5F765900B56982 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				93462D9D1E6A035F00FE1BC9 /* NSObject+ITExtensions */,
 				93462D881E68ACD700FE1BC9 /* UITableView+ITExtensions */,
 				93462D801E68A14D00FE1BC9 /* NSArray+ITExtensions */,
 				93462D7C1E689D4200FE1BC9 /* UINib+ITExtensions */,
@@ -474,10 +521,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93462D641E675E9400FE1BC9 /* ITUserViewController.xib in Resources */,
 				93C20EE91E5F72DD00B56982 /* ITSquareViewController.xib in Resources */,
 				93C20EBE1E5B99E900B56982 /* LaunchScreen.storyboard in Resources */,
-				93462D661E675E9400FE1BC9 /* ITUserCell.xib in Resources */,
+				93462DAD1E6A114E00FE1BC9 /* ITUsersViewController.xib in Resources */,
+				93462DAF1E6A114E00FE1BC9 /* ITUserCell.xib in Resources */,
 				93C20EBC1E5B99E900B56982 /* Assets.xcassets in Resources */,
 				932D37741E60EB2D00C435F2 /* image.jpg in Resources */,
 			);
@@ -547,19 +594,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93462D631E675E9400FE1BC9 /* ITUserViewController.m in Sources */,
-				93462D621E675E9400FE1BC9 /* ITUserView.m in Sources */,
 				93C20F211E60CAD400B56982 /* NSString+ITRandomName.m in Sources */,
 				93462D571E67525B00FE1BC9 /* ITMacro.m in Sources */,
-				93462D831E68A14D00FE1BC9 /* NSArray+ITArray.m in Sources */,
-				93462D651E675E9400FE1BC9 /* ITUserCell.m in Sources */,
+				93462D831E68A14D00FE1BC9 /* NSArray+ITExtensions.m in Sources */,
 				93462D8F1E68B61C00FE1BC9 /* ITObservableObject.m in Sources */,
+				93462DA01E6A035F00FE1BC9 /* NSObject+ITExtensions.m in Sources */,
 				93C20EAB1E5B99CA00B56982 /* main.m in Sources */,
 				93462D931E68C05500FE1BC9 /* ITImageModelDispatcher.m in Sources */,
 				93C20EE81E5F72DD00B56982 /* ITSquareViewController.m in Sources */,
+				93462D9C1E69FD3F00FE1BC9 /* ITUsers.m in Sources */,
 				93462D721E67740000FE1BC9 /* ITImageModel.m in Sources */,
+				93462DAC1E6A114E00FE1BC9 /* ITUsersViewController.m in Sources */,
+				93462DAB1E6A114E00FE1BC9 /* ITUsersView.m in Sources */,
+				93462D981E69E86000FE1BC9 /* ITImageView.m in Sources */,
 				93462D8B1E68ACF400FE1BC9 /* UITableView+ITExtensions.m in Sources */,
 				93462D6E1E67739D00FE1BC9 /* ITUser.m in Sources */,
+				93462DAE1E6A114E00FE1BC9 /* ITUserCell.m in Sources */,
 				93462D7B1E68965D00FE1BC9 /* ITTableViewCell.m in Sources */,
 				93C20EE71E5F72DD00B56982 /* ITSquareView.m in Sources */,
 				93462D6A1E6769CB00FE1BC9 /* UIWindow+ITExtensions.m in Sources */,

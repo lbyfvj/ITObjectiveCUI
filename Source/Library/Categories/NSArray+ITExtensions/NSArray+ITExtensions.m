@@ -1,14 +1,14 @@
 //
-//  NSArray+ITArray.m
-//  ITSources
+//  NSArray+ITExtensions.m
+//  ITObjCUI
 //
-//  Created by Ivan Tsyganok on 20.01.17.
+//  Created by Ivan Tsyganok on 03.03.17.
 //  Copyright © 2017 Ivan Tsyganok. All rights reserved.
 //
 
-#import "NSArray+ITArray.h"
+#import "NSArray+ITExtensions.h"
 
-@implementation NSArray (ITArray)
+@implementation NSArray (ITExtensions)
 
 #pragma mark -
 #pragma mark Class Methods

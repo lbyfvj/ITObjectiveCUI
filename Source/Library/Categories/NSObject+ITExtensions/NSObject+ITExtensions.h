@@ -1,14 +1,14 @@
 //
-//  NSObject+ITObject.h
-//  ITSources
+//  NSObject+ITExtensions.h
+//  ITObjCUI
 //
-//  Created by Ivan Tsyganok on 18.12.16.
-//  Copyright © 2016 Ivan Tsyganok. All rights reserved.
+//  Created by Ivan Tsyganok on 03.03.17.
+//  Copyright © 2017 Ivan Tsyganok. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface NSObject (ITObject)
+@interface NSObject (ITExtensions)
 
 + (instancetype)object;
 

@@ -1,31 +1,20 @@
 //
-//  NSObject+ITObject.m
-//  ITSources
+//  NSObject+ITExtensions.m
+//  ITObjCUI
 //
-//  Created by Ivan Tsyganok on 18.12.16.
-//  Copyright © 2016 Ivan Tsyganok. All rights reserved.
+//  Created by Ivan Tsyganok on 03.03.17.
+//  Copyright © 2017 Ivan Tsyganok. All rights reserved.
 //
 
-#import "NSObject+ITObject.h"
+#import "NSObject+ITExtensions.h"
 
-#import "NSArray+ITArray.h"
+#import "NSArray+ITExtensions.h"
 
-@implementation NSObject (ITObject)
+@implementation NSObject (ITExtensions)
 
 + (instancetype)object {
-    return [[[self alloc] init] autorelease];
+    return [[self alloc] init];
 }
-
-//+ (NSMutableArray *)objectsWithCount:(NSUInteger)count {
-//    
-//    NSMutableArray *result = [NSMutableArray arrayWithCapacity:count];
-//    
-//    for (NSInteger i = 0; i < count; i++) {
-//        [result addObject:[self object]];
-//    }
-//    
-//    return result;
-//}
 
 + (NSArray *)objectsWithCount:(NSUInteger)count {
     return [NSArray objectsWithCount:count block:^id{

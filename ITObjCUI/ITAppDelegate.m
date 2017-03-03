@@ -10,7 +10,7 @@
 
 #import "ITSquareViewController.h"
 
-#import "ITUserViewController.h"
+#import "ITUsersViewController.h"
 
 #import "UIWindow+ITExtensions.h"
 
@@ -26,8 +26,8 @@
     self.window = window;
     
 //    ITSquareViewController *controller = [ITSquareViewController new];
-    ITUserViewController *controller = [ITUserViewController new];
-    controller.user = [ITUser new];
+    ITUsersViewController *controller = [ITUsersViewController new];
+    controller.users = [ITUsers new];
     window.rootViewController = controller;
     
     [window makeKeyAndVisible];
