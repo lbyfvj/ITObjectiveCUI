@@ -100,11 +100,9 @@ static const NSTimeInterval ITDelay = 0.0;
     CGPoint bottomRight = CGPointMake(CGRectGetWidth(bounds) - CGRectGetWidth(frame),
                                       CGRectGetHeight(bounds) - CGRectGetHeight(frame));
         
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Wswitch"
     switch (squarePosition) {
-        case ITTopLeftCorner:
-            origin = CGPointZero;
-            break;
-            
         case ITTopRightCorner:
             origin.x = bottomRight.x;
             break;
@@ -117,6 +115,7 @@ static const NSTimeInterval ITDelay = 0.0;
             origin.y = bottomRight.y;
             break;
     }
+    #pragma clang diagnostic pop
     
     frame.origin = origin;
     
