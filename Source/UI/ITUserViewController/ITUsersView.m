@@ -13,9 +13,9 @@
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setUser:(ITUser *)user {
-    if (_user != user) {
-        _user = user;
+- (void)setUser:(ITUsers *)users {
+    if (_users != users) {
+        _users = users;
     }
 }
 

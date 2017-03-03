@@ -1,14 +1,14 @@
 //
-//  ITUserViewController.m
+//  ITUsersViewController.m
 //  ITObjCUI
 //
 //  Created by Ivan Tsyganok on 23.02.17.
 //  Copyright © 2017 Ivan Tsyganok. All rights reserved.
 //
 
-#import "ITUserViewController.h"
+#import "ITUsersViewController.h"
 
-#import "ITUserView.h"
+#import "ITUsersView.h"
 
 #import "ITUserCell.h"
 
@@ -16,17 +16,17 @@
 
 #import "UITableView+ITExtensions.h"
 
-ITBaseViewController(ITUserViewController, userView, ITUserView)
+ITBaseViewController(ITUsersViewController, usersView, ITUsersView)
 
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setUser:(ITUser *)user {
-    if (_user != user) {
-        _user = user;
+- (void)setUsers:(ITUsers *)users {
+    if (_users != users) {
+        _users = users;
     }
     
-    self.userView.user = user;
+    self.usersView.users = users;
 }
 
 #pragma mark -
@@ -36,14 +36,14 @@ ITBaseViewController(ITUserViewController, userView, ITUserView)
     numberOfRowsInSection:(NSInteger)section
 {
     
-    return 10;
+    return [self.users count];
 }
 
 - (UITableViewCell *)   tableView:(UITableView *)tableView
             cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ITUserCell *cell = [tableView reusableCellWithClass:[ITUserCell class]];
-    cell.user = self.user;
+    cell.user = self.users[indexPath.row];
     
     return cell;
 }
@@ -54,7 +54,7 @@ ITBaseViewController(ITUserViewController, userView, ITUserView)
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.userView.tableView reloadData];
+    [self.usersView.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {

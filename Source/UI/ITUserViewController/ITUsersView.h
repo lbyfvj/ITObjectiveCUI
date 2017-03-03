@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-#import "ITUser.h"
+#import "ITUsers.h"
 
 @interface ITUserView : UIView
-@property (nonatomic, strong)   ITUser    *user;
+@property (nonatomic, strong)   ITUsers    *users;
 
 @property (nonatomic, strong)   IBOutlet    UITableView     *tableView;
 

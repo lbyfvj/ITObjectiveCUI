@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-#import "ITUser.h"
+#import "ITUsers.h"
 
 @interface ITUserViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
-@property (nonatomic, strong)   ITUser    *user;
+@property (nonatomic, strong)   ITUsers    *users;
 
 @end
