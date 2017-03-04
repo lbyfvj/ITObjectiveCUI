@@ -8,49 +8,23 @@
 
 #import "ITUsersView.h"
 
-static const NSUInteger kITNumberOfSections = 1;
+static NSString * const kITDoneButtonTitle = @"Done";
+static NSString * const kITEditButtonTitle = @"Edit";
 
 @implementation ITUsersView
 
 #pragma mark -
+#pragma mark Initializations and Deallocations
+
+#pragma mark -
 #pragma mark Accessors
 
-- (void)setUsers:(ITUsers *)users {
-    if (_users != users) {
-        _users = users;
+- (void)setEditing:(BOOL)editing {
+    if (_editing != editing) {
+        _editing = editing;
+        [self.editButton setTitle:editing ? kITDoneButtonTitle : kITEditButtonTitle
+                         forState:UIControlStateNormal];
     }
-}
-
-- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
-//    [super setEditing:editing animated:animated];
-    
-    UITableView *tableView = self.tableView;
-    NSUInteger usersCount = [self.users count];
-    
-    if (editing) {
-        [tableView beginUpdates];
-        
-        for (NSUInteger i = 0; i < usersCount; i++) {
-            NSIndexPath *path = [NSIndexPath indexPathForRow:usersCount
-                                                   inSection:i];
-            [self.tableView insertRowsAtIndexPaths:@[path]
-                                            withRowAnimation:UITableViewRowAnimationAutomatic];
-        }
-        
-        [tableView endUpdates];
-    }
-    
-    [tableView beginUpdates];
-    
-    for (NSUInteger i = 0; i < kITNumberOfSections; i++) {
-        NSIndexPath *path = [NSIndexPath indexPathForRow:usersCount
-                                               inSection:i];
-        [self.tableView deleteRowsAtIndexPaths:@[path]
-                                        withRowAnimation:UITableViewRowAnimationAutomatic];
-    }
-    
-    [tableView endUpdates];
-    
 }
 
 @end

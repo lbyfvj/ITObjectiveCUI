@@ -12,7 +12,7 @@
 
 #import "NSObject+ITExtensions.h"
 
-static const NSUInteger kITUsersCount = 7;
+static const NSUInteger kITUsersCount = 10;
 
 @interface ITUsers ()
 @property (nonatomic, strong)   NSMutableArray  *users;

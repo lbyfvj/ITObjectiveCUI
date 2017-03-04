@@ -10,9 +10,13 @@
 
 #import "ITUsers.h"
 
-@interface ITUsersView : UIView
-@property (nonatomic, strong)   ITUsers    *users;
+static const NSUInteger kITNumberOfSections = 1;
 
+@interface ITUsersView : UIView
 @property (nonatomic, strong)   IBOutlet    UITableView     *tableView;
+@property (nonatomic, strong)   IBOutlet    UIButton        *editButton;
+
+@property (nonatomic, assign, getter=isEditing) BOOL    editing;
+
 
 @end
