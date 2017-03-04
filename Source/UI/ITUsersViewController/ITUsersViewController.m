@@ -16,8 +16,6 @@
 
 #import "UITableView+ITExtensions.h"
 
-static const NSUInteger kITNumberOfSections = 1;
-
 ITBaseViewController(ITUsersViewController, usersView, ITUsersView)
 
 #pragma mark -
@@ -31,35 +29,17 @@ ITBaseViewController(ITUsersViewController, usersView, ITUsersView)
     self.usersView.users = users;
 }
 
-- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
-    [super setEditing:editing animated:animated];
+#pragma mark -
+#pragma mark Interface Handling
+
+- (IBAction)onEditButtonClicked:(id)sender {
     UITableView *tableView = self.usersView.tableView;
-    NSUInteger usersCount = [self.users count];
+    BOOL isEditing = tableView.isEditing;
     
-    if (editing) {
-        [tableView beginUpdates];
-        
-        for (NSUInteger i = 0; i < usersCount; i++) {
-            NSIndexPath *path = [NSIndexPath indexPathForRow:usersCount
-                                                   inSection:i];
-            [self.usersView.tableView insertRowsAtIndexPaths:@[path]
-                                            withRowAnimation:UITableViewRowAnimationAutomatic];
-        }
-        
-        [tableView endUpdates];
-    }
+    [sender setTitle:isEditing ? @"Edit" : @"Done"
+            forState:UIControlStateNormal];
     
-    [tableView beginUpdates];
-    
-    for (NSUInteger i = 0; i < kITNumberOfSections; i++) {
-        NSIndexPath *path = [NSIndexPath indexPathForRow:usersCount
-                                               inSection:i];
-        [self.usersView.tableView deleteRowsAtIndexPaths:@[path]
-                                        withRowAnimation:UITableViewRowAnimationAutomatic];
-    }
-    
-    [tableView endUpdates];
-    
+    [tableView setEditing:!isEditing animated:YES];
 }
 
 #pragma mark -
@@ -76,17 +56,27 @@ ITBaseViewController(ITUsersViewController, usersView, ITUsersView)
             cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ITUserCell *cell = [tableView reusableCellWithClass:[ITUserCell class]];
+    
+    if (indexPath.row >= [self.users count] && self.isEditing) {
+        cell.textLabel.text = @"Add";
+    }
+    
     cell.user = self.users[indexPath.row];
+
     
     return cell;
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+- (BOOL)        tableView:(UITableView *)tableView
+    canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
     return YES;
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-
+- (void)    tableView:(UITableView *)tableView
+    commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+    forRowAtIndexPath:(NSIndexPath *)indexPath
+{
     #pragma clang diagnostic push
     #pragma clang diagnostic ignored "-Wswitch"    
     switch (editingStyle) {
@@ -105,17 +95,23 @@ ITBaseViewController(ITUsersViewController, usersView, ITUsersView)
     #pragma clang diagnostic pop
 }
 
-- (void)moveRowAtIndexPath:(NSIndexPath *)indexPath toIndexPath:(NSIndexPath *)newIndexPath {
+- (void)moveRowAtIndexPath:(NSIndexPath *)indexPath
+               toIndexPath:(NSIndexPath *)newIndexPath
+{
     id user = self.users[indexPath.row];
     [self.users removeUserAtIndex:indexPath.row];
     [self.users addUser:user atIndex:newIndexPath.row];
 }
 
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+- (BOOL)        tableView:(UITableView *)tableView
+    canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
     return YES;
 }
 
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView
+           editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     if (indexPath.row >= [self.users count]) {
         return UITableViewCellEditingStyleInsert;
     }
@@ -128,6 +124,8 @@ ITBaseViewController(ITUsersViewController, usersView, ITUsersView)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.usersView.tableView.allowsSelectionDuringEditing = YES;
     
     [self.usersView.tableView reloadData];
 }

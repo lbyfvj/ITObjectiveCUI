@@ -13,4 +13,6 @@
 @interface ITUsersViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong)   ITUsers    *users;
 
+- (IBAction)onEditButtonClicked:(id)sender;
+
 @end

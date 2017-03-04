@@ -102,6 +102,7 @@ static const NSTimeInterval ITDelay = 0.0;
         
     #pragma clang diagnostic push
     #pragma clang diagnostic ignored "-Wswitch"
+    
     switch (squarePosition) {
         case ITTopRightCorner:
             origin.x = bottomRight.x;
@@ -115,6 +116,7 @@ static const NSTimeInterval ITDelay = 0.0;
             origin.y = bottomRight.y;
             break;
     }
+    
     #pragma clang diagnostic pop
     
     frame.origin = origin;
