@@ -21,6 +21,7 @@
 - (BOOL)containsObserver:(id)observer;
 
 - (SEL)selectorForState:(NSUInteger)state;
+- (SEL)selectorForState:(NSUInteger)state withObject:(id)object;
 
 - (void)setState:(NSUInteger)state withObject:(id)object;
 

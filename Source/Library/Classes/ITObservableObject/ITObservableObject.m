@@ -53,10 +53,10 @@
 
 - (void)setState:(NSUInteger)state withObject:(id)object {
     @synchronized(self) {
-        if (state != _state) {
+        //if (state != _state) {
             _state = state;
             [self notifyOfState:_state object:object];
-        }
+        //}
     }
 }
 
@@ -96,7 +96,10 @@
 }
 
 - (SEL)selectorForState:(NSUInteger)state {
-    
+    return nil;
+}
+
+- (SEL)selectorForState:(NSUInteger)state withObject:(id)object {
     return nil;
 }
 

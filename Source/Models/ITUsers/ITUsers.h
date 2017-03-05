@@ -10,6 +10,13 @@
 
 #import "ITObservableObject.h"
 
+typedef NS_ENUM(NSUInteger, ITUsersState) {
+    ITUsersAdded,
+    ITUsersDeleted,
+    ITUsersReordered,
+};
+
+
 @class ITUser;
 
 @interface ITUsers : ITObservableObject <NSFastEnumeration>
@@ -18,9 +25,11 @@
 
 - (void)addUser;
 
-- (void)addUser:(ITUser*)user atIndex:(NSUInteger)index;
+- (void)insertUser:(ITUser*)user atIndex:(NSUInteger)index;
 
 - (void)removeUserAtIndex:(NSUInteger)index;
+
+- (void)moveUserAtIndex:(NSUInteger)index toIndex:(NSUInteger)newIndex;
 
 - (id)objectAtIndexedSubscript:(NSUInteger)index;
 
@@ -30,6 +39,8 @@
 
 @optional
 
-- (void)users:(ITUsers *)users didChangeData:(id)data;
+- (void)users:(ITUsers *)users didAddedWithPath:(id)path;
+- (void)users:(ITUsers *)users didDeletedWithPath:(id)path;
+- (void)users:(ITUsers *)users didReorderedWithPath:(id)path;
 
 @end

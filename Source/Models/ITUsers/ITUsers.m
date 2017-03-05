@@ -13,6 +13,7 @@
 #import "NSObject+ITExtensions.h"
 
 static const NSUInteger kITUsersCount = 10;
+static const NSUInteger kITSectionIndex = 0;
 
 @interface ITUsers ()
 @property (nonatomic, strong)   NSMutableArray  *users;
@@ -50,14 +51,29 @@ static const NSUInteger kITUsersCount = 10;
 - (void)addUser {
     ITUser *user = [ITUser object];
     [self.users addObject:user];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self.users count] - 1 inSection:kITSectionIndex];
+
+    [self setState:ITUsersAdded withObject:indexPath];
 }
 
-- (void)addUser:(ITUser*)user atIndex:(NSUInteger)index {
+- (void)insertUser:(ITUser*)user atIndex:(NSUInteger)index {
     [self.users insertObject:user atIndex:index];
 }
 
 - (void)removeUserAtIndex:(NSUInteger)index {
     [self.users removeObjectAtIndex:index];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:kITSectionIndex];
+    [self setState:ITUsersDeleted withObject:indexPath];
+    
+}
+
+- (void)moveUserAtIndex:(NSUInteger)index toIndex:(NSUInteger)newIndex {
+    [self.users removeObjectAtIndex:index];
+    [self.users insertObject:self.users[index] atIndex:newIndex];
+    NSIndexPath *actualPath = [NSIndexPath indexPathForRow:index inSection:kITSectionIndex];
+    NSIndexPath *newPath = [NSIndexPath indexPathForRow:newIndex inSection:kITSectionIndex];
+    NSMutableArray *indexes = [NSMutableArray arrayWithObjects:actualPath, newPath, nil];
+    [self setState:ITUsersReordered withObject:indexes];
 }
 
 - (id)objectAtIndexedSubscript:(NSUInteger)index {
@@ -71,6 +87,28 @@ static const NSUInteger kITUsersCount = 10;
     for (NSUInteger i = 0; i < kITUsersCount; i++) {
         [self addUser];
     }
+}
+
+#pragma mark -
+#pragma mark ITObservableObject Overload
+
+- (SEL)selectorForState:(NSUInteger)state {
+    switch (state) {
+        
+        case ITUsersAdded:
+            return @selector(users:didAddedWithPath:);
+            
+        case ITUsersDeleted:
+            return @selector(users:didDeletedWithPath:);
+        
+        case ITUsersReordered:
+            return @selector(users:didReorderedWithPath:);
+            
+        default:
+            [super selectorForState:state];
+    }
+    
+    return NULL;
 }
 
 #pragma mark -

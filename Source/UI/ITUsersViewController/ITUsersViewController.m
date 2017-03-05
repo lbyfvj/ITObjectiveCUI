@@ -18,11 +18,20 @@ static NSString * const kITAddRowTitle = @"Add new user";
 ITBaseViewController(ITUsersViewController, usersView, ITUsersView)
 
 #pragma mark -
+#pragma mark - Initializations and Deallocations
+
+- (void)dealloc {
+    self.users = nil;
+}
+
+#pragma mark -
 #pragma mark Accessors
 
 - (void)setUsers:(ITUsers *)users {
     if (_users != users) {
+        [_users removeObserver:self];
         _users = users;
+        [_users addObserver:self];
     }
 }
 
@@ -94,21 +103,21 @@ ITBaseViewController(ITUsersViewController, usersView, ITUsersView)
     return cell;
 }
 
-- (BOOL)        tableView:(UITableView *)tableView
-    canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return YES;
-}
+//- (BOOL)        tableView:(UITableView *)tableView
+//    canEditRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return YES;
+//}
 
-- (BOOL)        tableView:(UITableView *)tableView
-    canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.row >= [self.users count] && self.usersView.editing) {
-        return NO;
-    }
-    
-    return YES;
-}
+//- (BOOL)        tableView:(UITableView *)tableView
+//    canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    if (indexPath.row >= [self.users count] && self.usersView.editing) {
+//        return NO;
+//    }
+//    
+//    return YES;
+//}
 
 - (void)    tableView:(UITableView *)tableView
     commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
@@ -120,13 +129,14 @@ ITBaseViewController(ITUsersViewController, usersView, ITUsersView)
     switch (editingStyle) {
         case UITableViewCellEditingStyleDelete:
             [users removeUserAtIndex:indexPath.row];
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            //[tableView deleteRowsAtIndexPaths:@[indexPath]
+            //                 withRowAnimation:UITableViewRowAnimationAutomatic];
             break;
             
         case UITableViewCellEditingStyleInsert:
             [users addUser];
-            [tableView insertRowsAtIndexPaths:@[indexPath]
-                             withRowAnimation:UITableViewRowAnimationAutomatic];
+            //[tableView insertRowsAtIndexPaths:@[indexPath]
+            //                 withRowAnimation:UITableViewRowAnimationAutomatic];
             break;
     }
     #pragma clang diagnostic pop
@@ -136,9 +146,7 @@ ITBaseViewController(ITUsersViewController, usersView, ITUsersView)
    moveRowAtIndexPath:(NSIndexPath *)indexPath
           toIndexPath:(NSIndexPath *)newIndexPath
 {
-    ITUsers *users = self.users;
-    [users removeUserAtIndex:indexPath.row];
-    [users addUser:self.users[indexPath.row] atIndex:newIndexPath.row];
+    [self.users moveUserAtIndex:indexPath.row toIndex:newIndexPath.row];
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView
@@ -154,8 +162,28 @@ ITBaseViewController(ITUsersViewController, usersView, ITUsersView)
 #pragma mark -
 #pragma mark ITUsersObservers
 
-- (void)users:(ITUsers *)users didChangeData:(id)data {
-    //[self.usersView updateViewWithIndexPath:path];
+- (void)users:(ITUsers *)users didAddedWithPath:(NSIndexPath *)indexPath {
+    UITableView *tableView = self.usersView.tableView;
+    [tableView beginUpdates];
+    [tableView insertRowsAtIndexPaths:@[indexPath]
+                     withRowAnimation:UITableViewRowAnimationAutomatic];
+    [tableView endUpdates];
+}
+
+- (void)users:(ITUsers *)users didDeletedWithPath:(NSIndexPath *)indexPath {
+    UITableView *tableView = self.usersView.tableView;
+    [tableView beginUpdates];
+    [tableView deleteRowsAtIndexPaths:@[indexPath]
+                     withRowAnimation:UITableViewRowAnimationAutomatic];
+    [tableView endUpdates];
+}
+
+- (void)users:(ITUsers *)users didReorderWithPath:(NSMutableArray *)reorderedPath {
+    UITableView *tableView = self.usersView.tableView;
+    [tableView beginUpdates];
+    [tableView moveRowAtIndexPath:reorderedPath[0]
+                      toIndexPath:reorderedPath[1]];
+    [tableView endUpdates];
 }
 
 @end

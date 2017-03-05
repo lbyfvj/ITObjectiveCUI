@@ -33,8 +33,5 @@ static NSString * const kITEditButtonTitle = @"Edit";
 #pragma mark -
 #pragma mark Public
 
-- (void)updateViewWithIndexPath:(NSIndexPath *)indexPath {
-    
-}
 
 @end
