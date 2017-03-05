@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+#import "ITObservableObject.h"
+
 @class ITUser;
 
-@interface ITUsers : NSObject <NSFastEnumeration>
+@interface ITUsers : ITObservableObject <NSFastEnumeration>
 
 - (NSUInteger)count;
 
@@ -21,5 +23,13 @@
 - (void)removeUserAtIndex:(NSUInteger)index;
 
 - (id)objectAtIndexedSubscript:(NSUInteger)index;
+
+@end
+
+@protocol ITUsersObserver <NSObject>
+
+@optional
+
+- (void)users:(ITUsers *)users didChangeData:(id)data;
 
 @end

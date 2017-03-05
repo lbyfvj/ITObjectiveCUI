@@ -27,23 +27,18 @@ ITBaseViewController(ITUsersViewController, usersView, ITUsersView)
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+    
     self.usersView.editing = !self.usersView.editing;
-    
     UITableView *tableView = self.usersView.tableView;
-    NSUInteger usersCount = [self.users count];
-    
-    [tableView setEditing:editing animated:YES];
     
     [tableView beginUpdates];
     for (NSUInteger i =0; i < kITNumberOfSections; i++) {
-        NSIndexPath *path = [NSIndexPath indexPathForRow:usersCount
+        NSIndexPath *path = [NSIndexPath indexPathForRow:[self.users count]
                                                inSection:i];
         if (editing) {
-
             [tableView insertRowsAtIndexPaths:@[path]
                              withRowAnimation:UITableViewRowAnimationAutomatic];
         } else {
-            
             [tableView deleteRowsAtIndexPaths:@[path]
                              withRowAnimation:UITableViewRowAnimationAutomatic];
         }
@@ -59,7 +54,6 @@ ITBaseViewController(ITUsersViewController, usersView, ITUsersView)
     [super viewDidLoad];
     
     self.usersView.tableView.allowsSelectionDuringEditing = YES;
-    
     [self.usersView.tableView reloadData];
 }
 
@@ -78,14 +72,11 @@ ITBaseViewController(ITUsersViewController, usersView, ITUsersView)
 #pragma mark -
 #pragma mark UITableViewDataSource
 
-- (NSInteger)numberOfRowsInSection:(NSInteger)section {
-    return kITNumberOfSections;
-}
-
 - (NSInteger)   tableView:(UITableView *)tableView
     numberOfRowsInSection:(NSInteger)section
 {
     NSUInteger addRow = self.usersView.editing ? 1 : 0;
+    
     return [self.users count] + addRow;
 }
 
@@ -112,6 +103,10 @@ ITBaseViewController(ITUsersViewController, usersView, ITUsersView)
 - (BOOL)        tableView:(UITableView *)tableView
     canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.row >= [self.users count] && self.usersView.editing) {
+        return NO;
+    }
+    
     return YES;
 }
 
@@ -137,27 +132,13 @@ ITBaseViewController(ITUsersViewController, usersView, ITUsersView)
     #pragma clang diagnostic pop
 }
 
-- (void)          tableView:(UITableView *)tableView
-    didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)    tableView:(UITableView *)tableView
+   moveRowAtIndexPath:(NSIndexPath *)indexPath
+          toIndexPath:(NSIndexPath *)newIndexPath
 {
-    [self.usersView.tableView deselectRowAtIndexPath:indexPath
-                                            animated:YES];
-    if (indexPath.row >= [self.users count] && self.usersView.editing) {
-        [self tableView:tableView commitEditingStyle:UITableViewCellEditingStyleInsert
-                                   forRowAtIndexPath:indexPath];
-    }
-    
-}
-
-- (void)moveRowAtIndexPath:(NSIndexPath *)indexPath
-               toIndexPath:(NSIndexPath *)newIndexPath
-{
-    ITUser *user = self.users[indexPath.row];
     ITUsers *users = self.users;
-    
     [users removeUserAtIndex:indexPath.row];
-    [users addUser:user atIndex:newIndexPath.row];
-    [self.usersView.tableView reloadData];
+    [users addUser:self.users[indexPath.row] atIndex:newIndexPath.row];
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView
@@ -170,8 +151,11 @@ ITBaseViewController(ITUsersViewController, usersView, ITUsersView)
     return UITableViewCellEditingStyleDelete;
 }
 
-- (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath {
-    return NO;
+#pragma mark -
+#pragma mark ITUsersObservers
+
+- (void)users:(ITUsers *)users didChangeData:(id)data {
+    //[self.usersView updateViewWithIndexPath:path];
 }
 
 @end

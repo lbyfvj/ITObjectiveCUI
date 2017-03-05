@@ -10,7 +10,7 @@
 
 #import "ITUsers.h"
 
-@interface ITUsersViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface ITUsersViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, ITUsersObserver>
 @property (nonatomic, strong)   ITUsers    *users;
 
 - (IBAction)onEditButtonClicked:(id)sender;

@@ -18,5 +18,6 @@ static const NSUInteger kITNumberOfSections = 1;
 
 @property (nonatomic, assign, getter=isEditing) BOOL    editing;
 
+- (void)updateViewWithIndexPath:(NSIndexPath *)indexPath;
 
 @end

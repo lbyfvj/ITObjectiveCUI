@@ -20,11 +20,21 @@ static NSString * const kITEditButtonTitle = @"Edit";
 #pragma mark Accessors
 
 - (void)setEditing:(BOOL)editing {
+    
     if (_editing != editing) {
         _editing = editing;
+        
+        [self.tableView setEditing:!self.tableView.editing animated:YES];
         [self.editButton setTitle:editing ? kITDoneButtonTitle : kITEditButtonTitle
                          forState:UIControlStateNormal];
     }
+}
+
+#pragma mark -
+#pragma mark Public
+
+- (void)updateViewWithIndexPath:(NSIndexPath *)indexPath {
+    
 }
 
 @end

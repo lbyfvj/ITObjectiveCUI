@@ -21,6 +21,10 @@
 @implementation ITUserCell
 
 #pragma mark -
+#pragma mark Initializations and Deallocations
+
+
+#pragma mark -
 #pragma mark Accessors
 
 - (void)setUser:(ITUser *)user {
