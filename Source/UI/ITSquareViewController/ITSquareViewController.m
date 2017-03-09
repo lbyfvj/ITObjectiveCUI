@@ -31,9 +31,8 @@ ITBaseViewController(ITSquareViewController, squareView, ITSquareView)
 #pragma mark Interface Handling
 
 - (IBAction)onNextButtonClicked:(id)sender {
-    [self.squareView moveToNextPositionWithBlock:^(BOOL finished) {
-
-    }];
+    self.squareView.running = YES;
+    self.squareView.running = NO;
 }
 
 - (IBAction)onStopButtonClicked:(id)sender {
@@ -41,7 +40,7 @@ ITBaseViewController(ITSquareViewController, squareView, ITSquareView)
 }
 
 - (IBAction)onStartButtonClicked:(id)sender {
-    self.squareView.running = YES;
+    self.squareView.running = YES;    
 }
 
 @end

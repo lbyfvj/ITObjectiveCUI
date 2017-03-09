@@ -23,15 +23,4 @@ typedef NS_ENUM(NSUInteger, ITSquarePosition){
 
 @property (nonatomic, assign, getter=isRunning)   BOOL running;
 
-- (void)setSquarePosition:(ITSquarePosition)squarePosition
-                 animated:(BOOL)animated;
-
-- (void)setSquarePosition:(ITSquarePosition)squarePosition
-                 animated:(BOOL)animated
-        completionHandler:(void (^)(BOOL finished))block;
-
-- (void)moveToNextPositionWithBlock:(void (^)(BOOL finished))block;
-
-- (void)moveSequantialy;
-
 @end

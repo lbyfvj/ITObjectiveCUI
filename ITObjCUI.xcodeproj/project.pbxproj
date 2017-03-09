@@ -26,6 +26,8 @@
 		93462DAD1E6A114E00FE1BC9 /* ITUsersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93462DA61E6A114E00FE1BC9 /* ITUsersViewController.xib */; };
 		93462DAE1E6A114E00FE1BC9 /* ITUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462DA91E6A114E00FE1BC9 /* ITUserCell.m */; };
 		93462DAF1E6A114E00FE1BC9 /* ITUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93462DAA1E6A114E00FE1BC9 /* ITUserCell.xib */; };
+		93462DB21E6F448A00FE1BC9 /* ITCompilerMacro.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462DB11E6F448A00FE1BC9 /* ITCompilerMacro.m */; };
+		93462DBA1E71DB2900FE1BC9 /* ITDispatchQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462DB91E71DB2900FE1BC9 /* ITDispatchQueue.m */; };
 		93C20EAB1E5B99CA00B56982 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C20EA91E5B99CA00B56982 /* main.m */; };
 		93C20EB01E5B99D900B56982 /* ITObjCUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C20EAE1E5B99D900B56982 /* ITObjCUITests.m */; };
 		93C20EBC1E5B99E900B56982 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93C20EB21E5B99E900B56982 /* Assets.xcassets */; };
@@ -90,6 +92,10 @@
 		93462DA81E6A114E00FE1BC9 /* ITUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITUserCell.h; sourceTree = "<group>"; };
 		93462DA91E6A114E00FE1BC9 /* ITUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITUserCell.m; sourceTree = "<group>"; };
 		93462DAA1E6A114E00FE1BC9 /* ITUserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ITUserCell.xib; sourceTree = "<group>"; };
+		93462DB01E6F448A00FE1BC9 /* ITCompilerMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITCompilerMacro.h; sourceTree = "<group>"; };
+		93462DB11E6F448A00FE1BC9 /* ITCompilerMacro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITCompilerMacro.m; sourceTree = "<group>"; };
+		93462DB81E71DB2900FE1BC9 /* ITDispatchQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITDispatchQueue.h; sourceTree = "<group>"; };
+		93462DB91E71DB2900FE1BC9 /* ITDispatchQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITDispatchQueue.m; sourceTree = "<group>"; };
 		93C20E7F1E5B95BF00B56982 /* ITObjCUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITObjCUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C20E981E5B95BF00B56982 /* ITObjCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ITObjCUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C20EA81E5B99CA00B56982 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -180,6 +186,7 @@
 			children = (
 				93462D8C1E68B61C00FE1BC9 /* ITObservableObject */,
 				93462D781E68963F00FE1BC9 /* ITTableViewCell */,
+				93462DB71E71DB2900FE1BC9 /* ITDispatchQueue */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -296,6 +303,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		93462DB71E71DB2900FE1BC9 /* ITDispatchQueue */ = {
+			isa = PBXGroup;
+			children = (
+				93462DB81E71DB2900FE1BC9 /* ITDispatchQueue.h */,
+				93462DB91E71DB2900FE1BC9 /* ITDispatchQueue.m */,
+			);
+			path = ITDispatchQueue;
+			sourceTree = "<group>";
+		};
 		93C20E761E5B95BF00B56982 = {
 			isa = PBXGroup;
 			children = (
@@ -397,6 +413,8 @@
 				93C20EFB1E5F765900B56982 /* Categories */,
 				93462D551E67525B00FE1BC9 /* ITMacro.h */,
 				93462D561E67525B00FE1BC9 /* ITMacro.m */,
+				93462DB01E6F448A00FE1BC9 /* ITCompilerMacro.h */,
+				93462DB11E6F448A00FE1BC9 /* ITCompilerMacro.m */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -600,6 +618,7 @@
 				93462D8F1E68B61C00FE1BC9 /* ITObservableObject.m in Sources */,
 				93462DA01E6A035F00FE1BC9 /* NSObject+ITExtensions.m in Sources */,
 				93C20EAB1E5B99CA00B56982 /* main.m in Sources */,
+				93462DBA1E71DB2900FE1BC9 /* ITDispatchQueue.m in Sources */,
 				93462D931E68C05500FE1BC9 /* ITImageModelDispatcher.m in Sources */,
 				93C20EE81E5F72DD00B56982 /* ITSquareViewController.m in Sources */,
 				93462D9C1E69FD3F00FE1BC9 /* ITUsers.m in Sources */,
@@ -608,6 +627,7 @@
 				93462DAB1E6A114E00FE1BC9 /* ITUsersView.m in Sources */,
 				93462D981E69E86000FE1BC9 /* ITImageView.m in Sources */,
 				93462D8B1E68ACF400FE1BC9 /* UITableView+ITExtensions.m in Sources */,
+				93462DB21E6F448A00FE1BC9 /* ITCompilerMacro.m in Sources */,
 				93462D6E1E67739D00FE1BC9 /* ITUser.m in Sources */,
 				93462DAE1E6A114E00FE1BC9 /* ITUserCell.m in Sources */,
 				93462D7B1E68965D00FE1BC9 /* ITTableViewCell.m in Sources */,

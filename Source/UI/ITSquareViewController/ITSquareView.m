@@ -8,10 +8,27 @@
 
 #import "ITSquareView.h"
 
-static const NSTimeInterval ITAnimationDuration = 0.5;
-static const NSTimeInterval ITDelay = 0.0;
+#import "ITMacro.h"
+#import "ITDispatchQueue.h"
+
+static const NSTimeInterval kITAnimationDuration = 1.5;
+static const NSTimeInterval kITDelay = 0.0;
+static const NSUInteger kITSquarePositionsCount = 4;
 
 @interface ITSquareView ()
+@property (nonatomic, assign)   BOOL    cancel;
+@property (nonatomic, assign)	NSUInteger	currentCornerIndex;
+
+- (void)setSquarePosition:(ITSquarePosition)squarePosition
+                 animated:(BOOL)animated;
+
+- (void)setSquarePosition:(ITSquarePosition)squarePosition
+                 animated:(BOOL)animated
+        completionHandler:(void (^)(BOOL finished))block;
+
+- (void)moveToNextPositionWithBlock:(void (^)(BOOL finished))block;
+
+- (void)moveSequantialy;
 
 - (ITSquarePosition)nextPosition;
 
@@ -22,6 +39,9 @@ static const NSTimeInterval ITDelay = 0.0;
 @implementation ITSquareView
 
 #pragma mark -
+#pragma mart Initializations and Deallocations
+
+#pragma mark -
 #pragma mark Accessors
 
 - (void)setSquarePosition:(ITSquarePosition)squarePosition {
@@ -29,13 +49,8 @@ static const NSTimeInterval ITDelay = 0.0;
 }
 
 - (void)setRunning:(BOOL)running {
-    if (_running != running) {
-        _running = running;
-    }
-    
-    if (running) {
-        [self moveSequantialy];
-    }
+    self.cancel = !running;
+    [self moveSequantialy];
 }
 
 #pragma mark -
@@ -53,15 +68,18 @@ static const NSTimeInterval ITDelay = 0.0;
 {
     if (self.squarePosition != squarePosition) {
         CGRect rect = [self squarePositionRect:squarePosition];
-        [UIView animateWithDuration: (animated) ? ITAnimationDuration : 0
-                              delay:ITDelay
+        [UIView animateWithDuration: (animated) ? kITAnimationDuration : 0
+                              delay:kITDelay
                             options:UIViewAnimationOptionBeginFromCurrentState
                          animations:^{
                              self.label.frame = rect;
                          }
                          completion:^(BOOL finished) {
-                             if (block) {
+                             if (finished) {
                                  _squarePosition = squarePosition;
+                             }
+                             
+                             if (block) {
                                  block(finished);
                              }
                          }];
@@ -76,18 +94,24 @@ static const NSTimeInterval ITDelay = 0.0;
 }
 
 - (void)moveSequantialy {
-    [self moveToNextPositionWithBlock:^(BOOL finished) {
-        if (self.running && finished) {
-            [self moveSequantialy];
-        }
-    }];
+    if (!self.running && !self.cancel) {
+        _running = YES;
+        [self moveToNextPositionWithBlock:^(BOOL finished) {
+            _running = NO;
+            if (!self.cancel) {
+                ITAsyncPerformInMainQueue(^{
+                    [self moveSequantialy];
+                });
+            }
+        }];
+    }
 }
 
 #pragma mark -
 #pragma mark Private
 
 - (ITSquarePosition)nextPosition {
-    ITSquarePosition squarePosition = (self.squarePosition + 1) % 4;
+    ITSquarePosition squarePosition = (self.squarePosition + 1) % kITSquarePositionsCount;
     
     return squarePosition;
 }
@@ -99,10 +123,8 @@ static const NSTimeInterval ITDelay = 0.0;
     
     CGPoint bottomRight = CGPointMake(CGRectGetWidth(bounds) - CGRectGetWidth(frame),
                                       CGRectGetHeight(bounds) - CGRectGetHeight(frame));
-        
-    #pragma clang diagnostic push
-    #pragma clang diagnostic ignored "-Wswitch"
     
+    ITClangDiagnosticPushExpression("clang diagnostic ignored \"-Wswitch\"");
     switch (squarePosition) {
         case ITTopRightCorner:
             origin.x = bottomRight.x;
@@ -116,8 +138,7 @@ static const NSTimeInterval ITDelay = 0.0;
             origin.y = bottomRight.y;
             break;
     }
-    
-    #pragma clang diagnostic pop
+    ITClangDiagnosticPopExpression;
     
     frame.origin = origin;
     
