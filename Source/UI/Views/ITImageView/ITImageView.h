@@ -12,6 +12,8 @@
 
 @interface ITImageView : UIView
 @property (nonatomic, strong)       IBOutlet ITImageModel    *imageModel;
-@property (nonatomic, strong)       UIImageView     *contentImageView;
+@property (nonatomic, strong)       UIImageView              *contentImageView;
+
+- (void)fillWithModel:(ITImageModel *)imageModel;
 
 @end

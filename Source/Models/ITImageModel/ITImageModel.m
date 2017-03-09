@@ -9,6 +9,7 @@
 #import "ITImageModel.h"
 
 #import "ITImageModelDispatcher.h"
+#import "ITMacro.h"
 
 @interface ITImageModel ()
 @property (nonatomic, strong)     UIImage       *image;
@@ -91,16 +92,19 @@
 #pragma mark Private
 
 - (NSOperation *)imageLoadingOperation {
-    __weak ITImageModel *weakSelf = self;
+    ITWeakify(self);
+    //__weak ITImageModel *weakSelf = self;
     NSBlockOperation *operation = [NSBlockOperation blockOperationWithBlock:^{
-        __strong ITImageModel *strongSelf = weakSelf;
-        strongSelf.image = [UIImage imageWithContentsOfFile:[strongSelf.url absoluteString]];
+        //__strong ITImageModel *strongSelf = weakSelf;
+        ITStrongify(self);
+        self.image = [UIImage imageWithContentsOfFile:[self.url absoluteString]];
     }];
     
     operation.completionBlock = ^{
-        __strong ITImageModel *strongSelf = weakSelf;
-        @synchronized (strongSelf) {
-            strongSelf.state = strongSelf.image ? ITImageModelLoaded : ITImageModelFailedLoading;
+        //__strong ITImageModel *strongSelf = weakSelf;
+        ITStrongify(self);
+        @synchronized (self) {
+            self.state = self.image ? ITImageModelLoaded : ITImageModelFailedLoading;
         }
     };
     

@@ -29,6 +29,9 @@ static NSString const *kITImageType = @"jpg";
 }
 
 - (UIImage *)userImage {
+//    NSURL *url = [[NSBundle mainBundle] URLForResource:[NSString stringWithFormat:@"%@", kITImageName]
+//                                         withExtension:[NSString stringWithFormat:@"%@", kITImageType]];
+    
     NSString *path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@", kITImageName]
                                                      ofType:[NSString stringWithFormat:@"%@", kITImageType]];
     

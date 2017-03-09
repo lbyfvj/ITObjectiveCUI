@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#import "ITImageModel.h"
+
 @interface ITUser : NSObject
 @property (nonatomic, strong)       NSString    *name;
 @property (nonatomic, readonly)     UIImage     *userImage;

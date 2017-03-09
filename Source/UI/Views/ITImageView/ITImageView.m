@@ -9,6 +9,7 @@
 #import "ITImageView.h"
 
 #import "ITObservableObject.h"
+#import "ITMacro.h"
 
 @interface ITImageView ()
 @property (nonatomic, strong)   ITObservableObject  *observer;
@@ -42,6 +43,19 @@
     }
 }
 
+- (void)initSubviews {
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.bounds];
+    imageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin
+    |  UIViewAutoresizingFlexibleLeftMargin
+    |  UIViewAutoresizingFlexibleWidth
+    |  UIViewAutoresizingFlexibleRightMargin
+    |  UIViewAutoresizingFlexibleTopMargin
+    |  UIViewAutoresizingFlexibleHeight
+    |  UIViewAutoresizingFlexibleBottomMargin;
+    self.contentImageView = imageView;
+    
+}
+
 #pragma mark -
 #pragma mark Accessors
 
@@ -55,33 +69,30 @@
 
 - (void)setImageModel:(ITImageModel *)imageModel {
     if (_imageModel != imageModel) {
+        [_imageModel dump];
+        
         [_imageModel removeObserver:self];
         
         _imageModel = imageModel;
         
         [_imageModel addObserver:self];
+        
+        [imageModel load];
     }
 }
 
 #pragma mark -
 #pragma mark View Lifecycle
 
+#pragma mark -
+#pragma mark Public
+
+- (void)fillWithModel:(ITImageModel *)imageModel {
+    self.contentImageView.image = imageModel.image;
+}
 
 #pragma mark -
 #pragma mark Private
-
-- (void)initSubviews {
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.bounds];
-    imageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin
-                              |  UIViewAutoresizingFlexibleLeftMargin
-                              |  UIViewAutoresizingFlexibleWidth
-                              |  UIViewAutoresizingFlexibleRightMargin
-                              |  UIViewAutoresizingFlexibleTopMargin
-                              |  UIViewAutoresizingFlexibleHeight
-                              |  UIViewAutoresizingFlexibleBottomMargin;
-    self.contentImageView = imageView;
-
-}
 
 
 @end
