@@ -145,15 +145,18 @@ ITBaseViewController(ITUsersViewController, usersView, ITUsersView)
 #pragma mark ITUsersObservers
 
 - (void)users:(ITUsers *)users didAddedWithPath:(NSIndexPath *)indexPath {
-    [self.usersView updateTableViewWithUserAction:ITAddRow forRowAtIndexPath:@[indexPath]];
+    [self.usersView updateTableViewWithUserAction:ITAddRow
+                                forRowAtIndexPath:@[indexPath]];
 }
 
 - (void)users:(ITUsers *)users didDeletedWithPath:(NSIndexPath *)indexPath {
-    [self.usersView updateTableViewWithUserAction:ITDeleteRow forRowAtIndexPath:@[indexPath]];
+    [self.usersView updateTableViewWithUserAction:ITDeleteRow
+                                forRowAtIndexPath:@[indexPath]];
 }
 
 - (void)users:(ITUsers *)users didReorderWithPaths:(NSArray *)reorderedPaths {
-    [self.usersView updateTableViewWithUserAction:ITReorderRows forRowAtIndexPath:reorderedPaths];
+    [self.usersView updateTableViewWithUserAction:ITReorderRows
+                                forRowAtIndexPath:reorderedPaths];
 }
 
 @end
