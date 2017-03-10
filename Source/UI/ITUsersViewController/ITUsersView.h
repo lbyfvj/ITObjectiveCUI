@@ -10,6 +10,12 @@
 
 #import "ITUsers.h"
 
+typedef NS_ENUM(NSUInteger, ITUserAction){
+    ITAddRow,
+    ITDeleteRow,
+    ITReorderRows
+};
+
 static const NSUInteger kITNumberOfSections = 1;
 
 @interface ITUsersView : UIView
@@ -17,5 +23,8 @@ static const NSUInteger kITNumberOfSections = 1;
 @property (nonatomic, strong)   IBOutlet    UIButton        *editButton;
 
 @property (nonatomic, assign, getter=isEditing) BOOL    editing;
+
+- (void)updateTableViewWithUserAction:(ITUserAction)userAction
+                    forRowAtIndexPath:(NSArray *)indexPaths;
 
 @end

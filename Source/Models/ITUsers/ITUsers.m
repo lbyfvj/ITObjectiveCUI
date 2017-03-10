@@ -63,17 +63,19 @@ static const NSUInteger kITSectionIndex = 0;
 - (void)removeUserAtIndex:(NSUInteger)index {
     [self.users removeObjectAtIndex:index];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:kITSectionIndex];
-    [self setState:ITUsersDeleted withObject:indexPath];
     
+    [self setState:ITUsersDeleted withObject:indexPath];
 }
 
 - (void)moveUserAtIndex:(NSUInteger)index toIndex:(NSUInteger)newIndex {
     [self.users removeObjectAtIndex:index];
     [self.users insertObject:self.users[index] atIndex:newIndex];
+    
     NSIndexPath *actualPath = [NSIndexPath indexPathForRow:index inSection:kITSectionIndex];
     NSIndexPath *newPath = [NSIndexPath indexPathForRow:newIndex inSection:kITSectionIndex];
-    NSMutableArray *indexes = [NSMutableArray arrayWithObjects:actualPath, newPath, nil];
-    [self setState:ITUsersReordered withObject:indexes];
+    NSMutableArray *indexPaths = [NSMutableArray arrayWithObjects:actualPath, newPath, nil];
+    
+    [self setState:ITUsersReordered withObject:indexPaths];
 }
 
 - (id)objectAtIndexedSubscript:(NSUInteger)index {
@@ -102,7 +104,7 @@ static const NSUInteger kITSectionIndex = 0;
             return @selector(users:didDeletedWithPath:);
         
         case ITUsersReordered:
-            return @selector(users:didReorderedWithPath:);
+            return @selector(users:didReorderedWithPaths:);
             
         default:
             [super selectorForState:state];

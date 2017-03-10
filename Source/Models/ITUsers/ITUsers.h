@@ -41,6 +41,6 @@ typedef NS_ENUM(NSUInteger, ITUsersState) {
 
 - (void)users:(ITUsers *)users didAddedWithPath:(id)path;
 - (void)users:(ITUsers *)users didDeletedWithPath:(id)path;
-- (void)users:(ITUsers *)users didReorderedWithPath:(id)path;
+- (void)users:(ITUsers *)users didReorderedWithPaths:(id)path;
 
 @end
