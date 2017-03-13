@@ -18,9 +18,13 @@ typedef NS_ENUM(NSUInteger, ITSquarePosition){
 @interface ITSquareView : UIView
 @property (nonatomic, strong)   IBOutlet    UILabel     *label;
 @property (nonatomic, strong)   IBOutlet    UIButton    *nextButton;
+@property (nonatomic, strong)   IBOutlet    UIButton    *startButton;
+@property (nonatomic, strong)   IBOutlet    UIButton    *stopButton;
 
 @property (nonatomic, assign)	ITSquarePosition		squarePosition;
 
 @property (nonatomic, assign, getter=isRunning)   BOOL running;
+
+- (void)moveToNextPosition;
 
 @end

@@ -12,7 +12,9 @@
 
 #import "ITMacro.h"
 
-ITBaseViewController(ITSquareViewController, squareView, ITSquareView)
+ITViewControllerSynthesizeRootView(ITSquareViewController, squareView, ITSquareView)
+
+@implementation ITSquareViewController
 
 #pragma mark -
 #pragma mark Lifecycle
@@ -31,8 +33,7 @@ ITBaseViewController(ITSquareViewController, squareView, ITSquareView)
 #pragma mark Interface Handling
 
 - (IBAction)onNextButtonClicked:(id)sender {
-    self.squareView.running = YES;
-    self.squareView.running = NO;
+    [self.squareView moveToNextPosition];
 }
 
 - (IBAction)onStopButtonClicked:(id)sender {

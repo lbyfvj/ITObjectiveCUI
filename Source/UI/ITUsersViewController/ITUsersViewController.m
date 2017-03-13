@@ -15,7 +15,9 @@
 
 static NSString * const kITAddRowTitle = @"Add new user";
 
-ITBaseViewController(ITUsersViewController, usersView, ITUsersView)
+ITViewControllerSynthesizeRootView(ITUsersViewController, usersView, ITUsersView)
+
+@implementation ITUsersViewController
 
 #pragma mark -
 #pragma mark - Initializations and Deallocations

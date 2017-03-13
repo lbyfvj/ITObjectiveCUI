@@ -16,7 +16,7 @@ static const NSTimeInterval kITDelay = 0.0;
 static const NSUInteger kITSquarePositionsCount = 4;
 
 @interface ITSquareView ()
-@property (nonatomic, assign)   BOOL    cancel;
+@property (nonatomic, assign, getter=isCanceled)   BOOL    canceled;
 @property (nonatomic, assign)	NSUInteger	currentCornerIndex;
 
 - (void)setSquarePosition:(ITSquarePosition)squarePosition
@@ -44,17 +44,14 @@ static const NSUInteger kITSquarePositionsCount = 4;
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setSquarePosition:(ITSquarePosition)squarePosition {
-    [self setSquarePosition:squarePosition animated:NO];
-}
-
 - (void)setRunning:(BOOL)running {
-    self.cancel = !running;
+    self.canceled = !running;
     [self moveSequantialy];
 }
 
-#pragma mark -
-#pragma mark Public
+- (void)setSquarePosition:(ITSquarePosition)squarePosition {
+    [self setSquarePosition:squarePosition animated:NO];
+}
 
 - (void)setSquarePosition:(ITSquarePosition)squarePosition
                  animated:(BOOL)animated
@@ -66,7 +63,7 @@ static const NSUInteger kITSquarePositionsCount = 4;
                  animated:(BOOL)animated
         completionHandler:(void (^)(BOOL finished))block
 {
-    if (self.squarePosition != squarePosition) {
+    if (_squarePosition != squarePosition) {
         CGRect rect = [self squarePositionRect:squarePosition];
         [UIView animateWithDuration: (animated) ? kITAnimationDuration : 0
                               delay:kITDelay
@@ -78,11 +75,24 @@ static const NSUInteger kITSquarePositionsCount = 4;
                              if (finished) {
                                  _squarePosition = squarePosition;
                              }
-                             
-                             if (block) {
-                                 block(finished);
-                             }
+
+                             ITDispatchBlock(block, finished);
                          }];
+    }
+}
+
+#pragma mark -
+#pragma mark Public
+
+- (void)moveToNextPosition {
+    if (!self.running) {
+        _running = YES;
+        [self moveToNextPositionWithBlock:^(BOOL finished) {
+            _running = NO;
+            if (!self.canceled) {
+                return;
+            }
+        }];
     }
 }
 
@@ -94,11 +104,11 @@ static const NSUInteger kITSquarePositionsCount = 4;
 }
 
 - (void)moveSequantialy {
-    if (!self.running && !self.cancel) {
+    if (!self.running && !self.canceled) {
         _running = YES;
         [self moveToNextPositionWithBlock:^(BOOL finished) {
             _running = NO;
-            if (!self.cancel) {
+            if (!self.canceled) {
                 ITAsyncPerformInMainQueue(^{
                     [self moveSequantialy];
                 });
@@ -117,14 +127,12 @@ static const NSUInteger kITSquarePositionsCount = 4;
 }
 
 - (CGRect)squarePositionRect:(ITSquarePosition)squarePosition {
-    CGPoint origin;
+    CGPoint origin = CGPointZero;
     CGRect bounds = self.bounds;
     CGRect frame = self.label.frame;
-    
     CGPoint bottomRight = CGPointMake(CGRectGetWidth(bounds) - CGRectGetWidth(frame),
                                       CGRectGetHeight(bounds) - CGRectGetHeight(frame));
     
-    ITClangDiagnosticPushExpression("clang diagnostic ignored \"-Wswitch\"");
     switch (squarePosition) {
         case ITTopRightCorner:
             origin.x = bottomRight.x;
@@ -137,15 +145,14 @@ static const NSUInteger kITSquarePositionsCount = 4;
         case ITBottomLeftCorner:
             origin.y = bottomRight.y;
             break;
+            
+        default:
+            break;
     }
-    ITClangDiagnosticPopExpression;
     
     frame.origin = origin;
     
-    CGSize size = self.label.frame.size;
-    CGRect rect = {origin, size};
-    
-    return rect;
+    return frame;
 }
 
 @end
