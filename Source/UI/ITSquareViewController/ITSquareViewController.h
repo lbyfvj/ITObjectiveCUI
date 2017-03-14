@@ -8,12 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-#import "ITSquare.h"
-
 @interface ITSquareViewController : UIViewController
-@property (nonatomic, strong)   ITSquare    *square;
 
 - (IBAction)onNextButtonClicked:(id)sender;
 - (IBAction)onStopButtonClicked:(id)sender;
+- (IBAction)onStartButtonClicked:(id)sender;
 
 @end
