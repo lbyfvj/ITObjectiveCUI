@@ -8,6 +8,8 @@
 
 #import "ITUsersView.h"
 
+#import "UITableView+ITExtensions.h"
+
 static NSString * const kITDoneButtonTitle = @"Done";
 static NSString * const kITEditButtonTitle = @"Edit";
 
@@ -33,31 +35,10 @@ static NSString * const kITEditButtonTitle = @"Edit";
 #pragma mark -
 #pragma mark Public
 
-- (void)updateTableViewWithUserAction:(ITUserAction)userAction
-                    forRowAtIndexPath:(NSArray *)indexPaths
-{
-    UITableView *tableView = self.tableView;
-    [tableView beginUpdates];
+- (void)updateUsersViewWithModelChange:(ITModelChange *)modelChange {
     
-    switch (userAction) {
-        case ITAddRow:
-            [tableView insertRowsAtIndexPaths:indexPaths
-                             withRowAnimation:UITableViewRowAnimationAutomatic];
-            break;
-        
-        case ITDeleteRow:
-            [tableView deleteRowsAtIndexPaths:indexPaths
-                             withRowAnimation:UITableViewRowAnimationAutomatic];
-            break;
-        
-        case ITReorderRows:
-            [tableView moveRowAtIndexPath:indexPaths[0]
-                              toIndexPath:indexPaths[1]];
-            break;
-    }
+    [self.tableView updateTableViewWithModelChange:modelChange];
     
-    [tableView endUpdates];
 }
-
 
 @end

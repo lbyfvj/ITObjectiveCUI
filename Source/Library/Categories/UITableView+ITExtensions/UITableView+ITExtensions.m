@@ -10,6 +10,10 @@
 
 #import "UINib+ITExtensions.h"
 
+#import "ITInsertChange.h"
+#import "ITDeleteChange.h"
+#import "ITMoveChange.h"
+
 @implementation UITableView (ITExtensions)
 
 - (id)dequeueReusableCellWithClass:(Class)class {   
@@ -24,6 +28,15 @@
     }
     
     return cell;
+}
+
+- (void)updateTableViewWithModelChange:(ITModelChange *)modelChange {
+    [self beginUpdates];
+    
+    [modelChange changeTableView:self withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+    [self endUpdates];
+    
 }
 
 @end

@@ -10,12 +10,12 @@
 
 #import "NSString+ITRandomName.h"
 
-static NSString const *kITImageName = @"image";
-static NSString const *kITImageType = @"jpg";
+static NSString * const kITImageName = @"image";
+static NSString * const kITImageType = @"jpg";
 
 @implementation ITUser
 
-@dynamic userImage;
+@dynamic image;
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
@@ -28,12 +28,12 @@ static NSString const *kITImageType = @"jpg";
     return self;
 }
 
-- (UIImage *)userImage {
+- (UIImage *)image {
 //    NSURL *url = [[NSBundle mainBundle] URLForResource:[NSString stringWithFormat:@"%@", kITImageName]
 //                                         withExtension:[NSString stringWithFormat:@"%@", kITImageType]];
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@", kITImageName]
-                                                     ofType:[NSString stringWithFormat:@"%@", kITImageType]];
+    NSString *path = [[NSBundle mainBundle] pathForResource:kITImageName
+                                                     ofType:kITImageType];
     
     return [UIImage imageWithContentsOfFile:path];
 }

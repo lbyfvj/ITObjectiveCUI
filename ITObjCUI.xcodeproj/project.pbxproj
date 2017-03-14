@@ -28,6 +28,13 @@
 		93462DAF1E6A114E00FE1BC9 /* ITUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93462DAA1E6A114E00FE1BC9 /* ITUserCell.xib */; };
 		93462DB21E6F448A00FE1BC9 /* ITCompilerMacro.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462DB11E6F448A00FE1BC9 /* ITCompilerMacro.m */; };
 		93462DBA1E71DB2900FE1BC9 /* ITDispatchQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462DB91E71DB2900FE1BC9 /* ITDispatchQueue.m */; };
+		93AA34431E77409B00513950 /* ITModelChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 93AA34421E77409B00513950 /* ITModelChange.m */; };
+		93AA34471E787AAD00513950 /* ITInsertChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 93AA34461E787AAD00513950 /* ITInsertChange.m */; };
+		93AA344A1E787AC000513950 /* ITDeleteChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 93AA34491E787AC000513950 /* ITDeleteChange.m */; };
+		93AA344D1E787AD000513950 /* ITMoveChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 93AA344C1E787AD000513950 /* ITMoveChange.m */; };
+		93AA34511E787B2000513950 /* ITOneIndexModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93AA34501E787B2000513950 /* ITOneIndexModel.m */; };
+		93AA34541E787B2E00513950 /* ITTwoIndexModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93AA34531E787B2E00513950 /* ITTwoIndexModel.m */; };
+		93AA34581E7880AD00513950 /* ITArrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93AA34571E7880AD00513950 /* ITArrayModel.m */; };
 		93C20EAB1E5B99CA00B56982 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C20EA91E5B99CA00B56982 /* main.m */; };
 		93C20EB01E5B99D900B56982 /* ITObjCUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C20EAE1E5B99D900B56982 /* ITObjCUITests.m */; };
 		93C20EBC1E5B99E900B56982 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93C20EB21E5B99E900B56982 /* Assets.xcassets */; };
@@ -96,6 +103,20 @@
 		93462DB11E6F448A00FE1BC9 /* ITCompilerMacro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITCompilerMacro.m; sourceTree = "<group>"; };
 		93462DB81E71DB2900FE1BC9 /* ITDispatchQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITDispatchQueue.h; sourceTree = "<group>"; };
 		93462DB91E71DB2900FE1BC9 /* ITDispatchQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITDispatchQueue.m; sourceTree = "<group>"; };
+		93AA34411E77409B00513950 /* ITModelChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITModelChange.h; sourceTree = "<group>"; };
+		93AA34421E77409B00513950 /* ITModelChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITModelChange.m; sourceTree = "<group>"; };
+		93AA34451E787AAD00513950 /* ITInsertChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITInsertChange.h; sourceTree = "<group>"; };
+		93AA34461E787AAD00513950 /* ITInsertChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITInsertChange.m; sourceTree = "<group>"; };
+		93AA34481E787AC000513950 /* ITDeleteChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITDeleteChange.h; sourceTree = "<group>"; };
+		93AA34491E787AC000513950 /* ITDeleteChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITDeleteChange.m; sourceTree = "<group>"; };
+		93AA344B1E787AD000513950 /* ITMoveChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITMoveChange.h; sourceTree = "<group>"; };
+		93AA344C1E787AD000513950 /* ITMoveChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITMoveChange.m; sourceTree = "<group>"; };
+		93AA344F1E787B2000513950 /* ITOneIndexModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITOneIndexModel.h; sourceTree = "<group>"; };
+		93AA34501E787B2000513950 /* ITOneIndexModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITOneIndexModel.m; sourceTree = "<group>"; };
+		93AA34521E787B2E00513950 /* ITTwoIndexModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITTwoIndexModel.h; sourceTree = "<group>"; };
+		93AA34531E787B2E00513950 /* ITTwoIndexModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITTwoIndexModel.m; sourceTree = "<group>"; };
+		93AA34561E7880AD00513950 /* ITArrayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITArrayModel.h; sourceTree = "<group>"; };
+		93AA34571E7880AD00513950 /* ITArrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITArrayModel.m; sourceTree = "<group>"; };
 		93C20E7F1E5B95BF00B56982 /* ITObjCUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITObjCUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C20E981E5B95BF00B56982 /* ITObjCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ITObjCUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C20EA81E5B99CA00B56982 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -184,6 +205,8 @@
 		93462D771E68963F00FE1BC9 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				93AA34551E78809500513950 /* ITArrayModel */,
+				93AA34401E77408500513950 /* ITModelChange */,
 				93462D8C1E68B61C00FE1BC9 /* ITObservableObject */,
 				93462D781E68963F00FE1BC9 /* ITTableViewCell */,
 				93462DB71E71DB2900FE1BC9 /* ITDispatchQueue */,
@@ -310,6 +333,50 @@
 				93462DB91E71DB2900FE1BC9 /* ITDispatchQueue.m */,
 			);
 			path = ITDispatchQueue;
+			sourceTree = "<group>";
+		};
+		93AA34401E77408500513950 /* ITModelChange */ = {
+			isa = PBXGroup;
+			children = (
+				93AA344E1E787B0400513950 /* ModelTypes */,
+				93AA34441E7879C400513950 /* ModelChanges */,
+				93AA34411E77409B00513950 /* ITModelChange.h */,
+				93AA34421E77409B00513950 /* ITModelChange.m */,
+			);
+			path = ITModelChange;
+			sourceTree = "<group>";
+		};
+		93AA34441E7879C400513950 /* ModelChanges */ = {
+			isa = PBXGroup;
+			children = (
+				93AA34451E787AAD00513950 /* ITInsertChange.h */,
+				93AA34461E787AAD00513950 /* ITInsertChange.m */,
+				93AA34481E787AC000513950 /* ITDeleteChange.h */,
+				93AA34491E787AC000513950 /* ITDeleteChange.m */,
+				93AA344B1E787AD000513950 /* ITMoveChange.h */,
+				93AA344C1E787AD000513950 /* ITMoveChange.m */,
+			);
+			path = ModelChanges;
+			sourceTree = "<group>";
+		};
+		93AA344E1E787B0400513950 /* ModelTypes */ = {
+			isa = PBXGroup;
+			children = (
+				93AA344F1E787B2000513950 /* ITOneIndexModel.h */,
+				93AA34501E787B2000513950 /* ITOneIndexModel.m */,
+				93AA34521E787B2E00513950 /* ITTwoIndexModel.h */,
+				93AA34531E787B2E00513950 /* ITTwoIndexModel.m */,
+			);
+			path = ModelTypes;
+			sourceTree = "<group>";
+		};
+		93AA34551E78809500513950 /* ITArrayModel */ = {
+			isa = PBXGroup;
+			children = (
+				93AA34561E7880AD00513950 /* ITArrayModel.h */,
+				93AA34571E7880AD00513950 /* ITArrayModel.m */,
+			);
+			path = ITArrayModel;
 			sourceTree = "<group>";
 		};
 		93C20E761E5B95BF00B56982 = {
@@ -612,14 +679,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93AA344A1E787AC000513950 /* ITDeleteChange.m in Sources */,
 				93C20F211E60CAD400B56982 /* NSString+ITRandomName.m in Sources */,
+				93AA34541E787B2E00513950 /* ITTwoIndexModel.m in Sources */,
+				93AA34431E77409B00513950 /* ITModelChange.m in Sources */,
+				93AA344D1E787AD000513950 /* ITMoveChange.m in Sources */,
 				93462D571E67525B00FE1BC9 /* ITMacro.m in Sources */,
 				93462D831E68A14D00FE1BC9 /* NSArray+ITExtensions.m in Sources */,
 				93462D8F1E68B61C00FE1BC9 /* ITObservableObject.m in Sources */,
 				93462DA01E6A035F00FE1BC9 /* NSObject+ITExtensions.m in Sources */,
 				93C20EAB1E5B99CA00B56982 /* main.m in Sources */,
+				93AA34471E787AAD00513950 /* ITInsertChange.m in Sources */,
 				93462DBA1E71DB2900FE1BC9 /* ITDispatchQueue.m in Sources */,
 				93462D931E68C05500FE1BC9 /* ITImageModelDispatcher.m in Sources */,
+				93AA34581E7880AD00513950 /* ITArrayModel.m in Sources */,
+				93AA34511E787B2000513950 /* ITOneIndexModel.m in Sources */,
 				93C20EE81E5F72DD00B56982 /* ITSquareViewController.m in Sources */,
 				93462D9C1E69FD3F00FE1BC9 /* ITUsers.m in Sources */,
 				93462D721E67740000FE1BC9 /* ITImageModel.m in Sources */,

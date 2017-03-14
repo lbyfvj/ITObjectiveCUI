@@ -25,9 +25,9 @@
     UIWindow *window = [UIWindow window];
     self.window = window;
     
-    ITSquareViewController *controller = [ITSquareViewController new];
-//    ITUsersViewController *controller = [ITUsersViewController new];
-//    controller.users = [ITUsers new];
+//    ITSquareViewController *controller = [ITSquareViewController new];
+    ITUsersViewController *controller = [ITUsersViewController new];
+    controller.users = [ITUsers new];
     window.rootViewController = controller;
     
     [window makeKeyAndVisible];

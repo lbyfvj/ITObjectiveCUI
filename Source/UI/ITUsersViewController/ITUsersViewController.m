@@ -9,9 +9,13 @@
 #import "ITUsersViewController.h"
 
 #import "ITUsersView.h"
+#import "ITUser.h"
 #import "ITUserCell.h"
 #import "ITMacro.h"
 #import "UITableView+ITExtensions.h"
+#import "ITArrayModel.h"
+#import "ITModelChange.h"
+#import "ITDispatchQueue.h"
 
 static NSString * const kITAddRowTitle = @"Add new user";
 
@@ -64,8 +68,11 @@ ITViewControllerSynthesizeRootView(ITUsersViewController, usersView, ITUsersView
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.usersView.tableView.allowsSelectionDuringEditing = YES;
-    [self.usersView.tableView reloadData];
+    UITableView *tableView = self.usersView.tableView;
+    
+    tableView.allowsSelectionDuringEditing = YES;
+    
+    [tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -110,20 +117,19 @@ ITViewControllerSynthesizeRootView(ITUsersViewController, usersView, ITUsersView
     forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ITUsers *users = self.users;
-    #pragma clang diagnostic push
-    #pragma clang diagnostic ignored "-Wswitch"    
+    
     switch (editingStyle) {
         case UITableViewCellEditingStyleDelete:
-            [users removeUserAtIndex:indexPath.row];
-            
+            [users removeObjectAtIndex:indexPath.row];
             break;
             
         case UITableViewCellEditingStyleInsert:
-            [users addUser];
-            
+            [users addObject:[ITUser new]];
+            break;
+        
+        default:
             break;
     }
-    #pragma clang diagnostic pop
 }
 
 - (void)    tableView:(UITableView *)tableView
@@ -144,21 +150,10 @@ ITViewControllerSynthesizeRootView(ITUsersViewController, usersView, ITUsersView
 }
 
 #pragma mark -
-#pragma mark ITUsersObservers
+#pragma mark ITArrayModelObserver
 
-- (void)users:(ITUsers *)users didAddedWithPath:(NSIndexPath *)indexPath {
-    [self.usersView updateTableViewWithUserAction:ITAddRow
-                                forRowAtIndexPath:@[indexPath]];
-}
-
-- (void)users:(ITUsers *)users didDeletedWithPath:(NSIndexPath *)indexPath {
-    [self.usersView updateTableViewWithUserAction:ITDeleteRow
-                                forRowAtIndexPath:@[indexPath]];
-}
-
-- (void)users:(ITUsers *)users didReorderWithPaths:(NSArray *)reorderedPaths {
-    [self.usersView updateTableViewWithUserAction:ITReorderRows
-                                forRowAtIndexPath:reorderedPaths];
+- (void)arrayModel:(ITArrayModel *)model didUpdateWithModelChange:(ITModelChange *)modelChange {
+    [self.usersView updateUsersViewWithModelChange:modelChange];
 }
 
 @end

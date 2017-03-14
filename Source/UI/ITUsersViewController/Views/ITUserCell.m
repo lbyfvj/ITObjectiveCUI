@@ -40,7 +40,7 @@
 
 - (void)fillWithUserModel:(ITUser *)user {
     self.userLabel.text = user.name;
-    self.userImageView.contentImageView.image = user.userImage;
+    self.userImageView.contentImageView.image = user.image;
     //self.userImageView.imageModel = user.imageModel;
 }
 

@@ -13,6 +13,6 @@
 
 @interface ITUser : NSObject
 @property (nonatomic, strong)       NSString    *name;
-@property (nonatomic, readonly)     UIImage     *userImage;
+@property (nonatomic, readonly)     UIImage     *image;
 
 @end
