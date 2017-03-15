@@ -27,8 +27,7 @@ static NSString * const kITEditButtonTitle = @"Edit";
         _editing = editing;
         
         [self.tableView setEditing:!self.tableView.editing animated:YES];
-        [self.editButton setTitle:editing ? kITDoneButtonTitle : kITEditButtonTitle
-                         forState:UIControlStateNormal];
+        [self.editButton setTitle:editing ? kITDoneButtonTitle : kITEditButtonTitle];
     }
 }
 

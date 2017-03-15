@@ -22,7 +22,8 @@ static const NSUInteger kITNumberOfSections = 1;
 
 @interface ITUsersView : UIView
 @property (nonatomic, strong)   IBOutlet    UITableView     *tableView;
-@property (nonatomic, strong)   IBOutlet    UIButton        *editButton;
+//@property (nonatomic, strong)   IBOutlet    UIButton        *editButton;
+@property (nonatomic, strong)   IBOutlet    UIBarButtonItem *editButton;
 
 @property (nonatomic, assign, getter=isEditing) BOOL    editing;
 

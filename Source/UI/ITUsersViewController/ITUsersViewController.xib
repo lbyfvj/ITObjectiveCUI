@@ -28,18 +28,23 @@
                         <outlet property="delegate" destination="-1" id="Xok-5p-XQd"/>
                     </connections>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yXk-OA-Bp8">
-                    <rect key="frame" x="313" y="21" width="46" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Edit"/>
-                    <connections>
-                        <action selector="onEditButtonClicked:" destination="-1" eventType="touchUpInside" id="pWR-x7-OkT"/>
-                    </connections>
-                </button>
+                <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9MK-13-3yF">
+                    <rect key="frame" x="0.0" y="7" width="375" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <items>
+                        <navigationItem title="Users" id="nD2-ch-lve">
+                            <barButtonItem key="rightBarButtonItem" title="Edit" id="mb5-kn-bqN">
+                                <connections>
+                                    <action selector="onEditButtonClicked:" destination="-1" id="fwT-mk-EDP"/>
+                                </connections>
+                            </barButtonItem>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <connections>
-                <outlet property="editButton" destination="yXk-OA-Bp8" id="2Rg-YR-0uO"/>
+                <outlet property="editButton" destination="mb5-kn-bqN" id="bua-0m-8kM"/>
                 <outlet property="tableView" destination="rcX-FQ-To6" id="LMI-KT-SFN"/>
             </connections>
             <point key="canvasLocation" x="33.5" y="53.5"/>
