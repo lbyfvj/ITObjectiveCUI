@@ -24,8 +24,6 @@
 		93462DAB1E6A114E00FE1BC9 /* ITUsersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462DA31E6A114E00FE1BC9 /* ITUsersView.m */; };
 		93462DAC1E6A114E00FE1BC9 /* ITUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462DA51E6A114E00FE1BC9 /* ITUsersViewController.m */; };
 		93462DAD1E6A114E00FE1BC9 /* ITUsersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93462DA61E6A114E00FE1BC9 /* ITUsersViewController.xib */; };
-		93462DAE1E6A114E00FE1BC9 /* ITUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462DA91E6A114E00FE1BC9 /* ITUserCell.m */; };
-		93462DAF1E6A114E00FE1BC9 /* ITUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93462DAA1E6A114E00FE1BC9 /* ITUserCell.xib */; };
 		93462DB21E6F448A00FE1BC9 /* ITCompilerMacro.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462DB11E6F448A00FE1BC9 /* ITCompilerMacro.m */; };
 		93462DBA1E71DB2900FE1BC9 /* ITDispatchQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462DB91E71DB2900FE1BC9 /* ITDispatchQueue.m */; };
 		93AA34431E77409B00513950 /* ITModelChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 93AA34421E77409B00513950 /* ITModelChange.m */; };
@@ -36,6 +34,10 @@
 		93AA34541E787B2E00513950 /* ITTwoIndexModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93AA34531E787B2E00513950 /* ITTwoIndexModel.m */; };
 		93AA34581E7880AD00513950 /* ITArrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93AA34571E7880AD00513950 /* ITArrayModel.m */; };
 		93AA34601E79CDAF00513950 /* NSBundle+ITExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 93AA345F1E79CDAF00513950 /* NSBundle+ITExtensions.m */; };
+		93AA34661E79DB3D00513950 /* ITUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93AA34641E79DB3D00513950 /* ITUserCell.m */; };
+		93AA34671E79DB3D00513950 /* ITUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93AA34651E79DB3D00513950 /* ITUserCell.xib */; };
+		93AA346B1E79DB6600513950 /* ITAddRowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93AA34691E79DB6600513950 /* ITAddRowCell.m */; };
+		93AA346C1E79DB6600513950 /* ITAddRowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93AA346A1E79DB6600513950 /* ITAddRowCell.xib */; };
 		93C20EAB1E5B99CA00B56982 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C20EA91E5B99CA00B56982 /* main.m */; };
 		93C20EB01E5B99D900B56982 /* ITObjCUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C20EAE1E5B99D900B56982 /* ITObjCUITests.m */; };
 		93C20EBC1E5B99E900B56982 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93C20EB21E5B99E900B56982 /* Assets.xcassets */; };
@@ -97,9 +99,6 @@
 		93462DA41E6A114E00FE1BC9 /* ITUsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITUsersViewController.h; sourceTree = "<group>"; };
 		93462DA51E6A114E00FE1BC9 /* ITUsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITUsersViewController.m; sourceTree = "<group>"; };
 		93462DA61E6A114E00FE1BC9 /* ITUsersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ITUsersViewController.xib; sourceTree = "<group>"; };
-		93462DA81E6A114E00FE1BC9 /* ITUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITUserCell.h; sourceTree = "<group>"; };
-		93462DA91E6A114E00FE1BC9 /* ITUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITUserCell.m; sourceTree = "<group>"; };
-		93462DAA1E6A114E00FE1BC9 /* ITUserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ITUserCell.xib; sourceTree = "<group>"; };
 		93462DB01E6F448A00FE1BC9 /* ITCompilerMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITCompilerMacro.h; sourceTree = "<group>"; };
 		93462DB11E6F448A00FE1BC9 /* ITCompilerMacro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITCompilerMacro.m; sourceTree = "<group>"; };
 		93462DB81E71DB2900FE1BC9 /* ITDispatchQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITDispatchQueue.h; sourceTree = "<group>"; };
@@ -120,6 +119,12 @@
 		93AA34571E7880AD00513950 /* ITArrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITArrayModel.m; sourceTree = "<group>"; };
 		93AA345E1E79CDAF00513950 /* NSBundle+ITExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+ITExtensions.h"; sourceTree = "<group>"; };
 		93AA345F1E79CDAF00513950 /* NSBundle+ITExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+ITExtensions.m"; sourceTree = "<group>"; };
+		93AA34631E79DB3D00513950 /* ITUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITUserCell.h; sourceTree = "<group>"; };
+		93AA34641E79DB3D00513950 /* ITUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITUserCell.m; sourceTree = "<group>"; };
+		93AA34651E79DB3D00513950 /* ITUserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ITUserCell.xib; sourceTree = "<group>"; };
+		93AA34681E79DB6600513950 /* ITAddRowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITAddRowCell.h; sourceTree = "<group>"; };
+		93AA34691E79DB6600513950 /* ITAddRowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITAddRowCell.m; sourceTree = "<group>"; };
+		93AA346A1E79DB6600513950 /* ITAddRowCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ITAddRowCell.xib; sourceTree = "<group>"; };
 		93C20E7F1E5B95BF00B56982 /* ITObjCUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITObjCUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C20E981E5B95BF00B56982 /* ITObjCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ITObjCUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C20EA81E5B99CA00B56982 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -322,9 +327,8 @@
 		93462DA71E6A114E00FE1BC9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				93462DA81E6A114E00FE1BC9 /* ITUserCell.h */,
-				93462DA91E6A114E00FE1BC9 /* ITUserCell.m */,
-				93462DAA1E6A114E00FE1BC9 /* ITUserCell.xib */,
+				93AA34611E79DB3D00513950 /* ITAddRowCell */,
+				93AA34621E79DB3D00513950 /* ITUserCell */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -389,6 +393,26 @@
 				93AA345F1E79CDAF00513950 /* NSBundle+ITExtensions.m */,
 			);
 			path = "NSBundle+ITExtensions";
+			sourceTree = "<group>";
+		};
+		93AA34611E79DB3D00513950 /* ITAddRowCell */ = {
+			isa = PBXGroup;
+			children = (
+				93AA34681E79DB6600513950 /* ITAddRowCell.h */,
+				93AA34691E79DB6600513950 /* ITAddRowCell.m */,
+				93AA346A1E79DB6600513950 /* ITAddRowCell.xib */,
+			);
+			path = ITAddRowCell;
+			sourceTree = "<group>";
+		};
+		93AA34621E79DB3D00513950 /* ITUserCell */ = {
+			isa = PBXGroup;
+			children = (
+				93AA34631E79DB3D00513950 /* ITUserCell.h */,
+				93AA34641E79DB3D00513950 /* ITUserCell.m */,
+				93AA34651E79DB3D00513950 /* ITUserCell.xib */,
+			);
+			path = ITUserCell;
 			sourceTree = "<group>";
 		};
 		93C20E761E5B95BF00B56982 = {
@@ -622,8 +646,9 @@
 				93C20EE91E5F72DD00B56982 /* ITSquareViewController.xib in Resources */,
 				93C20EBE1E5B99E900B56982 /* LaunchScreen.storyboard in Resources */,
 				93462DAD1E6A114E00FE1BC9 /* ITUsersViewController.xib in Resources */,
-				93462DAF1E6A114E00FE1BC9 /* ITUserCell.xib in Resources */,
+				93AA34671E79DB3D00513950 /* ITUserCell.xib in Resources */,
 				93C20EBC1E5B99E900B56982 /* Assets.xcassets in Resources */,
+				93AA346C1E79DB6600513950 /* ITAddRowCell.xib in Resources */,
 				932D37741E60EB2D00C435F2 /* image.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -695,8 +720,10 @@
 				93AA344A1E787AC000513950 /* ITDeleteChange.m in Sources */,
 				93C20F211E60CAD400B56982 /* NSString+ITRandomName.m in Sources */,
 				93AA34541E787B2E00513950 /* ITTwoIndexModel.m in Sources */,
+				93AA34661E79DB3D00513950 /* ITUserCell.m in Sources */,
 				93AA34431E77409B00513950 /* ITModelChange.m in Sources */,
 				93AA344D1E787AD000513950 /* ITMoveChange.m in Sources */,
+				93AA346B1E79DB6600513950 /* ITAddRowCell.m in Sources */,
 				93AA34601E79CDAF00513950 /* NSBundle+ITExtensions.m in Sources */,
 				93462D571E67525B00FE1BC9 /* ITMacro.m in Sources */,
 				93462D831E68A14D00FE1BC9 /* NSArray+ITExtensions.m in Sources */,
@@ -717,7 +744,6 @@
 				93462D8B1E68ACF400FE1BC9 /* UITableView+ITExtensions.m in Sources */,
 				93462DB21E6F448A00FE1BC9 /* ITCompilerMacro.m in Sources */,
 				93462D6E1E67739D00FE1BC9 /* ITUser.m in Sources */,
-				93462DAE1E6A114E00FE1BC9 /* ITUserCell.m in Sources */,
 				93462D7B1E68965D00FE1BC9 /* ITTableViewCell.m in Sources */,
 				93C20EE71E5F72DD00B56982 /* ITSquareView.m in Sources */,
 				93462D6A1E6769CB00FE1BC9 /* UIWindow+ITExtensions.m in Sources */,

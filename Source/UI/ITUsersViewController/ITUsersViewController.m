@@ -11,6 +11,7 @@
 #import "ITUsersView.h"
 #import "ITUser.h"
 #import "ITUserCell.h"
+#import "ITAddRowCell.h"
 #import "ITMacro.h"
 #import "UITableView+ITExtensions.h"
 #import "ITArrayModel.h"
@@ -69,7 +70,6 @@ ITViewControllerSynthesizeRootView(ITUsersViewController, usersView, ITUsersView
     [super viewDidLoad];
     
     UITableView *tableView = self.usersView.tableView;
-    
     tableView.allowsSelectionDuringEditing = YES;
     
     [tableView reloadData];
@@ -102,12 +102,15 @@ ITViewControllerSynthesizeRootView(ITUsersViewController, usersView, ITUsersView
             cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ITUserCell *cell = [tableView reusableCellWithClass:[ITUserCell class]];
-
+    ITAddRowCell *addCell = [tableView reusableCellWithClass:[ITAddRowCell class]];
+    
     if (indexPath.row >= [self.users count] && self.usersView.editing) {
-        cell.textLabel.text = kITAddRowTitle;
-    } else {
-        cell.user = self.users[indexPath.row];
+        addCell.textLabel.text = kITAddRowTitle;
+        
+        return addCell;
     }
+    
+    cell.user = self.users[indexPath.row];
     
     return cell;
 }

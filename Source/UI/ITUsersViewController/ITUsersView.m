@@ -12,11 +12,18 @@
 
 static NSString * const kITDoneButtonTitle = @"Done";
 static NSString * const kITEditButtonTitle = @"Edit";
+static NSString * const kITNavigationBarTitle = @"Users";
 
 @implementation ITUsersView
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    [self.navigationItem setTitle:kITNavigationBarTitle];
+}
 
 #pragma mark -
 #pragma mark Accessors
