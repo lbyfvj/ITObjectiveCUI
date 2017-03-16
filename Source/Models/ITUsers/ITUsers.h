@@ -12,4 +12,8 @@
 
 @interface ITUsers : ITArrayModel
 
++ (instancetype)sharedUsers;
+
+- (void)save;
+
 @end

@@ -44,23 +44,27 @@
 
 - (void)insertObject:(id)object atIndex:(NSUInteger)index {
     [self.array insertObject:object atIndex:index];
-    
-    [self notifyOfState:ITArrayModelUpdated object:[ITModelChange insertAtIndex:index]];
+
+    [self setState:ITArrayModelUpdated
+        withObject:[ITModelChange insertAtIndex:index]];
 }
 
 - (void)removeObjectAtIndex:(NSUInteger)index {
     [self.array removeObjectAtIndex:index];
     
-    [self notifyOfState:ITArrayModelUpdated object:[ITModelChange deleteAtIndex:index]];
+    [self setState:ITArrayModelUpdated
+        withObject:[ITModelChange deleteAtIndex:index]];
 }
 
 - (void)moveObjectAtIndex:(NSUInteger)index toIndex:(NSUInteger)newIndex {
     id object = self.array[index];
+    
     [self.array removeObjectAtIndex:index];
     [self.array insertObject:object atIndex:newIndex];
     
-//    [self notifyOfState:ITArrayModelUpdated object:[ITModelChange moveAtIndex:index
-//                                                                      toIndex:newIndex]];
+//    [self setState:ITArrayModelUpdated
+//        withObject:[ITModelChange moveAtIndex:index
+//                                      toIndex:newIndex]];
 }
 
 - (id)objectAtIndexedSubscript:(NSUInteger)index {
@@ -74,6 +78,9 @@
     switch (state) {
             
         case ITArrayModelUpdated:
+            return @selector(arrayModel:didUpdateWithModelChange:);
+            
+        case ITArrayModelLoaded:
             return @selector(arrayModel:didUpdateWithModelChange:);
             
         default:

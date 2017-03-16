@@ -11,7 +11,7 @@
 
 #import "ITImageModel.h"
 
-@interface ITUser : NSObject
+@interface ITUser : NSObject <NSCoding>
 @property (nonatomic, strong)       NSString    *name;
 @property (nonatomic, readonly)     UIImage     *image;
 

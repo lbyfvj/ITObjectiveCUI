@@ -12,6 +12,7 @@
 
 static NSString * const kITImageName = @"image";
 static NSString * const kITImageType = @"jpg";
+static NSString * const kITCoderName = @"CoderName";
 
 @implementation ITUser
 
@@ -28,6 +29,10 @@ static NSString * const kITImageType = @"jpg";
     return self;
 }
 
+#pragma mark - 
+#pragma mark Accessors
+
+
 - (UIImage *)image {
 //    NSURL *url = [[NSBundle mainBundle] URLForResource:[NSString stringWithFormat:@"%@", kITImageName]
 //                                         withExtension:[NSString stringWithFormat:@"%@", kITImageType]];
@@ -36,6 +41,22 @@ static NSString * const kITImageType = @"jpg";
                                                      ofType:kITImageType];
     
     return [UIImage imageWithContentsOfFile:path];
+}
+
+#pragma mark -
+#pragma mark NSCoding protocol
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super init];
+    if (self) {
+        _name = [aDecoder decodeObjectForKey:kITCoderName];
+    }
+    
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:_name forKey:kITCoderName];
 }
 
 @end
