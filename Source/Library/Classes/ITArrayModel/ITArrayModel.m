@@ -55,11 +55,12 @@
 }
 
 - (void)moveObjectAtIndex:(NSUInteger)index toIndex:(NSUInteger)newIndex {
+    id object = self.array[index];
     [self.array removeObjectAtIndex:index];
-    [self.array insertObject:self.array[index] atIndex:newIndex];
-
-    [self notifyOfState:ITArrayModelUpdated object:[ITModelChange moveAtIndex:index
-                                                                      toIndex:newIndex]];
+    [self.array insertObject:object atIndex:newIndex];
+    
+//    [self notifyOfState:ITArrayModelUpdated object:[ITModelChange moveAtIndex:index
+//                                                                      toIndex:newIndex]];
 }
 
 - (id)objectAtIndexedSubscript:(NSUInteger)index {

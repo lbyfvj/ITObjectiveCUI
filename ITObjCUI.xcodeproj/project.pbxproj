@@ -38,8 +38,8 @@
 		93AA34671E79DB3D00513950 /* ITUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93AA34651E79DB3D00513950 /* ITUserCell.xib */; };
 		93AA346B1E79DB6600513950 /* ITAddRowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93AA34691E79DB6600513950 /* ITAddRowCell.m */; };
 		93AA346C1E79DB6600513950 /* ITAddRowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93AA346A1E79DB6600513950 /* ITAddRowCell.xib */; };
+		93AA34711E79E37100513950 /* ITArrayModelSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 93AA34701E79E37100513950 /* ITArrayModelSpec.m */; };
 		93C20EAB1E5B99CA00B56982 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C20EA91E5B99CA00B56982 /* main.m */; };
-		93C20EB01E5B99D900B56982 /* ITObjCUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C20EAE1E5B99D900B56982 /* ITObjCUITests.m */; };
 		93C20EBC1E5B99E900B56982 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93C20EB21E5B99E900B56982 /* Assets.xcassets */; };
 		93C20EBD1E5B99E900B56982 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93C20EB21E5B99E900B56982 /* Assets.xcassets */; };
 		93C20EBE1E5B99E900B56982 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93C20EB31E5B99E900B56982 /* LaunchScreen.storyboard */; };
@@ -125,12 +125,12 @@
 		93AA34681E79DB6600513950 /* ITAddRowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITAddRowCell.h; sourceTree = "<group>"; };
 		93AA34691E79DB6600513950 /* ITAddRowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITAddRowCell.m; sourceTree = "<group>"; };
 		93AA346A1E79DB6600513950 /* ITAddRowCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ITAddRowCell.xib; sourceTree = "<group>"; };
+		93AA34701E79E37100513950 /* ITArrayModelSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITArrayModelSpec.m; sourceTree = "<group>"; };
 		93C20E7F1E5B95BF00B56982 /* ITObjCUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITObjCUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C20E981E5B95BF00B56982 /* ITObjCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ITObjCUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C20EA81E5B99CA00B56982 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93C20EA91E5B99CA00B56982 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		93C20EAD1E5B99D900B56982 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		93C20EAE1E5B99D900B56982 /* ITObjCUITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITObjCUITests.m; sourceTree = "<group>"; };
 		93C20EB21E5B99E900B56982 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93C20EB41E5B99E900B56982 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		93C20EC61E5CC8A100B56982 /* ITAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITAppDelegate.h; sourceTree = "<group>"; };
@@ -415,6 +415,22 @@
 			path = ITUserCell;
 			sourceTree = "<group>";
 		};
+		93AA346E1E79E34400513950 /* Specs */ = {
+			isa = PBXGroup;
+			children = (
+				93AA346F1E79E34400513950 /* ITArrayModelSpec */,
+			);
+			path = Specs;
+			sourceTree = "<group>";
+		};
+		93AA346F1E79E34400513950 /* ITArrayModelSpec */ = {
+			isa = PBXGroup;
+			children = (
+				93AA34701E79E37100513950 /* ITArrayModelSpec.m */,
+			);
+			path = ITArrayModelSpec;
+			sourceTree = "<group>";
+		};
 		93C20E761E5B95BF00B56982 = {
 			isa = PBXGroup;
 			children = (
@@ -451,8 +467,8 @@
 		93C20EAC1E5B99D900B56982 /* ITObjCUITests */ = {
 			isa = PBXGroup;
 			children = (
+				93AA346E1E79E34400513950 /* Specs */,
 				93C20EAD1E5B99D900B56982 /* Info.plist */,
-				93C20EAE1E5B99D900B56982 /* ITObjCUITests.m */,
 			);
 			path = ITObjCUITests;
 			sourceTree = "<group>";
@@ -757,7 +773,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93C20EB01E5B99D900B56982 /* ITObjCUITests.m in Sources */,
+				93AA34711E79E37100513950 /* ITArrayModelSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
