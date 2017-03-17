@@ -32,3 +32,13 @@ typedef NS_ENUM(NSUInteger, ITImageModelState) {
 - (void)dump;
 
 @end
+
+@protocol ITImageModelObserver <NSObject>
+
+@optional
+- (void)imageModelDidUnload:(ITImageModel *)imageModel;
+- (void)imageModelDidLoading:(ITImageModel *)imageModel;
+- (void)imageModelDidLoad:(ITImageModel *)imageModel;
+- (void)imageModelDidFailLoading:(ITImageModel *)imageModel;
+
+@end

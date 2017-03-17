@@ -10,10 +10,8 @@
 
 #import "ITImageModel.h"
 
-@interface ITImageView : UIView
-@property (nonatomic, strong)       IBOutlet ITImageModel    *imageModel;
-@property (nonatomic, strong)       UIImageView              *contentImageView;
-
-- (void)fillWithModel:(ITImageModel *)imageModel;
+@interface ITImageView : UIView <ITImageModelObserver>
+@property (nonatomic, strong)       ITImageModel            *imageModel;
+@property (nonatomic, strong)       IBOutlet UIImageView    *contentImageView;
 
 @end

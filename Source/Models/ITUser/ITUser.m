@@ -25,6 +25,8 @@ static NSString * const kITCoderName = @"CoderName";
     self = [super init];
     if (self) {
         self.name = [NSString randomName];
+        self.imageURL = [[NSBundle mainBundle] URLForResource:kITImageName
+                                                withExtension:kITImageType];
     }
     return self;
 }
@@ -33,14 +35,16 @@ static NSString * const kITCoderName = @"CoderName";
 #pragma mark Accessors
 
 
-- (UIImage *)image {
+- (ITImageModel *)image {
 //    NSURL *url = [[NSBundle mainBundle] URLForResource:[NSString stringWithFormat:@"%@", kITImageName]
 //                                         withExtension:[NSString stringWithFormat:@"%@", kITImageType]];
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:kITImageName
-                                                     ofType:kITImageType];
+//    NSString *path = [[NSBundle mainBundle] pathForResource:kITImageName
+//                                                     ofType:kITImageType];
+//    
+//    return [UIImage imageWithContentsOfFile:path];
+    return [ITImageModel imageWithURL:self.imageURL];
     
-    return [UIImage imageWithContentsOfFile:path];
 }
 
 #pragma mark -

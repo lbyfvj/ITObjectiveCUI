@@ -10,6 +10,7 @@
 
 #import "ITObservableObject.h"
 #import "ITMacro.h"
+#import "ITDispatchQueue.h"
 
 @interface ITImageView ()
 @property (nonatomic, strong)   ITObservableObject  *observer;
@@ -35,6 +36,15 @@
     return self;
 }
 
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    self = [super initWithCoder:coder];
+    if (self) {
+        [self initSubviews];
+    }
+    
+    return self;
+}
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     
@@ -52,8 +62,8 @@
     |  UIViewAutoresizingFlexibleTopMargin
     |  UIViewAutoresizingFlexibleHeight
     |  UIViewAutoresizingFlexibleBottomMargin;
-    self.contentImageView = imageView;
     
+    self.contentImageView = imageView;
 }
 
 #pragma mark -
@@ -82,17 +92,34 @@
 }
 
 #pragma mark -
-#pragma mark View Lifecycle
+#pragma mark IDPImageModelObserver
 
-#pragma mark -
-#pragma mark Public
-
-- (void)fillWithModel:(ITImageModel *)imageModel {
-    self.contentImageView.image = imageModel.image;
+- (void)imageModelDidUnload:(ITImageModel *)imageModel {
+    ITWeakify(self);
+    ITAsyncPerformInMainQueue(^{
+        ITStrongify(self);
+        self.contentImageView.image = imageModel.image;
+    });
 }
 
-#pragma mark -
-#pragma mark Private
+- (void)imageModelDidLoading:(ITImageModel *)imageModel {
+}
+
+- (void)imageModelDidLoad:(ITImageModel *)imageModel {
+    ITWeakify(self);
+    ITAsyncPerformInMainQueue(^{
+        ITStrongify(self);
+        self.contentImageView.image = imageModel.image;
+    });
+}
+
+- (void)imageModelDidFailLoading:(ITImageModel *)imageModel {
+    ITWeakify(self);
+    ITAsyncPerformInMainQueue(^{
+        ITStrongify(self);
+        [self.imageModel load];
+    });
+}
 
 
 @end
