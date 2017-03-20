@@ -103,6 +103,7 @@
 }
 
 - (void)imageModelDidLoading:(ITImageModel *)imageModel {
+ 
 }
 
 - (void)imageModelDidLoad:(ITImageModel *)imageModel {

@@ -39,7 +39,8 @@
 }
 
 - (void)addObject:(id)object {
-    [self insertObject:object atIndex:[self.array count]];
+//    [self.array addObject:object];
+    [self insertObject:object atIndex:self.count];
 }
 
 - (void)insertObject:(id)object atIndex:(NSUInteger)index {
@@ -81,7 +82,10 @@
             return @selector(arrayModel:didUpdateWithModelChange:);
             
         case ITArrayModelLoaded:
-            return @selector(arrayModel:didUpdateWithModelChange:);
+            return @selector(arrayModelDidLoad:);
+            
+        case ITArrayModelLoading:
+            return @selector(arrayModelWillLoad:);
             
         default:
             [super selectorForState:state];

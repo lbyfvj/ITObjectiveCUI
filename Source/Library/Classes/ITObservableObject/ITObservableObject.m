@@ -71,7 +71,12 @@
 }
 
 - (void)addObservers:(NSArray *)observers {
-    
+    id observersHashTable = self.observersHashTable;
+    @synchronized(observersHashTable) {
+        for (id observer in observers) {
+            [self addObserver:observer];
+        }
+    }
 }
 
 - (void)removeObserver:(id)observer {

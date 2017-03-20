@@ -12,7 +12,8 @@
 
 typedef NS_ENUM(NSUInteger, ITArrayModelState) {
     ITArrayModelUpdated,
-    ITArrayModelLoaded
+    ITArrayModelLoaded,
+    ITArrayModelLoading
 };
 
 @interface ITArrayModel : ITObservableObject <NSFastEnumeration>
@@ -35,5 +36,7 @@ typedef NS_ENUM(NSUInteger, ITArrayModelState) {
 
 @optional
 - (void)arrayModel:(ITArrayModel *)model didUpdateWithModelChange:(ITModelChange *)modelChange;
+- (void)arrayModelDidLoad:(ITArrayModel *)model;
+- (void)arrayModelWillLoad:(ITArrayModel *)model;
 
 @end

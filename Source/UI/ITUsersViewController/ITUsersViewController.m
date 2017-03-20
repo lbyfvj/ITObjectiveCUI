@@ -17,10 +17,16 @@
 #import "ITArrayModel.h"
 #import "ITModelChange.h"
 #import "ITDispatchQueue.h"
+#import "ITLoadingView.h"
 
 static NSString * const kITAddRowTitle = @"Add new user";
 
 ITViewControllerSynthesizeRootView(ITUsersViewController, usersView, ITUsersView)
+
+@interface ITUsersViewController ()
+@property (nonatomic, strong)   ITLoadingView  *loadingView;
+
+@end
 
 @implementation ITUsersViewController
 
@@ -31,14 +37,39 @@ ITViewControllerSynthesizeRootView(ITUsersViewController, usersView, ITUsersView
     self.users = nil;
 }
 
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    self = [super initWithCoder:coder];
+    self.loadingView = [ITLoadingView new];
+    
+    return self;
+}
+
+- (id)initWithNibName:(NSString *)nibName
+               bundle:(NSBundle *)bundle
+{
+    self = [super initWithNibName:nibName bundle:bundle];
+    
+    self.loadingView = [ITLoadingView new];
+    
+    [self.usersView addSubview:self.loadingView];
+    
+    return self;
+}
+
 #pragma mark -
 #pragma mark Accessors
 
 - (void)setUsers:(ITUsers *)users {
     if (_users != users) {
         [_users removeObserver:self];
+        
         _users = users;
-        [_users addObserver:self];
+        
+        [_users addObservers:@[self, self.loadingView]];
+        
+        if (self.isViewLoaded) {
+            [self.users load];
+        }
     }
 }
 
@@ -157,6 +188,14 @@ ITViewControllerSynthesizeRootView(ITUsersViewController, usersView, ITUsersView
 
 - (void)arrayModel:(ITArrayModel *)model didUpdateWithModelChange:(ITModelChange *)modelChange {
     [self.usersView updateUsersViewWithModelChange:modelChange];
+}
+
+- (void)arrayModelDidLoad:(ITArrayModel *)model {
+    ITWeakify(self);
+    ITAsyncPerformInMainQueue(^{
+        ITStrongify(self);
+        [self.usersView.tableView reloadData];
+    });
 }
 
 @end

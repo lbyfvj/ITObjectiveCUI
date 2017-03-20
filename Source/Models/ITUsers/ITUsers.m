@@ -12,6 +12,8 @@
 
 #import "NSObject+ITExtensions.h"
 
+#import "ITDispatchQueue.h"
+
 static const NSUInteger kITUsersCount = 10;
 static NSString * const kITUsersArray  = @"UsersArray";
 
@@ -19,7 +21,6 @@ static NSString * const kITUsersArray  = @"UsersArray";
 @property (nonatomic, strong)   NSMutableArray  *users;
 
 - (void)generateUsers;
-- (void)load;
 
 @end
 
@@ -55,6 +56,34 @@ static NSString * const kITUsersArray  = @"UsersArray";
 #pragma mark -
 #pragma mark - Public
 
+- (void)load {
+    NSData *userData = [[NSUserDefaults standardUserDefaults] objectForKey:kITUsersArray];
+    
+    @synchronized(self) {
+        NSUInteger state = self.state;
+        
+        if (ITArrayModelLoaded == state || ITArrayModelLoading == state) {
+            [self notifyOfState:state];
+            return;
+        }
+        
+        self.state = ITArrayModelLoading;
+    }
+    
+    ITAsyncPerformInBackgroundQueue(^{
+        if (userData) {
+            NSArray *objects = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
+            for (id object in objects) {
+                [self addObject:object];
+            }
+        }
+        
+        [self generateUsers];
+        
+        self.state = ITArrayModelLoaded;
+    });
+}
+
 - (void)save {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
@@ -65,20 +94,6 @@ static NSString * const kITUsersArray  = @"UsersArray";
 
 #pragma mark -
 #pragma mark - Private
-
-- (void)load {
-    NSData *userData = [[NSUserDefaults standardUserDefaults] objectForKey:kITUsersArray];
-    if (userData) {
-        NSArray *unarchivedObjects = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
-        for (id object in unarchivedObjects) {
-            [self addObject:object];
-        }
-        
-        [self setState:ITArrayModelLoaded withObject:nil];
-    }
-    
-    [self generateUsers];
-}
 
 - (void)generateUsers {
     for (NSUInteger i = 0; i < kITUsersCount; i++) {
