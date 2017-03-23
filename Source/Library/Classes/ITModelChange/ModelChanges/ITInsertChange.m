@@ -10,11 +10,11 @@
 
 @implementation ITInsertChange
 
-- (void)changeTableView:(UITableView *)tableView
-       withRowAnimation:(UITableViewRowAnimation) animation
-{
-    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:self.index inSection:0];
-    [tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:animation];
-}
+//- (void)changeTableView:(UITableView *)tableView
+//       withRowAnimation:(UITableViewRowAnimation) animation
+//{
+//    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:self.index inSection:0];
+//    [tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:animation];
+//}
 
 @end

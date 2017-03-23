@@ -10,11 +10,11 @@
 
 @implementation ITDeleteChange
 
-- (void)changeTableView:(UITableView *)tableView
-       withRowAnimation:(UITableViewRowAnimation) animation
-{
-    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:self.index inSection:0];
-    [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:animation];
-}
+//- (void)changeTableView:(UITableView *)tableView
+//       withRowAnimation:(UITableViewRowAnimation) animation
+//{
+//    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:self.index inSection:0];
+//    [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:animation];
+//}
 
 @end

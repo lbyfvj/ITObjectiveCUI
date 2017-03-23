@@ -10,7 +10,7 @@
 
 @interface ITMoveChange : ITTwoIndexModel
 
-- (void)changeTableView:(UITableView *)tableView
-       withRowAnimation:(UITableViewRowAnimation) animation;
+//- (void)changeTableView:(UITableView *)tableView
+//       withRowAnimation:(UITableViewRowAnimation) animation;
 
 @end

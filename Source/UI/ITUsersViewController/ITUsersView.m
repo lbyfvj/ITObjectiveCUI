@@ -8,7 +8,7 @@
 
 #import "ITUsersView.h"
 
-#import "UITableView+ITExtensions.h"
+#import "ITUsersTableView+ITExtensions.h"
 
 static NSString * const kITDoneButtonTitle = @"Done";
 static NSString * const kITEditButtonTitle = @"Edit";

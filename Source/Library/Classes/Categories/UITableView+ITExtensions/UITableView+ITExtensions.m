@@ -9,6 +9,11 @@
 #import "UITableView+ITExtensions.h"
 
 #import "UINib+ITExtensions.h"
+#import "ITModelChange+ITExtensions.h"
+
+#import "ITInsertChange.h"
+#import "ITDeleteChange.h"
+#import "ITMoveChange.h"
 
 @implementation UITableView (ITExtensions)
 
@@ -24,6 +29,15 @@
     }
     
     return cell;
+}
+
+- (void)updateTableViewWithModelChange:(ITModelChange *)modelChange {
+    [self beginUpdates];
+    
+    [modelChange changeTableView:self withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+    [self endUpdates];
+    
 }
 
 @end
