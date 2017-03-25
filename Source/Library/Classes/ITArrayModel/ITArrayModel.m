@@ -35,12 +35,11 @@
 #pragma mark Public
 
 - (NSUInteger)count {
-    return [self.array count];
+    return self.array.count;
 }
 
 - (void)addObject:(id)object {
-//    [self.array addObject:object];
-    [self insertObject:object atIndex:self.count];
+    [self.array addObject:object];
 }
 
 - (void)insertObject:(id)object atIndex:(NSUInteger)index {
@@ -68,8 +67,16 @@
 //                                      toIndex:newIndex]];
 }
 
-- (id)objectAtIndexedSubscript:(NSUInteger)index {
+- (id)objectAtIndex:(NSUInteger)index {
     return self.array[index];
+}
+
+- (id)objectAtIndexedSubscript:(NSUInteger)index {
+    return [self objectAtIndex:index];
+}
+
+- (NSUInteger)indexOfObject:(id)object {
+    return [self.array indexOfObject:object];
 }
 
 #pragma mark -
@@ -81,17 +88,9 @@
         case ITArrayModelUpdated:
             return @selector(arrayModel:didUpdateWithModelChange:);
             
-        case ITArrayModelLoaded:
-            return @selector(arrayModelDidLoad:);
-            
-        case ITArrayModelLoading:
-            return @selector(arrayModelWillLoad:);
-            
         default:
-            [super selectorForState:state];
+            return [super selectorForState:state];
     }
-    
-    return NULL;
 }
 
 #pragma mark -

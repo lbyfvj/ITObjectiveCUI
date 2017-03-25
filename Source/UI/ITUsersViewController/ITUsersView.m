@@ -17,6 +17,15 @@ static NSString * const kITNavigationBarTitle = @"Users";
 @implementation ITUsersView
 
 #pragma mark -
+#pragma mark Class Methods
+
++ (ITUsersView *)viewWithFrame:(CGRect)frame {
+    ITUsersView *view = [[self alloc] initWithFrame:frame];
+    
+    return view;
+}
+
+#pragma mark -
 #pragma mark Initializations and Deallocations
 
 - (void)awakeFromNib {
@@ -25,11 +34,23 @@ static NSString * const kITNavigationBarTitle = @"Users";
     [self.navigationItem setTitle:kITNavigationBarTitle];
 }
 
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    
+    
+    return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    self = [super initWithCoder:coder];
+    
+    return self;
+}
+
 #pragma mark -
 #pragma mark Accessors
 
 - (void)setEditing:(BOOL)editing {
-    
     if (_editing != editing) {
         _editing = editing;
         
@@ -38,13 +59,36 @@ static NSString * const kITNavigationBarTitle = @"Users";
     }
 }
 
+- (void)setModel:(ITAbstractModel *)model {
+    if (_model != model) {
+        [_model removeObserver:self];
+        
+        _model = model;
+        
+        [_model addObserver:self];
+    }
+}
+
 #pragma mark -
 #pragma mark Public
 
-- (void)updateUsersViewWithModelChange:(ITModelChange *)modelChange {
-    
+- (void)updateUsersViewWithModelChange:(ITModelChange *)modelChange {    
     [self.tableView updateTableViewWithModelChange:modelChange];
+}
+
+#pragma mark -
+#pragma mark - ITAbstractModelObserver
+
+- (void)abstractModelDidLoad:(ITAbstractModel *)model {
+    NSLog(@"%@", NSStringFromSelector(_cmd));
     
+    [self hideLoadingView];
+}
+
+- (void)abstractModelWillLoad:(ITAbstractModel *)model {
+    NSLog(@"%@", NSStringFromSelector(_cmd));
+    
+    [self showLoadingView];
 }
 
 @end

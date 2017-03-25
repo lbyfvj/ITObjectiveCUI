@@ -36,15 +36,6 @@
     return self;
 }
 
-- (instancetype)initWithCoder:(NSCoder *)coder {
-    self = [super initWithCoder:coder];
-    if (self) {
-        [self initSubviews];
-    }
-    
-    return self;
-}
-
 - (void)awakeFromNib {
     [super awakeFromNib];
     

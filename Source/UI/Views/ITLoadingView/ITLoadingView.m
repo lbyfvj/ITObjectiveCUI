@@ -12,7 +12,8 @@
 #import "NSBundle+ITExtensions.h"
 
 static const NSTimeInterval kITLoadingDuration = 3;
-static const NSTimeInterval kITDelay = 0.1;
+static const NSTimeInterval kITDelay = 0.3;
+static const CGFloat        kITAlpha = 0.5;
 
 @implementation ITLoadingView
 
@@ -22,7 +23,7 @@ static const NSTimeInterval kITDelay = 0.1;
 + (instancetype)viewOnSuperView:(UIView *)superView {
     ITLoadingView *view = [[NSBundle mainBundle] objectWithClass:[self class]];
     view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-    [superView addSubview:view];
+    view.frame = superView.bounds;
     
     return view;
 }
@@ -43,34 +44,35 @@ static const NSTimeInterval kITDelay = 0.1;
           animated:(BOOL)animated
  completionHandler:(void (^)(BOOL finished))block;
 {
+    [[self superview] bringSubviewToFront:self];
+    
     [UIView animateWithDuration:animated ? kITLoadingDuration : 0
                           delay:kITDelay
                         options:UIViewAnimationOptionLayoutSubviews
                      animations:^{
-                         if (visible) {
-                             [[self superview] bringSubviewToFront:self];
-                             self.alpha = 0.5;
-                         } else {
+                         if (!visible) {
+                             [self.spinner stopAnimating];
                              [self removeFromSuperview];
-                             self.alpha = 0;
                          }
+                         
+                         self.alpha = visible ? kITAlpha : 0.0;
+                         [self.spinner startAnimating];
                      }
                      completion:^(BOOL finished) {
-                         _visible = visible;
-                         
+                         _visible = visible;                         
                          ITDispatchBlock(block, finished);
                      }];
 }
 
-#pragma mark -
-#pragma mark ITArrayModelObserver
-
-- (void)arrayModelDidLoad:(ITArrayModel *)model {
-    [self setVisible:NO animated:YES completionHandler:nil];
-}
-
-- (void)arrayModelWillLoad:(ITArrayModel *)model {
-    [self setVisible:YES animated:YES completionHandler:nil];
-}
+//#pragma mark -
+//#pragma mark ITArrayModelObserver
+//
+//- (void)arrayModelDidLoad:(ITArrayModel *)model {
+//    [self setVisible:NO animated:YES completionHandler:nil];
+//}
+//
+//- (void)arrayModelWillLoad:(ITArrayModel *)model {
+//    [self setVisible:YES animated:YES completionHandler:nil];
+//}
 
 @end

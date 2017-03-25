@@ -12,9 +12,4 @@
 
 @interface ITUsers : ITArrayModel
 
-+ (instancetype)sharedUsers;
-
-- (void)load;
-- (void)save;
-
 @end

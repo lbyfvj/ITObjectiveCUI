@@ -27,8 +27,7 @@
     
 //    ITSquareViewController *controller = [ITSquareViewController new];
     ITUsersViewController *controller = [ITUsersViewController new];
-    //controller.users = [ITUsers new];
-    controller.users = [ITUsers sharedUsers];
+    controller.usersModel = [ITUsers new];
     window.rootViewController = controller;
     
     [window makeKeyAndVisible];
@@ -37,12 +36,12 @@
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
-    [[ITUsers sharedUsers] save];
+    
     
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    [[ITUsers sharedUsers] save];
+    
     
 }
 
@@ -55,7 +54,7 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-    [[ITUsers sharedUsers] save];
+    
 }
 
 @end

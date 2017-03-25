@@ -56,6 +56,8 @@
 		93C20EE71E5F72DD00B56982 /* ITSquareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C20EE21E5F72DD00B56982 /* ITSquareView.m */; };
 		93C20EE81E5F72DD00B56982 /* ITSquareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C20EE41E5F72DD00B56982 /* ITSquareViewController.m */; };
 		93C20EE91E5F72DD00B56982 /* ITSquareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93C20EE51E5F72DD00B56982 /* ITSquareViewController.xib */; };
+		93C757101E858E860007F444 /* ITAbstractModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C7570F1E858E860007F444 /* ITAbstractModel.m */; };
+		93C757141E85931C0007F444 /* ITAbstractView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C757131E85931C0007F444 /* ITAbstractView.m */; };
 		F90D59E8A4E6D833288C12AA /* libPods-ITObjCUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03AF09BAA2BA61E48268062F /* libPods-ITObjCUITests.a */; };
 /* End PBXBuildFile section */
 
@@ -161,6 +163,10 @@
 		93C20EE31E5F72DD00B56982 /* ITSquareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITSquareViewController.h; sourceTree = "<group>"; };
 		93C20EE41E5F72DD00B56982 /* ITSquareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITSquareViewController.m; sourceTree = "<group>"; };
 		93C20EE51E5F72DD00B56982 /* ITSquareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ITSquareViewController.xib; sourceTree = "<group>"; };
+		93C7570E1E858E860007F444 /* ITAbstractModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITAbstractModel.h; sourceTree = "<group>"; };
+		93C7570F1E858E860007F444 /* ITAbstractModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITAbstractModel.m; sourceTree = "<group>"; };
+		93C757121E85931C0007F444 /* ITAbstractView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITAbstractView.h; sourceTree = "<group>"; };
+		93C757131E85931C0007F444 /* ITAbstractView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITAbstractView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -355,6 +361,7 @@
 		93462D941E69E83A00FE1BC9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				93C757111E8593060007F444 /* ITAbstractView */,
 				93AA34721E7C3A3900513950 /* ITLoadingView */,
 				93462D951E69E83A00FE1BC9 /* ITImageView */,
 			);
@@ -565,6 +572,7 @@
 		93C20EDC1E5F72DD00B56982 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				93C7570D1E858E6A0007F444 /* ITAbstractModel */,
 				93462D991E69FD2900FE1BC9 /* ITUsers */,
 				93462D6F1E6773D800FE1BC9 /* ITImageModel */,
 				93462D6B1E67739D00FE1BC9 /* ITUser */,
@@ -605,6 +613,24 @@
 				93462DB11E6F448A00FE1BC9 /* ITCompilerMacro.m */,
 			);
 			path = Library;
+			sourceTree = "<group>";
+		};
+		93C7570D1E858E6A0007F444 /* ITAbstractModel */ = {
+			isa = PBXGroup;
+			children = (
+				93C7570E1E858E860007F444 /* ITAbstractModel.h */,
+				93C7570F1E858E860007F444 /* ITAbstractModel.m */,
+			);
+			path = ITAbstractModel;
+			sourceTree = "<group>";
+		};
+		93C757111E8593060007F444 /* ITAbstractView */ = {
+			isa = PBXGroup;
+			children = (
+				93C757121E85931C0007F444 /* ITAbstractView.h */,
+				93C757131E85931C0007F444 /* ITAbstractView.m */,
+			);
+			path = ITAbstractView;
 			sourceTree = "<group>";
 		};
 		C389A0FADBCBD0EADA4214AE /* Frameworks */ = {
@@ -815,7 +841,9 @@
 				931CF1081E8454A600AE4B4C /* UIWindow+ITExtensions.m in Sources */,
 				93C20EC81E5CC8A100B56982 /* ITAppDelegate.m in Sources */,
 				931CF1041E8454A600AE4B4C /* NSString+ITRandomName.m in Sources */,
+				93C757101E858E860007F444 /* ITAbstractModel.m in Sources */,
 				931CF1001E8454A600AE4B4C /* NSArray+ITExtensions.m in Sources */,
+				93C757141E85931C0007F444 /* ITAbstractView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

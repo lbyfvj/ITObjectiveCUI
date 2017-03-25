@@ -12,7 +12,8 @@
 
 typedef void (^ITComletionBlock)(void);
 
-@interface ITLoadingView : UIView <ITArrayModelObserver>
+@interface ITLoadingView : UIView ///<ITArrayModelObserver>
+@property (nonatomic, strong)   IBOutlet UIActivityIndicatorView  *spinner;
 @property (nonatomic, assign, getter=isVisible)     BOOL visible;
 
 + (instancetype)viewOnSuperView:(UIView *)superView;

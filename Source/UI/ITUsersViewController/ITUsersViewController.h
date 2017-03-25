@@ -11,7 +11,7 @@
 #import "ITUsers.h"
 
 @interface ITUsersViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, ITArrayModelObserver>
-@property (nonatomic, strong)   ITUsers    *users;
+@property (nonatomic, strong)   ITUsers    *usersModel;
 
 - (IBAction)onEditButtonClicked:(id)sender;
 

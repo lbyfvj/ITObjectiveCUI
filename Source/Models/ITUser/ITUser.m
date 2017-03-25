@@ -13,6 +13,7 @@
 static NSString * const kITImageName = @"image";
 static NSString * const kITImageType = @"jpg";
 static NSString * const kITCoderName = @"CoderName";
+static NSString * const kITCoderImageURL = @"CoderNameImageURL";
 
 @implementation ITUser
 
@@ -34,17 +35,8 @@ static NSString * const kITCoderName = @"CoderName";
 #pragma mark - 
 #pragma mark Accessors
 
-
 - (ITImageModel *)image {
-//    NSURL *url = [[NSBundle mainBundle] URLForResource:[NSString stringWithFormat:@"%@", kITImageName]
-//                                         withExtension:[NSString stringWithFormat:@"%@", kITImageType]];
-    
-//    NSString *path = [[NSBundle mainBundle] pathForResource:kITImageName
-//                                                     ofType:kITImageType];
-//    
-//    return [UIImage imageWithContentsOfFile:path];
-    return [ITImageModel imageWithURL:self.imageURL];
-    
+    return [ITImageModel imageWithURL:self.imageURL];    
 }
 
 #pragma mark -
@@ -54,6 +46,7 @@ static NSString * const kITCoderName = @"CoderName";
     self = [super init];
     if (self) {
         _name = [aDecoder decodeObjectForKey:kITCoderName];
+        _imageURL = [aDecoder decodeObjectForKey:kITCoderImageURL];
     }
     
     return self;
@@ -61,6 +54,7 @@ static NSString * const kITCoderName = @"CoderName";
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeObject:_name forKey:kITCoderName];
+    [aCoder encodeObject:_imageURL forKey:kITCoderImageURL];
 }
 
 @end
