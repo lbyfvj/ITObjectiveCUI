@@ -6,12 +6,12 @@
 //  Copyright © 2017 Ivan Tsyganok. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#import "ITAbstractModel.h"
 #import "ITImageModel.h"
 
-@interface ITUser : NSObject <NSCoding>
+@interface ITUser : ITAbstractModel <NSCoding>
 @property (nonatomic, strong)       NSString        *name;
 @property (nonatomic, readonly)     ITImageModel    *image;
 @property (nonatomic, copy)         NSURL           *imageURL;

@@ -40,6 +40,14 @@ static NSString * const kITCoderImageURL = @"CoderNameImageURL";
 }
 
 #pragma mark -
+#pragma mark ITAbstractModel
+
+- (void)performLoading {
+    sleep(0.5);
+    self.state = ITAbstractModelLoaded;
+}
+
+#pragma mark -
 #pragma mark NSCoding protocol
 
 - (id)initWithCoder:(NSCoder *)aDecoder {

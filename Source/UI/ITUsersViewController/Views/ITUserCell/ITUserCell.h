@@ -8,12 +8,15 @@
 
 #import "ITTableViewCell.h"
 
+#import "ITAbstractModel.h"
+
 @class ITUser;
 @class ITImageView;
 
-@interface ITUserCell : ITTableViewCell
-@property (nonatomic, strong)   IBOutlet    UILabel         *userLabel;
-@property (nonatomic, strong)   IBOutlet    ITImageView     *userImageView;
+@interface ITUserCell : ITTableViewCell <ITAbstractModelObserver>
+@property (nonatomic, strong)   IBOutlet    UILabel                     *userLabel;
+@property (nonatomic, strong)   IBOutlet    ITImageView                 *userImageView;
+@property (nonatomic, strong)   IBOutlet    UIActivityIndicatorView     *spinner;
 
 @property (nonatomic, strong)   ITUser    *user;
 
