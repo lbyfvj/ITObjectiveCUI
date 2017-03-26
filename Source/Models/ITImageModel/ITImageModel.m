@@ -57,6 +57,8 @@
         
         self.image = [UIImage imageWithContentsOfFile:[self.url path]];
         
+        sleep(0.3);
+        
         @synchronized(self) {
             self.state = self.image ? ITAbstractModelLoaded : ITAbstractModelFailedLoading;
         }

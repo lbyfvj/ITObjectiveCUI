@@ -9,19 +9,14 @@
 #import "ITUsersTableView+ITExtensions.h"
 
 #import "ITModelChange+ITExtensions.h"
-#import "ITInsertChange.h"
-#import "ITDeleteChange.h"
-#import "ITMoveChange.h"
+#import "UITableView+ITExtensions.h"
 
 @implementation UITableView (ITExtemsions)
 
 - (void)updateTableViewWithModelChange:(ITModelChange *)modelChange {
-    [self beginUpdates];
-    
-    [modelChange changeTableView:self withRowAnimation:UITableViewRowAnimationAutomatic];
-    
-    [self endUpdates];
-    
+    [self updateTableViewWithBlock:^{
+        [modelChange changeTableView:self withRowAnimation:UITableViewRowAnimationAutomatic];
+    }];
 }
 
 @end

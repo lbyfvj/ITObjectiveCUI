@@ -10,20 +10,28 @@
 
 #import "UINib+ITExtensions.h"
 
+#import "ITMacro.h"
+
 @implementation UITableView (ITExtensions)
 
-- (id)dequeueReusableCellWithClass:(Class)class {   
-    return [self dequeueReusableCellWithIdentifier:NSStringFromClass(class)];
+- (id)dequeueReusableCellWithClass:(Class)cls {
+    return [self dequeueReusableCellWithIdentifier:NSStringFromClass(cls)];
 }
 
-- (id)reusableCellWithClass:(Class)class {
-    id cell = [self dequeueReusableCellWithClass:class];
+- (id)reusableCellWithClass:(Class)cls {
+    id cell = [self dequeueReusableCellWithClass:cls];
     
     if (!cell) {
-        cell = [UINib objectWithClass:class];
+        cell = [UINib objectWithClass:cls];
     }
     
     return cell;
+}
+
+- (void)updateTableViewWithBlock:(ITTableViewUpdateBlock)block {
+    [self beginUpdates];
+    ITDispatchBlock(block);    
+    [self endUpdates];
 }
 
 @end

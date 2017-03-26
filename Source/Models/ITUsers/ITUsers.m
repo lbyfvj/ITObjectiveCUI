@@ -9,9 +9,7 @@
 #import "ITUsers.h"
 
 #import "ITUser.h"
-
 #import "NSObject+ITExtensions.h"
-
 #import "ITDispatchQueue.h"
 
 static const NSUInteger kITUsersCount = 10;

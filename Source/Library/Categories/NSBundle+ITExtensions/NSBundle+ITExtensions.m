@@ -13,24 +13,24 @@
 #pragma mark -
 #pragma mark Public
 
-- (id)objectWithClass:(Class)class {
-    return [self objectWithClass:class withOwner:nil];
+- (id)objectWithClass:(Class)cls {
+    return [self objectWithClass:cls withOwner:nil];
 }
 
-- (id)objectWithClass:(Class)class
+- (id)objectWithClass:(Class)cls
             withOwner:(id)owner
 {
-    return [self objectWithClass:class withOwner:owner withOptions:nil];
+    return [self objectWithClass:cls withOwner:owner withOptions:nil];
 }
 
-- (id)objectWithClass:(Class)class
+- (id)objectWithClass:(Class)cls
             withOwner:(id)owner
           withOptions:(NSDictionary *)options
 {
-    NSArray *objects = [self loadNibNamed:NSStringFromClass(class) owner:owner options:options];
+    NSArray *objects = [self loadNibNamed:NSStringFromClass(cls) owner:owner options:options];
     
     for (id object in objects) {
-        if ([object isMemberOfClass:class]) {
+        if ([object isMemberOfClass:cls]) {
             return object;
         }
     }

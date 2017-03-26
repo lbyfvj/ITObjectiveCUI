@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void (^ITTableViewUpdateBlock)(void);
+
 @interface UITableView (ITExtensions)
 
-- (id)dequeueReusableCellWithClass:(Class)class;
+- (id)dequeueReusableCellWithClass:(Class)cls;
 
-- (id)reusableCellWithClass:(Class)class;
+- (id)reusableCellWithClass:(Class)cls;
+
+- (void)updateTableViewWithBlock:(ITTableViewUpdateBlock)block;
 
 @end

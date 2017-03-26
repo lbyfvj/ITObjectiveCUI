@@ -23,6 +23,8 @@ ITViewControllerSynthesizeRootView(ITUsersViewController, usersView, ITUsersView
 
 @interface ITUsersViewController ()
 
+- (void)addRowAnimationInEditing:(BOOL)editing;
+
 @end
 
 @implementation ITUsersViewController
@@ -49,24 +51,10 @@ ITViewControllerSynthesizeRootView(ITUsersViewController, usersView, ITUsersView
     }
 }
 
-- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
-    
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {    
     self.usersView.editing = !self.usersView.editing;
-    UITableView *tableView = self.usersView.tableView;
     
-    [tableView beginUpdates];
-    
-        NSIndexPath *path = [NSIndexPath indexPathForRow:self.usersModel.count
-                                               inSection:0];
-        if (editing) {
-            [tableView insertRowsAtIndexPaths:@[path]
-                             withRowAnimation:UITableViewRowAnimationAutomatic];
-        } else {
-            [tableView deleteRowsAtIndexPaths:@[path]
-                             withRowAnimation:UITableViewRowAnimationAutomatic];
-        }
-    
-    [tableView endUpdates];
+    [self addRowAnimationInEditing:editing];
 }
 
 #pragma mark -
@@ -97,6 +85,25 @@ ITViewControllerSynthesizeRootView(ITUsersViewController, usersView, ITUsersView
 }
 
 #pragma mark -
+#pragma mark Private
+
+- (void)addRowAnimationInEditing:(BOOL)editing {
+    UITableView *tableView = self.usersView.tableView;
+    
+    [tableView updateTableViewWithBlock:^{
+        NSIndexPath *path = [NSIndexPath indexPathForRow:self.usersModel.count
+                                               inSection:0];
+        if (editing) {
+            [tableView insertRowsAtIndexPaths:@[path]
+                             withRowAnimation:UITableViewRowAnimationAutomatic];
+        } else {
+            [tableView deleteRowsAtIndexPaths:@[path]
+                             withRowAnimation:UITableViewRowAnimationAutomatic];
+        }
+    }];
+}
+
+#pragma mark -
 #pragma mark Interface Handling
 
 - (IBAction)onEditButtonClicked:(id)sender {
@@ -118,12 +125,9 @@ ITViewControllerSynthesizeRootView(ITUsersViewController, usersView, ITUsersView
             cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ITUserCell *cell = [tableView reusableCellWithClass:[ITUserCell class]];
-    ITAddRowCell *addCell = [tableView reusableCellWithClass:[ITAddRowCell class]];
     
-    if (indexPath.row >= self.usersModel.count && self.usersView.editing) {
-        addCell.textLabel.text = kITAddRowTitle;
-        
-        return addCell;
+    if (indexPath.row >= self.usersModel.count && self.usersView.editing) {        
+        return [tableView reusableCellWithClass:[ITAddRowCell class]];;
     }
     
     cell.user = self.usersModel[indexPath.row];

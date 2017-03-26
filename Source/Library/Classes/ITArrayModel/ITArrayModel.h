@@ -10,9 +10,7 @@
 #import "ITAbstractModel.h"
 
 typedef NS_ENUM(NSUInteger, ITArrayModelState) {
-    ITArrayModelUpdated,
-    ITArrayModelLoaded,
-    ITArrayModelLoading
+    ITArrayModelUpdated
 };
 
 @class ITArrayModel;

@@ -13,40 +13,40 @@
 #pragma mark -
 #pragma mark Class Methods
 
-+ (UINib *)nibWithClass:(Class)class {
-    return [self nibWithClass:class bundle:nil];
++ (UINib *)nibWithClass:(Class)cls {
+    return [self nibWithClass:cls bundle:nil];
 }
 
-+ (UINib *)nibWithClass:(Class)class
++ (UINib *)nibWithClass:(Class)cls
                  bundle:(NSBundle *)bundle
 {
-    return [UINib nibWithNibName:NSStringFromClass(class)
+    return [UINib nibWithNibName:NSStringFromClass(cls)
                           bundle:bundle];
 }
 
-+ (id)objectWithClass:(Class)class {
-    return [self objectWithClass:class
++ (id)objectWithClass:(Class)cls {
+    return [self objectWithClass:cls
                           bundle:nil];
 }
 
-+ (id)objectWithClass:(Class)class bundle:(NSBundle *)bundle {
-    return [self objectWithClass:class
++ (id)objectWithClass:(Class)cls bundle:(NSBundle *)bundle {
+    return [self objectWithClass:cls
                           bundle:bundle
                        withOwner:nil
                      withOptions:nil];
 }
 
-+ (id)objectWithClass:(Class)class
++ (id)objectWithClass:(Class)cls
                bundle:(NSBundle *)bundle
             withOwner:(id)owner
           withOptions:(NSDictionary *)options
 {
-    UINib *nib = [self nibWithClass:class bundle:bundle];
+    UINib *nib = [self nibWithClass:cls bundle:bundle];
     NSArray *objects = [nib instantiateWithOwner:owner
                                          options:options];
     
     for (id object in objects) {
-        if ([object isMemberOfClass:class]) {
+        if ([object isMemberOfClass:cls]) {
             return object;
         }
     }
@@ -57,20 +57,20 @@
 #pragma mark -
 #pragma mark Public
 
-- (id)objectWithClass:(Class)class {
-    return [self objectWithClass:class
+- (id)objectWithClass:(Class)cls {
+    return [self objectWithClass:cls
                        withOwner:nil];
 }
 
-- (id)objectWithClass:(Class)class
+- (id)objectWithClass:(Class)cls
             withOwner:(id)owner
 {
-    return [self objectWithClass:class
+    return [self objectWithClass:cls
                        withOwner:owner
                      withOptions:nil];
 }
 
-- (id)objectWithClass:(Class)class
+- (id)objectWithClass:(Class)cls
             withOwner:(id)owner
           withOptions:(NSDictionary *)options
 {
@@ -78,7 +78,7 @@
                                           options:options];
     
     for (id object in objects) {
-        if ([object isMemberOfClass:class]) {
+        if ([object isMemberOfClass:cls]) {
             return object;
         }
     }

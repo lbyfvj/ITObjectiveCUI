@@ -55,15 +55,14 @@
         withObject:[ITModelChange deleteAtIndex:index]];
 }
 
-- (void)moveObjectAtIndex:(NSUInteger)index toIndex:(NSUInteger)newIndex {
-    id object = self.array[index];
+- (void)moveObjectAtIndex:(NSUInteger)index
+                  toIndex:(NSUInteger)newIndex
+{
+    [self moveObjectAtIndex:index toIndex:newIndex];
     
-    [self.array removeObjectAtIndex:index];
-    [self.array insertObject:object atIndex:newIndex];
-    
-//    [self setState:ITArrayModelUpdated
-//        withObject:[ITModelChange moveAtIndex:index
-//                                      toIndex:newIndex]];
+    [self setState:ITArrayModelUpdated
+        withObject:[ITModelChange moveAtIndex:index
+                                      toIndex:newIndex]];
 }
 
 - (id)objectAtIndex:(NSUInteger)index {

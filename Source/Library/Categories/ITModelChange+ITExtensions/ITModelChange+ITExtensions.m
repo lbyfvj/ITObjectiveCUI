@@ -11,7 +11,8 @@
 @implementation ITModelChange (ITExtensions)
 
 - (void)changeTableView:(UITableView *)tableView
-       withRowAnimation:(UITableViewRowAnimation) animation {
+       withRowAnimation:(UITableViewRowAnimation) animation
+{
     
 }
 

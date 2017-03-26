@@ -10,8 +10,8 @@
 
 @interface NSBundle (ITExtensions)
 
-- (id)objectWithClass:(Class)class;
-- (id)objectWithClass:(Class)class withOwner:(id)owner;
-- (id)objectWithClass:(Class)class withOwner:(id)owner withOptions:(NSDictionary *)options;
+- (id)objectWithClass:(Class)cls;
+- (id)objectWithClass:(Class)cls withOwner:(id)owner;
+- (id)objectWithClass:(Class)cls withOwner:(id)owner withOptions:(NSDictionary *)options;
 
 @end

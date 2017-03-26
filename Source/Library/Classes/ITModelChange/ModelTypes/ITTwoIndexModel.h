@@ -8,7 +8,7 @@
 
 #import "ITOneIndexModel.h"
 
-@interface ITTwoIndexModel : NSObject
+@interface ITTwoIndexModel : ITOneIndexModel
 @property (nonatomic, readonly)     NSUInteger     toIndex;
 
 + (instancetype)modelWithIndex:(NSUInteger)index
