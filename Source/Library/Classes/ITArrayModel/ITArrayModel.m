@@ -18,7 +18,6 @@
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
-
 - (instancetype)init {
     self = [super init];
     if (self) {
@@ -77,6 +76,11 @@
 
 - (NSUInteger)indexOfObject:(id)object {
     return [self.array indexOfObject:object];
+}
+
+- (void)save {
+    NSLog(@"%@", [self path]);
+    [self.array writeToFile:[self path] atomically:YES];
 }
 
 #pragma mark -

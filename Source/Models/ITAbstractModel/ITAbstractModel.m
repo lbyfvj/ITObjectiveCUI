@@ -10,15 +10,27 @@
 
 #import "ITDispatchQueue.h"
 
+#import "NSFileManager+ITExtensions.h"
+
 @implementation ITAbstractModel
 
 #pragma mark -
 #pragma mark Public
 
+- (NSString *)path {
+    NSString *fileName = [NSString stringWithFormat:@"%@.plist", NSStringFromClass([self class])];
+    NSURL *appDirectory = [NSFileManager applicationDocumentsDirectory];
+    
+    return [[appDirectory path] stringByAppendingString:fileName];
+}
+
+- (void)save {
+    
+}
+
 - (void)load {
     @synchronized(self) {
         NSUInteger state = self.state;
-        
         if (ITAbstractModelLoaded == state || ITAbstractModelLoading == state) {
             [self notifyOfState:state];
             return;

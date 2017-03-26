@@ -17,7 +17,10 @@ typedef NS_ENUM(NSUInteger, ITAbstractModelState) {
 
 @interface ITAbstractModel : ITObservableObject
 
+- (NSString *)path;
+
 - (void)load;
+- (void)save;
 - (void)performLoading;
 
 @end

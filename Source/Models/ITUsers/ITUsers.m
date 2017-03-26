@@ -54,8 +54,18 @@ static const NSUInteger kITUsersCount = 10;
 #pragma mark - ITAbstractModel Override
 
 - (void)performLoading {
-    [self generateUsers];
+    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:[self path]];
+    if (fileExists) {
+        NSMutableArray *users = [[NSMutableArray alloc] initWithContentsOfFile:[self path]];        
+        for (ITUser *user in users) {
+            [self addObject:user];
+        }
+    } else {
+        [self generateUsers];
+    }
+    
     sleep(1);
+    
     self.state = ITAbstractModelLoaded;
 }
 

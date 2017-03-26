@@ -58,6 +58,7 @@
 		93C20EE91E5F72DD00B56982 /* ITSquareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93C20EE51E5F72DD00B56982 /* ITSquareViewController.xib */; };
 		93C757101E858E860007F444 /* ITAbstractModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C7570F1E858E860007F444 /* ITAbstractModel.m */; };
 		93C757141E85931C0007F444 /* ITAbstractView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C757131E85931C0007F444 /* ITAbstractView.m */; };
+		93C757201E86C7B60007F444 /* NSFileManager+ITExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C7571F1E86C7B60007F444 /* NSFileManager+ITExtensions.m */; };
 		F90D59E8A4E6D833288C12AA /* libPods-ITObjCUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03AF09BAA2BA61E48268062F /* libPods-ITObjCUITests.a */; };
 /* End PBXBuildFile section */
 
@@ -167,6 +168,8 @@
 		93C7570F1E858E860007F444 /* ITAbstractModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITAbstractModel.m; sourceTree = "<group>"; };
 		93C757121E85931C0007F444 /* ITAbstractView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITAbstractView.h; sourceTree = "<group>"; };
 		93C757131E85931C0007F444 /* ITAbstractView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITAbstractView.m; sourceTree = "<group>"; };
+		93C7571E1E86C7B60007F444 /* NSFileManager+ITExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+ITExtensions.h"; sourceTree = "<group>"; };
+		93C7571F1E86C7B60007F444 /* NSFileManager+ITExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+ITExtensions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +203,7 @@
 		931CF0D81E8454A600AE4B4C /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				93C7571D1E86C79B0007F444 /* NSFileManager+ITExtensions */,
 				931CF0D91E8454A600AE4B4C /* ITModelChange+ITExtensions */,
 				931CF0E21E8454A600AE4B4C /* NSArray+ITExtensions */,
 				931CF0E51E8454A600AE4B4C /* NSBundle+ITExtensions */,
@@ -633,6 +637,15 @@
 			path = ITAbstractView;
 			sourceTree = "<group>";
 		};
+		93C7571D1E86C79B0007F444 /* NSFileManager+ITExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				93C7571E1E86C7B60007F444 /* NSFileManager+ITExtensions.h */,
+				93C7571F1E86C7B60007F444 /* NSFileManager+ITExtensions.m */,
+			);
+			path = "NSFileManager+ITExtensions";
+			sourceTree = "<group>";
+		};
 		C389A0FADBCBD0EADA4214AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -837,6 +850,7 @@
 				93462D6E1E67739D00FE1BC9 /* ITUser.m in Sources */,
 				931CF1011E8454A600AE4B4C /* NSBundle+ITExtensions.m in Sources */,
 				93462D7B1E68965D00FE1BC9 /* ITTableViewCell.m in Sources */,
+				93C757201E86C7B60007F444 /* NSFileManager+ITExtensions.m in Sources */,
 				93C20EE71E5F72DD00B56982 /* ITSquareView.m in Sources */,
 				931CF1081E8454A600AE4B4C /* UIWindow+ITExtensions.m in Sources */,
 				93C20EC81E5CC8A100B56982 /* ITAppDelegate.m in Sources */,

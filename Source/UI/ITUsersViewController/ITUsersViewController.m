@@ -173,7 +173,6 @@ ITViewControllerSynthesizeRootView(ITUsersViewController, usersView, ITUsersView
 
 - (void)arrayModel:(ITUsers *)model didUpdateWithModelChange:(ITModelChange *)modelChange {
     NSLog(@"%@", NSStringFromSelector(_cmd));
-    
     [self.usersView updateUsersViewWithModelChange:modelChange];
 }
 
