@@ -87,7 +87,7 @@
 - (void)abstractModelDidUnload:(ITImageModel *)imageModel {
     ITWeakify(self);
     ITAsyncPerformInMainQueue(^{
-        ITStrongify(self);
+        ITStrongifyAndReturnIfNil(self);
         self.contentImageView.image = imageModel.image;
     });
 }
@@ -95,7 +95,7 @@
 - (void)abstractModelDidLoad:(ITImageModel *)imageModel {
     ITWeakify(self);
     ITAsyncPerformInMainQueue(^{
-        ITStrongify(self);
+        ITStrongifyAndReturnIfNil(self);
         self.contentImageView.image = imageModel.image;
     });
     [self hideLoadingView];
@@ -108,7 +108,7 @@
 - (void)abstractModelDidFailLoading:(ITImageModel *)imageModel {
     ITWeakify(self);
     ITAsyncPerformInMainQueue(^{
-        ITStrongify(self);
+        ITStrongifyAndReturnIfNil(self);
         [self.imageModel load];
     });
 }

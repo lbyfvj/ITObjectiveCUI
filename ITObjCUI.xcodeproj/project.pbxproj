@@ -38,7 +38,6 @@
 		93AA34671E79DB3D00513950 /* ITUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93AA34651E79DB3D00513950 /* ITUserCell.xib */; };
 		93AA346B1E79DB6600513950 /* ITAddRowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93AA34691E79DB6600513950 /* ITAddRowCell.m */; };
 		93AA346C1E79DB6600513950 /* ITAddRowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93AA346A1E79DB6600513950 /* ITAddRowCell.xib */; };
-		93AA34711E79E37100513950 /* ITArrayModelSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 93AA34701E79E37100513950 /* ITArrayModelSpec.m */; };
 		93AA34761E7C3AD000513950 /* ITLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93AA34741E7C3AD000513950 /* ITLoadingView.m */; };
 		93AA34771E7C3AD000513950 /* ITLoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93AA34751E7C3AD000513950 /* ITLoadingView.xib */; };
 		93C20EAB1E5B99CA00B56982 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C20EA91E5B99CA00B56982 /* main.m */; };
@@ -61,6 +60,7 @@
 		93C757461E8833FC0007F444 /* ITCompilerMacro.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C757431E8833FC0007F444 /* ITCompilerMacro.m */; };
 		93C757471E8833FC0007F444 /* ITMacro.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C757451E8833FC0007F444 /* ITMacro.m */; };
 		93C757491E8855C40007F444 /* ITBlockVariablesMacro.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C757481E8855C40007F444 /* ITBlockVariablesMacro.m */; };
+		93C7574D1E8864370007F444 /* ITMutableArraySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C7574C1E8864370007F444 /* ITMutableArraySpec.m */; };
 		F90D59E8A4E6D833288C12AA /* libPods-ITObjCUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03AF09BAA2BA61E48268062F /* libPods-ITObjCUITests.a */; };
 /* End PBXBuildFile section */
 
@@ -136,7 +136,6 @@
 		93AA34681E79DB6600513950 /* ITAddRowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITAddRowCell.h; sourceTree = "<group>"; };
 		93AA34691E79DB6600513950 /* ITAddRowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITAddRowCell.m; sourceTree = "<group>"; };
 		93AA346A1E79DB6600513950 /* ITAddRowCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ITAddRowCell.xib; sourceTree = "<group>"; };
-		93AA34701E79E37100513950 /* ITArrayModelSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITArrayModelSpec.m; sourceTree = "<group>"; };
 		93AA34731E7C3AD000513950 /* ITLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITLoadingView.h; sourceTree = "<group>"; };
 		93AA34741E7C3AD000513950 /* ITLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITLoadingView.m; sourceTree = "<group>"; };
 		93AA34751E7C3AD000513950 /* ITLoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ITLoadingView.xib; sourceTree = "<group>"; };
@@ -176,6 +175,7 @@
 		93C757451E8833FC0007F444 /* ITMacro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITMacro.m; sourceTree = "<group>"; };
 		93C757481E8855C40007F444 /* ITBlockVariablesMacro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITBlockVariablesMacro.m; sourceTree = "<group>"; };
 		93C7574A1E8855DE0007F444 /* ITBlockVariablesMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITBlockVariablesMacro.h; sourceTree = "<group>"; };
+		93C7574C1E8864370007F444 /* ITMutableArraySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITMutableArraySpec.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -480,17 +480,9 @@
 		93AA346E1E79E34400513950 /* Specs */ = {
 			isa = PBXGroup;
 			children = (
-				93AA346F1E79E34400513950 /* ITArrayModelSpec */,
+				93C7574B1E8864370007F444 /* ITMutableArraySpec */,
 			);
 			path = Specs;
-			sourceTree = "<group>";
-		};
-		93AA346F1E79E34400513950 /* ITArrayModelSpec */ = {
-			isa = PBXGroup;
-			children = (
-				93AA34701E79E37100513950 /* ITArrayModelSpec.m */,
-			);
-			path = ITArrayModelSpec;
 			sourceTree = "<group>";
 		};
 		93AA34721E7C3A3900513950 /* ITLoadingView */ = {
@@ -678,6 +670,14 @@
 				93C757481E8855C40007F444 /* ITBlockVariablesMacro.m */,
 			);
 			path = Macros;
+			sourceTree = "<group>";
+		};
+		93C7574B1E8864370007F444 /* ITMutableArraySpec */ = {
+			isa = PBXGroup;
+			children = (
+				93C7574C1E8864370007F444 /* ITMutableArraySpec.m */,
+			);
+			path = ITMutableArraySpec;
 			sourceTree = "<group>";
 		};
 		C389A0FADBCBD0EADA4214AE /* Frameworks */ = {
@@ -901,7 +901,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93AA34711E79E37100513950 /* ITArrayModelSpec.m in Sources */,
+				93C7574D1E8864370007F444 /* ITMutableArraySpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,8 +13,10 @@
 - (void)moveObjectAtIndex:(NSUInteger)index
                   toIndex:(NSUInteger)newIndex
 {
+    id object = self[index];
     [self removeObjectAtIndex:index];
-    [self insertObject:self[index] atIndex:newIndex];
+    [self insertObject:object atIndex:newIndex];
+    
 }
 
 @end
