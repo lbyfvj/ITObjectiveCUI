@@ -8,16 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-#import "ITObservableObject.h"
+#import "ITAbstractModel.h"
 
-typedef NS_ENUM(NSUInteger, ITImageModelState) {
-    ITImageModelUnloaded,
-    ITImageModelLoading,
-    ITImageModelLoaded,
-    ITImageModelFailedLoading
-};
-
-@interface ITImageModel : ITObservableObject
+@interface ITImageModel : ITAbstractModel
 @property (nonatomic, readonly)     UIImage     *image;
 @property (nonatomic, readonly)     NSURL       *url;
 
@@ -27,18 +20,6 @@ typedef NS_ENUM(NSUInteger, ITImageModelState) {
 
 - (instancetype)initWithURL:(NSURL *)url;
 
-- (void)load;
-
 - (void)dump;
-
-@end
-
-@protocol ITImageModelObserver <NSObject>
-
-@optional
-- (void)imageModelDidUnload:(ITImageModel *)imageModel;
-- (void)imageModelDidLoading:(ITImageModel *)imageModel;
-- (void)imageModelDidLoad:(ITImageModel *)imageModel;
-- (void)imageModelDidFailLoading:(ITImageModel *)imageModel;
 
 @end

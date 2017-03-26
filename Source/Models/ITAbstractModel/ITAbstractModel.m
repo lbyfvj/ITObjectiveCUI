@@ -53,6 +53,9 @@
 
 - (SEL)selectorForState:(NSUInteger)state {
     switch (state) {
+        case ITAbstractModelUnloaded:
+            return @selector(abstractModelDidUnload:);
+            
         case ITAbstractModelLoaded:
             return @selector(abstractModelDidLoad:);
             

@@ -41,21 +41,16 @@
 #pragma mark -
 #pragma mark Public
 
-- (void)load {
-    
-    @synchronized (self) {
-        if (ITImageModelLoading == self.state) {
-            return;
-        }
-        
-        if (ITImageModelLoaded == self.state) {
-            [self notifyOfState:ITImageModelLoaded];
-            return;
-        }
-        
-        self.state = ITImageModelLoading;
-    }
-    
+- (void)dump {
+    self.image = nil;
+
+    self.state = ITAbstractModelUnloaded;
+}
+
+#pragma mark -
+#pragma mark ITAbstractModel override
+
+- (void)performLoading {
     ITWeakify(self);
     ITAsyncPerformInBackgroundQueue(^{
         ITStrongify(self);
@@ -63,36 +58,9 @@
         self.image = [UIImage imageWithContentsOfFile:[self.url path]];
         
         @synchronized(self) {
-            self.state = self.image ? ITImageModelLoaded : ITImageModelFailedLoading;
+            self.state = self.image ? ITAbstractModelLoaded : ITAbstractModelFailedLoading;
         }
     });
-}
-
-- (void)dump {
-    self.image = nil;
-    self.state = ITImageModelUnloaded;
-}
-
-#pragma mark -
-#pragma mark ITImageModelObserver Protocol
-
-- (SEL)selectorForState:(NSUInteger)state {
-    switch (state) {
-        case ITImageModelUnloaded:
-            return @selector(imageModelDidUnload:);
-            
-        case ITImageModelLoading:
-            return @selector(imageModelDidLoading:);
-            
-        case ITImageModelLoaded:
-            return @selector(imageModelDidLoad:);
-            
-        case ITImageModelFailedLoading:
-            return @selector(imageModelDidFailLoading:);
-            
-        default:
-            return [super selectorForState:state];
-    }
 }
 
 @end

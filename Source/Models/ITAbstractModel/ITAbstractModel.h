@@ -27,6 +27,7 @@ typedef NS_ENUM(NSUInteger, ITAbstractModelState) {
 
 @protocol ITAbstractModelObserver <NSObject>
 @optional
+- (void)abstractModelDidUnload:(ITAbstractModel *)model;
 - (void)abstractModelDidLoad:(ITAbstractModel *)model;
 - (void)abstractModelWillLoad:(ITAbstractModel *)model;
 - (void)abstractModelDidFailLoading:(ITAbstractModel *)model;

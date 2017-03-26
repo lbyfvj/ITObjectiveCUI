@@ -8,7 +8,6 @@
 
 #import "ITImageView.h"
 
-#import "ITObservableObject.h"
 #import "ITMacro.h"
 #import "ITDispatchQueue.h"
 
@@ -83,9 +82,9 @@
 }
 
 #pragma mark -
-#pragma mark IDPImageModelObserver
+#pragma mark ITAbstractModelObserver
 
-- (void)imageModelDidUnload:(ITImageModel *)imageModel {
+- (void)abstractModelDidUnload:(ITImageModel *)imageModel {
     ITWeakify(self);
     ITAsyncPerformInMainQueue(^{
         ITStrongify(self);
@@ -93,25 +92,25 @@
     });
 }
 
-- (void)imageModelDidLoading:(ITImageModel *)imageModel {
- 
-}
-
-- (void)imageModelDidLoad:(ITImageModel *)imageModel {
+- (void)abstractModelDidLoad:(ITImageModel *)imageModel {
     ITWeakify(self);
     ITAsyncPerformInMainQueue(^{
         ITStrongify(self);
         self.contentImageView.image = imageModel.image;
     });
+    [self hideLoadingView];
 }
 
-- (void)imageModelDidFailLoading:(ITImageModel *)imageModel {
+- (void)abstractModelWillLoad:(ITImageModel *)imageModel {
+    [self showLoadingView];
+}
+
+- (void)abstractModelDidFailLoading:(ITImageModel *)imageModel {
     ITWeakify(self);
     ITAsyncPerformInMainQueue(^{
         ITStrongify(self);
         [self.imageModel load];
     });
 }
-
 
 @end
