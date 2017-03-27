@@ -79,7 +79,9 @@
 
 - (void)save {
     NSLog(@"%@", [self path]);
-    [self.array writeToFile:[self path] atomically:YES];
+    //[self.array writeToFile:[self path] atomically:YES];
+    
+    [NSKeyedArchiver archiveRootObject:self.array toFile:[self path]];
 }
 
 #pragma mark -

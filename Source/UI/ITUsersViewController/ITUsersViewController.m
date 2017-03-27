@@ -116,9 +116,10 @@ ITViewControllerSynthesizeRootView(ITUsersViewController, usersView, ITUsersView
 - (NSInteger)   tableView:(UITableView *)tableView
     numberOfRowsInSection:(NSInteger)section
 {
-    NSUInteger addRow = self.usersView.editing ? 1 : 0;
+//    NSUInteger addRow = self.usersView.editing ? 1 : 0;
+//    return self.usersModel.count + addRow;
     
-    return self.usersModel.count + addRow;
+    return self.usersModel.count + (self.editing ? 1 : 0);
 }
 
 - (UITableViewCell *)   tableView:(UITableView *)tableView
@@ -126,7 +127,7 @@ ITViewControllerSynthesizeRootView(ITUsersViewController, usersView, ITUsersView
 {
     ITUserCell *cell = [tableView reusableCellWithClass:[ITUserCell class]];
     
-    if (indexPath.row >= self.usersModel.count && self.usersView.editing) {        
+    if (indexPath.row >= self.usersModel.count && self.editing) {
         return [tableView reusableCellWithClass:[ITAddRowCell class]];;
     }
     
@@ -165,11 +166,11 @@ ITViewControllerSynthesizeRootView(ITUsersViewController, usersView, ITUsersView
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView
            editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row >= self.usersModel.count) {
-       return UITableViewCellEditingStyleInsert;
-    }
+//    if (indexPath.row >= self.usersModel.count) {
+//       return UITableViewCellEditingStyleInsert;
+//    }
     
-    return UITableViewCellEditingStyleDelete;
+    return indexPath.row >= self.usersModel.count ? UITableViewCellEditingStyleInsert : UITableViewCellEditingStyleDelete;
 }
 
 #pragma mark -

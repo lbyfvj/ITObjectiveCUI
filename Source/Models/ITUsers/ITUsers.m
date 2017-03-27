@@ -54,7 +54,8 @@ static const NSUInteger kITUsersCount = 10;
 - (void)performLoading {
     BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:[self path]];
     if (fileExists) {
-        NSMutableArray *users = [[NSMutableArray alloc] initWithContentsOfFile:[self path]];        
+        //NSMutableArray *users = [[NSMutableArray alloc] initWithContentsOfFile:[self path]];
+        NSMutableArray *users = [NSKeyedUnarchiver unarchiveObjectWithFile:[self path]];
         for (ITUser *user in users) {
             [self addObject:user];
         }
