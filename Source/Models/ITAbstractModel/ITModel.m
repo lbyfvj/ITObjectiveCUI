@@ -45,7 +45,7 @@
 }
 
 - (void)performLoading {
-    
+    self.state = ITAbstractModelLoaded;
 }
 
 #pragma mark -

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "ITAbstractModel.h"
+#import "ITModel.h"
 #import "ITLoadingView.h"
 
 @interface ITAbstractView : UIView

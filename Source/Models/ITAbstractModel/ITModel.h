@@ -12,7 +12,8 @@ typedef NS_ENUM(NSUInteger, ITAbstractModelState) {
     ITAbstractModelUnloaded,
     ITAbstractModelLoaded,
     ITAbstractModelLoading,
-    ITAbstractModelFailedLoading
+    ITAbstractModelFailedLoading,
+    ITAbstractModelStateCount
 };
 
 @interface ITAbstractModel : ITObservableObject
