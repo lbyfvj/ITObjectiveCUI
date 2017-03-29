@@ -9,5 +9,9 @@
 #import "ITTwoIndexModel.h"
 
 @interface ITTwoIndexModel (ITIndexPath)
+@property (nonatomic, readonly) NSIndexPath *indexPath;
+@property (nonatomic, readonly) NSIndexPath *toIndexPath;
 
++ (instancetype)modelWithIndexPath:(NSIndexPath *)indexPath
+                    toIndexPath:(NSIndexPath *)toIndexPath;
 @end

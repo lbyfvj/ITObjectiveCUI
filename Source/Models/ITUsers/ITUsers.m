@@ -15,57 +15,34 @@
 static const NSUInteger kITUsersCount = 10;
 
 @interface ITUsers ()
-@property (nonatomic, strong)   NSMutableArray  *users;
 
-- (void)generateUsers;
+- (NSArray *)randomUsers;
+- (NSArray *)savedUsers;
 
 @end
 
 @implementation ITUsers
 
 #pragma mark -
-#pragma mark Initializations and Deallocations
+#pragma mark Private
 
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        self.users = [NSMutableArray array];
-    }
-    
-    return self;
+- (NSArray *)randomUsers {
+    return [ITUser objectsWithCount:kITUsersCount];
 }
 
-#pragma mark -
-#pragma mark - Public
-
-
-#pragma mark -
-#pragma mark - Private
-
-- (void)generateUsers {
-    for (NSUInteger i = 0; i < kITUsersCount; i++) {
-        [self addObject:[ITUser new]];
-    }
+- (NSArray *)savedUsers {
+    return [NSKeyedUnarchiver unarchiveObjectWithFile:self.path];
 }
-
-#pragma mark -
-#pragma mark - ITAbstractModel Override
 
 - (void)performLoading {
-    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:[self path]];
-    if (fileExists) {
-        //NSMutableArray *users = [[NSMutableArray alloc] initWithContentsOfFile:[self path]];
-        NSMutableArray *users = [NSKeyedUnarchiver unarchiveObjectWithFile:[self path]];
-        for (ITUser *user in users) {
-            [self addObject:user];
-        }
-    } else {
-        [self generateUsers];
-    }
+    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:self.path];
+    NSArray *users = fileExists ? self.savedUsers : self.randomUsers;
     
-    sleep(1);
+    [self performBlockWithoutNotifications:^{
+        [self addObjects:users];
+    }];
     
-    self.state = ITAbstractModelLoaded;
+    self.state = ITModelLoaded;
 }
 
 @end

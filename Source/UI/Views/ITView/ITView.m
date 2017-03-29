@@ -1,23 +1,14 @@
 //
-//  ITAbstractView.m
+//  ITView.m
 //  ITObjCUI
 //
 //  Created by Ivan Tsyganok on 24.03.17.
 //  Copyright © 2017 Ivan Tsyganok. All rights reserved.
 //
 
-#import "ITAbstractView.h"
+#import "ITView.h"
 
-@implementation ITAbstractView
-
-#pragma mark -
-#pragma mark Class Methods
-
-+ (ITAbstractView *)viewWithFrame:(CGRect)frame {
-    ITAbstractView *view = [[self alloc] initWithFrame:frame];
-    
-    return view;
-}
+@implementation ITView
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
@@ -51,18 +42,12 @@
     }
 }
 
-#pragma mark -
-#pragma mark - Public
-
-- (void)showLoadingView {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
-    [self.loadingView setVisible:YES animated:YES];
+- (void)setLoadingViewVisible:(BOOL)loadingViewVisible {
+    self.loadingView.visible = loadingViewVisible;
 }
 
-- (void)hideLoadingView {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
-    [self.loadingView setVisible:NO animated:YES];
+- (BOOL)isLoadingViewVisible {
+    return self.loadingView.isVisible;
 }
-
 
 @end

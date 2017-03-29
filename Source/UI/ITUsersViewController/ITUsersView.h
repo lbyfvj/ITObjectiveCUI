@@ -11,15 +11,14 @@
 #import "ITUsers.h"
 
 #import "ITModelChange.h"
-#import "ITAbstractView.h"
+#import "ITView.h"
 
 static const NSUInteger kITNumberOfSections = 1;
 
-@interface ITUsersView : ITAbstractView <ITAbstractModelObserver>
-@property (nonatomic, strong)   ITAbstractModel     *model;
+@interface ITUsersView : ITView <ITModelObserver>
+@property (nonatomic, strong)   ITModel     *model;
 @property (nonatomic, strong)   IBOutlet    UITableView         *tableView;
 @property (nonatomic, strong)   IBOutlet    UIBarButtonItem     *editButton;
-@property (strong, nonatomic)   IBOutlet    UINavigationItem    *navigationItem;
 
 @property (nonatomic, assign, getter=isEditing) BOOL    editing;
 

@@ -51,28 +51,14 @@ static const CGFloat        kITAlpha = 0.5;
                         options:UIViewAnimationOptionLayoutSubviews
                      animations:^{
                          if (!visible) {
-                             [self.spinner stopAnimating];
                              [self removeFromSuperview];
                          }
-                         
                          self.alpha = visible ? kITAlpha : 0.0;
-                         [self.spinner startAnimating];
                      }
                      completion:^(BOOL finished) {
-                         _visible = visible;                         
+                         _visible = visible;
                          ITDispatchBlock(block, finished);
                      }];
 }
-
-//#pragma mark -
-//#pragma mark ITArrayModelObserver
-//
-//- (void)arrayModelDidLoad:(ITArrayModel *)model {
-//    [self setVisible:NO animated:YES completionHandler:nil];
-//}
-//
-//- (void)arrayModelWillLoad:(ITArrayModel *)model {
-//    [self setVisible:YES animated:YES completionHandler:nil];
-//}
 
 @end

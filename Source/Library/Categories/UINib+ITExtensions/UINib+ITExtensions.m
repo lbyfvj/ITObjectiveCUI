@@ -42,16 +42,8 @@
           withOptions:(NSDictionary *)options
 {
     UINib *nib = [self nibWithClass:cls bundle:bundle];
-    NSArray *objects = [nib instantiateWithOwner:owner
-                                         options:options];
     
-    for (id object in objects) {
-        if ([object isMemberOfClass:cls]) {
-            return object;
-        }
-    }
-    
-    return nil;
+    return [nib objectWithClass:cls withOwner:owner withOptions:options];
 }
 
 #pragma mark -
@@ -74,16 +66,17 @@
             withOwner:(id)owner
           withOptions:(NSDictionary *)options
 {
-    NSArray *objects = [self instantiateWithOwner:owner
-                                          options:options];
-    
-    for (id object in objects) {
+    for (id object in [self objectsWithOwner:owner withOptions:options]) {
         if ([object isMemberOfClass:cls]) {
             return object;
         }
     }
     
     return nil;
+}
+
+- (NSArray *)objectsWithOwner:(id)owner withOptions:(NSDictionary *)options {
+    return [self instantiateWithOwner:owner options:nil];
 }
 
 @end

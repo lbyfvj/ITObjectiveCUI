@@ -12,7 +12,7 @@
 
 typedef void (^ITComletionBlock)(void);
 
-@interface ITLoadingView : UIView ///<ITArrayModelObserver>
+@interface ITLoadingView : UIView
 @property (nonatomic, strong)   IBOutlet UIActivityIndicatorView  *spinner;
 @property (nonatomic, assign, getter=isVisible)     BOOL visible;
 

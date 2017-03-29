@@ -6,8 +6,17 @@
 //  Copyright © 2017 Ivan Tsyganok. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "ITOneIndexModel.h"
+#import "ITTwoIndexModel.h"
 
-@interface ITModelChangesTypes : ITAbstractView
+@interface ITInsertChange : ITOneIndexModel
+
+@end
+
+@interface ITDeleteChange : ITOneIndexModel
+
+@end
+
+@interface ITMoveChange : ITTwoIndexModel
 
 @end

@@ -14,4 +14,7 @@
 + (instancetype)modelWithIndex:(NSUInteger)index
                        toIndex:(NSUInteger)toIndex;
 
+- (instancetype)initWithIndex:(NSUInteger)index
+                       toIndex:(NSUInteger)toIndex;
+
 @end

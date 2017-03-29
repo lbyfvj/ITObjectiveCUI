@@ -21,4 +21,6 @@
 - (id)objectWithClass:(Class)cls withOwner:(id)owner;
 - (id)objectWithClass:(Class)cls withOwner:(id)owner withOptions:(NSDictionary *)options;
 
+- (NSArray *)objectsWithOwner:(id)owner withOptions:(NSDictionary *)options;
+
 @end

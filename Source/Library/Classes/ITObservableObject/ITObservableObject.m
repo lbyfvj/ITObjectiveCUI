@@ -8,8 +8,11 @@
 
 #import "ITObservableObject.h"
 
+#import "ITMacro.h"
+
 @interface ITObservableObject ()
-@property (nonatomic, retain) NSHashTable   *observersHashTable;
+@property (nonatomic, retain)   NSHashTable     *observersHashTable;
+@property (nonatomic, assign)   BOOL            shouldNotify;
 
 - (void)notifyOfStateWithSelector:(SEL)selector;
 - (void)notifyOfStateWithSelector:(SEL)selector object:(id)object;
@@ -31,6 +34,7 @@
     self = [super init];
     if (self) {
         self.observersHashTable = [NSHashTable weakObjectsHashTable];
+        self.shouldNotify = YES;
     }
     
     return self;
@@ -53,15 +57,13 @@
 
 - (void)setState:(NSUInteger)state withObject:(id)object {
     @synchronized(self) {
-        //if (state != _state) {
-            _state = state;
-            [self notifyOfState:_state object:object];
-        //}
+        _state = state;
+        [self notifyOfState:_state object:object];
     }
 }
 
 #pragma mark -
-#pragma mark Public Methods
+#pragma mark Public
 
 - (void)addObserver:(id)observer {
     id observersHashTable = self.observersHashTable;
@@ -135,5 +137,11 @@
 }
 
 #pragma clang diagnostic pop
+
+- (void)performBlockWithoutNotifications:(void(^)(void))block {
+    self.shouldNotify = NO;
+    ITDispatchBlock(block);
+    self.shouldNotify = YES;
+}
 
 @end

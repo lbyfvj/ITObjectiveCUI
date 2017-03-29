@@ -9,5 +9,8 @@
 #import "ITOneIndexModel.h"
 
 @interface ITOneIndexModel (ITIndexPath)
+@property (nonatomic, readonly) NSIndexPath *indexPath;
+
++ (instancetype)modelWithIndexPath:(NSIndexPath *)indexPath;
 
 @end

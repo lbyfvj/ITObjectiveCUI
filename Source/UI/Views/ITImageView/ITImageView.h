@@ -10,9 +10,9 @@
 
 #import "ITImageModel.h"
 
-#import "ITAbstractView.h"
+#import "ITView.h"
 
-@interface ITImageView : ITAbstractView <ITAbstractModelObserver>
+@interface ITImageView : ITView <ITModelObserver>
 @property (nonatomic, strong)       ITImageModel            *imageModel;
 @property (nonatomic, strong)       IBOutlet UIImageView    *contentImageView;
 

@@ -1,5 +1,5 @@
 //
-//  ITDeleteChange+ITChangeTypesExtensions.h
+//  ITChangeTypes+ITModelChangeExtensions.h
 //  ITObjCUI
 //
 //  Created by Ivan Tsyganok on 28.03.17.
@@ -8,6 +8,14 @@
 
 #import "ITModelChangesTypes.h"
 
-@interface ITDeleteChange (ITChangeTypesExtensions)
+@interface ITDeleteChange (ITExtensions)
+
+@end
+
+@interface ITInsertChange (ITExtensions)
+
+@end
+
+@interface ITMoveChange (ITExtensions)
 
 @end

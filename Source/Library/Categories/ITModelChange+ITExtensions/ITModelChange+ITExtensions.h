@@ -10,7 +10,7 @@
 
 @interface ITModelChange (ITExtensions)
 
-- (void)changeTableView:(UITableView *)tableView
-       withRowAnimation:(UITableViewRowAnimation) animation;
+- (void)applyToTableView:(UITableView *)tableView
+       withRowAnimation:(UITableViewRowAnimation)animation;
 
 @end

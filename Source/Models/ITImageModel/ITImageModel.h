@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-#import "ITAbstractModel.h"
+#import "ITModel.h"
 
-@interface ITImageModel : ITAbstractModel
+@interface ITImageModel : ITModel
 @property (nonatomic, readonly)     UIImage     *image;
 @property (nonatomic, readonly)     NSURL       *url;
 

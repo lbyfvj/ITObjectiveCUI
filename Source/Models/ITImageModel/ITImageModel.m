@@ -44,24 +44,18 @@
 - (void)dump {
     self.image = nil;
 
-    self.state = ITAbstractModelUnloaded;
+    self.state = ITModelUnloaded;
 }
 
 #pragma mark -
-#pragma mark ITAbstractModel override
+#pragma mark ITModel override
 
 - (void)performLoading {
     ITWeakify(self);
     ITAsyncPerformInBackgroundQueue(^{
-        ITStrongify(self);
-        
+        ITStrongifyAndReturnIfNil(self);
         self.image = [UIImage imageWithContentsOfFile:[self.url path]];
-        
-        sleep(0.3);
-        
-        @synchronized(self) {
-            self.state = self.image ? ITAbstractModelLoaded : ITAbstractModelFailedLoading;
-        }
+        self.state = self.image ? ITModelLoaded : ITModelFailedLoading;
     });
 }
 

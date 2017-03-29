@@ -14,7 +14,4 @@
 + (id)deleteAtIndex:(NSUInteger)index;
 + (id)moveAtIndex:(NSUInteger)index toIndex:(NSUInteger)toIndex;
 
-//- (void)changeTableView:(UITableView *)tableView
-//       withRowAnimation:(UITableViewRowAnimation) animation;
-
 @end

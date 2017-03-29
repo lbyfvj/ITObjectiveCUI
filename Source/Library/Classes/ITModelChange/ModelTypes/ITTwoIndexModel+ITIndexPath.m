@@ -10,4 +10,28 @@
 
 @implementation ITTwoIndexModel (ITIndexPath)
 
+@dynamic indexPath;
+@dynamic toIndexPath;
+
+#pragma mark -
+#pragma mark Class Methods
+
++ (instancetype)modelWithIndexPath:(NSIndexPath *)indexPath
+                    toIndexPath:(NSIndexPath *)toIndexPath
+{
+    return [self modelWithIndex:indexPath.row
+                     toIndex:toIndexPath.row];
+}
+
+#pragma mark -
+#pragma mark Accessors
+
+- (NSIndexPath *)sourceIndexPath {
+    return [NSIndexPath indexPathForRow:self.index inSection:0];
+}
+
+- (NSIndexPath *)destinationIndexPath {
+    return [NSIndexPath indexPathForRow:self.toIndex inSection:0];
+}
+
 @end

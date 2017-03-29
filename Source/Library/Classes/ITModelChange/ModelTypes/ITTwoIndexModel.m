@@ -21,4 +21,17 @@
     return [[self alloc] initWithIndex:index];
 }
 
+#pragma mark -
+#pragma mark Public
+
+- (instancetype)initWithIndex:(NSUInteger)index
+                       toIndex:(NSUInteger)toIndex
+{
+    self = [super initWithIndex:index];
+    
+    self.toIndex = toIndex;
+    
+    return self;
+}
+
 @end

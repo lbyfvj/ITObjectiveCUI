@@ -13,4 +13,6 @@
 
 + (instancetype)modelWithIndex:(NSUInteger)index;
 
+- (instancetype)initWithIndex:(NSUInteger)index;
+
 @end

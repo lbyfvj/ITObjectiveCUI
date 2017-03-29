@@ -28,7 +28,11 @@
     return cell;
 }
 
-- (void)updateTableViewWithBlock:(ITTableViewUpdateBlock)block {
+- (void)updateWithBlock:(ITTableViewUpdateBlock)block {
+    if (!block) {
+        return;
+    }
+    
     [self beginUpdates];
     ITDispatchBlock(block);    
     [self endUpdates];

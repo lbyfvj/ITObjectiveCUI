@@ -9,21 +9,12 @@
 #import "ITUsersView.h"
 
 #import "ITUsersTableView+ITExtensions.h"
+#import "ITDispatchQueue.h"
 
 static NSString * const kITDoneButtonTitle = @"Done";
 static NSString * const kITEditButtonTitle = @"Edit";
-static NSString * const kITNavigationBarTitle = @"Users";
 
 @implementation ITUsersView
-
-#pragma mark -
-#pragma mark Class Methods
-
-+ (ITUsersView *)viewWithFrame:(CGRect)frame {
-    ITUsersView *view = [[self alloc] initWithFrame:frame];
-    
-    return view;
-}
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
@@ -31,7 +22,6 @@ static NSString * const kITNavigationBarTitle = @"Users";
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    [self.navigationItem setTitle:kITNavigationBarTitle];
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -59,7 +49,7 @@ static NSString * const kITNavigationBarTitle = @"Users";
     }
 }
 
-- (void)setModel:(ITAbstractModel *)model {
+- (void)setModel:(id)model {
     if (_model != model) {
         [_model removeObserver:self];
         
@@ -77,18 +67,20 @@ static NSString * const kITNavigationBarTitle = @"Users";
 }
 
 #pragma mark -
-#pragma mark - ITAbstractModelObserver
+#pragma mark - ITModelObserver
 
-- (void)abstractModelDidLoad:(ITAbstractModel *)model {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
-    
-    [self hideLoadingView];
+- (void)modelDidLoad:(ITModel *)model {
+    NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+    ITAsyncPerformInMainQueue(^{
+        self.loadingViewVisible = NO;
+    });
 }
 
-- (void)abstractModelWillLoad:(ITAbstractModel *)model {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
-    
-    [self showLoadingView];
+- (void)modelWillLoad:(ITModel *)model {
+    NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+    ITAsyncPerformInMainQueue(^{
+        self.loadingViewVisible = YES;
+    });
 }
 
 @end

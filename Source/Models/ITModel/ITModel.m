@@ -1,25 +1,25 @@
 //
-//  ITAbstractModel.m
+//  ITModel.m
 //  ITObjCUI
 //
 //  Created by Ivan Tsyganok on 24.03.17.
 //  Copyright © 2017 Ivan Tsyganok. All rights reserved.
 //
 
-#import "ITAbstractModel.h"
+#import "ITModel.h"
 
 #import "ITDispatchQueue.h"
 
 #import "NSFileManager+ITExtensions.h"
 
-@implementation ITAbstractModel
+@implementation ITModel
 
 #pragma mark -
 #pragma mark Public
 
 - (NSString *)path {
     NSString *fileName = [NSString stringWithFormat:@"%@.plist", NSStringFromClass([self class])];
-    NSURL *appDirectory = [NSFileManager applicationDocumentsDirectory];
+    NSURL *appDirectory = [NSFileManager documentsDirectory];
     
     return [[appDirectory path] stringByAppendingString:fileName];
 }
@@ -31,12 +31,12 @@
 - (void)load {
     @synchronized(self) {
         NSUInteger state = self.state;
-        if (ITAbstractModelLoaded == state || ITAbstractModelLoading == state) {
+        if (ITModelLoaded == state || ITModelLoading == state) {
             [self notifyOfState:state];
             return;
         }
         
-        self.state = ITAbstractModelLoading;
+        self.state = ITModelLoading;
     }
     
     ITAsyncPerformInBackgroundQueue(^{
@@ -45,7 +45,7 @@
 }
 
 - (void)performLoading {
-    self.state = ITAbstractModelLoaded;
+    self.state = ITModelLoaded;
 }
 
 #pragma mark -
@@ -53,17 +53,17 @@
 
 - (SEL)selectorForState:(NSUInteger)state {
     switch (state) {
-        case ITAbstractModelUnloaded:
-            return @selector(abstractModelDidUnload:);
+        case ITModelUnloaded:
+            return @selector(modelDidUnload:);
             
-        case ITAbstractModelLoaded:
-            return @selector(abstractModelDidLoad:);
+        case ITModelLoaded:
+            return @selector(modelDidLoad:);
             
-        case ITAbstractModelLoading:
-            return @selector(abstractModelWillLoad:);
+        case ITModelLoading:
+            return @selector(modelWillLoad:);
             
-        case ITAbstractModelFailedLoading:
-            return @selector(abstractModelDidFailLoading:);
+        case ITModelFailedLoading:
+            return @selector(modelDidFailLoading:);
             
         default:
             return [super selectorForState:state];

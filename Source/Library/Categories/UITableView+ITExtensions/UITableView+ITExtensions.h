@@ -16,6 +16,6 @@ typedef void (^ITTableViewUpdateBlock)(void);
 
 - (id)reusableCellWithClass:(Class)cls;
 
-- (void)updateTableViewWithBlock:(ITTableViewUpdateBlock)block;
+- (void)updateWithBlock:(ITTableViewUpdateBlock)block;
 
 @end

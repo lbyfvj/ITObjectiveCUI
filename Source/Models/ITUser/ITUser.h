@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-#import "ITAbstractModel.h"
+#import "ITModel.h"
 #import "ITImageModel.h"
 
-@interface ITUser : ITAbstractModel <NSCoding>
+@interface ITUser : NSObject <NSCoding>
 @property (nonatomic, strong)       NSString        *name;
 @property (nonatomic, readonly)     ITImageModel    *image;
 @property (nonatomic, copy)         NSURL           *imageURL;

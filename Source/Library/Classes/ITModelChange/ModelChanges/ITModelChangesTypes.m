@@ -8,6 +8,16 @@
 
 #import "ITModelChangesTypes.h"
 
-@implementation ITModelChangesTypes
+@implementation ITInsertChange
 
 @end
+
+@implementation ITDeleteChange
+
+@end
+
+@implementation ITMoveChange
+
+@end
+
+

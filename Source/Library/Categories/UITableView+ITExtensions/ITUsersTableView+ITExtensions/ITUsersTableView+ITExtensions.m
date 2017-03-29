@@ -14,8 +14,8 @@
 @implementation UITableView (ITExtemsions)
 
 - (void)updateTableViewWithModelChange:(ITModelChange *)modelChange {
-    [self updateTableViewWithBlock:^{
-        [modelChange changeTableView:self withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self updateWithBlock:^{
+        [modelChange applyToTableView:self withRowAnimation:UITableViewRowAnimationAutomatic];
     }];
 }
 

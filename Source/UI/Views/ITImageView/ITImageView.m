@@ -82,9 +82,9 @@
 }
 
 #pragma mark -
-#pragma mark ITAbstractModelObserver
+#pragma mark ITModelObserver
 
-- (void)abstractModelDidUnload:(ITImageModel *)imageModel {
+- (void)modelDidUnload:(ITImageModel *)imageModel {
     ITWeakify(self);
     ITAsyncPerformInMainQueue(^{
         ITStrongifyAndReturnIfNil(self);
@@ -92,20 +92,22 @@
     });
 }
 
-- (void)abstractModelDidLoad:(ITImageModel *)imageModel {
+- (void)modelDidLoad:(ITImageModel *)imageModel {
     ITWeakify(self);
     ITAsyncPerformInMainQueue(^{
         ITStrongifyAndReturnIfNil(self);
         self.contentImageView.image = imageModel.image;
+        self.loadingViewVisible = NO;
     });
-    [self hideLoadingView];
 }
 
-- (void)abstractModelWillLoad:(ITImageModel *)imageModel {
-    [self showLoadingView];
+- (void)modelWillLoad:(ITImageModel *)imageModel {
+    ITAsyncPerformInMainQueue(^{
+        self.loadingViewVisible = YES;
+    });
 }
 
-- (void)abstractModelDidFailLoading:(ITImageModel *)imageModel {
+- (void)modelDidFailLoading:(ITImageModel *)imageModel {
     ITWeakify(self);
     ITAsyncPerformInMainQueue(^{
         ITStrongifyAndReturnIfNil(self);

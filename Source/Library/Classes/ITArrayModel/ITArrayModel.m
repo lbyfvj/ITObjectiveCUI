@@ -11,9 +11,13 @@
 @interface ITArrayModel ()
 @property (nonatomic, strong)   NSMutableArray  *array;
 
+- (void)notifyOfModelUpdateWithObject:(ITModelChange *)modelChange;
+
 @end
 
 @implementation ITArrayModel
+
+@dynamic count;
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
@@ -38,31 +42,41 @@
 }
 
 - (void)addObject:(id)object {
-    [self.array addObject:object];
+    [self insertObject:object atIndex:self.count];
+}
+
+- (void)addObjects:(NSArray *)objects {
+    for (id object in objects) {
+        [self.array addObject:object];
+    }
 }
 
 - (void)insertObject:(id)object atIndex:(NSUInteger)index {
     [self.array insertObject:object atIndex:index];
+    [self notifyOfModelUpdateWithObject:[ITModelChange insertAtIndex:index]];
+}
 
-    [self setState:ITArrayModelUpdated
-        withObject:[ITModelChange insertAtIndex:index]];
+- (void)removeObject:(id)object {
+    [self.array removeObjectAtIndex:[self indexOfObject:object]];
+}
+
+- (void)removeObjects:(NSArray *)objects {
+    for (id object in objects) {
+        [self removeObject:object];
+    }
 }
 
 - (void)removeObjectAtIndex:(NSUInteger)index {
     [self.array removeObjectAtIndex:index];
-    
-    [self setState:ITArrayModelUpdated
-        withObject:[ITModelChange deleteAtIndex:index]];
+    [self notifyOfModelUpdateWithObject:[ITModelChange deleteAtIndex:index]];
 }
 
 - (void)moveObjectAtIndex:(NSUInteger)index
                   toIndex:(NSUInteger)newIndex
 {
     [self moveObjectAtIndex:index toIndex:newIndex];
-    
-    [self setState:ITArrayModelUpdated
-        withObject:[ITModelChange moveAtIndex:index
-                                      toIndex:newIndex]];
+    [self notifyOfModelUpdateWithObject:[ITModelChange moveAtIndex:index
+                                                           toIndex:newIndex]];
 }
 
 - (id)objectAtIndex:(NSUInteger)index {
@@ -79,9 +93,15 @@
 
 - (void)save {
     NSLog(@"%@", [self path]);
-    //[self.array writeToFile:[self path] atomically:YES];
-    
     [NSKeyedArchiver archiveRootObject:self.array toFile:[self path]];
+}
+
+#pragma mark -
+#pragma mark Private
+
+- (void)notifyOfModelUpdateWithObject:(ITModelChange *)modelChange {
+    [self setState:ITArrayModelUpdated
+        withObject:modelChange];
 }
 
 #pragma mark -
@@ -103,7 +123,8 @@
 
 - (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state
                                   objects:(id __unsafe_unretained [])buffer
-                                    count:(NSUInteger)length {
+                                    count:(NSUInteger)length
+{
     return [self.array countByEnumeratingWithState:state objects:buffer count:length];
 }
 

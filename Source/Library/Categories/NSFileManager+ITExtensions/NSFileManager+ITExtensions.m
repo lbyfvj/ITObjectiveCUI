@@ -8,11 +8,31 @@
 
 #import "NSFileManager+ITExtensions.h"
 
+#import "ITMacro.h"
+
 @implementation NSFileManager (ITExtensions)
 
-+ (NSURL *)applicationDocumentsDirectory {
-    return [[[NSFileManager defaultManager] URLsForDirectory:NSLibraryDirectory
++ (NSURL *)directoryPathWithType:(NSSearchPathDirectory)type {
+    return [[[NSFileManager defaultManager] URLsForDirectory:type
                                                    inDomains:NSUserDomainMask] lastObject];
+}
+
++ (NSURL *)documentsDirectory {
+    NSURL *directoryPath = [NSFileManager directoryPathWithType:NSDocumentDirectory];
+    
+    ITSharedVariable(directoryPath);
+}
+
++ (NSURL *)libraryDirectory {
+    NSURL *directoryPath = [NSFileManager directoryPathWithType:NSLibraryDirectory];
+    
+    ITSharedVariable(directoryPath);
+}
+
++ (NSURL *)applicationDirectory {
+    NSURL *directoryPath = [NSFileManager directoryPathWithType:NSApplicationDirectory];
+    
+    ITSharedVariable(directoryPath);
 }
 
 @end

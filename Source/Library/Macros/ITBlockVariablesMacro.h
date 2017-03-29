@@ -31,3 +31,12 @@ ITStrongify(variable); \
 if (!variable) { \
 return result; \
 }
+
+#define ITSharedVariable(variable) \
+static id sharedInstance = nil; \
+static dispatch_once_t onceToken; \
+dispatch_once(&onceToken, ^{ \
+    sharedInstance = variable; \
+}); \
+\
+return sharedInstance;

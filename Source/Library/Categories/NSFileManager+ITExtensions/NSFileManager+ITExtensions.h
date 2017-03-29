@@ -10,6 +10,10 @@
 
 @interface NSFileManager (ITExtensions)
 
-+ (NSURL *)applicationDocumentsDirectory;
++ (NSURL *)documentsDirectory;
+
++ (NSURL *)libraryDirectory;
+
++ (NSURL *)applicationDirectory;
 
 @end

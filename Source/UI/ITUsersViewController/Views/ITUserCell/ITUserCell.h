@@ -8,15 +8,14 @@
 
 #import "ITTableViewCell.h"
 
-#import "ITAbstractModel.h"
+#import "ITModel.h"
 
 @class ITUser;
 @class ITImageView;
 
-@interface ITUserCell : ITTableViewCell <ITAbstractModelObserver>
+@interface ITUserCell : ITTableViewCell <ITModelObserver>
 @property (nonatomic, strong)   IBOutlet    UILabel                     *userLabel;
 @property (nonatomic, strong)   IBOutlet    ITImageView                 *userImageView;
-@property (nonatomic, strong)   IBOutlet    UIActivityIndicatorView     *spinner;
 
 @property (nonatomic, strong)   ITUser    *user;
 
