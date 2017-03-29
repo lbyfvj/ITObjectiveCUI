@@ -24,10 +24,6 @@
     return [[appDirectory path] stringByAppendingString:fileName];
 }
 
-- (void)save {
-    
-}
-
 - (void)load {
     @synchronized(self) {
         NSUInteger state = self.state;

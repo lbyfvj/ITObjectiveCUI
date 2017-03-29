@@ -20,19 +20,19 @@
 + (NSURL *)documentsDirectory {
     NSURL *directoryPath = [NSFileManager directoryPathWithType:NSDocumentDirectory];
     
-    ITSharedVariable(directoryPath);
+    ITSharedInstance(directoryPath);
 }
 
 + (NSURL *)libraryDirectory {
     NSURL *directoryPath = [NSFileManager directoryPathWithType:NSLibraryDirectory];
     
-    ITSharedVariable(directoryPath);
+    ITSharedInstance(directoryPath);
 }
 
 + (NSURL *)applicationDirectory {
     NSURL *directoryPath = [NSFileManager directoryPathWithType:NSApplicationDirectory];
     
-    ITSharedVariable(directoryPath);
+    ITSharedInstance(directoryPath);
 }
 
 @end

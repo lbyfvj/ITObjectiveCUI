@@ -24,6 +24,14 @@ static const NSUInteger kITUsersCount = 10;
 @implementation ITUsers
 
 #pragma mark -
+#pragma mark Public
+
+- (void)save {
+    NSLog(@"%@", self.path);
+    [NSKeyedArchiver archiveRootObject:self.objects toFile:self.path];
+}
+
+#pragma mark -
 #pragma mark Private
 
 - (NSArray *)randomUsers {

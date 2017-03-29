@@ -32,7 +32,7 @@ if (!variable) { \
 return result; \
 }
 
-#define ITSharedVariable(variable) \
+#define ITSharedInstance(variable) \
 static id sharedInstance = nil; \
 static dispatch_once_t onceToken; \
 dispatch_once(&onceToken, ^{ \

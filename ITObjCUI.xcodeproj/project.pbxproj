@@ -14,6 +14,9 @@
 		931CCBE31E8C14300029095A /* UIView+ITExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 931CCBE21E8C14300029095A /* UIView+ITExtensions.m */; };
 		931CCBE71E8C1F200029095A /* ITView.m in Sources */ = {isa = PBXBuildFile; fileRef = 931CCBE61E8C1F200029095A /* ITView.m */; };
 		931CCBEB1E8C1F3C0029095A /* ITModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 931CCBEA1E8C1F3C0029095A /* ITModel.m */; };
+		931CCBF01E8C22B80029095A /* ITFileSystemImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 931CCBEF1E8C22B80029095A /* ITFileSystemImageModel.m */; };
+		931CCBF31E8C22CD0029095A /* ITURLImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 931CCBF21E8C22CD0029095A /* ITURLImageModel.m */; };
+		931CCBF71E8C3A4F0029095A /* ITImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 931CCBF61E8C3A4F0029095A /* ITImageCache.m */; };
 		931CF1001E8454A600AE4B4C /* NSArray+ITExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 931CF0E41E8454A600AE4B4C /* NSArray+ITExtensions.m */; };
 		931CF1011E8454A600AE4B4C /* NSBundle+ITExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 931CF0E71E8454A600AE4B4C /* NSBundle+ITExtensions.m */; };
 		931CF1021E8454A600AE4B4C /* NSObject+ITExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 931CF0EA1E8454A600AE4B4C /* NSObject+ITExtensions.m */; };
@@ -91,6 +94,12 @@
 		931CCBE61E8C1F200029095A /* ITView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITView.m; sourceTree = "<group>"; };
 		931CCBE91E8C1F3C0029095A /* ITModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITModel.h; sourceTree = "<group>"; };
 		931CCBEA1E8C1F3C0029095A /* ITModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITModel.m; sourceTree = "<group>"; };
+		931CCBEE1E8C22B80029095A /* ITFileSystemImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITFileSystemImageModel.h; sourceTree = "<group>"; };
+		931CCBEF1E8C22B80029095A /* ITFileSystemImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITFileSystemImageModel.m; sourceTree = "<group>"; };
+		931CCBF11E8C22CD0029095A /* ITURLImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITURLImageModel.h; sourceTree = "<group>"; };
+		931CCBF21E8C22CD0029095A /* ITURLImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITURLImageModel.m; sourceTree = "<group>"; };
+		931CCBF51E8C3A4F0029095A /* ITImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITImageCache.h; sourceTree = "<group>"; };
+		931CCBF61E8C3A4F0029095A /* ITImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITImageCache.m; sourceTree = "<group>"; };
 		931CF0E31E8454A600AE4B4C /* NSArray+ITExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ITExtensions.h"; sourceTree = "<group>"; };
 		931CF0E41E8454A600AE4B4C /* NSArray+ITExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ITExtensions.m"; sourceTree = "<group>"; };
 		931CF0E61E8454A600AE4B4C /* NSBundle+ITExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+ITExtensions.h"; sourceTree = "<group>"; };
@@ -230,6 +239,33 @@
 			path = ITModel;
 			sourceTree = "<group>";
 		};
+		931CCBEC1E8C22990029095A /* ITURLImageModel */ = {
+			isa = PBXGroup;
+			children = (
+				931CCBF11E8C22CD0029095A /* ITURLImageModel.h */,
+				931CCBF21E8C22CD0029095A /* ITURLImageModel.m */,
+			);
+			path = ITURLImageModel;
+			sourceTree = "<group>";
+		};
+		931CCBED1E8C229F0029095A /* ITFileSystemImageModel */ = {
+			isa = PBXGroup;
+			children = (
+				931CCBEE1E8C22B80029095A /* ITFileSystemImageModel.h */,
+				931CCBEF1E8C22B80029095A /* ITFileSystemImageModel.m */,
+			);
+			path = ITFileSystemImageModel;
+			sourceTree = "<group>";
+		};
+		931CCBF41E8C3A2C0029095A /* ITImageCache */ = {
+			isa = PBXGroup;
+			children = (
+				931CCBF51E8C3A4F0029095A /* ITImageCache.h */,
+				931CCBF61E8C3A4F0029095A /* ITImageCache.m */,
+			);
+			path = ITImageCache;
+			sourceTree = "<group>";
+		};
 		931CF0D81E8454A600AE4B4C /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -343,6 +379,8 @@
 		93462D6F1E6773D800FE1BC9 /* ITImageModel */ = {
 			isa = PBXGroup;
 			children = (
+				931CCBED1E8C229F0029095A /* ITFileSystemImageModel */,
+				931CCBEC1E8C22990029095A /* ITURLImageModel */,
 				93462D701E67740000FE1BC9 /* ITImageModel.h */,
 				93462D711E67740000FE1BC9 /* ITImageModel.m */,
 			);
@@ -352,6 +390,7 @@
 		93462D771E68963F00FE1BC9 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				931CCBF41E8C3A2C0029095A /* ITImageCache */,
 				93AA34551E78809500513950 /* ITArrayModel */,
 				93AA34401E77408500513950 /* ITModelChange */,
 				93462D8C1E68B61C00FE1BC9 /* ITObservableObject */,
@@ -862,6 +901,7 @@
 				931CCBDC1E8B09070029095A /* ITOneIndexModel+ITIndexPath.m in Sources */,
 				931CF1071E8454A600AE4B4C /* UITableView+ITExtensions.m in Sources */,
 				93AA346B1E79DB6600513950 /* ITAddRowCell.m in Sources */,
+				931CCBF31E8C22CD0029095A /* ITURLImageModel.m in Sources */,
 				93AA34761E7C3AD000513950 /* ITLoadingView.m in Sources */,
 				93C757491E8855C40007F444 /* ITBlockVariablesMacro.m in Sources */,
 				93462D8F1E68B61C00FE1BC9 /* ITObservableObject.m in Sources */,
@@ -869,6 +909,7 @@
 				93C20EAB1E5B99CA00B56982 /* main.m in Sources */,
 				93462DBA1E71DB2900FE1BC9 /* ITDispatchQueue.m in Sources */,
 				93AA34581E7880AD00513950 /* ITArrayModel.m in Sources */,
+				931CCBF01E8C22B80029095A /* ITFileSystemImageModel.m in Sources */,
 				93AA34511E787B2000513950 /* ITOneIndexModel.m in Sources */,
 				931CCBEB1E8C1F3C0029095A /* ITModel.m in Sources */,
 				93C20EE81E5F72DD00B56982 /* ITSquareViewController.m in Sources */,
@@ -878,6 +919,7 @@
 				93C757461E8833FC0007F444 /* ITCompilerMacro.m in Sources */,
 				931CCBD81E8AF8F50029095A /* ITChangeTypes+ITModelChangeExtensions.m in Sources */,
 				93462DAC1E6A114E00FE1BC9 /* ITUsersViewController.m in Sources */,
+				931CCBF71E8C3A4F0029095A /* ITImageCache.m in Sources */,
 				931CF1061E8454A600AE4B4C /* ITUsersTableView+ITExtensions.m in Sources */,
 				931CF1031E8454A600AE4B4C /* NSString+ITExtensions.m in Sources */,
 				93462DAB1E6A114E00FE1BC9 /* ITUsersView.m in Sources */,

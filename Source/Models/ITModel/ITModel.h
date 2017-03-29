@@ -22,7 +22,6 @@ typedef NS_ENUM(NSUInteger, ITModelState) {
 - (NSString *)path;
 
 - (void)load;
-- (void)save;
 
 // this method for subclassing only. it should never called directly
 - (void)performLoading;

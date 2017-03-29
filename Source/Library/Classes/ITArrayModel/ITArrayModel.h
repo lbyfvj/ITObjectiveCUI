@@ -25,6 +25,7 @@ typedef NS_ENUM(NSUInteger, ITArrayModelState) {
 
 @interface ITArrayModel : ITModel <NSFastEnumeration, ITArrayModelObserver>
 @property (nonatomic, readonly)         NSUInteger      count;
+@property (nonatomic, copy, readonly)   NSArray         *objects;
 
 - (void)addObject:(id)object;
 - (void)addObjects:(NSArray *)objects;

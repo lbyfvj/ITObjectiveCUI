@@ -10,9 +10,11 @@
 
 #import "ITModel.h"
 
+#import "ITMacro.h"
+
 @interface ITImageModel : ITModel
-@property (nonatomic, readonly)     UIImage     *image;
-@property (nonatomic, readonly)     NSURL       *url;
+@property (nonatomic, strong)     UIImage     *image;
+@property (nonatomic, strong)     NSURL       *url;
 
 @property (nonatomic, readonly, getter=isLoaded)    BOOL    loaded;
 
@@ -21,5 +23,13 @@
 - (instancetype)initWithURL:(NSURL *)url;
 
 - (void)dump;
+
+- (void)save;
+
+- (void)performLoadingWithCompletionBlock:(void(^)(UIImage *image, id error))block;
+
+- (void)finalizeLoadingWithImage:(UIImage *)image error:(id)error;
+
+- (void)notifyOfLoadingStateWithImage:(UIImage *)image error:(id)error;
 
 @end

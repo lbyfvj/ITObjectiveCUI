@@ -8,14 +8,8 @@
 
 #import "ITImageModel.h"
 
-#import "ITMacro.h"
 #import "ITDispatchQueue.h"
-
-@interface ITImageModel ()
-@property (nonatomic, strong)     UIImage       *image;
-@property (nonatomic, strong)     NSURL         *url;
-
-@end
+#import "ITImageCache.h"
 
 @implementation ITImageModel
 
@@ -30,9 +24,15 @@
 #pragma mark Initializations and Deallocations
 
 - (instancetype)initWithURL:(NSURL *)url {
+    id imageCache = [[ITImageCache cache] objectForKey:url];
+    if (imageCache) {
+        return imageCache;
+    }
+    
     self = [super init];
     if (self) {
         self.url = url;
+        [[ITImageCache cache] addObject:self forKey:url];
     }
     
     return self;
@@ -43,20 +43,36 @@
 
 - (void)dump {
     self.image = nil;
-
     self.state = ITModelUnloaded;
 }
 
-#pragma mark -
-#pragma mark ITModel override
+- (void)save {
+    
+}
+
+- (void)performLoadingWithCompletionBlock:(void(^)(UIImage *image, id error))block {
+    
+}
+
+- (void)finalizeLoadingWithImage:(UIImage *)image error:(id)error {
+    self.image = image;
+}
+
+- (void)notifyOfLoadingStateWithImage:(UIImage *)image error:(id)error {
+    ITWeakify(self);
+    ITAsyncPerformInMainQueue(^{
+        ITStrongifyAndReturnIfNil(self);
+        self.state = self.image ? ITModelLoaded : ITModelFailedLoading;
+    });
+}
 
 - (void)performLoading {
     ITWeakify(self);
-    ITAsyncPerformInBackgroundQueue(^{
+    [self performLoadingWithCompletionBlock:^(UIImage *image, id error) {
         ITStrongifyAndReturnIfNil(self);
-        self.image = [UIImage imageWithContentsOfFile:[self.url path]];
-        self.state = self.image ? ITModelLoaded : ITModelFailedLoading;
-    });
+        [self finalizeLoadingWithImage:image error:error];
+        [self notifyOfLoadingStateWithImage:image error:error];
+    }];
 }
 
 @end

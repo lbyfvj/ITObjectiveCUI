@@ -34,6 +34,10 @@
 #pragma mark -
 #pragma mark Accessors
 
+- (NSArray *)objects {
+    return [self.array copy];
+}
+
 #pragma mark -
 #pragma mark Public
 
@@ -89,11 +93,6 @@
 
 - (NSUInteger)indexOfObject:(id)object {
     return [self.array indexOfObject:object];
-}
-
-- (void)save {
-    NSLog(@"%@", [self path]);
-    [NSKeyedArchiver archiveRootObject:self.array toFile:[self path]];
 }
 
 #pragma mark -

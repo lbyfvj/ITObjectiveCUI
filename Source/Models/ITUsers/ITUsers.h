@@ -12,4 +12,6 @@
 
 @interface ITUsers : ITArrayModel
 
+- (void)save;
+
 @end
