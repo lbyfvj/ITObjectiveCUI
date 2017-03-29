@@ -11,23 +11,16 @@
 #import "ITUsers.h"
 
 #import "ITModelChange.h"
-
-//typedef NS_ENUM(NSUInteger, ITUserAction){
-//    ITAddRow,
-//    ITDeleteRow,
-//    ITReorderRows
-//};
+#import "ITView.h"
 
 static const NSUInteger kITNumberOfSections = 1;
 
-@interface ITUsersView : UIView
-@property (nonatomic, strong)   IBOutlet    UITableView     *tableView;
-@property (nonatomic, strong)   IBOutlet    UIButton        *editButton;
+@interface ITUsersView : ITView <ITModelObserver>
+@property (nonatomic, strong)   ITModel     *model;
+@property (nonatomic, strong)   IBOutlet    UITableView         *tableView;
+@property (nonatomic, strong)   IBOutlet    UIBarButtonItem     *editButton;
 
 @property (nonatomic, assign, getter=isEditing) BOOL    editing;
-
-//- (void)updateTableViewWithUserAction:(ITAction)userAction
-//                    forRowAtIndexPath:(NSArray *)indexPaths;
 
 - (void)updateUsersViewWithModelChange:(ITModelChange *)modelChange;
 

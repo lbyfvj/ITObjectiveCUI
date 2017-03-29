@@ -15,7 +15,8 @@
 #import "UIWindow+ITExtensions.h"
 
 @interface ITAppDelegate ()
-
+@property (nonatomic, strong)   ITUsersViewController   *controller;
+           
 @end
 
 @implementation ITAppDelegate
@@ -26,13 +27,35 @@
     self.window = window;
     
 //    ITSquareViewController *controller = [ITSquareViewController new];
-    ITUsersViewController *controller = [ITUsersViewController new];
-    controller.users = [ITUsers new];
-    window.rootViewController = controller;
+    self.controller = [ITUsersViewController new];
+    self.controller.usersModel = [ITUsers new];
+    window.rootViewController = self.controller;
     
     [window makeKeyAndVisible];
     
     return YES;
+}
+
+- (void)applicationWillResignActive:(UIApplication *)application {
+    
+}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+    NSLog(@"%@", NSStringFromSelector(_cmd));
+    [self.controller.usersModel save];
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+    
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application {
+    NSLog(@"%@", NSStringFromSelector(_cmd));
+    [self.controller.usersModel save];
 }
 
 @end

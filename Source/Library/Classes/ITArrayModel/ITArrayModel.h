@@ -6,33 +6,38 @@
 //  Copyright © 2017 Ivan Tsyganok. All rights reserved.
 //
 
-#import "ITObservableObject.h"
-
 #import "ITModelChange.h"
+#import "ITModel.h"
 
 typedef NS_ENUM(NSUInteger, ITArrayModelState) {
-    ITArrayModelUpdated
+    ITArrayModelUpdated = ITModelStateCount,
+    ITArrayModelStateCount
 };
 
-@interface ITArrayModel : ITObservableObject <NSFastEnumeration>
+@class ITArrayModel;
 
-- (NSUInteger)count;
+@protocol ITArrayModelObserver <NSObject, ITModelObserver>
+
+@optional
+- (void)arrayModel:(ITArrayModel *)model didUpdateWithModelChange:(ITModelChange *)modelChange;
+
+@end
+
+@interface ITArrayModel : ITModel <NSFastEnumeration, ITArrayModelObserver>
+@property (nonatomic, readonly)         NSUInteger      count;
 
 - (void)addObject:(id)object;
-
+- (void)addObjects:(NSArray *)objects;
 - (void)insertObject:(id)object atIndex:(NSUInteger)index;
 
+- (void)removeObject:(id)object;
+- (void)removeObjects:(NSArray *)objects;
 - (void)removeObjectAtIndex:(NSUInteger)index;
 
 - (void)moveObjectAtIndex:(NSUInteger)index toIndex:(NSUInteger)newIndex;
 
+- (id)objectAtIndex:(NSUInteger)index;
 - (id)objectAtIndexedSubscript:(NSUInteger)index;
-
-@end
-
-@protocol ITArrayModelObserver <NSObject>
-
-@optional
-- (void)arrayModel:(ITArrayModel *)model didUpdateWithModelChange:(ITModelChange *)modelChange;
+- (NSUInteger)indexOfObject:(id)object;
 
 @end

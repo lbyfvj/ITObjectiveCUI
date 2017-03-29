@@ -10,33 +10,32 @@
 
 #import "UINib+ITExtensions.h"
 
-#import "ITInsertChange.h"
-#import "ITDeleteChange.h"
-#import "ITMoveChange.h"
+#import "ITMacro.h"
 
 @implementation UITableView (ITExtensions)
 
-- (id)dequeueReusableCellWithClass:(Class)class {   
-    return [self dequeueReusableCellWithIdentifier:NSStringFromClass(class)];
+- (id)dequeueReusableCellWithClass:(Class)cls {
+    return [self dequeueReusableCellWithIdentifier:NSStringFromClass(cls)];
 }
 
-- (id)reusableCellWithClass:(Class)class {
-    id cell = [self dequeueReusableCellWithClass:class];
+- (id)reusableCellWithClass:(Class)cls {
+    id cell = [self dequeueReusableCellWithClass:cls];
     
     if (!cell) {
-        cell = [UINib objectWithClass:class];
+        cell = [UINib objectWithClass:cls];
     }
     
     return cell;
 }
 
-- (void)updateTableViewWithModelChange:(ITModelChange *)modelChange {
+- (void)updateWithBlock:(ITTableViewUpdateBlock)block {
+    if (!block) {
+        return;
+    }
+    
     [self beginUpdates];
-    
-    [modelChange changeTableView:self withRowAnimation:UITableViewRowAnimationAutomatic];
-    
+    ITDispatchBlock(block);    
     [self endUpdates];
-    
 }
 
 @end

@@ -8,8 +8,8 @@
 
 #import "ITImageView.h"
 
-#import "ITObservableObject.h"
 #import "ITMacro.h"
+#import "ITDispatchQueue.h"
 
 @interface ITImageView ()
 @property (nonatomic, strong)   ITObservableObject  *observer;
@@ -52,8 +52,8 @@
     |  UIViewAutoresizingFlexibleTopMargin
     |  UIViewAutoresizingFlexibleHeight
     |  UIViewAutoresizingFlexibleBottomMargin;
-    self.contentImageView = imageView;
     
+    self.contentImageView = imageView;
 }
 
 #pragma mark -
@@ -82,17 +82,37 @@
 }
 
 #pragma mark -
-#pragma mark View Lifecycle
+#pragma mark ITModelObserver
 
-#pragma mark -
-#pragma mark Public
-
-- (void)fillWithModel:(ITImageModel *)imageModel {
-    self.contentImageView.image = imageModel.image;
+- (void)modelDidUnload:(ITImageModel *)imageModel {
+    ITWeakify(self);
+    ITAsyncPerformInMainQueue(^{
+        ITStrongifyAndReturnIfNil(self);
+        self.contentImageView.image = imageModel.image;
+    });
 }
 
-#pragma mark -
-#pragma mark Private
+- (void)modelDidLoad:(ITImageModel *)imageModel {
+    ITWeakify(self);
+    ITAsyncPerformInMainQueue(^{
+        ITStrongifyAndReturnIfNil(self);
+        self.contentImageView.image = imageModel.image;
+        self.loadingViewVisible = NO;
+    });
+}
 
+- (void)modelWillLoad:(ITImageModel *)imageModel {
+    ITAsyncPerformInMainQueue(^{
+        self.loadingViewVisible = YES;
+    });
+}
+
+- (void)modelDidFailLoading:(ITImageModel *)imageModel {
+    ITWeakify(self);
+    ITAsyncPerformInMainQueue(^{
+        ITStrongifyAndReturnIfNil(self);
+        [self.imageModel load];
+    });
+}
 
 @end

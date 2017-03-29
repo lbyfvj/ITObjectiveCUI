@@ -9,40 +9,40 @@
 #import "ITUsers.h"
 
 #import "ITUser.h"
-
 #import "NSObject+ITExtensions.h"
+#import "ITDispatchQueue.h"
 
 static const NSUInteger kITUsersCount = 10;
 
 @interface ITUsers ()
-@property (nonatomic, strong)   NSMutableArray  *users;
 
-- (void)generateUsers;
+- (NSArray *)randomUsers;
+- (NSArray *)savedUsers;
 
 @end
 
 @implementation ITUsers
 
 #pragma mark -
-#pragma mark Initializations and Deallocations
+#pragma mark Private
 
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        self.users = [NSMutableArray array];
-        [self generateUsers];
-    }
-    
-    return self;
+- (NSArray *)randomUsers {
+    return [ITUser objectsWithCount:kITUsersCount];
 }
 
-#pragma mark -
-#pragma mark - Private
+- (NSArray *)savedUsers {
+    return [NSKeyedUnarchiver unarchiveObjectWithFile:self.path];
+}
 
-- (void)generateUsers {
-    for (NSUInteger i = 0; i < kITUsersCount; i++) {
-        [self addObject:[ITUser new]];
-    }
+- (void)performLoading {
+    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:self.path];
+    NSArray *users = fileExists ? self.savedUsers : self.randomUsers;
+    
+    [self performBlockWithoutNotifications:^{
+        [self addObjects:users];
+    }];
+    
+    self.state = ITModelLoaded;
 }
 
 @end

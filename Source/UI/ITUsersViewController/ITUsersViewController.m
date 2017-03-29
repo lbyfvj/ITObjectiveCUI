@@ -11,45 +11,94 @@
 #import "ITUsersView.h"
 #import "ITUser.h"
 #import "ITUserCell.h"
+#import "ITAddRowCell.h"
 #import "ITMacro.h"
 #import "UITableView+ITExtensions.h"
-#import "ITArrayModel.h"
 #import "ITModelChange.h"
 #import "ITDispatchQueue.h"
 
 static NSString * const kITAddRowTitle = @"Add new user";
+static NSString * const kITNavigationBarTitle = @"Users";
 
 ITViewControllerSynthesizeRootView(ITUsersViewController, usersView, ITUsersView)
 
+@interface ITUsersViewController ()
+
+- (void)addRowAnimationInEditing:(BOOL)editing;
+- (BOOL)shouldDisplayAddRowWithIndexPath:(NSIndexPath *)indexPath;
+
+@end
+
 @implementation ITUsersViewController
+
+@synthesize usersModel = _usersModel;
 
 #pragma mark -
 #pragma mark - Initializations and Deallocations
 
-- (void)dealloc {
-    self.users = nil;
-}
-
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setUsers:(ITUsers *)users {
-    if (_users != users) {
-        [_users removeObserver:self];
-        _users = users;
-        [_users addObserver:self];
+- (void)setUsersModel:(ITUsers *)usersModel {
+    if (_usersModel != usersModel) {
+        [_usersModel removeObserver:self];
+        
+        _usersModel = usersModel;
+        
+        [_usersModel addObserver:self];
+
+        if (self.isViewLoaded) {
+            [_usersModel load];
+        }
     }
 }
 
-- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
-    
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {    
     self.usersView.editing = !self.usersView.editing;
+    
+    [self addRowAnimationInEditing:editing];
+}
+
+#pragma mark -
+#pragma mark View Lifecycle
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+
+    self.usersView.model = self.usersModel;    
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    [self.navigationItem setTitle:kITNavigationBarTitle];
+    
+    ITUsers *usersModel = self.usersModel;
+    ITUsersView *usersView = self.usersView;
+    
+    [usersModel addObserver:usersView];
+    
+    [usersModel load];
+    
+    [usersView.tableView reloadData];
+    
+    
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    
+}
+
+#pragma mark -
+#pragma mark Private
+
+- (void)addRowAnimationInEditing:(BOOL)editing {
     UITableView *tableView = self.usersView.tableView;
     
-    [tableView beginUpdates];
-    for (NSUInteger i =0; i < kITNumberOfSections; i++) {
-        NSIndexPath *path = [NSIndexPath indexPathForRow:[self.users count]
-                                               inSection:i];
+    [tableView updateWithBlock:^{
+        NSIndexPath *path = [NSIndexPath indexPathForRow:self.usersModel.count
+                                               inSection:0];
         if (editing) {
             [tableView insertRowsAtIndexPaths:@[path]
                              withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -57,27 +106,11 @@ ITViewControllerSynthesizeRootView(ITUsersViewController, usersView, ITUsersView
             [tableView deleteRowsAtIndexPaths:@[path]
                              withRowAnimation:UITableViewRowAnimationAutomatic];
         }
-    }
-    
-    [tableView endUpdates];
+    }];
 }
 
-#pragma mark -
-#pragma mark View Lifecycle
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    UITableView *tableView = self.usersView.tableView;
-    
-    tableView.allowsSelectionDuringEditing = YES;
-    
-    [tableView reloadData];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    
+- (BOOL)shouldDisplayAddRowWithIndexPath:(NSIndexPath *)indexPath {
+    return indexPath.row >= self.usersModel.count && self.usersView.editing;
 }
 
 #pragma mark -
@@ -93,21 +126,18 @@ ITViewControllerSynthesizeRootView(ITUsersViewController, usersView, ITUsersView
 - (NSInteger)   tableView:(UITableView *)tableView
     numberOfRowsInSection:(NSInteger)section
 {
-    NSUInteger addRow = self.usersView.editing ? 1 : 0;
-    
-    return [self.users count] + addRow;
+    return self.usersModel.count + (self.usersView.editing ? 1 : 0);
 }
 
 - (UITableViewCell *)   tableView:(UITableView *)tableView
             cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ITUserCell *cell = [tableView reusableCellWithClass:[ITUserCell class]];
-
-    if (indexPath.row >= [self.users count] && self.usersView.editing) {
-        cell.textLabel.text = kITAddRowTitle;
-    } else {
-        cell.user = self.users[indexPath.row];
+    if ([self shouldDisplayAddRowWithIndexPath:indexPath]) {
+        return [tableView reusableCellWithClass:[ITAddRowCell class]];;
     }
+    
+    ITUserCell *cell = [tableView reusableCellWithClass:[ITUserCell class]];    
+    cell.user = self.usersModel[indexPath.row];
     
     return cell;
 }
@@ -116,7 +146,7 @@ ITViewControllerSynthesizeRootView(ITUsersViewController, usersView, ITUsersView
     commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
     forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ITUsers *users = self.users;
+    ITUsers *users = self.usersModel;
     
     switch (editingStyle) {
         case UITableViewCellEditingStyleDelete:
@@ -124,7 +154,7 @@ ITViewControllerSynthesizeRootView(ITUsersViewController, usersView, ITUsersView
             break;
             
         case UITableViewCellEditingStyleInsert:
-            [users addObject:[ITUser new]];
+            [users insertObject:[ITUser new] atIndex:users.count];
             break;
         
         default:
@@ -142,18 +172,24 @@ ITViewControllerSynthesizeRootView(ITUsersViewController, usersView, ITUsersView
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView
            editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row >= [self.users count]) {
-       return UITableViewCellEditingStyleInsert;
-    }
-    
-    return UITableViewCellEditingStyleDelete;
+    return [self shouldDisplayAddRowWithIndexPath:indexPath] ? UITableViewCellEditingStyleInsert : UITableViewCellEditingStyleDelete;
 }
 
 #pragma mark -
 #pragma mark ITArrayModelObserver
 
-- (void)arrayModel:(ITArrayModel *)model didUpdateWithModelChange:(ITModelChange *)modelChange {
-    [self.usersView updateUsersViewWithModelChange:modelChange];
+- (void)arrayModel:(ITUsers *)model didUpdateWithModelChange:(ITModelChange *)modelChange {
+    NSLog(@"%@", NSStringFromSelector(_cmd));
+    ITWeakify(self);
+    ITAsyncPerformInMainQueue(^{
+        ITStrongifyAndReturnIfNil(self);
+        [self.usersView updateUsersViewWithModelChange:modelChange];
+    });
+}
+
+- (void)modelDidLoad:(ITArrayModel *)model {
+    NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+    [self.usersView.tableView reloadData];
 }
 
 @end

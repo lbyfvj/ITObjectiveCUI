@@ -8,9 +8,7 @@
 
 #import "ITModelChange.h"
 
-#import "ITInsertChange.h"
-#import "ITDeleteChange.h"
-#import "ITMoveChange.h"
+#import "ITModelChangesTypes.h"
 
 @implementation ITModelChange
 
@@ -28,14 +26,6 @@
 + (id)moveAtIndex:(NSUInteger)index toIndex:(NSUInteger)toIndex {
     return [ITMoveChange modelWithIndex:index
                                 toIndex:toIndex];
-}
-
-#pragma mark -
-#pragma mark Public
-
-- (void)changeTableView:(UITableView *)tableView
-       withRowAnimation:(UITableViewRowAnimation) animation {
-    
 }
 
 @end
