@@ -51,7 +51,6 @@ static const NSUInteger kITUsersCount = 10;
 }
 
 - (void)performLoading {
-    sleep(1);
     BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:self.path];
     NSArray *users = fileExists ? self.savedUsers : self.randomUsers;
     

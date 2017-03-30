@@ -9,6 +9,7 @@
 #import "ITModel.h"
 
 #import "ITDispatchQueue.h"
+#import "ITMacro.h"
 
 @implementation ITModel
 
@@ -20,19 +21,22 @@
         NSUInteger state = self.state;
         if (ITModelLoaded == state || ITModelLoading == state) {
             [self notifyOfState:state];
+            
             return;
         }
         
         self.state = ITModelLoading;
     }
     
+    ITWeakify(self);
     ITAsyncPerformInBackgroundQueue(^{
+        ITStrongifyAndReturnIfNil(self);
         [self performLoading];
     });
 }
 
 - (void)performLoading {
-    self.state = ITModelLoaded;
+    
 }
 
 #pragma mark -

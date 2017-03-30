@@ -71,16 +71,12 @@ static NSString * const kITEditButtonTitle = @"Edit";
 
 - (void)modelDidLoad:(ITModel *)model {
     NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-    ITAsyncPerformInMainQueue(^{
-        self.loadingViewVisible = NO;
-    });
+    self.loadingViewVisible = NO;
 }
 
 - (void)modelWillLoad:(ITModel *)model {
     NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-    ITAsyncPerformInMainQueue(^{
-        self.loadingViewVisible = YES;
-    });
+    self.loadingViewVisible = YES;
 }
 
 @end
