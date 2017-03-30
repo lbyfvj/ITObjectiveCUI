@@ -11,8 +11,7 @@
 #import "ITMacro.h"
 #import "NSBundle+ITExtensions.h"
 
-static const NSTimeInterval kITLoadingDuration = 3;
-static const NSTimeInterval kITDelay = 0.3;
+static const NSTimeInterval kITLoadingDuration = 1;
 static const CGFloat        kITAlpha = 0.5;
 
 @implementation ITLoadingView
@@ -47,14 +46,13 @@ static const CGFloat        kITAlpha = 0.5;
     [[self superview] bringSubviewToFront:self];
     
     [UIView animateWithDuration:animated ? kITLoadingDuration : 0
-                          delay:kITDelay
-                        options:UIViewAnimationOptionLayoutSubviews
                      animations:^{
                          if (!visible) {
                              [self removeFromSuperview];
                          }
                          self.alpha = visible ? kITAlpha : 0.0;
                      }
+     
                      completion:^(BOOL finished) {
                          _visible = visible;
                          ITDispatchBlock(block, finished);

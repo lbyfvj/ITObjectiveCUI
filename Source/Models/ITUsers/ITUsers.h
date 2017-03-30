@@ -11,6 +11,9 @@
 @class ITUser;
 
 @interface ITUsers : ITArrayModel
+@property (nonatomic, readonly)     NSString    *path;
+
+- (NSString *)path;
 
 - (void)save;
 

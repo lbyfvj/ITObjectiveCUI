@@ -13,7 +13,9 @@
 #import "ITView.h"
 
 @interface ITImageView : ITView <ITModelObserver>
-@property (nonatomic, strong)       ITImageModel            *imageModel;
-@property (nonatomic, strong)       IBOutlet UIImageView    *contentImageView;
+@property (nonatomic, strong)       ITImageModel                            *imageModel;
+
+@property (nonatomic, strong)       IBOutlet    UIImageView                 *contentImageView;
+@property (nonatomic, strong)       IBOutlet    UIActivityIndicatorView     *spinner;
 
 @end

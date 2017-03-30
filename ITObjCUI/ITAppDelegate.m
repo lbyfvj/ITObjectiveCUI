@@ -16,6 +16,8 @@
 
 @interface ITAppDelegate ()
 @property (nonatomic, strong)   ITUsersViewController   *controller;
+
+- (void)saveModel;
            
 @end
 
@@ -26,10 +28,11 @@
     UIWindow *window = [UIWindow window];
     self.window = window;
     
-//    ITSquareViewController *controller = [ITSquareViewController new];
-    self.controller = [ITUsersViewController new];
-    self.controller.usersModel = [ITUsers new];
-    window.rootViewController = self.controller;
+    ITUsersViewController *controller = self.controller;
+    controller = [ITUsersViewController new];
+    controller.usersModel = [ITUsers new];
+    
+    window.rootViewController = controller;
     
     [window makeKeyAndVisible];
     
@@ -41,8 +44,7 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
-    [self.controller.usersModel save];
+    [self saveModel];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -54,7 +56,13 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+    [self saveModel];
+}
+
+#pragma mark -
+#pragma mark Private
+
+- (void)saveModel {
     [self.controller.usersModel save];
 }
 

@@ -24,8 +24,6 @@
 
 - (void)dump;
 
-- (void)save;
-
 - (void)performLoadingWithCompletionBlock:(void(^)(UIImage *image, id error))block;
 
 - (void)finalizeLoadingWithImage:(UIImage *)image error:(id)error;

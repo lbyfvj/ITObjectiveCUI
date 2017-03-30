@@ -10,19 +10,10 @@
 
 #import "ITDispatchQueue.h"
 
-#import "NSFileManager+ITExtensions.h"
-
 @implementation ITModel
 
 #pragma mark -
 #pragma mark Public
-
-- (NSString *)path {
-    NSString *fileName = [NSString stringWithFormat:@"%@.plist", NSStringFromClass([self class])];
-    NSURL *appDirectory = [NSFileManager documentsDirectory];
-    
-    return [[appDirectory path] stringByAppendingString:fileName];
-}
 
 - (void)load {
     @synchronized(self) {

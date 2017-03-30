@@ -10,14 +10,12 @@
 
 #import "NSString+ITRandomName.h"
 
-static NSString * const kITImageName = @"image";
-static NSString * const kITImageType = @"jpg";
 static NSString * const kITCoderName = @"CoderName";
-static NSString * const kITCoderImageURL = @"CoderNameImageURL";
+static NSString * const kITImageURL = @"http://www.head.com/fileadmin/content/sports/ski/category_page/desktop/HEAD_Desktop_SKI_Landing_Page_05_50_50_Supershapev3.jpg";
 
 @implementation ITUser
 
-@dynamic image;
+@dynamic imageModel;
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
@@ -26,8 +24,6 @@ static NSString * const kITCoderImageURL = @"CoderNameImageURL";
     self = [super init];
     if (self) {
         self.name = [NSString randomName];
-        self.imageURL = [[NSBundle mainBundle] URLForResource:kITImageName
-                                                withExtension:kITImageType];
     }
     return self;
 }
@@ -35,8 +31,10 @@ static NSString * const kITCoderImageURL = @"CoderNameImageURL";
 #pragma mark - 
 #pragma mark Accessors
 
-- (ITImageModel *)image {
-    return [ITImageModel imageWithURL:self.imageURL];    
+- (ITImageModel *)imageModel {
+    NSURL *url = [NSURL URLWithString:kITImageURL];
+    
+    return [ITImageModel imageWithURL:url];
 }
 
 #pragma mark -
@@ -46,7 +44,6 @@ static NSString * const kITCoderImageURL = @"CoderNameImageURL";
     self = [super init];
     if (self) {
         _name = [aDecoder decodeObjectForKey:kITCoderName];
-        _imageURL = [aDecoder decodeObjectForKey:kITCoderImageURL];
     }
     
     return self;
@@ -54,7 +51,6 @@ static NSString * const kITCoderImageURL = @"CoderNameImageURL";
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeObject:_name forKey:kITCoderName];
-    [aCoder encodeObject:_imageURL forKey:kITCoderImageURL];
 }
 
 @end

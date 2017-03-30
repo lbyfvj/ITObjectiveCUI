@@ -12,7 +12,6 @@
 #import "ITDispatchQueue.h"
 
 @interface ITImageView ()
-@property (nonatomic, strong)   ITObservableObject  *observer;
 
 - (void)initSubviews;
 
@@ -97,13 +96,15 @@
     ITAsyncPerformInMainQueue(^{
         ITStrongifyAndReturnIfNil(self);
         self.contentImageView.image = imageModel.image;
-        self.loadingViewVisible = NO;
+        [self.spinner stopAnimating];
     });
 }
 
 - (void)modelWillLoad:(ITImageModel *)imageModel {
+    ITWeakify(self);
     ITAsyncPerformInMainQueue(^{
-        self.loadingViewVisible = YES;
+        ITStrongifyAndReturnIfNil(self);
+        [self.spinner startAnimating];
     });
 }
 

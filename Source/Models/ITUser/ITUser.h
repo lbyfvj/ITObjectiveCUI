@@ -13,7 +13,6 @@
 
 @interface ITUser : NSObject <NSCoding>
 @property (nonatomic, strong)       NSString        *name;
-@property (nonatomic, readonly)     ITImageModel    *image;
-@property (nonatomic, copy)         NSURL           *imageURL;
+@property (nonatomic, readonly)     ITImageModel    *imageModel;
 
 @end

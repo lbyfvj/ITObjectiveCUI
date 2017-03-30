@@ -12,21 +12,30 @@
 
 @implementation ITFileSystemImageModel
 
+@dynamic filePath;
+
 #pragma mark -
 #pragma mark Accessors
 
+- (NSString *)filePath {
+    NSString *fileName = self.url.lastPathComponent;
+    NSString *appDirectory = [[NSFileManager documentsDirectory] path];
+    
+    return [appDirectory stringByAppendingPathComponent:fileName];
+}
+
 - (BOOL)isCached {    
-    return [[NSFileManager defaultManager] fileExistsAtPath:self.path];
+    return [[NSFileManager defaultManager] fileExistsAtPath:self.filePath];
 }
 
 #pragma mark -
 #pragma mark Public
 
-- (void)performLoadingWithCompletion:(void (^)(UIImage *image, id error))completion {
-    NSString *path = self.cached ? self.path : self.url.path;
+- (void)performLoadingWithCompletionBlock:(void (^)(UIImage *image, id error))block {
+    NSString *path = self.cached ? self.filePath : self.url.path;
     UIImage *image = [UIImage imageWithContentsOfFile:path];
     
-    completion(image, nil);
+    block(image, nil);
 }
 
 @end

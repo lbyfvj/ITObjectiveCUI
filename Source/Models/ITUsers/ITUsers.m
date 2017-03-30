@@ -11,6 +11,7 @@
 #import "ITUser.h"
 #import "NSObject+ITExtensions.h"
 #import "ITDispatchQueue.h"
+#import "NSFileManager+ITExtensions.h"
 
 static const NSUInteger kITUsersCount = 10;
 
@@ -25,6 +26,13 @@ static const NSUInteger kITUsersCount = 10;
 
 #pragma mark -
 #pragma mark Public
+
+- (NSString *)path {
+    NSString *fileName = [NSString stringWithFormat:@"%@.plist", NSStringFromClass([self class])];
+    NSURL *appDirectory = [NSFileManager documentsDirectory];
+    
+    return [[appDirectory path] stringByAppendingString:fileName];
+}
 
 - (void)save {
     NSLog(@"%@", self.path);
@@ -43,6 +51,7 @@ static const NSUInteger kITUsersCount = 10;
 }
 
 - (void)performLoading {
+    sleep(1);
     BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:self.path];
     NSArray *users = fileExists ? self.savedUsers : self.randomUsers;
     

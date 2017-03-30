@@ -11,13 +11,18 @@
 #import "ITDispatchQueue.h"
 #import "ITImageCache.h"
 
+#import "ITFileSystemImageModel.h"
+#import "ITURLImageModel.h"
+
 @implementation ITImageModel
 
 #pragma mark - 
 #pragma marl Class Methods
 
-+ (instancetype)imageWithURL:(NSURL *)url {
-    return [[self alloc] initWithURL:url];
++ (instancetype)imageWithURL:(NSURL *)url {    
+    Class cls = [url.scheme isEqualToString:@"file"] ? [ITFileSystemImageModel class] : [ITURLImageModel class];
+    
+    return [[cls alloc] initWithURL:url];
 }
 
 #pragma mark - 
@@ -46,10 +51,6 @@
     self.state = ITModelUnloaded;
 }
 
-- (void)save {
-    
-}
-
 - (void)performLoadingWithCompletionBlock:(void(^)(UIImage *image, id error))block {
     
 }
@@ -67,6 +68,7 @@
 }
 
 - (void)performLoading {
+    sleep(1);
     ITWeakify(self);
     [self performLoadingWithCompletionBlock:^(UIImage *image, id error) {
         ITStrongifyAndReturnIfNil(self);
