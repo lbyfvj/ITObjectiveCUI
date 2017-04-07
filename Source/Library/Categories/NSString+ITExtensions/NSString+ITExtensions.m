@@ -66,4 +66,13 @@ static const NSUInteger kDefaultRandomStringLength = 30;
     return [self randomStringWithLength:kDefaultRandomStringLength];
 }
 
+#pragma mark -
+#pragma mark Public
+
+- (instancetype)stringByAddingPercentEncodingWithAllowedCharactersSet {
+    NSCharacterSet *alphanumericCharacterSet = [NSCharacterSet alphanumericCharacterSet];
+    
+    return [self stringByAddingPercentEncodingWithAllowedCharacters:alphanumericCharacterSet];
+}
+
 @end

@@ -8,6 +8,8 @@
 
 #import "NSBundle+ITExtensions.h"
 
+#import "NSArray+ITExtensions.h"
+
 @implementation NSBundle (ITExtensions)
 
 #pragma mark -
@@ -29,13 +31,7 @@
 {
     NSArray *objects = [self loadNibNamed:NSStringFromClass(cls) owner:owner options:options];
     
-    for (id object in objects) {
-        if ([object isMemberOfClass:cls]) {
-            return object;
-        }
-    }
-    
-    return nil;
+    return [objects objectWithClass:cls];
 }
 
 @end

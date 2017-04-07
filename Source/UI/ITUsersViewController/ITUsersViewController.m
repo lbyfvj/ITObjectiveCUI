@@ -70,8 +70,8 @@ ITViewControllerSynthesizeRootView(ITUsersViewController, usersView, ITUsersView
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self.navigationItem setTitle:kITNavigationBarTitle];
+
+    self.navigationItem.title = kITNavigationBarTitle;
     
     ITUsers *usersModel = self.usersModel;
     ITUsersView *usersView = self.usersView;
@@ -172,7 +172,9 @@ ITViewControllerSynthesizeRootView(ITUsersViewController, usersView, ITUsersView
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView
            editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [self shouldDisplayAddRowWithIndexPath:indexPath] ? UITableViewCellEditingStyleInsert : UITableViewCellEditingStyleDelete;
+    BOOL isInsert = [self shouldDisplayAddRowWithIndexPath:indexPath];
+    
+    return  isInsert ? UITableViewCellEditingStyleInsert : UITableViewCellEditingStyleDelete;
 }
 
 #pragma mark -

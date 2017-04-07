@@ -11,7 +11,6 @@
 @interface ITObservableObject : NSObject
 @property (nonatomic, assign)   NSUInteger  state;
 @property (nonatomic, readonly) NSSet       *observersSet;
-@property (nonatomic, readonly) BOOL        shouldNotify;
 
 - (void)addObserver:(id)observer;
 - (void)addObservers:(NSArray *)observers;
@@ -29,6 +28,7 @@
 - (void)notifyOfState:(NSUInteger)state;
 - (void)notifyOfState:(NSUInteger)state object:(id)object;
 
+- (void)performBlockWithNotifications:(void(^)(void))block;
 - (void)performBlockWithoutNotifications:(void(^)(void))block;
 
 @end

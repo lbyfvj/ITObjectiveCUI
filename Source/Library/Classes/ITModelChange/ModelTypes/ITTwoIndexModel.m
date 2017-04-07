@@ -16,7 +16,8 @@
 @implementation ITTwoIndexModel
 
 + (instancetype)modelWithIndex:(NSUInteger)index
-                       toIndex:(NSUInteger)toIndex {
+                       toIndex:(NSUInteger)toIndex
+{
     
     return [[self alloc] initWithIndex:index];
 }

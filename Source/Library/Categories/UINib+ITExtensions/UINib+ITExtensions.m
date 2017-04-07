@@ -8,6 +8,8 @@
 
 #import "UINib+ITExtensions.h"
 
+#import "NSArray+ITExtensions.h"
+
 @implementation UINib (ITExtensions)
 
 #pragma mark -
@@ -66,13 +68,9 @@
             withOwner:(id)owner
           withOptions:(NSDictionary *)options
 {
-    for (id object in [self objectsWithOwner:owner withOptions:options]) {
-        if ([object isMemberOfClass:cls]) {
-            return object;
-        }
-    }
+    NSArray *objects = [self objectsWithOwner:owner withOptions:options];
     
-    return nil;
+    return [objects objectWithClass:cls];
 }
 
 - (NSArray *)objectsWithOwner:(id)owner withOptions:(NSDictionary *)options {

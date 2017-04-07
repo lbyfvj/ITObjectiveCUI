@@ -1,5 +1,5 @@
 //
-//  ITOneIndexModel+ITIndexPath.h
+//  ITOneIndexModel+UITableView.h
 //  ITObjCUI
 //
 //  Created by Ivan Tsyganok on 29.03.17.
@@ -8,7 +8,7 @@
 
 #import "ITOneIndexModel.h"
 
-@interface ITOneIndexModel (ITIndexPath)
+@interface ITOneIndexModel (UITableView)
 @property (nonatomic, readonly) NSIndexPath *indexPath;
 
 + (instancetype)modelWithIndexPath:(NSIndexPath *)indexPath;

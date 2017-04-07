@@ -9,43 +9,34 @@
 #import "ITModel.h"
 
 #import "ITDispatchQueue.h"
-
-#import "NSFileManager+ITExtensions.h"
+#import "ITMacro.h"
 
 @implementation ITModel
 
 #pragma mark -
 #pragma mark Public
 
-- (NSString *)path {
-    NSString *fileName = [NSString stringWithFormat:@"%@.plist", NSStringFromClass([self class])];
-    NSURL *appDirectory = [NSFileManager documentsDirectory];
-    
-    return [[appDirectory path] stringByAppendingString:fileName];
-}
-
-- (void)save {
-    
-}
-
 - (void)load {
     @synchronized(self) {
         NSUInteger state = self.state;
         if (ITModelLoaded == state || ITModelLoading == state) {
             [self notifyOfState:state];
+            
             return;
         }
         
         self.state = ITModelLoading;
     }
     
+    ITWeakify(self);
     ITAsyncPerformInBackgroundQueue(^{
+        ITStrongifyAndReturnIfNil(self);
         [self performLoading];
     });
 }
 
 - (void)performLoading {
-    self.state = ITModelLoaded;
+    
 }
 
 #pragma mark -

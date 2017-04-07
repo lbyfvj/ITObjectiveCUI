@@ -10,6 +10,8 @@
 
 @implementation ITView
 
+@dynamic loadingViewVisible;
+
 #pragma mark -
 #pragma mark Initializations and Deallocations
 

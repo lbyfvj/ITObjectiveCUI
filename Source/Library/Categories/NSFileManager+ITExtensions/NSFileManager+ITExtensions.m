@@ -17,22 +17,28 @@
                                                    inDomains:NSUserDomainMask] lastObject];
 }
 
-+ (NSURL *)documentsDirectory {
-    NSURL *directoryPath = [NSFileManager directoryPathWithType:NSDocumentDirectory];
++ (NSURL *)documentsDirectoryURL {
+    NSURL *directoryPath = [self directoryPathWithType:NSDocumentDirectory];
     
-    ITSharedVariable(directoryPath);
+    ITReturnSharedInstance(directoryPath);
 }
 
-+ (NSURL *)libraryDirectory {
-    NSURL *directoryPath = [NSFileManager directoryPathWithType:NSLibraryDirectory];
++ (NSURL *)libraryDirectoryURL {
+    NSURL *directoryPath = [self directoryPathWithType:NSLibraryDirectory];
     
-    ITSharedVariable(directoryPath);
+    ITReturnSharedInstance(directoryPath);
 }
 
-+ (NSURL *)applicationDirectory {
-    NSURL *directoryPath = [NSFileManager directoryPathWithType:NSApplicationDirectory];
++ (NSURL *)applicationDirectoryURL {
+    NSURL *directoryPath = [self directoryPathWithType:NSApplicationDirectory];
     
-    ITSharedVariable(directoryPath);
+    ITReturnSharedInstance(directoryPath);
+}
+
++ (NSURL *)cacheDirectoryURL {
+    NSURL *directoryPath = [self directoryPathWithType:NSCachesDirectory];
+    
+    ITReturnSharedInstance(directoryPath);
 }
 
 @end

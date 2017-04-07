@@ -17,12 +17,8 @@ typedef NS_ENUM(NSUInteger, ITModelState) {
 };
 
 @interface ITModel : ITObservableObject
-@property (nonatomic, readonly)     NSString    *path;
-
-- (NSString *)path;
 
 - (void)load;
-- (void)save;
 
 // this method for subclassing only. it should never called directly
 - (void)performLoading;

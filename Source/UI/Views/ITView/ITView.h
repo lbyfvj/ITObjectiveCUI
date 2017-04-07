@@ -12,7 +12,7 @@
 #import "ITLoadingView.h"
 
 @interface ITView : UIView
-@property (nonatomic, strong)                               ITLoadingView       *loadingView;
-@property (nonatomic, assign, getter=isLoadingViewVisible)  BOOL                loadingViewVisible;
+@property (nonatomic, strong)                                   ITLoadingView       *loadingView;
+@property (nonatomic, assign, getter=isLoadingViewVisible)      BOOL                loadingViewVisible;
 
 @end

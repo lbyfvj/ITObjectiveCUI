@@ -8,13 +8,15 @@
 
 #import "ITChangeTypes+ITModelChangeExtensions.h"
 
+#import "ITOneIndexModel+UITableView.h"
+#import "ITTwoIndexModel+UITableView.h"
+
 @implementation ITDeleteChange (ITExtensions)
 
 - (void)applyToTableView:(UITableView *)tableView
       withRowAnimation:(UITableViewRowAnimation) animation
 {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:self.index inSection:0];
-    [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:animation];
+    [tableView deleteRowsAtIndexPaths:@[self.indexPath] withRowAnimation:animation];
 }
 
 @end
@@ -24,8 +26,7 @@
 - (void)applyToTableView:(UITableView *)tableView
       withRowAnimation:(UITableViewRowAnimation) animation
 {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:self.index inSection:0];
-    [tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:animation];
+    [tableView insertRowsAtIndexPaths:@[self.indexPath] withRowAnimation:animation];
 }
 
 @end
@@ -35,9 +36,7 @@
 - (void)applyToTableView:(UITableView *)tableView
       withRowAnimation:(UITableViewRowAnimation) animation
 {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:self.index inSection:0];
-    NSIndexPath *toIndexPath = [NSIndexPath indexPathForItem:self.toIndex inSection:0];
-    [tableView moveRowAtIndexPath:indexPath toIndexPath:toIndexPath];
+    [tableView moveRowAtIndexPath:self.indexPath toIndexPath:self.toIndexPath];
 }
 
 @end

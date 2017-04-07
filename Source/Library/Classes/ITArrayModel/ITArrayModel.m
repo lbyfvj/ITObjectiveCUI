@@ -34,6 +34,10 @@
 #pragma mark -
 #pragma mark Accessors
 
+- (NSArray *)objects {
+    return [self.array copy];
+}
+
 #pragma mark -
 #pragma mark Public
 
@@ -53,11 +57,11 @@
 
 - (void)insertObject:(id)object atIndex:(NSUInteger)index {
     [self.array insertObject:object atIndex:index];
-    [self notifyOfModelUpdateWithObject:[ITModelChange insertAtIndex:index]];
+    [self notifyOfModelUpdateWithObject:[ITModelChange insertModelAtIndex:index]];
 }
 
 - (void)removeObject:(id)object {
-    [self.array removeObjectAtIndex:[self indexOfObject:object]];
+    [self removeObjectAtIndex:[self indexOfObject:object]];
 }
 
 - (void)removeObjects:(NSArray *)objects {
@@ -68,14 +72,14 @@
 
 - (void)removeObjectAtIndex:(NSUInteger)index {
     [self.array removeObjectAtIndex:index];
-    [self notifyOfModelUpdateWithObject:[ITModelChange deleteAtIndex:index]];
+    [self notifyOfModelUpdateWithObject:[ITModelChange deleteModelAtIndex:index]];
 }
 
 - (void)moveObjectAtIndex:(NSUInteger)index
                   toIndex:(NSUInteger)newIndex
 {
     [self moveObjectAtIndex:index toIndex:newIndex];
-    [self notifyOfModelUpdateWithObject:[ITModelChange moveAtIndex:index
+    [self notifyOfModelUpdateWithObject:[ITModelChange moveModelAtIndex:index
                                                            toIndex:newIndex]];
 }
 
@@ -91,11 +95,6 @@
     return [self.array indexOfObject:object];
 }
 
-- (void)save {
-    NSLog(@"%@", [self path]);
-    [NSKeyedArchiver archiveRootObject:self.array toFile:[self path]];
-}
-
 #pragma mark -
 #pragma mark Private
 
@@ -108,8 +107,7 @@
 #pragma mark ITObservableObject Overload
 
 - (SEL)selectorForState:(NSUInteger)state {
-    switch (state) {
-            
+    switch (state) {            
         case ITArrayModelUpdated:
             return @selector(arrayModel:didUpdateWithModelChange:);
             

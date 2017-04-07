@@ -12,7 +12,6 @@
 #import "ITDispatchQueue.h"
 
 @interface ITImageView ()
-@property (nonatomic, strong)   ITObservableObject  *observer;
 
 - (void)initSubviews;
 
@@ -46,12 +45,8 @@
 - (void)initSubviews {
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.bounds];
     imageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin
-    |  UIViewAutoresizingFlexibleLeftMargin
-    |  UIViewAutoresizingFlexibleWidth
-    |  UIViewAutoresizingFlexibleRightMargin
-    |  UIViewAutoresizingFlexibleTopMargin
-    |  UIViewAutoresizingFlexibleHeight
-    |  UIViewAutoresizingFlexibleBottomMargin;
+        |  UIViewAutoresizingFlexibleWidth
+        |  UIViewAutoresizingFlexibleHeight;
     
     self.contentImageView = imageView;
 }
@@ -69,7 +64,7 @@
 
 - (void)setImageModel:(ITImageModel *)imageModel {
     if (_imageModel != imageModel) {
-        [_imageModel dump];
+        self.contentImageView.image = nil;
         
         [_imageModel removeObserver:self];
         
@@ -84,26 +79,20 @@
 #pragma mark -
 #pragma mark ITModelObserver
 
-- (void)modelDidUnload:(ITImageModel *)imageModel {
-    ITWeakify(self);
-    ITAsyncPerformInMainQueue(^{
-        ITStrongifyAndReturnIfNil(self);
-        self.contentImageView.image = imageModel.image;
-    });
-}
-
 - (void)modelDidLoad:(ITImageModel *)imageModel {
     ITWeakify(self);
     ITAsyncPerformInMainQueue(^{
         ITStrongifyAndReturnIfNil(self);
         self.contentImageView.image = imageModel.image;
-        self.loadingViewVisible = NO;
+        [self.spinner stopAnimating];
     });
 }
 
 - (void)modelWillLoad:(ITImageModel *)imageModel {
+    ITWeakify(self);
     ITAsyncPerformInMainQueue(^{
-        self.loadingViewVisible = YES;
+        ITStrongifyAndReturnIfNil(self);
+        [self.spinner startAnimating];
     });
 }
 
