@@ -1,5 +1,5 @@
 //
-//  ITTwoIndexModel+ITIndexPath.h
+//  ITTwoIndexModel+UITableView.h
 //  ITObjCUI
 //
 //  Created by Ivan Tsyganok on 29.03.17.
@@ -8,7 +8,7 @@
 
 #import "ITTwoIndexModel.h"
 
-@interface ITTwoIndexModel (ITIndexPath)
+@interface ITTwoIndexModel (UITableView)
 @property (nonatomic, readonly) NSIndexPath *indexPath;
 @property (nonatomic, readonly) NSIndexPath *toIndexPath;
 

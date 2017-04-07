@@ -9,10 +9,16 @@
 #import "ITImageModel.h"
 
 #import "ITDispatchQueue.h"
-#import "ITImageCache.h"
+#import "ITObjectCache.h"
 
 #import "ITFileSystemImageModel.h"
 #import "ITURLImageModel.h"
+
+@interface ITImageModel ()
+@property (nonatomic, strong)     UIImage     *image;
+@property (nonatomic, strong)     NSURL       *url;
+
+@end
 
 @implementation ITImageModel
 
@@ -29,7 +35,9 @@
 #pragma mark Initializations and Deallocations
 
 - (instancetype)initWithURL:(NSURL *)url {
-    id imageCache = [[ITImageCache cache] objectForKey:url];
+    ITObjectCache *objectCache = [ITObjectCache cache];
+    id imageCache = [objectCache objectForKey:url];
+    
     if (imageCache) {
         return imageCache;
     }
@@ -37,7 +45,7 @@
     self = [super init];
     if (self) {
         self.url = url;
-        [[ITImageCache cache] addObject:self forKey:url];
+        [objectCache addObject:self forKey:url];
     }
     
     return self;
@@ -46,10 +54,10 @@
 #pragma mark -
 #pragma mark Public
 
-- (void)dump {
-    self.image = nil;
-    self.state = ITModelUnloaded;
-}
+//- (void)dump {
+//    self.image = nil;
+//    self.state = ITModelUnloaded;
+//}
 
 - (void)performLoadingWithCompletionBlock:(void(^)(UIImage *image, id error))block {
     

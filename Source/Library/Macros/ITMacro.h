@@ -33,8 +33,3 @@
     ITRootViewGetterSynthesize(propertyName, rootViewClass); \
     \
 @end
-
-#define ITDispatchBlock(block, ...) \
-    if (block) { \
-        block (__VA_ARGS__); \
-    }

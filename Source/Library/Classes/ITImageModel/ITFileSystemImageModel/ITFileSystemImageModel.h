@@ -9,7 +9,7 @@
 #import "ITImageModel.h"
 
 @interface ITFileSystemImageModel : ITImageModel
-@property (nonatomic, readonly, getter=isCached)    BOOL        cached;
 @property (nonatomic, readonly)                     NSString    *filePath;
+@property (nonatomic, readonly, getter=isCached)    BOOL        cached;
 
 @end

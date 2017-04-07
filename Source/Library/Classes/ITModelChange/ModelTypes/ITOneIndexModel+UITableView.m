@@ -1,14 +1,14 @@
 //
-//  ITOneIndexModel+ITIndexPath.m
+//  ITOneIndexModel+UITableView.m
 //  ITObjCUI
 //
 //  Created by Ivan Tsyganok on 29.03.17.
 //  Copyright © 2017 Ivan Tsyganok. All rights reserved.
 //
 
-#import "ITOneIndexModel+ITIndexPath.h"
+#import "ITOneIndexModel+UITableView.h"
 
-@implementation ITOneIndexModel (ITIndexPath)
+@implementation ITOneIndexModel (UITableView)
 
 @dynamic indexPath;
 
@@ -25,4 +25,5 @@
 - (NSIndexPath *)indexPath {
     return [NSIndexPath indexPathForRow:self.index inSection:0];
 }
+
 @end

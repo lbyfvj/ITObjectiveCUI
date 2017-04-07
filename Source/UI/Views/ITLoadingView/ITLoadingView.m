@@ -43,13 +43,10 @@ static const CGFloat        kITAlpha = 0.5;
           animated:(BOOL)animated
  completionHandler:(void (^)(BOOL finished))block;
 {
-    [[self superview] bringSubviewToFront:self];
+    [self.superview bringSubviewToFront:self];
     
     [UIView animateWithDuration:animated ? kITLoadingDuration : 0
                      animations:^{
-                         if (!visible) {
-                             [self removeFromSuperview];
-                         }
                          self.alpha = visible ? kITAlpha : 0.0;
                      }
      

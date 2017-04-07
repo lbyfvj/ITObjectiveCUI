@@ -27,12 +27,11 @@
     
     UIWindow *window = [UIWindow window];
     self.window = window;
+
+    self.controller = [ITUsersViewController new];
+    self.controller.usersModel = [ITUsers new];
     
-    ITUsersViewController *controller = self.controller;
-    controller = [ITUsersViewController new];
-    controller.usersModel = [ITUsers new];
-    
-    window.rootViewController = controller;
+    window.rootViewController = self.controller;
     
     [window makeKeyAndVisible];
     
@@ -44,6 +43,7 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
+    NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     [self saveModel];
 }
 
@@ -63,6 +63,7 @@
 #pragma mark Private
 
 - (void)saveModel {
+    NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));    
     [self.controller.usersModel save];
 }
 

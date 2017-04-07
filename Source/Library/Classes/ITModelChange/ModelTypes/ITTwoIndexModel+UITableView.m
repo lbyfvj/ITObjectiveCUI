@@ -1,14 +1,14 @@
 //
-//  ITTwoIndexModel+ITIndexPath.m
+//  ITTwoIndexModel+UITableView.m
 //  ITObjCUI
 //
 //  Created by Ivan Tsyganok on 29.03.17.
 //  Copyright © 2017 Ivan Tsyganok. All rights reserved.
 //
 
-#import "ITTwoIndexModel+ITIndexPath.h"
+#import "ITTwoIndexModel+UITableView.h"
 
-@implementation ITTwoIndexModel (ITIndexPath)
+@implementation ITTwoIndexModel (UITableView)
 
 @dynamic indexPath;
 @dynamic toIndexPath;

@@ -1,27 +1,29 @@
 //
-//  ITImageCache.m
+//  ITObjectCache.m
 //  ITObjCUI
 //
 //  Created by Ivan Tsyganok on 29.03.17.
 //  Copyright © 2017 Ivan Tsyganok. All rights reserved.
 //
 
-#import "ITImageCache.h"
+#import "ITObjectCache.h"
 
 #import "ITMacro.h"
 
-@interface ITImageCache ()
+@interface ITObjectCache ()
 @property (nonatomic, strong)   NSMapTable  *imageCache;
 
 @end
 
-@implementation ITImageCache
+@implementation ITObjectCache
 
 #pragma mark -
 #pragma mark Class Methods
 
 + (instancetype)cache {
-    ITSharedInstance([self new]);
+    ITReturnSharedInstanceWithBlock(^{
+        return [self new];
+    });
 }
 
 #pragma mark -
@@ -33,6 +35,7 @@
     if (self) {
         self.imageCache = [NSMapTable strongToWeakObjectsMapTable];
     }
+    
     return self;
 }
 

@@ -1,5 +1,5 @@
 //
-//  ITImageCache.h
+//  ITObjectCache.h
 //  ITObjCUI
 //
 //  Created by Ivan Tsyganok on 29.03.17.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ITImageCache : NSObject
+@interface ITObjectCache : NSObject
 
 + (instancetype)cache;
 

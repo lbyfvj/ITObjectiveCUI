@@ -29,7 +29,7 @@ static const NSUInteger kITUsersCount = 10;
 
 - (NSString *)path {
     NSString *fileName = [NSString stringWithFormat:@"%@.plist", NSStringFromClass([self class])];
-    NSURL *appDirectory = [NSFileManager documentsDirectory];
+    NSURL *appDirectory = [NSFileManager documentsDirectoryURL];
     
     return [[appDirectory path] stringByAppendingString:fileName];
 }
@@ -51,8 +51,8 @@ static const NSUInteger kITUsersCount = 10;
 }
 
 - (void)performLoading {
-    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:self.path];
-    NSArray *users = fileExists ? self.savedUsers : self.randomUsers;
+    NSArray *users = self.savedUsers;
+    users = users ?: self.randomUsers;
     
     [self performBlockWithoutNotifications:^{
         [self addObjects:users];

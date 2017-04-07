@@ -18,24 +18,14 @@
 #pragma mark Accessors
 
 - (NSString *)filePath {
-    NSString *fileName = self.url.lastPathComponent;
-    NSString *appDirectory = [[NSFileManager documentsDirectory] path];
-    
-    return [appDirectory stringByAppendingPathComponent:fileName];
-}
-
-- (BOOL)isCached {    
-    return [[NSFileManager defaultManager] fileExistsAtPath:self.filePath];
+    return self.url.path;
 }
 
 #pragma mark -
 #pragma mark Public
 
 - (void)performLoadingWithCompletionBlock:(void (^)(UIImage *image, id error))block {
-    NSString *path = self.cached ? self.filePath : self.url.path;
-    UIImage *image = [UIImage imageWithContentsOfFile:path];
-    
-    block(image, nil);
+    block([UIImage imageWithContentsOfFile:self.filePath], nil);
 }
 
 @end

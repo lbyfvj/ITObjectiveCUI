@@ -26,10 +26,6 @@
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
-- (void)dealloc {
-    self.observersHashTable = nil;
-}
-
 - (instancetype)init {
     self = [super init];
     if (self) {
@@ -46,7 +42,6 @@
 - (NSSet *)observersSet {
     id observersHashTable = self.observersHashTable;
     @synchronized (observersHashTable) {
-        
         return [observersHashTable setRepresentation];
     }
 }
@@ -97,7 +92,6 @@
 - (BOOL)containsObserver:(id)observer {
     NSHashTable *observers = self.observersHashTable;
     @synchronized (observers) {
-        
         return [observers containsObject:observer];
     }
 }
@@ -138,10 +132,25 @@
 
 #pragma clang diagnostic pop
 
+
+- (void)performBlockWithNotifications:(void(^)(void))block {
+    [self performBlock:block withNotificationOption:YES];
+}
+
 - (void)performBlockWithoutNotifications:(void(^)(void))block {
-    self.shouldNotify = NO;
-    ITDispatchBlock(block);
-    self.shouldNotify = YES;
+    [self performBlock:block withNotificationOption:NO];
+}
+
+#pragma mark -
+#pragma mark Private
+
+- (void)performBlock:(void(^)(void))block withNotificationOption:(BOOL)notificationOption {
+    @synchronized(self) {
+        BOOL shouldNotify = self.shouldNotify;
+        self.shouldNotify = notificationOption;        
+        ITDispatchBlock(block);
+        self.shouldNotify = shouldNotify;
+    }
 }
 
 @end

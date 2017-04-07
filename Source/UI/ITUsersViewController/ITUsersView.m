@@ -17,27 +17,6 @@ static NSString * const kITEditButtonTitle = @"Edit";
 @implementation ITUsersView
 
 #pragma mark -
-#pragma mark Initializations and Deallocations
-
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    
-}
-
-- (instancetype)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    
-    
-    return self;
-}
-
-- (instancetype)initWithCoder:(NSCoder *)coder {
-    self = [super initWithCoder:coder];
-    
-    return self;
-}
-
-#pragma mark -
 #pragma mark Accessors
 
 - (void)setEditing:(BOOL)editing {

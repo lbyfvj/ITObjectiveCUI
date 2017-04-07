@@ -8,8 +8,11 @@
 
 #import "ITURLImageModel.h"
 
+#import "NSFileManager+ITExtensions.h"
+#import "NSString+ITExtensions.h"
+
 @interface ITURLImageModel ()
-@property (nonatomic, strong)   NSURLSession                *downloadSession;
+@property (nonatomic, readonly)   NSURLSession              *downloadSession;
 @property (nonatomic, strong)   NSURLSessionDownloadTask    *downloadTask;
 
 - (void)performLoadingFromURLWithBlock:(void (^)(UIImage *, id))block;
@@ -26,7 +29,7 @@
 - (NSURLSession *)downloadSession {
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration ephemeralSessionConfiguration]];
     
-    ITSharedInstance(session);
+    ITReturnSharedInstance(session);
 }
 
 - (void)setDownloadTask:(NSURLSessionDownloadTask *)downloadTask {
@@ -48,11 +51,20 @@
     }
 }
 
+- (NSString *)filePath {
+    NSString *cachePath = [[NSFileManager documentsDirectoryURL] path];
+    NSString *fileName = [self.url.relativePath stringByAddingPercentEncodingWithAllowedCharactersSet];
+    
+    return [cachePath stringByAppendingPathComponent:fileName];
+}
+
+
 #pragma mark -
 #pragma mark Private
 
 - (void)performLoadingFromURLWithBlock:(void (^)(UIImage *, id))block {
     ITWeakify(self);
+    NSURL *fileURL = [NSURL fileURLWithPath:self.filePath];
     self.downloadTask = [self.downloadSession downloadTaskWithURL:self.url
                                                 completionHandler:^(NSURL *location,
                                                                     NSURLResponse *response,
@@ -61,7 +73,7 @@
         ITStrongifyAndReturnIfNil(self);
         if (!error) {
             [[NSFileManager defaultManager] copyItemAtURL:location
-                                                    toURL:[NSURL fileURLWithPath:self.filePath]
+                                                    toURL:fileURL
                                                     error:nil];
             [super performLoadingWithCompletionBlock:block];
         }

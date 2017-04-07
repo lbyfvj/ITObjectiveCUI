@@ -23,6 +23,18 @@
     return [self arrayWithArray:array];
 }
 
+#pragma mark -
+#pragma mark Public
+
+- (id)objectWithClass:(Class)cls {
+    for (id object in self) {
+        if ([object isMemberOfClass:cls]) {
+            return object;
+        }
+    }
+    
+    return nil;
+}
 
 
 @end

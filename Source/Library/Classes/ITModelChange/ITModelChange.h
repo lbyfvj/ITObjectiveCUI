@@ -10,8 +10,8 @@
 
 @interface ITModelChange : NSObject
 
-+ (id)insertAtIndex:(NSUInteger)index;
-+ (id)deleteAtIndex:(NSUInteger)index;
-+ (id)moveAtIndex:(NSUInteger)index toIndex:(NSUInteger)toIndex;
++ (id)insertModelAtIndex:(NSUInteger)index;
++ (id)deleteModelAtIndex:(NSUInteger)index;
++ (id)moveModelAtIndex:(NSUInteger)index toIndex:(NSUInteger)toIndex;
 
 @end
