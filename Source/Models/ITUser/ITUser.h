@@ -10,9 +10,27 @@
 
 #import "ITModel.h"
 #import "ITImageModel.h"
+#import "ITArrayModel.h"
 
-@interface ITUser : NSObject <NSCoding>
-@property (nonatomic, strong)       NSString        *name;
+typedef NS_ENUM(NSUInteger, ITUserState) {
+    ITUserDidLoad = ITModelStateCount,
+    ITUserStateCount
+};
+
+@interface ITUser : ITModel <NSCoding>
+@property (nonatomic, strong)       NSString        *userId;
+@property (nonatomic, strong)       NSString        *firstName;
+@property (nonatomic, strong)       NSString        *lastName;
+@property (nonatomic, readonly)     NSString        *fullName;
 @property (nonatomic, readonly)     ITImageModel    *imageModel;
+@property (nonatomic, strong)       ITArrayModel    *friends;
+@property (nonatomic, copy)         NSURL           *imageURL;
+
+@end
+
+@protocol ITUserObserver <NSObject, ITModelObserver>
+
+@optional
+- (void)userDidLoad:(ITUser *)user;
 
 @end

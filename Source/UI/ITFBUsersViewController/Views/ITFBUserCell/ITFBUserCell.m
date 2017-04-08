@@ -1,29 +1,29 @@
 //
-//  ITUserCell.m
+//  ITFBUserCell.m
 //  ITObjCUI
 //
-//  Created by Ivan Tsyganok on 24.02.17.
+//  Created by Ivan Tsyganok on 04.04.17.
 //  Copyright © 2017 Ivan Tsyganok. All rights reserved.
 //
 
-#import "ITUserCell.h"
+#import "ITFBUserCell.h"
 
 #import "ITUser.h"
+
 #import "ITImageView.h"
-#import "ITMacro.h"
-#import "ITDispatchQueue.h"
 
-@interface ITUserCell ()
+@implementation ITFBUserCell
 
-- (void)fillWithUserModel:(ITUser *)data;
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    // Initialization code
+}
 
-@end
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
 
-@implementation ITUserCell
-
-#pragma mark -
-#pragma mark Initializations and Deallocations
-
+    // Configure the view for the selected state
+}
 
 #pragma mark -
 #pragma mark Accessors
@@ -41,7 +41,8 @@
 #pragma mark Public
 
 - (void)fillWithUserModel:(ITUser *)user {
-    self.userLabel.text = user.fullName;
+    self.fullNameLabel.text = user.fullName;
+    
     self.userImageView.imageModel = user.imageModel;
 }
 

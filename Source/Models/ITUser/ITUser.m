@@ -8,9 +8,10 @@
 
 #import "ITUser.h"
 
-#import "NSString+ITRandomName.h"
-
-static NSString * const kITCoderName = @"CoderName";
+static NSString * const kITCoderUserId = @"CoderUserId";
+static NSString * const kITCoderFirstName = @"CoderFirstName";
+static NSString * const kITCoderLastName = @"CoderLastName";
+static NSString * const kITCoderImageURL = @"CoderImageURL";
 static NSString * const kITImageURL = @"http://www.head.com/fileadmin/content/sports/ski/category_page/desktop/HEAD_Desktop_SKI_Landing_Page_05_50_50_Supershapev3.jpg";
 
 @implementation ITUser
@@ -23,7 +24,7 @@ static NSString * const kITImageURL = @"http://www.head.com/fileadmin/content/sp
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.name = [NSString randomName];
+        self.friends = [ITArrayModel new];
     }
     return self;
 }
@@ -31,26 +32,61 @@ static NSString * const kITImageURL = @"http://www.head.com/fileadmin/content/sp
 #pragma mark - 
 #pragma mark Accessors
 
+- (void)setUserId:(NSString *)userId {
+    if (_userId != userId) {
+        _userId = userId;
+        
+        self.state = ITUserDidLoad;
+    }
+}
+
+- (NSString *)fullName {
+    return [NSString stringWithFormat:@"%@ %@", self.firstName, self.lastName];
+}
+
 - (ITImageModel *)imageModel {
-    NSURL *url = [NSURL URLWithString:kITImageURL];
-    
-    return [ITImageModel imageWithURL:url];
+    return [ITImageModel imageWithURL:self.imageURL];
 }
 
 #pragma mark -
-#pragma mark NSCoding protocol
+#pragma mark NSCoding
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
     if (self) {
-        _name = [aDecoder decodeObjectForKey:kITCoderName];
+        _userId = [aDecoder decodeObjectForKey:kITCoderUserId];
+        _firstName = [aDecoder decodeObjectForKey:kITCoderFirstName];
+        _lastName = [aDecoder decodeObjectForKey:kITCoderLastName];
+        _imageURL = [aDecoder decodeObjectForKey:kITCoderImageURL];
     }
     
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeObject:_name forKey:kITCoderName];
+    [aCoder encodeObject:_userId forKey:kITCoderUserId];
+    [aCoder encodeObject:_firstName forKey:kITCoderFirstName];
+    [aCoder encodeObject:_lastName forKey:kITCoderLastName];
+    [aCoder encodeObject:_imageURL forKey:kITCoderImageURL];
+}
+
+#pragma mark -
+#pragma mark ITModel
+
+- (SEL)selectorForState:(NSUInteger)state {
+    SEL selector = NULL;
+    
+    switch (state) {
+        case ITUserDidLoad:
+            selector = @selector(userDidLoad:);
+            break;
+            
+        default:
+            selector = [super selectorForState:state];
+            break;
+    }
+    
+    return selector;
 }
 
 @end

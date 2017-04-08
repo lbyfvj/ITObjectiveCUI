@@ -13,6 +13,7 @@
 #import "ITSquareViewController.h"
 #import "ITUsersViewController.h"
 #import "UIWindow+ITExtensions.h"
+#import "ITLoginViewController.h"
 
 @interface ITAppDelegate ()
 @property (nonatomic, strong)   ITUsersViewController   *controller;
@@ -30,10 +31,15 @@
     UIWindow *window = [UIWindow window];
     self.window = window;
 
-    self.controller = [ITUsersViewController new];
-    self.controller.usersModel = [ITUsers new];
+//    self.controller = [ITUsersViewController new];
+//    self.controller.usersModel = [ITUsers new];
+//    
+//    window.rootViewController = self.controller;
     
-    window.rootViewController = self.controller;
+    ITLoginViewController *controller = [ITLoginViewController new];
+    UINavigationController *navigationController = [[UINavigationController alloc]
+                                                    initWithRootViewController:controller];
+    window.rootViewController = navigationController;
     
     [window makeKeyAndVisible];
     
