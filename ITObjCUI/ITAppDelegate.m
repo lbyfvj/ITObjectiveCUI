@@ -8,10 +8,10 @@
 
 #import "ITAppDelegate.h"
 
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+
 #import "ITSquareViewController.h"
-
 #import "ITUsersViewController.h"
-
 #import "UIWindow+ITExtensions.h"
 
 @interface ITAppDelegate ()
@@ -24,6 +24,8 @@
 @implementation ITAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [[FBSDKApplicationDelegate sharedInstance] application:application
+                             didFinishLaunchingWithOptions:launchOptions];
     
     UIWindow *window = [UIWindow window];
     self.window = window;
@@ -36,6 +38,20 @@
     [window makeKeyAndVisible];
     
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+            options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
+{
+    FBSDKApplicationDelegate *sharedInstance = [FBSDKApplicationDelegate sharedInstance];
+    
+    BOOL handled = [sharedInstance application:application
+                                       openURL:url
+                             sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
+                                    annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
+
+    return handled;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
