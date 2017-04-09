@@ -28,6 +28,22 @@ static NSString * const kITFBUserFriendsPermission = @"user_friends";
 @dynamic accessToken;
 
 #pragma mark -
+#pragma mark Class Methods
+
++ (ITUser *)user {
+    FBSDKAccessToken *accessToken = [FBSDKAccessToken currentAccessToken];
+    
+    if (!accessToken) {
+        return nil;
+    }
+    
+    ITUser *user = [ITUser new];
+    user.userId = accessToken.userID;
+    
+    return user;
+}
+
+#pragma mark -
 #pragma mark Initializatiions and Deallocations
 
 - (instancetype)initWithUser:(ITUser *)user {

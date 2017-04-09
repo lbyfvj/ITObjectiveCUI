@@ -12,6 +12,8 @@
 
 @interface ITFBLoginContext : ITContext
 
++ (ITUser *)user;
+
 - (instancetype)initWithUser:(ITUser *)user;
 
 @end

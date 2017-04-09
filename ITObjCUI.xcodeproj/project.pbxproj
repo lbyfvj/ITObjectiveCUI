@@ -41,8 +41,12 @@
 		9332F06E1E994DEB007A0A29 /* ITLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9332F0651E994DEB007A0A29 /* ITLoginView.m */; };
 		9332F06F1E994DEB007A0A29 /* ITLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9332F0671E994DEB007A0A29 /* ITLoginViewController.m */; };
 		9332F0701E994DEB007A0A29 /* ITLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9332F0681E994DEB007A0A29 /* ITLoginViewController.xib */; };
-		9332F0721E994E6F007A0A29 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9332F0711E994E6F007A0A29 /* Default-568h@2x.png */; };
 		9332F0761E99503B007A0A29 /* UIButton+ITExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9332F0751E99503B007A0A29 /* UIButton+ITExtensions.m */; };
+		9332F07B1E995EF8007A0A29 /* ITFBFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9332F0791E995EF8007A0A29 /* ITFBFriendViewController.m */; };
+		9332F07C1E995EF8007A0A29 /* ITFBFriendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9332F07A1E995EF8007A0A29 /* ITFBFriendViewController.xib */; };
+		9332F07F1E9A0B45007A0A29 /* ITFBFriendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9332F07E1E9A0B45007A0A29 /* ITFBFriendView.m */; };
+		9332F0831E9A0C25007A0A29 /* ITFBUserContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 9332F0821E9A0C25007A0A29 /* ITFBUserContext.m */; };
+		9332F0871E9A959F007A0A29 /* UIViewController+ITExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9332F0861E9A959F007A0A29 /* UIViewController+ITExtensions.m */; };
 		93462D6E1E67739D00FE1BC9 /* ITUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462D6D1E67739D00FE1BC9 /* ITUser.m */; };
 		93462D7B1E68965D00FE1BC9 /* ITTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462D7A1E68965D00FE1BC9 /* ITTableViewCell.m */; };
 		93462D8F1E68B61C00FE1BC9 /* ITObservableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462D8E1E68B61C00FE1BC9 /* ITObservableObject.m */; };
@@ -159,9 +163,17 @@
 		9332F0661E994DEB007A0A29 /* ITLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITLoginViewController.h; sourceTree = "<group>"; };
 		9332F0671E994DEB007A0A29 /* ITLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITLoginViewController.m; sourceTree = "<group>"; };
 		9332F0681E994DEB007A0A29 /* ITLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ITLoginViewController.xib; sourceTree = "<group>"; };
-		9332F0711E994E6F007A0A29 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		9332F0741E99503B007A0A29 /* UIButton+ITExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+ITExtensions.h"; sourceTree = "<group>"; };
 		9332F0751E99503B007A0A29 /* UIButton+ITExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ITExtensions.m"; sourceTree = "<group>"; };
+		9332F0781E995EF8007A0A29 /* ITFBFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITFBFriendViewController.h; sourceTree = "<group>"; };
+		9332F0791E995EF8007A0A29 /* ITFBFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITFBFriendViewController.m; sourceTree = "<group>"; };
+		9332F07A1E995EF8007A0A29 /* ITFBFriendViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ITFBFriendViewController.xib; sourceTree = "<group>"; };
+		9332F07D1E9A0B45007A0A29 /* ITFBFriendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITFBFriendView.h; sourceTree = "<group>"; };
+		9332F07E1E9A0B45007A0A29 /* ITFBFriendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITFBFriendView.m; sourceTree = "<group>"; };
+		9332F0811E9A0C25007A0A29 /* ITFBUserContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITFBUserContext.h; sourceTree = "<group>"; };
+		9332F0821E9A0C25007A0A29 /* ITFBUserContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITFBUserContext.m; sourceTree = "<group>"; };
+		9332F0851E9A959F007A0A29 /* UIViewController+ITExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ITExtensions.h"; sourceTree = "<group>"; };
+		9332F0861E9A959F007A0A29 /* UIViewController+ITExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ITExtensions.m"; sourceTree = "<group>"; };
 		93462D6C1E67739D00FE1BC9 /* ITUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITUser.h; sourceTree = "<group>"; };
 		93462D6D1E67739D00FE1BC9 /* ITUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITUser.m; sourceTree = "<group>"; };
 		93462D791E68965D00FE1BC9 /* ITTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITTableViewCell.h; sourceTree = "<group>"; };
@@ -328,6 +340,7 @@
 				931CF0F01E8454A600AE4B4C /* UINib+ITExtensions */,
 				931CF0F31E8454A600AE4B4C /* UITableView+ITExtensions */,
 				931CF0F91E8454A600AE4B4C /* UIWindow+ITExtensions */,
+				9332F0841E9A9585007A0A29 /* UIViewController+ITExtensions */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -431,6 +444,7 @@
 				9332F04B1E994DDA007A0A29 /* ITFBContext */,
 				9332F04E1E994DDA007A0A29 /* ITFBLoginContext */,
 				9332F0511E994DDA007A0A29 /* ITFBUsersContext */,
+				9332F0801E9A0BFE007A0A29 /* ITFBUserContext */,
 			);
 			path = Contexts;
 			sourceTree = "<group>";
@@ -521,6 +535,36 @@
 				9332F0751E99503B007A0A29 /* UIButton+ITExtensions.m */,
 			);
 			path = "UIButton+ITExtensions";
+			sourceTree = "<group>";
+		};
+		9332F0771E995E67007A0A29 /* ITFBFriendViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9332F07D1E9A0B45007A0A29 /* ITFBFriendView.h */,
+				9332F07E1E9A0B45007A0A29 /* ITFBFriendView.m */,
+				9332F0781E995EF8007A0A29 /* ITFBFriendViewController.h */,
+				9332F0791E995EF8007A0A29 /* ITFBFriendViewController.m */,
+				9332F07A1E995EF8007A0A29 /* ITFBFriendViewController.xib */,
+			);
+			path = ITFBFriendViewController;
+			sourceTree = "<group>";
+		};
+		9332F0801E9A0BFE007A0A29 /* ITFBUserContext */ = {
+			isa = PBXGroup;
+			children = (
+				9332F0811E9A0C25007A0A29 /* ITFBUserContext.h */,
+				9332F0821E9A0C25007A0A29 /* ITFBUserContext.m */,
+			);
+			path = ITFBUserContext;
+			sourceTree = "<group>";
+		};
+		9332F0841E9A9585007A0A29 /* UIViewController+ITExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				9332F0851E9A959F007A0A29 /* UIViewController+ITExtensions.h */,
+				9332F0861E9A959F007A0A29 /* UIViewController+ITExtensions.m */,
+			);
+			path = "UIViewController+ITExtensions";
 			sourceTree = "<group>";
 		};
 		93462D6B1E67739D00FE1BC9 /* ITUser */ = {
@@ -709,7 +753,6 @@
 		93C20E761E5B95BF00B56982 = {
 			isa = PBXGroup;
 			children = (
-				9332F0711E994E6F007A0A29 /* Default-568h@2x.png */,
 				93C20EDB1E5F72DD00B56982 /* Source */,
 				93C20EB11E5B99E900B56982 /* Resources */,
 				93C20EA71E5B99CA00B56982 /* ITObjCUI */,
@@ -782,6 +825,7 @@
 		93C20EDF1E5F72DD00B56982 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				9332F0771E995E67007A0A29 /* ITFBFriendViewController */,
 				9332F0581E994DEB007A0A29 /* ITFBUsersViewController */,
 				9332F0631E994DEB007A0A29 /* ITLoginViewController */,
 				93462DA11E6A114E00FE1BC9 /* ITUsersViewController */,
@@ -976,11 +1020,11 @@
 				93C20EBE1E5B99E900B56982 /* LaunchScreen.storyboard in Resources */,
 				93462DAD1E6A114E00FE1BC9 /* ITUsersViewController.xib in Resources */,
 				93AA34671E79DB3D00513950 /* ITUserCell.xib in Resources */,
-				9332F0721E994E6F007A0A29 /* Default-568h@2x.png in Resources */,
 				9332F06B1E994DEB007A0A29 /* ITFBUsersViewController.xib in Resources */,
 				9332F0701E994DEB007A0A29 /* ITLoginViewController.xib in Resources */,
 				93C20EBC1E5B99E900B56982 /* Assets.xcassets in Resources */,
 				9332F06D1E994DEB007A0A29 /* ITFBUserCell.xib in Resources */,
+				9332F07C1E995EF8007A0A29 /* ITFBFriendViewController.xib in Resources */,
 				93AA346C1E79DB6600513950 /* ITAddRowCell.xib in Resources */,
 				932D37741E60EB2D00C435F2 /* image.jpg in Resources */,
 			);
@@ -1118,12 +1162,15 @@
 				93AA34511E787B2000513950 /* ITOneIndexModel.m in Sources */,
 				93C20EE81E5F72DD00B56982 /* ITSquareViewController.m in Sources */,
 				931CF1051E8454A600AE4B4C /* UINib+ITExtensions.m in Sources */,
+				9332F0831E9A0C25007A0A29 /* ITFBUserContext.m in Sources */,
 				93462D9C1E69FD3F00FE1BC9 /* ITUsers.m in Sources */,
 				93C757461E8833FC0007F444 /* ITCompilerMacro.m in Sources */,
+				9332F07B1E995EF8007A0A29 /* ITFBFriendViewController.m in Sources */,
 				931CCBD81E8AF8F50029095A /* ITChangeTypes+ITModelChangeExtensions.m in Sources */,
 				93462DAC1E6A114E00FE1BC9 /* ITUsersViewController.m in Sources */,
 				931CF1061E8454A600AE4B4C /* ITUsersTableView+ITExtensions.m in Sources */,
 				931CF1031E8454A600AE4B4C /* NSString+ITExtensions.m in Sources */,
+				9332F0871E9A959F007A0A29 /* UIViewController+ITExtensions.m in Sources */,
 				9332F06E1E994DEB007A0A29 /* ITLoginView.m in Sources */,
 				9332F0351E98212D007A0A29 /* ITObjectCache.m in Sources */,
 				93462DAB1E6A114E00FE1BC9 /* ITUsersView.m in Sources */,
@@ -1131,6 +1178,7 @@
 				93462D6E1E67739D00FE1BC9 /* ITUser.m in Sources */,
 				9332F0561E994DDA007A0A29 /* ITFBLoginContext.m in Sources */,
 				931CCBE31E8C14300029095A /* UIView+ITExtensions.m in Sources */,
+				9332F07F1E9A0B45007A0A29 /* ITFBFriendView.m in Sources */,
 				931CF1011E8454A600AE4B4C /* NSBundle+ITExtensions.m in Sources */,
 				93462D7B1E68965D00FE1BC9 /* ITTableViewCell.m in Sources */,
 				93C757201E86C7B60007F444 /* NSFileManager+ITExtensions.m in Sources */,

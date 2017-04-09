@@ -39,12 +39,28 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    ITUser *user = [ITFBLoginContext user];
+    
+    if (user) {
+        [self pushViewControllerWithUser:user];
+    }
 
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 
+}
+
+#pragma mark -
+#pragma mark Private
+
+- (void)pushViewControllerWithUser:(ITUser *)user {
+    ITFBUsersViewController *controller = [ITFBUsersViewController new];
+    controller.user = user;
+    
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 #pragma mark -
@@ -66,10 +82,7 @@
 - (void)userDidLoad:(ITUser *)user {
     NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     ITAsyncPerformInMainQueue(^{
-        ITFBUsersViewController *controller = [ITFBUsersViewController new];
-        controller.user = user;
-        
-        [self.navigationController pushViewController:controller animated:YES];
+        [self pushViewControllerWithUser:user];
     });
 }
 

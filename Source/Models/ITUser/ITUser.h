@@ -13,18 +13,22 @@
 #import "ITArrayModel.h"
 
 typedef NS_ENUM(NSUInteger, ITUserState) {
-    ITUserDidLoad = ITModelStateCount,
+    ITUserDidLoad = ITModelStateCount,    
     ITUserStateCount
 };
 
 @interface ITUser : ITModel <NSCoding>
-@property (nonatomic, strong)       NSString        *userId;
-@property (nonatomic, strong)       NSString        *firstName;
-@property (nonatomic, strong)       NSString        *lastName;
-@property (nonatomic, readonly)     NSString        *fullName;
-@property (nonatomic, readonly)     ITImageModel    *imageModel;
-@property (nonatomic, strong)       ITArrayModel    *friends;
-@property (nonatomic, copy)         NSURL           *imageURL;
+@property (nonatomic, copy)         NSString            *userId;
+
+@property (nonatomic, copy)         NSString            *firstName;
+@property (nonatomic, copy)         NSString            *lastName;
+@property (nonatomic, readonly)     NSString            *fullName;
+
+@property (nonatomic, copy)         NSString            *gender;
+
+@property (nonatomic, strong)       ITArrayModel        *friends;
+@property (nonatomic, copy)         NSURL               *imageURL;
+@property (nonatomic, readonly)     ITImageModel        *imageModel;
 
 @end
 

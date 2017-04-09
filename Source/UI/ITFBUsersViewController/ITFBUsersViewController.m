@@ -13,10 +13,15 @@
 #import "ITFBUsersContext.h"
 #import "ITFBUserCell.h"
 #import "UITableView+ITExtensions.h"
+#import "UIViewController+ITExtensions.h"
+
+#import "ITFBFriendViewController.h"
 
 @interface ITFBUsersViewController ()
 @property (nonatomic, strong)           ITFBUsersContext        *usersContext;
 @property (nonatomic, strong)           ITArrayModel            *users;
+
+- (IBAction)onLogOutButtonClicked:(id)sender;
 
 @end
 
@@ -32,7 +37,9 @@ ITViewControllerSynthesizeRootView(ITFBUsersViewController, fbUsersView, ITFBUse
 - (void)setUser:(ITUser *)user {
     if (user != _user) {
         [_user.friends removeObserver:self];
+        
         _user = user;
+        
         [_user.friends addObserver:self];
         
         self.usersContext = [ITFBUsersContext new];
@@ -48,7 +55,7 @@ ITViewControllerSynthesizeRootView(ITFBUsersViewController, fbUsersView, ITFBUse
         
         _usersContext.model = self.users;
         
-        [_usersContext execute];
+        [_usersContext execute];        
     }
 }
 
@@ -59,12 +66,24 @@ ITViewControllerSynthesizeRootView(ITFBUsersViewController, fbUsersView, ITFBUse
 #pragma mark -
 #pragma mark Private
 
+- (IBAction)onLogOutButtonClicked:(id)sender; {
+    [[FBSDKLoginManager new] logOut];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
 
 #pragma mark -
 #pragma mark Lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    UINavigationItem *navigationItem = self.navigationItem;
+    UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Logout"
+                                                             style:UIBarButtonItemStylePlain
+                                                            target:self
+                                                            action:@selector(onLogOutButtonClicked:)];
+    [navigationItem setRightBarButtonItem:logoutButton animated:YES];
     
     self.fbUsersView.model = self.users;
 }
@@ -91,6 +110,15 @@ ITViewControllerSynthesizeRootView(ITFBUsersViewController, fbUsersView, ITFBUse
     [cell fillWithUserModel:user];
     
     return cell;
+}
+
+- (void)            tableView:(UITableView *)tableView
+    didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ITFBFriendViewController *controller = [ITFBFriendViewController new];
+    controller.user = self.users[indexPath.row];
+    
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 #pragma mark -

@@ -12,6 +12,6 @@
 #import "ITArrayModel.h"
 
 @interface ITFBUsersViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, ITArrayModelObserver>
-@property (nonatomic, strong)   ITUser      *user;
+@property (nonatomic, strong)           ITUser                  *user;
 
 @end

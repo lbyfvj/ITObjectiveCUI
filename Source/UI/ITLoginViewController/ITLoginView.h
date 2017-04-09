@@ -6,11 +6,9 @@
 //  Copyright © 2017 Ivan Tsyganok. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
-#import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "ITUser.h"
 
 @interface ITLoginView : UIView
-@property (nonatomic, strong) IBOutlet  UIButton *loginButton;
+@property (nonatomic, strong)       IBOutlet    UIButton    *loginButton;
 
 @end

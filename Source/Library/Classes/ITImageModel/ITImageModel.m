@@ -54,11 +54,6 @@
 #pragma mark -
 #pragma mark Public
 
-//- (void)dump {
-//    self.image = nil;
-//    self.state = ITModelUnloaded;
-//}
-
 - (void)performLoadingWithCompletionBlock:(void(^)(UIImage *image, id error))block {
     
 }

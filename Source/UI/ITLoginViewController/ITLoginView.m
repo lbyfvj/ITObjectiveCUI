@@ -10,6 +10,9 @@
 
 #import "UIButton+ITExtensions.h"
 
+static NSString * const kITLoginButtonTitle = @"Login with Facebook";
+static NSString * const kITLogoutButtonTitle = @"Logout";
+
 @implementation ITLoginView
 
 - (void)awakeFromNib {
@@ -21,7 +24,7 @@
     loginButton.frame=CGRectMake(0,0,180,40);
     loginButton.center = self.center;
     loginButton.layer.cornerRadius = 5.0;
-    [loginButton setTitle:@"Login with Facebook"
+    [loginButton setTitle:kITLoginButtonTitle
                  forState:UIControlStateNormal
                 withColor:[UIColor whiteColor]];
     

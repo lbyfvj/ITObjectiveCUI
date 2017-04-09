@@ -11,11 +11,13 @@
 static NSString * const kITCoderUserId = @"CoderUserId";
 static NSString * const kITCoderFirstName = @"CoderFirstName";
 static NSString * const kITCoderLastName = @"CoderLastName";
+static NSString * const kITCoderGender = @"CoderGender";
 static NSString * const kITCoderImageURL = @"CoderImageURL";
 static NSString * const kITImageURL = @"http://www.head.com/fileadmin/content/sports/ski/category_page/desktop/HEAD_Desktop_SKI_Landing_Page_05_50_50_Supershapev3.jpg";
 
 @implementation ITUser
 
+@dynamic fullName;
 @dynamic imageModel;
 
 #pragma mark -
@@ -57,6 +59,7 @@ static NSString * const kITImageURL = @"http://www.head.com/fileadmin/content/sp
         _userId = [aDecoder decodeObjectForKey:kITCoderUserId];
         _firstName = [aDecoder decodeObjectForKey:kITCoderFirstName];
         _lastName = [aDecoder decodeObjectForKey:kITCoderLastName];
+        _gender = [aDecoder decodeObjectForKey:kITCoderGender];
         _imageURL = [aDecoder decodeObjectForKey:kITCoderImageURL];
     }
     
@@ -67,6 +70,7 @@ static NSString * const kITImageURL = @"http://www.head.com/fileadmin/content/sp
     [aCoder encodeObject:_userId forKey:kITCoderUserId];
     [aCoder encodeObject:_firstName forKey:kITCoderFirstName];
     [aCoder encodeObject:_lastName forKey:kITCoderLastName];
+    [aCoder encodeObject:_gender forKey:kITCoderGender];
     [aCoder encodeObject:_imageURL forKey:kITCoderImageURL];
 }
 
