@@ -17,6 +17,8 @@
 
 @interface ITLoginViewController ()
 
+- (void)pushViewControllerWithUser:(ITUser *)user withAnimation:(BOOL)animation;
+
 @end
 
 @implementation ITLoginViewController
@@ -43,7 +45,7 @@
     ITUser *user = [ITFBLoginContext user];
     
     if (user) {
-        [self pushViewControllerWithUser:user];
+        [self pushViewControllerWithUser:user withAnimation:NO];
     }
 
 }
@@ -56,11 +58,11 @@
 #pragma mark -
 #pragma mark Private
 
-- (void)pushViewControllerWithUser:(ITUser *)user {
+- (void)pushViewControllerWithUser:(ITUser *)user withAnimation:(BOOL)animation {
     ITFBUsersViewController *controller = [ITFBUsersViewController new];
     controller.user = user;
     
-    [self.navigationController pushViewController:controller animated:YES];
+    [self.navigationController pushViewController:controller animated:animation];
 }
 
 #pragma mark -
@@ -82,7 +84,7 @@
 - (void)userDidLoad:(ITUser *)user {
     NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     ITAsyncPerformInMainQueue(^{
-        [self pushViewControllerWithUser:user];
+        [self pushViewControllerWithUser:user withAnimation:YES];
     });
 }
 
