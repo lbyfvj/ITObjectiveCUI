@@ -22,8 +22,6 @@
 
 - (instancetype)initWithURL:(NSURL *)url;
 
-//- (void)dump;
-
 - (void)performLoadingWithCompletionBlock:(void(^)(UIImage *image, id error))block;
 
 - (void)finalizeLoadingWithImage:(UIImage *)image error:(id)error;

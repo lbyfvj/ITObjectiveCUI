@@ -30,15 +30,26 @@
 }
 
 + (NSURL *)applicationDirectoryURL {
-    NSURL *directoryPath = [self directoryPathWithType:NSApplicationDirectory];
+    NSURL *directoryPath = [self directoryPathWithType:NSApplicationSupportDirectory];
     
     ITReturnSharedInstance(directoryPath);
 }
 
-+ (NSURL *)cacheDirectoryURL {
-    NSURL *directoryPath = [self directoryPathWithType:NSCachesDirectory];
+- (void)copyItemAtURL:(NSURL *)url
+                toURL:(NSURL *)toURL
+{
+    NSError *error = nil;
     
-    ITReturnSharedInstance(directoryPath);
+    NSString *path = [toURL URLByDeletingLastPathComponent].path;
+    
+    if (![self fileExistsAtPath:path]) {
+        [self createDirectoryAtPath:path
+        withIntermediateDirectories:YES
+                         attributes:nil
+                              error:&error];
+    }
+   
+    [self copyItemAtURL:url toURL:toURL error:&error];
 }
 
 @end

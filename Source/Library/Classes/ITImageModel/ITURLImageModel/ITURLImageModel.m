@@ -40,10 +40,16 @@
     }
 }
 
+- (BOOL)isCached {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    return self.fileURL.isFileURL && [fileManager fileExistsAtPath:self.fileURL.path];
+}
+
 #pragma mark -
 #pragma mark Public
 
-- (void)performLoadingWithCompletionBlock:(void (^)(UIImage *, id))block {    
+- (void)performLoadingWithCompletionBlock:(void (^)(UIImage *image, id error))block {    
     if (self.cached) {
         [super performLoadingWithCompletionBlock:block];
     } else {
@@ -51,33 +57,26 @@
     }
 }
 
-- (NSString *)filePath {
-    NSString *cachePath = [[NSFileManager documentsDirectoryURL] path];
-    NSString *fileName = [self.url.relativePath stringByAddingPercentEncodingWithAllowedCharactersSet];
-    
-    return [cachePath stringByAppendingPathComponent:fileName];
-}
-
-
 #pragma mark -
 #pragma mark Private
 
-- (void)performLoadingFromURLWithBlock:(void (^)(UIImage *, id))block {
+- (void)performLoadingFromURLWithBlock:(void (^)(UIImage *image, id error))block {
     ITWeakify(self);
-    NSURL *fileURL = [NSURL fileURLWithPath:self.filePath];
-    self.downloadTask = [self.downloadSession downloadTaskWithURL:self.url
-                                                completionHandler:^(NSURL *location,
-                                                                    NSURLResponse *response,
-                                                                    NSError *error)
-    {
+    id completionBlock = ^(NSURL *location, NSURLResponse *response, NSError *error) {
         ITStrongifyAndReturnIfNil(self);
-        if (!error) {
-            [[NSFileManager defaultManager] copyItemAtURL:location
-                                                    toURL:fileURL
-                                                    error:nil];
-            [super performLoadingWithCompletionBlock:block];
+        if (error) {
+            self.state = ITModelFailedLoading;
+            
+            return;
         }
-    }];
+        
+        [[NSFileManager defaultManager] copyItemAtURL:location
+                                                toURL:self.fileURL];
+        [super performLoadingWithCompletionBlock:block];
+    };
+    
+    self.downloadTask = [self.downloadSession downloadTaskWithURL:self.url
+                                                completionHandler:completionBlock];
 }
 
 @end

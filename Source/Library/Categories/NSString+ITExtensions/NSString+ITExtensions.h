@@ -26,6 +26,6 @@
 
 + (instancetype)randomString;
 
-- (instancetype)stringByAddingPercentEncodingWithAllowedCharactersSet;
+- (instancetype)stringByAddingPercentEncodingWithalphanumericCharacterSet;
 
 @end

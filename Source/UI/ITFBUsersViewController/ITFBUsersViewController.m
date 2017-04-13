@@ -55,7 +55,7 @@ ITViewControllerSynthesizeRootView(ITFBUsersViewController, fbUsersView, ITFBUse
         
         _usersContext.model = self.users;
         
-        [_usersContext execute];        
+        [_usersContext execute];
     }
 }
 
@@ -84,7 +84,7 @@ ITViewControllerSynthesizeRootView(ITFBUsersViewController, fbUsersView, ITFBUse
                                                             target:self
                                                             action:@selector(onLogOutButtonClicked:)];
     [navigationItem setRightBarButtonItem:logoutButton animated:YES];
-    
+
     self.fbUsersView.model = self.users;
 }
 

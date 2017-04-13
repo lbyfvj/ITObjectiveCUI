@@ -23,6 +23,7 @@ static const CGFloat        kITAlpha = 0.5;
     ITLoadingView *view = [[NSBundle mainBundle] objectWithClass:[self class]];
     view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     view.frame = superView.bounds;
+    view.alpha = 0.0;
     
     return view;
 }
