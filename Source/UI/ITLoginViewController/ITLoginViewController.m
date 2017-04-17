@@ -16,6 +16,7 @@
 
 
 @interface ITLoginViewController ()
+@property (nonatomic, strong)   ITFBLoginContext   *loginContext;
 
 - (void)pushViewControllerWithUser:(ITUser *)user withAnimation:(BOOL)animation;
 
@@ -71,17 +72,18 @@
 - (IBAction)onLoginButtonClicked:(id)sender {
     NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     ITUser *user  = [ITUser new];
+    ITFBLoginContext *loginContext = [[ITFBLoginContext alloc] initWithUser:user];
+    
     self.user = user;
+    self.loginContext = loginContext;
     
-    ITFBLoginContext *context = [[ITFBLoginContext alloc] initWithUser:user];
-    
-    [context execute];
+    [loginContext execute];
 }
 
 #pragma mark -
 #pragma mark ITUserObserver
 
-- (void)userDidLoad:(ITUser *)user {
+- (void)userDidLoadFullInfo:(ITUser *)user {
     NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     ITAsyncPerformInMainQueue(^{
         [self pushViewControllerWithUser:user withAnimation:YES];

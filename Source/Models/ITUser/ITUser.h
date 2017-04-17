@@ -13,7 +13,7 @@
 #import "ITArrayModel.h"
 
 typedef NS_ENUM(NSUInteger, ITUserState) {
-    ITUserDidLoad = ITModelStateCount,    
+    ITUserDidLoadFullInfo = ITModelStateCount,
     ITUserStateCount
 };
 
@@ -35,6 +35,6 @@ typedef NS_ENUM(NSUInteger, ITUserState) {
 @protocol ITUserObserver <NSObject, ITModelObserver>
 
 @optional
-- (void)userDidLoad:(ITUser *)user;
+- (void)userDidLoadFullInfo:(ITUser *)user;
 
 @end

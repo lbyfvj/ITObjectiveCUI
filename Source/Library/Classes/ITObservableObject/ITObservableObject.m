@@ -120,6 +120,10 @@
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
 
 - (void)notifyOfStateWithSelector:(SEL)selector object:(id)object {
+    if (!self.shouldNotify) {
+        return;
+    }
+    
     NSHashTable *observers = self.observersHashTable;
     @synchronized(observers) {
         for (id observer in observers) {

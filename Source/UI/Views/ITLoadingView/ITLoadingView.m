@@ -32,11 +32,10 @@ static const CGFloat        kITAlpha = 0.5;
 #pragma mark Accessors
 
 - (void)setVisible:(BOOL)visible {
-    [self setVisible:visible animated:NO completionHandler:nil];
+    [self setVisible:visible animated:NO];
 }
 
-- (void)setVisible:(BOOL)visible animated:(BOOL)animated
-{
+- (void)setVisible:(BOOL)visible animated:(BOOL)animated {
     [self setVisible:visible animated:animated completionHandler:nil];
 }
 

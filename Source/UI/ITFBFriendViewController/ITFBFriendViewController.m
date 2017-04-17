@@ -56,13 +56,13 @@ ITViewControllerSynthesizeRootView(ITFBFriendViewController, fbFriendView, ITFBF
     [super didReceiveMemoryWarning];
     
 }
-
+ 
 #pragma mark -
 #pragma mark ITUserObserver
 
-- (void)userDidLoad:(ITUser *)user {
+- (void)userDidLoadFullInfo:(ITUser *)user {
     NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-    ((ITUser *)self.user).state = ITModelLoaded;
+    self.user.state = ITModelLoaded;
 }
 
 

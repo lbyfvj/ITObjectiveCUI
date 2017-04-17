@@ -8,35 +8,42 @@
 
 #import "ITChangeTypes+ITModelChangeExtensions.h"
 
+#import "UITableView+ITExtensions.h"
 #import "ITOneIndexModel+UITableView.h"
 #import "ITTwoIndexModel+UITableView.h"
 
-@implementation ITDeleteChange (ITExtensions)
+@implementation ITDeleteChange (UITableView)
 
 - (void)applyToTableView:(UITableView *)tableView
       withRowAnimation:(UITableViewRowAnimation) animation
 {
-    [tableView deleteRowsAtIndexPaths:@[self.indexPath] withRowAnimation:animation];
+    [tableView updateWithBlock:^{
+        [tableView deleteRowsAtIndexPaths:@[self.indexPath] withRowAnimation:animation];
+    }];
 }
 
 @end
 
-@implementation ITInsertChange (ITExtensions)
+@implementation ITInsertChange (UITableView)
 
 - (void)applyToTableView:(UITableView *)tableView
       withRowAnimation:(UITableViewRowAnimation) animation
 {
-    [tableView insertRowsAtIndexPaths:@[self.indexPath] withRowAnimation:animation];
+    [tableView updateWithBlock:^{
+        [tableView insertRowsAtIndexPaths:@[self.indexPath] withRowAnimation:animation];
+    }];
 }
 
 @end
 
-@implementation ITMoveChange (ITExtensions)
+@implementation ITMoveChange (UITableView)
 
 - (void)applyToTableView:(UITableView *)tableView
       withRowAnimation:(UITableViewRowAnimation) animation
 {
-    [tableView moveRowAtIndexPath:self.indexPath toIndexPath:self.toIndexPath];
+    [tableView updateWithBlock:^{
+        [tableView moveRowAtIndexPath:self.indexPath toIndexPath:self.toIndexPath];
+    }];
 }
 
 @end

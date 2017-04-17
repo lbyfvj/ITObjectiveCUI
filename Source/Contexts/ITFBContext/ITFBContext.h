@@ -16,5 +16,7 @@
 - (void)resultHandler:(id)result;
 
 - (NSString *)graphPath;
+- (NSDictionary *)requestParameters;
+- (FBSDKGraphRequest *)graphRequest;
 
 @end

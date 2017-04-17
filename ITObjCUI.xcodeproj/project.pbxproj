@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		3B95915A7F55353B7BA50A70 /* libPods-ITObjCUI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 092B34620AF4993244A562E8 /* libPods-ITObjCUI.a */; };
 		931CCBD51E8AE9DE0029095A /* ITModelChangesTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 931CCBD41E8AE9DE0029095A /* ITModelChangesTypes.m */; };
-		931CCBD81E8AF8F50029095A /* ITChangeTypes+ITModelChangeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 931CCBD71E8AF8F50029095A /* ITChangeTypes+ITModelChangeExtensions.m */; };
 		931CCBDC1E8B09070029095A /* ITOneIndexModel+UITableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 931CCBDB1E8B09070029095A /* ITOneIndexModel+UITableView.m */; };
 		931CCBDF1E8B09DB0029095A /* ITTwoIndexModel+UITableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 931CCBDE1E8B09DB0029095A /* ITTwoIndexModel+UITableView.m */; };
 		931CCBE31E8C14300029095A /* UIView+ITExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 931CCBE21E8C14300029095A /* UIView+ITExtensions.m */; };
@@ -56,6 +55,8 @@
 		93462DAC1E6A114E00FE1BC9 /* ITUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462DA51E6A114E00FE1BC9 /* ITUsersViewController.m */; };
 		93462DAD1E6A114E00FE1BC9 /* ITUsersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93462DA61E6A114E00FE1BC9 /* ITUsersViewController.xib */; };
 		93462DBA1E71DB2900FE1BC9 /* ITDispatchQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462DB91E71DB2900FE1BC9 /* ITDispatchQueue.m */; };
+		9365E67B1EA522C200402F08 /* ITChangeTypes+ITModelChangeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9365E6781EA522C200402F08 /* ITChangeTypes+ITModelChangeExtensions.m */; };
+		9365E67C1EA522C200402F08 /* ITModelChange+UITableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9365E67A1EA522C200402F08 /* ITModelChange+UITableView.m */; };
 		93AA34431E77409B00513950 /* ITModelChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 93AA34421E77409B00513950 /* ITModelChange.m */; };
 		93AA34511E787B2000513950 /* ITOneIndexModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93AA34501E787B2000513950 /* ITOneIndexModel.m */; };
 		93AA34541E787B2E00513950 /* ITTwoIndexModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93AA34531E787B2E00513950 /* ITTwoIndexModel.m */; };
@@ -77,7 +78,6 @@
 		93C20EE91E5F72DD00B56982 /* ITSquareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93C20EE51E5F72DD00B56982 /* ITSquareViewController.xib */; };
 		93C757201E86C7B60007F444 /* NSFileManager+ITExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C7571F1E86C7B60007F444 /* NSFileManager+ITExtensions.m */; };
 		93C757241E8826BA0007F444 /* NSMutableArray+ITExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C757231E8826BA0007F444 /* NSMutableArray+ITExtensions.m */; };
-		93C757321E882BEF0007F444 /* ITModelChange+ITExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C7572E1E882BEF0007F444 /* ITModelChange+ITExtensions.m */; };
 		93C757461E8833FC0007F444 /* ITCompilerMacro.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C757431E8833FC0007F444 /* ITCompilerMacro.m */; };
 		93C757471E8833FC0007F444 /* ITMacro.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C757451E8833FC0007F444 /* ITMacro.m */; };
 		93C757491E8855C40007F444 /* ITBlockVariablesMacro.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C757481E8855C40007F444 /* ITBlockVariablesMacro.m */; };
@@ -103,8 +103,6 @@
 		92854138A805A204EA3E605A /* Pods-ITObjCUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITObjCUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ITObjCUITests/Pods-ITObjCUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		931CCBD31E8AE9DD0029095A /* ITModelChangesTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITModelChangesTypes.h; sourceTree = "<group>"; };
 		931CCBD41E8AE9DE0029095A /* ITModelChangesTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITModelChangesTypes.m; sourceTree = "<group>"; };
-		931CCBD61E8AF8F50029095A /* ITChangeTypes+ITModelChangeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ITChangeTypes+ITModelChangeExtensions.h"; sourceTree = "<group>"; };
-		931CCBD71E8AF8F50029095A /* ITChangeTypes+ITModelChangeExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ITChangeTypes+ITModelChangeExtensions.m"; sourceTree = "<group>"; };
 		931CCBDA1E8B09070029095A /* ITOneIndexModel+UITableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ITOneIndexModel+UITableView.h"; sourceTree = "<group>"; };
 		931CCBDB1E8B09070029095A /* ITOneIndexModel+UITableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ITOneIndexModel+UITableView.m"; sourceTree = "<group>"; };
 		931CCBDD1E8B09DB0029095A /* ITTwoIndexModel+UITableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ITTwoIndexModel+UITableView.h"; sourceTree = "<group>"; };
@@ -191,6 +189,10 @@
 		93462DA61E6A114E00FE1BC9 /* ITUsersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ITUsersViewController.xib; sourceTree = "<group>"; };
 		93462DB81E71DB2900FE1BC9 /* ITDispatchQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITDispatchQueue.h; sourceTree = "<group>"; };
 		93462DB91E71DB2900FE1BC9 /* ITDispatchQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITDispatchQueue.m; sourceTree = "<group>"; };
+		9365E6771EA522C200402F08 /* ITChangeTypes+ITModelChangeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ITChangeTypes+ITModelChangeExtensions.h"; sourceTree = "<group>"; };
+		9365E6781EA522C200402F08 /* ITChangeTypes+ITModelChangeExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ITChangeTypes+ITModelChangeExtensions.m"; sourceTree = "<group>"; };
+		9365E6791EA522C200402F08 /* ITModelChange+UITableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ITModelChange+UITableView.h"; sourceTree = "<group>"; };
+		9365E67A1EA522C200402F08 /* ITModelChange+UITableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ITModelChange+UITableView.m"; sourceTree = "<group>"; };
 		93AA34411E77409B00513950 /* ITModelChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITModelChange.h; sourceTree = "<group>"; };
 		93AA34421E77409B00513950 /* ITModelChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITModelChange.m; sourceTree = "<group>"; };
 		93AA344F1E787B2000513950 /* ITOneIndexModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITOneIndexModel.h; sourceTree = "<group>"; };
@@ -226,8 +228,6 @@
 		93C7571F1E86C7B60007F444 /* NSFileManager+ITExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+ITExtensions.m"; sourceTree = "<group>"; };
 		93C757221E8826BA0007F444 /* NSMutableArray+ITExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+ITExtensions.h"; sourceTree = "<group>"; };
 		93C757231E8826BA0007F444 /* NSMutableArray+ITExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+ITExtensions.m"; sourceTree = "<group>"; };
-		93C7572D1E882BEF0007F444 /* ITModelChange+ITExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ITModelChange+ITExtensions.h"; sourceTree = "<group>"; };
-		93C7572E1E882BEF0007F444 /* ITModelChange+ITExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ITModelChange+ITExtensions.m"; sourceTree = "<group>"; };
 		93C757421E8833FC0007F444 /* ITCompilerMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITCompilerMacro.h; sourceTree = "<group>"; };
 		93C757431E8833FC0007F444 /* ITCompilerMacro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITCompilerMacro.m; sourceTree = "<group>"; };
 		93C757441E8833FC0007F444 /* ITMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITMacro.h; sourceTree = "<group>"; };
@@ -331,8 +331,8 @@
 				9332F0731E99503B007A0A29 /* UIButton+ITExtensions */,
 				931CCBE01E8C14180029095A /* UIView+ITExtensions */,
 				93C757211E8826A50007F444 /* NSMutableArray+ITExtensions */,
+				9365E6751EA522C200402F08 /* ITModelChange+UITableView */,
 				93C7571D1E86C79B0007F444 /* NSFileManager+ITExtensions */,
-				93C757251E882BEE0007F444 /* ITModelChange+ITExtensions */,
 				931CF0E21E8454A600AE4B4C /* NSArray+ITExtensions */,
 				931CF0E51E8454A600AE4B4C /* NSBundle+ITExtensions */,
 				931CF0E81E8454A600AE4B4C /* NSObject+ITExtensions */,
@@ -668,6 +668,25 @@
 			path = ITDispatchQueue;
 			sourceTree = "<group>";
 		};
+		9365E6751EA522C200402F08 /* ITModelChange+UITableView */ = {
+			isa = PBXGroup;
+			children = (
+				9365E6761EA522C200402F08 /* ChangesExtensions */,
+				9365E6791EA522C200402F08 /* ITModelChange+UITableView.h */,
+				9365E67A1EA522C200402F08 /* ITModelChange+UITableView.m */,
+			);
+			path = "ITModelChange+UITableView";
+			sourceTree = "<group>";
+		};
+		9365E6761EA522C200402F08 /* ChangesExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				9365E6771EA522C200402F08 /* ITChangeTypes+ITModelChangeExtensions.h */,
+				9365E6781EA522C200402F08 /* ITChangeTypes+ITModelChangeExtensions.m */,
+			);
+			path = ChangesExtensions;
+			sourceTree = "<group>";
+		};
 		93AA34401E77408500513950 /* ITModelChange */ = {
 			isa = PBXGroup;
 			children = (
@@ -873,25 +892,6 @@
 				93C757231E8826BA0007F444 /* NSMutableArray+ITExtensions.m */,
 			);
 			path = "NSMutableArray+ITExtensions";
-			sourceTree = "<group>";
-		};
-		93C757251E882BEE0007F444 /* ITModelChange+ITExtensions */ = {
-			isa = PBXGroup;
-			children = (
-				93C757261E882BEE0007F444 /* ChangesExtensions */,
-				93C7572D1E882BEF0007F444 /* ITModelChange+ITExtensions.h */,
-				93C7572E1E882BEF0007F444 /* ITModelChange+ITExtensions.m */,
-			);
-			path = "ITModelChange+ITExtensions";
-			sourceTree = "<group>";
-		};
-		93C757261E882BEE0007F444 /* ChangesExtensions */ = {
-			isa = PBXGroup;
-			children = (
-				931CCBD61E8AF8F50029095A /* ITChangeTypes+ITModelChangeExtensions.h */,
-				931CCBD71E8AF8F50029095A /* ITChangeTypes+ITModelChangeExtensions.m */,
-			);
-			path = ChangesExtensions;
 			sourceTree = "<group>";
 		};
 		93C757411E8833FC0007F444 /* Macros */ = {
@@ -1140,6 +1140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93C757241E8826BA0007F444 /* NSMutableArray+ITExtensions.m in Sources */,
+				9365E67C1EA522C200402F08 /* ITModelChange+UITableView.m in Sources */,
 				931CF1021E8454A600AE4B4C /* NSObject+ITExtensions.m in Sources */,
 				93AA34541E787B2E00513950 /* ITTwoIndexModel.m in Sources */,
 				93AA34661E79DB3D00513950 /* ITUserCell.m in Sources */,
@@ -1148,6 +1149,7 @@
 				931CCBDC1E8B09070029095A /* ITOneIndexModel+UITableView.m in Sources */,
 				931CF1071E8454A600AE4B4C /* UITableView+ITExtensions.m in Sources */,
 				931CCC081E8DA59D0029095A /* ITFileSystemImageModel.m in Sources */,
+				9365E67B1EA522C200402F08 /* ITChangeTypes+ITModelChangeExtensions.m in Sources */,
 				931CCC0A1E8DA59D0029095A /* ITURLImageModel.m in Sources */,
 				93AA346B1E79DB6600513950 /* ITAddRowCell.m in Sources */,
 				93AA34761E7C3AD000513950 /* ITLoadingView.m in Sources */,
@@ -1166,7 +1168,6 @@
 				93462D9C1E69FD3F00FE1BC9 /* ITUsers.m in Sources */,
 				93C757461E8833FC0007F444 /* ITCompilerMacro.m in Sources */,
 				9332F07B1E995EF8007A0A29 /* ITFBFriendViewController.m in Sources */,
-				931CCBD81E8AF8F50029095A /* ITChangeTypes+ITModelChangeExtensions.m in Sources */,
 				93462DAC1E6A114E00FE1BC9 /* ITUsersViewController.m in Sources */,
 				931CF1061E8454A600AE4B4C /* ITUsersTableView+ITExtensions.m in Sources */,
 				931CF1031E8454A600AE4B4C /* NSString+ITExtensions.m in Sources */,
@@ -1189,7 +1190,6 @@
 				9332F0571E994DDA007A0A29 /* ITFBUsersContext.m in Sources */,
 				931CCBD51E8AE9DE0029095A /* ITModelChangesTypes.m in Sources */,
 				9332F06A1E994DEB007A0A29 /* ITFBUsersViewController.m in Sources */,
-				93C757321E882BEF0007F444 /* ITModelChange+ITExtensions.m in Sources */,
 				9332F0761E99503B007A0A29 /* UIButton+ITExtensions.m in Sources */,
 				931CCC0B1E8DA59D0029095A /* ITModel.m in Sources */,
 				93C20EC81E5CC8A100B56982 /* ITAppDelegate.m in Sources */,

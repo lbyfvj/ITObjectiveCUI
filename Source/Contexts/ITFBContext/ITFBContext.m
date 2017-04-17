@@ -23,6 +23,14 @@
 #pragma mark -
 #pragma mark Accessors
 
+- (void)setGraphRequestConnection:(FBSDKGraphRequestConnection *)graphRequestConnection {
+    if (_graphRequestConnection != graphRequestConnection) {
+        [_graphRequestConnection cancel];
+        _graphRequestConnection = graphRequestConnection;
+        //[_graphRequestConnection start];
+    }
+}
+
 
 #pragma mark -
 #pragma mark Public
@@ -35,21 +43,28 @@
     return nil;
 }
 
+- (NSDictionary *)requestParameters {
+    return nil;
+}
+
+- (FBSDKGraphRequest *)graphRequest {
+    return [[FBSDKGraphRequest alloc] initWithGraphPath:self.graphPath
+                                             parameters:self.requestParameters];
+}
+
 - (void)execute {
     ITModel *model = self.model;
     
-    NSDictionary *requestParameters = @{@"fields":[NSString stringWithFormat:@"%@, %@, %@, %@",
-                                                   @"id",
-                                                   @"first_name",
-                                                   @"last_name",
-                                                   @"picture.type(large)"]};
-    
     if ([FBSDKAccessToken currentAccessToken]) {
+        NSUInteger state = model.state;
+        if (ITModelLoaded == state || ITModelLoading == state) {
+            return;
+        }
+        
         model.state = ITModelLoading;
-        FBSDKGraphRequest *graphRequest = [[FBSDKGraphRequest alloc] initWithGraphPath:self.graphPath
-                                                                            parameters:requestParameters];
+
         ITWeakify(self);
-        self.graphRequestConnection = [graphRequest startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+        self.graphRequestConnection = [self.graphRequest startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
             ITStrongifyAndReturnIfNil(self);
             if (!error) {
                 [self resultHandler:result];
@@ -62,7 +77,4 @@
     }
 }
 
-- (void)cancel {
-    [self.graphRequestConnection cancel];
-}
 @end

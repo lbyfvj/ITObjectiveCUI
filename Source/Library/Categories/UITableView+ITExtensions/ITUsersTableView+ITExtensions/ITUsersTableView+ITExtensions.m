@@ -8,7 +8,7 @@
 
 #import "ITUsersTableView+ITExtensions.h"
 
-#import "ITModelChange+ITExtensions.h"
+#import "ITModelChange+UITableView.h"
 #import "UITableView+ITExtensions.h"
 
 @implementation UITableView (ITExtemsions)

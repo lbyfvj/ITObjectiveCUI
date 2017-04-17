@@ -101,6 +101,8 @@ static NSString * const kITFBUserFriendsPermission = @"user_friends";
     if (accessToken) {
         ITUser *user = self.model;
         user.userId = accessToken.userID;
+        
+        user.state = ITUserDidLoadFullInfo;
     }
 }
 

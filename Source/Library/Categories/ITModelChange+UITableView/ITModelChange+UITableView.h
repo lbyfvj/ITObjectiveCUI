@@ -1,5 +1,5 @@
 //
-//  ITModelChange+ITExtensions.h
+//  ITModelChange+UITableView.h
 //  ITObjCUI
 //
 //  Created by Ivan Tsyganok on 23.03.17.
@@ -8,7 +8,7 @@
 
 #import "ITModelChange.h"
 
-@interface ITModelChange (ITExtensions)
+@interface ITModelChange (UITableView)
 
 - (void)applyToTableView:(UITableView *)tableView
        withRowAnimation:(UITableViewRowAnimation)animation;

@@ -34,8 +34,21 @@
     return @"me/friends";
 }
 
+- (NSDictionary *)requestParameters {
+    return @{@"fields":[NSString stringWithFormat:@"%@, %@, %@, %@",
+                        @"id",
+                        @"first_name",
+                        @"last_name",
+                        @"picture.type(large)"]};;
+}
+
+- (FBSDKGraphRequest *)graphRequest {
+    return [[FBSDKGraphRequest alloc] initWithGraphPath:self.graphPath
+                                             parameters:self.requestParameters];
+}
+
 - (void)resultHandler:(NSDictionary *)result {
-    NSArray *array = [result objectForKey:@"data"];    
+    NSArray *array = [result objectForKey:@"data"];
     ITArrayModel *users = self.users;
     
     for (NSDictionary *object in array) {

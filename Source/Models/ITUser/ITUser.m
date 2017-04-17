@@ -8,11 +8,14 @@
 
 #import "ITUser.h"
 
-static NSString * const kITCoderUserId = @"CoderUserId";
-static NSString * const kITCoderFirstName = @"CoderFirstName";
-static NSString * const kITCoderLastName = @"CoderLastName";
-static NSString * const kITCoderGender = @"CoderGender";
-static NSString * const kITCoderImageURL = @"CoderImageURL";
+#import "ITMacro.h"
+
+ITStaticConst(kITCoderUserId);
+ITStaticConst(kITCoderFirstName);
+ITStaticConst(kITCoderLastName);
+ITStaticConst(kITCoderGender);
+ITStaticConst(kITCoderImageURL);
+
 static NSString * const kITImageURL = @"http://www.head.com/fileadmin/content/sports/ski/category_page/desktop/HEAD_Desktop_SKI_Landing_Page_05_50_50_Supershapev3.jpg";
 
 @implementation ITUser
@@ -37,8 +40,6 @@ static NSString * const kITImageURL = @"http://www.head.com/fileadmin/content/sp
 - (void)setUserId:(NSString *)userId {
     if (_userId != userId) {
         _userId = userId;
-        
-        self.state = ITUserDidLoad;
     }
 }
 
@@ -56,22 +57,26 @@ static NSString * const kITImageURL = @"http://www.head.com/fileadmin/content/sp
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
     if (self) {
-        _userId = [aDecoder decodeObjectForKey:kITCoderUserId];
-        _firstName = [aDecoder decodeObjectForKey:kITCoderFirstName];
-        _lastName = [aDecoder decodeObjectForKey:kITCoderLastName];
-        _gender = [aDecoder decodeObjectForKey:kITCoderGender];
-        _imageURL = [aDecoder decodeObjectForKey:kITCoderImageURL];
+#define decode(field, key) field = [aDecoder decodeObjectForKey:key]
+        decode(self.userId, kITCoderUserId);
+        decode(self.firstName, kITCoderFirstName);
+        decode(self.lastName, kITCoderLastName);
+        decode(self.gender, kITCoderGender);
+        decode(self.imageURL, kITCoderImageURL);
+#undef decode
     }
     
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeObject:_userId forKey:kITCoderUserId];
-    [aCoder encodeObject:_firstName forKey:kITCoderFirstName];
-    [aCoder encodeObject:_lastName forKey:kITCoderLastName];
-    [aCoder encodeObject:_gender forKey:kITCoderGender];
-    [aCoder encodeObject:_imageURL forKey:kITCoderImageURL];
+#define encode(field, key) [aCoder encodeObject:field forKey:key]
+    encode(self.userId, kITCoderUserId);
+    encode(self.firstName, kITCoderFirstName);
+    encode(self.lastName, kITCoderLastName);
+    encode(self.gender, kITCoderGender);
+    encode(self.imageURL, kITCoderImageURL);
+#undef encode
 }
 
 #pragma mark -
@@ -81,8 +86,8 @@ static NSString * const kITImageURL = @"http://www.head.com/fileadmin/content/sp
     SEL selector = NULL;
     
     switch (state) {
-        case ITUserDidLoad:
-            selector = @selector(userDidLoad:);
+        case ITUserDidLoadFullInfo:
+            selector = @selector(userDidLoadFullInfo:);
             break;
             
         default:

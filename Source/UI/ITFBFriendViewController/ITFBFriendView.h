@@ -7,7 +7,6 @@
 //
 
 #import "ITView.h"
-
 #import "ITImageView.h"
 
 @interface ITFBFriendView : ITView

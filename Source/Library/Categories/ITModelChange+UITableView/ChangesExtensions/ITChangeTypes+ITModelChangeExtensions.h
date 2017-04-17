@@ -8,14 +8,14 @@
 
 #import "ITModelChangesTypes.h"
 
-@interface ITDeleteChange (ITExtensions)
+@interface ITDeleteChange (UITableView)
 
 @end
 
-@interface ITInsertChange (ITExtensions)
+@interface ITInsertChange (UITableView)
 
 @end
 
-@interface ITMoveChange (ITExtensions)
+@interface ITMoveChange (UITableView)
 
 @end

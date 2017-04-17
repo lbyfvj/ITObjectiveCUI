@@ -15,4 +15,6 @@
 @property (nonatomic, strong)                                   ITLoadingView       *loadingView;
 @property (nonatomic, assign, getter=isLoadingViewVisible)      BOOL                loadingViewVisible;
 
+- (ITLoadingView *)initialLoadingView;
+
 @end

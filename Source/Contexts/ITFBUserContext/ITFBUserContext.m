@@ -33,6 +33,19 @@
     return @"me?fields=id,first_name,last_name,gender,picture";
 }
 
+- (NSDictionary *)requestParameters {
+    return @{@"fields":[NSString stringWithFormat:@"%@, %@, %@, %@",
+                        @"id",
+                        @"first_name",
+                        @"last_name",
+                        @"picture.type(large)"]};;
+}
+
+- (FBSDKGraphRequest *)graphRequest {
+    return [[FBSDKGraphRequest alloc] initWithGraphPath:self.graphPath
+                                             parameters:self.requestParameters];
+}
+
 - (void)resultHandler:(NSDictionary *)result {    
     ITUser *user = self.user;
     user.userId = result[@"id"];
@@ -40,6 +53,8 @@
     user.lastName = result[@"last_name"];
     user.gender = result[@"gender"];
     user.imageURL = [NSURL URLWithString:result[@"picture"][@"data"][@"url"]];
+    
+    user.state = ITUserDidLoadFullInfo;
 }
 
 @end

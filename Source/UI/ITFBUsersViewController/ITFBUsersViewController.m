@@ -80,10 +80,10 @@ ITViewControllerSynthesizeRootView(ITFBUsersViewController, fbUsersView, ITFBUse
     
     UINavigationItem *navigationItem = self.navigationItem;
     UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Logout"
-                                                             style:UIBarButtonItemStylePlain
-                                                            target:self
-                                                            action:@selector(onLogOutButtonClicked:)];
-    [navigationItem setRightBarButtonItem:logoutButton animated:YES];
+                                                                     style:UIBarButtonItemStylePlain
+                                                                    target:self
+                                                                    action:@selector(onLogOutButtonClicked:)];
+    [navigationItem setLeftBarButtonItem:logoutButton animated:YES];
 
     self.fbUsersView.model = self.users;
 }

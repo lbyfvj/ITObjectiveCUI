@@ -33,3 +33,5 @@
     ITRootViewGetterSynthesize(propertyName, rootViewClass); \
     \
 @end
+
+#define ITStaticConst(name) static NSString * const name = @#name;
