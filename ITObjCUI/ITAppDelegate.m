@@ -16,10 +16,7 @@
 #import "ITLoginViewController.h"
 
 @interface ITAppDelegate ()
-@property (nonatomic, strong)   ITUsersViewController   *controller;
 
-- (void)saveModel;
-           
 @end
 
 @implementation ITAppDelegate
@@ -29,11 +26,6 @@
     UIWindow *window = [UIWindow window];
     self.window = window;
 
-//    self.controller = [ITUsersViewController new];
-//    self.controller.usersModel = [ITUsers new];
-//    
-//    window.rootViewController = self.controller;
-    
     ITLoginViewController *controller = [ITLoginViewController new];
     UINavigationController *navigationController = [[UINavigationController alloc]
                                                     initWithRootViewController:controller];
@@ -64,8 +56,7 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-    [self saveModel];
+
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -77,15 +68,7 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-    [self saveModel];
-}
 
-#pragma mark -
-#pragma mark Private
-
-- (void)saveModel {
-    NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));    
-    [self.controller.usersModel save];
 }
 
 @end
