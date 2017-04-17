@@ -11,7 +11,7 @@
 #import "ITMacro.h"
 
 @interface ITObjectCache ()
-@property (nonatomic, strong)   NSMapTable  *imageCache;
+@property (nonatomic, strong)   NSMapTable  *objectCache;
 
 @end
 
@@ -29,11 +29,10 @@
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     if (self) {
-        self.imageCache = [NSMapTable strongToWeakObjectsMapTable];
+        self.objectCache = [NSMapTable strongToWeakObjectsMapTable];
     }
     
     return self;
@@ -44,19 +43,19 @@
 
 - (id)objectForKey:(id)key {
     @synchronized (self) {
-        return [self.imageCache objectForKey:key];
+        return [self.objectCache objectForKey:key];
     }
 }
 
 - (void)addObject:(id)object forKey:(id)key {
     @synchronized (self) {
-        [self.imageCache setObject:object forKey:key];
+        [self.objectCache setObject:object forKey:key];
     }
 }
 
 - (void)removeObjectForKey:(id)key {
     @synchronized (self) {
-        [self.imageCache removeObjectForKey:key];
+        [self.objectCache removeObjectForKey:key];
     }
 }
 
@@ -66,7 +65,7 @@
 
 - (NSUInteger)count {
     @synchronized (self) {
-        return [self.imageCache count];
+        return [self.objectCache count];
     }
 }
 

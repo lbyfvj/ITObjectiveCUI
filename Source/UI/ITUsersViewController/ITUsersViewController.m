@@ -181,7 +181,7 @@ ITViewControllerSynthesizeRootView(ITUsersViewController, usersView, ITUsersView
 #pragma mark ITArrayModelObserver
 
 - (void)arrayModel:(ITUsers *)model didUpdateWithModelChange:(ITModelChange *)modelChange {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+    NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     ITWeakify(self);
     ITAsyncPerformInMainQueue(^{
         ITStrongifyAndReturnIfNil(self);

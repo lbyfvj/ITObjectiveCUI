@@ -17,12 +17,25 @@ static const NSUInteger kITUsersCount = 10;
 
 @interface ITUsers ()
 
+- (void)subscribeAtAppNotifications:(NSArray *)notifications;
+
 - (NSArray *)randomUsers;
 - (NSArray *)savedUsers;
 
 @end
 
 @implementation ITUsers
+
+#pragma mark -
+#pragma mark Initializations and Deallocations
+
+- (instancetype)init {
+    self = [super init];
+    
+    [self subscribeAtAppNotifications:@[UIApplicationWillResignActiveNotification,
+                                        UIApplicationWillTerminateNotification]];
+    return self;
+}
 
 #pragma mark -
 #pragma mark Public
@@ -41,6 +54,17 @@ static const NSUInteger kITUsersCount = 10;
 
 #pragma mark -
 #pragma mark Private
+
+- (void)subscribeAtAppNotifications:(NSArray *)notifications {
+    NSNotificationCenter *noticationCenter = [NSNotificationCenter defaultCenter];
+    
+    for (id notification in notifications) {
+        [noticationCenter addObserver:self
+                             selector:@selector(save)
+                                 name:notification
+                               object:nil];
+    }
+}
 
 - (NSArray *)randomUsers {
     return [ITUser objectsWithCount:kITUsersCount];

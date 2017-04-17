@@ -16,6 +16,6 @@
 
 + (NSURL *)applicationDirectoryURL;
 
-+ (NSURL *)cacheDirectoryURL;
+- (void)copyItemAtURL:(NSURL *)url toURL:(NSURL *)toURL;
 
 @end

@@ -41,7 +41,7 @@
 #pragma mark Public
 
 - (void)fillWithUserModel:(ITUser *)user {
-    self.userLabel.text = user.name;
+    self.userLabel.text = user.fullName;
     self.userImageView.imageModel = user.imageModel;
 }
 

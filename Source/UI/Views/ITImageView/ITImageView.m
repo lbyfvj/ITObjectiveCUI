@@ -80,6 +80,7 @@
 #pragma mark ITModelObserver
 
 - (void)modelDidLoad:(ITImageModel *)imageModel {
+    NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     ITWeakify(self);
     ITAsyncPerformInMainQueue(^{
         ITStrongifyAndReturnIfNil(self);
@@ -89,6 +90,7 @@
 }
 
 - (void)modelWillLoad:(ITImageModel *)imageModel {
+    NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     ITWeakify(self);
     ITAsyncPerformInMainQueue(^{
         ITStrongifyAndReturnIfNil(self);
@@ -97,6 +99,7 @@
 }
 
 - (void)modelDidFailLoading:(ITImageModel *)imageModel {
+    NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     ITWeakify(self);
     ITAsyncPerformInMainQueue(^{
         ITStrongifyAndReturnIfNil(self);

@@ -18,7 +18,7 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     
-    self.loadingView = [ITLoadingView viewOnSuperView:self];
+    self.loadingView = [self initialLoadingView];
     
     return self;
 }
@@ -27,7 +27,7 @@
     [super awakeFromNib];
     
     if (!self.loadingView) {
-        self.loadingView = [ITLoadingView viewOnSuperView:self];
+        self.loadingView = [self initialLoadingView];
     }
 }
 
@@ -50,6 +50,13 @@
 
 - (BOOL)isLoadingViewVisible {
     return self.loadingView.isVisible;
+}
+
+#pragma mark -
+#pragma mark Public
+
+- (ITLoadingView *)initialLoadingView {
+    return [ITLoadingView viewOnSuperView:self];
 }
 
 @end

@@ -9,5 +9,8 @@
 #import "ITFileSystemImageModel.h"
 
 @interface ITURLImageModel : ITFileSystemImageModel
+//@property (nonatomic, readonly)                     NSURL       *fileURL;
+@property (nonatomic, readonly, getter=isCached)    BOOL        cached;
+//@property (nonatomic, readonly)                     NSString    *filePath;
 
 @end

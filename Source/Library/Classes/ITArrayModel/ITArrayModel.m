@@ -99,8 +99,10 @@
 #pragma mark Private
 
 - (void)notifyOfModelUpdateWithObject:(ITModelChange *)modelChange {
-    [self setState:ITArrayModelUpdated
-        withObject:modelChange];
+    @synchronized (self) {
+        [self setState:ITArrayModelUpdated
+            withObject:modelChange];
+    }
 }
 
 #pragma mark -
