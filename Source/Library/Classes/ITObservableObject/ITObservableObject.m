@@ -13,6 +13,7 @@
 @interface ITObservableObject ()
 @property (nonatomic, retain)   NSHashTable     *observersHashTable;
 @property (nonatomic, assign)   BOOL            shouldNotify;
+@property (nonatomic, retain)   id              target;
 
 - (void)notifyOfStateWithSelector:(SEL)selector;
 - (void)notifyOfStateWithSelector:(SEL)selector object:(id)object;
@@ -24,13 +25,36 @@
 @dynamic observersSet;
 
 #pragma mark -
+#pragma mark Class methods
+
++ (instancetype)observableObjectWithTarget:(id)target {
+    return [[self alloc] initWithTarget:target];
+}
+
+#pragma mark -
 #pragma mark Initializations and Deallocations
 
+//- (instancetype)init {
+//    self = [super init];
+//    if (self) {
+//        self.observersHashTable = [NSHashTable weakObjectsHashTable];
+//        self.shouldNotify = YES;
+//    }
+//    
+//    return self;
+//}
+
 - (instancetype)init {
+    return [self initWithTarget:nil];
+}
+
+- (instancetype)initWithTarget:(id)target {
     self = [super init];
+    
     if (self) {
         self.observersHashTable = [NSHashTable weakObjectsHashTable];
         self.shouldNotify = YES;
+        self.target = target ? target : self;
     }
     
     return self;
