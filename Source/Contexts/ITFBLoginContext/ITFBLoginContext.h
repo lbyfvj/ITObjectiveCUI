@@ -8,12 +8,12 @@
 
 #import "ITContext.h"
 
-#import "ITUser.h"
+#import "ITDBUser.h"
 
 @interface ITFBLoginContext : ITContext
 
-+ (ITUser *)user;
++ (ITDBUser *)user;
 
-- (instancetype)initWithUser:(ITUser *)user;
+- (instancetype)initWithUser:(ITDBUser *)user;
 
 @end

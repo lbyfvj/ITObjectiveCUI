@@ -14,28 +14,42 @@
 #import "ITFBUsersViewController.h"
 #import "ITDispatchQueue.h"
 
+#import "ActiveRecordKit.h"
 
 @interface ITLoginViewController ()
 @property (nonatomic, strong)   ITFBLoginContext   *loginContext;
 
-- (void)pushViewControllerWithUser:(ITUser *)user withAnimation:(BOOL)animation;
+- (void)pushViewControllerWithUser:(ITDBUser *)user withAnimation:(BOOL)animation;
 
 @end
 
 @implementation ITLoginViewController
 
 #pragma mark -
+#pragma mark Initializations and Deallocations
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        [IDPCoreDataManager sharedManagerWithMomName:@"ITObjCUI"];
+        self.user = [ITDBUser managedObject];
+    }
+    
+    return self;
+}
+
+#pragma mark -
 #pragma mark Accessors
 
-- (void)setUser:(ITUser *)user {
-    if (_user != user) {
-        [_user removeObserver:self];
-        
-        _user = user;
-        
-        [_user addObserver:self];
-    }
-}
+//- (void)setUser:(ITDBUser *)user {
+//    if (_user != user) {
+//        [_user removeObserver:self];
+//        
+//        _user = user;
+//        
+//        [_user addObserver:self];
+//    }
+//}
 
 #pragma mark -
 #pragma mark Lifecycle
@@ -43,7 +57,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    ITUser *user = [ITFBLoginContext user];
+    ITDBUser *user = [ITFBLoginContext user];
     
     if (user) {
         [self pushViewControllerWithUser:user withAnimation:NO];
@@ -71,7 +85,7 @@
 
 - (IBAction)onLoginButtonClicked:(id)sender {
     NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-    ITUser *user  = [ITUser new];
+    ITDBUser *user  = [ITDBUser new];
     ITFBLoginContext *loginContext = [[ITFBLoginContext alloc] initWithUser:user];
     
     self.user = user;
@@ -81,9 +95,9 @@
 }
 
 #pragma mark -
-#pragma mark ITUserObserver
+#pragma mark ITObservableObjectMixin
 
-- (void)userDidLoadFullInfo:(ITUser *)user {
+- (void)objectDidLoadID:(ITDBUser *)user {
     NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     ITAsyncPerformInMainQueue(^{
         [self pushViewControllerWithUser:user withAnimation:YES];

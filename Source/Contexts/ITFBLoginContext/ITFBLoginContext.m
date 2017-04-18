@@ -11,6 +11,8 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 
+#import "ActiveRecordKit.h"
+
 static NSString * const kITFBPublicPermission = @"public_profile";
 static NSString * const kITFBUserFriendsPermission = @"user_friends";
 
@@ -30,15 +32,15 @@ static NSString * const kITFBUserFriendsPermission = @"user_friends";
 #pragma mark -
 #pragma mark Class Methods
 
-+ (ITUser *)user {
++ (ITDBUser *)user {
     FBSDKAccessToken *accessToken = [FBSDKAccessToken currentAccessToken];
     
     if (!accessToken) {
         return nil;
     }
     
-    ITUser *user = [ITUser new];
-    user.userId = accessToken.userID;
+    ITDBUser *user = [ITDBUser new];
+    user.ID = accessToken.userID;
     
     return user;
 }
@@ -46,7 +48,7 @@ static NSString * const kITFBUserFriendsPermission = @"user_friends";
 #pragma mark -
 #pragma mark Initializatiions and Deallocations
 
-- (instancetype)initWithUser:(ITUser *)user {
+- (instancetype)initWithUser:(ITDBUser *)user {
     self = [super initWithModel:user];
     
     return self;
@@ -99,10 +101,10 @@ static NSString * const kITFBUserFriendsPermission = @"user_friends";
     FBSDKAccessToken *accessToken = self.accessToken;
     
     if (accessToken) {
-        ITUser *user = self.model;
-        user.userId = accessToken.userID;
+        ITDBUser *user = self.model;
+        user.ID = accessToken.userID;
         
-        user.state = ITUserDidLoadFullInfo;
+        [user saveManagedObject];
     }
 }
 

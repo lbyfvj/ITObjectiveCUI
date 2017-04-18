@@ -19,6 +19,10 @@
 @dynamic images;
 
 #pragma mark -
+#pragma mark Initializations and Deallocations
+
+
+#pragma mark -
 #pragma mark Public
 
 - (void)addFriend:(ITDBUser *)value {

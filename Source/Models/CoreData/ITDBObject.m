@@ -45,8 +45,8 @@ static NSString * const kITId = @"id";
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
-- (id)              initWithEntity:(NSEntityDescription*)entity
-    insertIntoManagedObjectContext:(NSManagedObjectContext*)context
+- (NSManagedObject *)initWithEntity:(NSEntityDescription *)entity
+     insertIntoManagedObjectContext:(NSManagedObjectContext *)context
 {
     self = [super initWithEntity:entity insertIntoManagedObjectContext:context];
     if (self) {
@@ -59,7 +59,7 @@ static NSString * const kITId = @"id";
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setID:(NSString *)ID {
+- (void)setID:(NSString *)ID {    
     [self setCustomValue:ID forKey:kITId];
     
     self.state = ITDBObjectDidLoadID;

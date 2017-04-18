@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-#import "ITUser.h"
+#import "ITDBUser.h"
 
-@interface ITLoginViewController : UIViewController <ITUserObserver>
-@property (nonatomic, strong)       ITUser      *user;
+@interface ITLoginViewController : UIViewController
+@property (nonatomic, strong)       ITDBUser      *user;
 
 - (IBAction)onLoginButtonClicked:(id)sender;
 
