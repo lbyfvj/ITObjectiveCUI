@@ -41,15 +41,15 @@
 #pragma mark -
 #pragma mark Accessors
 
-//- (void)setUser:(ITDBUser *)user {
-//    if (_user != user) {
-//        [_user removeObserver:self];
-//        
-//        _user = user;
-//        
-//        [_user addObserver:self];
-//    }
-//}
+- (void)setUser:(ITDBUser *)user {
+    if (_user != user) {
+        [_user removeObserverObject:self];
+        
+        _user = user;
+        
+        [_user addObserverObject:self];
+    }
+}
 
 #pragma mark -
 #pragma mark Lifecycle
@@ -73,7 +73,7 @@
 #pragma mark -
 #pragma mark Private
 
-- (void)pushViewControllerWithUser:(ITUser *)user withAnimation:(BOOL)animation {
+- (void)pushViewControllerWithUser:(ITDBUser *)user withAnimation:(BOOL)animation {
     ITFBUsersViewController *controller = [ITFBUsersViewController new];
     controller.user = user;
     
@@ -85,7 +85,7 @@
 
 - (IBAction)onLoginButtonClicked:(id)sender {
     NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-    ITDBUser *user  = [ITDBUser new];
+    ITDBUser *user  = [ITDBUser managedObject];
     ITFBLoginContext *loginContext = [[ITFBLoginContext alloc] initWithUser:user];
     
     self.user = user;
@@ -95,7 +95,7 @@
 }
 
 #pragma mark -
-#pragma mark ITObservableObjectMixin
+#pragma mark ITObservableObject
 
 - (void)objectDidLoadID:(ITDBUser *)user {
     NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));

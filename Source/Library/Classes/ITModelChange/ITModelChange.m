@@ -16,16 +16,15 @@
 #pragma mark Class Methods
 
 + (id)insertModelAtIndex:(NSUInteger)index {
-    return [ITInsertChange modelWithIndex:index];
+    return [ITInsertChange model:self withIndex:index];
 }
 
 + (id)deleteModelAtIndex:(NSUInteger)index {
-    return [ITDeleteChange modelWithIndex:index];
+    return [ITDeleteChange model:self withIndex:index];
 }
 
 + (id)moveModelAtIndex:(NSUInteger)index toIndex:(NSUInteger)toIndex {
-    return [ITMoveChange modelWithIndex:index
-                                toIndex:toIndex];
+    return [ITMoveChange model:self withIndex:index toIndex:toIndex];
 }
 
 @end

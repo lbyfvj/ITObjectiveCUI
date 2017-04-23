@@ -41,11 +41,11 @@ ITViewControllerSynthesizeRootView(ITUsersViewController, usersView, ITUsersView
 
 - (void)setUsersModel:(ITUsers *)usersModel {
     if (_usersModel != usersModel) {
-        [_usersModel removeObserver:self];
+        [_usersModel removeObserverObject:self];
         
         _usersModel = usersModel;
         
-        [_usersModel addObserver:self];
+        [_usersModel addObserverObject:self];
 
         if (self.isViewLoaded) {
             [_usersModel load];
@@ -76,7 +76,7 @@ ITViewControllerSynthesizeRootView(ITUsersViewController, usersView, ITUsersView
     ITUsers *usersModel = self.usersModel;
     ITUsersView *usersView = self.usersView;
     
-    [usersModel addObserver:usersView];
+    [usersModel addObserverObject:usersView];
     
     [usersModel load];
     

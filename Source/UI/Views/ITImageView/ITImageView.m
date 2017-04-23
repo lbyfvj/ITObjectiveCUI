@@ -66,11 +66,11 @@
     if (_imageModel != imageModel) {
         self.contentImageView.image = nil;
         
-        [_imageModel removeObserver:self];
+        [_imageModel removeObserverObject:self];
         
         _imageModel = imageModel;
         
-        [_imageModel addObserver:self];
+        [_imageModel addObserverObject:self];
         
         [imageModel load];
     }

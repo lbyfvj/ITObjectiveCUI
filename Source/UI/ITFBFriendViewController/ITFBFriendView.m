@@ -8,13 +8,12 @@
 
 #import "ITFBFriendView.h"
 
-#import "ITUser.h"
 #import "ITDispatchQueue.h"
 
 @interface ITFBFriendView ()
 @property (nonatomic, strong)   ITImageModel    *imageModel;
 
-- (void)fillWithUser:(ITUser *)user;
+- (void)fillWithUser:(ITDBUser *)user;
 
 @end
 
@@ -23,11 +22,11 @@
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setModel:(ITUser *)user {
-    if (_model != user) {
-        [_model removeObserver:self];
-        _model = user;        
-        [_model addObserver:self];
+- (void)setUser:(ITDBUser *)user {
+    if (_user != user) {
+        [_user removeObserverObject:self];
+        _user = user;
+        [_user addObserverObject:self];
     }
     
     [self fillWithUser:user];
@@ -37,11 +36,10 @@
 #pragma mark -
 #pragma mark Private
 
-- (void)fillWithUser:(ITUser *)user {
+- (void)fillWithUser:(ITDBUser *)user {
     self.firstNameLabel.text = user.firstName;
     self.lastNameLabel.text = user.lastName;
-    self.genderLabel.text = user.gender;
-    self.userImageView.imageModel = user.imageModel;    
+    //self.userImageView.imageModel = user.imageModel;
 }
 
 #pragma mark -

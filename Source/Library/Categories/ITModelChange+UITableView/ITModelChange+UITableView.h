@@ -8,9 +8,13 @@
 
 #import "ITModelChange.h"
 
+#import "ITArrayModel.h"
+
 @interface ITModelChange (UITableView)
 
 - (void)applyToTableView:(UITableView *)tableView
        withRowAnimation:(UITableViewRowAnimation)animation;
+
+- (void)applyToModel:(ITArrayModel *)model;
 
 @end

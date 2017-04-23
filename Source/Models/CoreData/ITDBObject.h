@@ -8,7 +8,7 @@
 
 #import <CoreData/CoreData.h>
 
-#import "ITObservableObject.h"
+#import "ActiveRecordKit.h"
 
 typedef NS_ENUM(NSUInteger, ITDBObjectState) {
     ITDBObjectDidUnload,
@@ -19,7 +19,21 @@ typedef NS_ENUM(NSUInteger, ITDBObjectState) {
     ITDBObjectDidLoadDetails
 };
 
-@interface ITDBObject : NSManagedObject <ITObservableObjectMixin>
+@class ITDBUser;
+
+@protocol ITDBObjectObserver <NSObject>
+
+@optional
+- (void)objectDidUnload:(ITDBUser *)user;
+- (void)objectDidLoad:(ITDBUser *)user;
+- (void)objectDidLoadID:(ITDBUser *)user;
+- (void)objectDidFailLoading:(ITDBUser *)user;
+- (void)objectDidLoadFriends:(ITDBUser *)user;
+- (void)objectDidLoadDetails:(ITDBUser *)user;
+
+@end
+
+@interface ITDBObject : NSManagedObject
 @property (nonatomic, strong)   NSString    *ID;
 
 + (id)managedObjectWithID:(NSString *)ID;

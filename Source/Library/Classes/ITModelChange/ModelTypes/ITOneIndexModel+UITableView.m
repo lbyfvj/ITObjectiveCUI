@@ -16,7 +16,7 @@
 #pragma mark Class Methods
 
 + (instancetype)modelWithIndexPath:(NSIndexPath *)indexPath {
-    return [self modelWithIndex:indexPath.row];
+    return [self model:self withIndex:indexPath.row];
 }
 
 #pragma mark -

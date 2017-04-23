@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-#import "ITUser.h"
+#import "ITDBUser.h"
 #import "ITArrayModel.h"
 
-@interface ITFBUsersViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, ITArrayModelObserver>
-@property (nonatomic, strong)           ITUser                  *user;
+@interface ITFBUsersViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, ITDBObjectObserver>
+@property (nonatomic, strong)           ITDBUser                  *user;
+
+- (instancetype)initWithUser:(ITDBUser *)user;
 
 @end

@@ -10,6 +10,7 @@
 
 @interface ITOneIndexModel ()
 @property (nonatomic, assign)     NSUInteger     index;
+@property (nonatomic, strong)     ITArrayModel   *model;;
 
 @end
 
@@ -18,17 +19,18 @@
 #pragma mark -
 #pragma mark Class Methods
 
-+ (instancetype)modelWithIndex:(NSUInteger)index {
-    return [[self alloc] initWithIndex:index];
++ (instancetype)model:(ITArrayModel *)model withIndex:(NSUInteger)index {
+    return [[self alloc] initModel:model withIndex:index];
 }
 
 #pragma mark -
 #pragma mark Public Methods
 
-- (instancetype)initWithIndex:(NSUInteger)index {
+- (instancetype)initModel:(ITArrayModel *)model withIndex:(NSUInteger)index {
     self = [super init];
     
     self.index = index;
+    self.model = model;
     
     return self;
 }

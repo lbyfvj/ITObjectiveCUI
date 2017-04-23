@@ -19,10 +19,11 @@
 #pragma mark Accessors
 
 - (void)setModel:(id)model {
+    NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     if (_model != model) {
-        [_model removeObserver:self];
+        [_model removeObserverObject:self];
         _model = model;        
-        [_model addObserver:self];
+        [_model addObserverObject:self];
     }
 }
 

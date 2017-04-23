@@ -12,6 +12,8 @@
 #import "ITOneIndexModel+UITableView.h"
 #import "ITTwoIndexModel+UITableView.h"
 
+#import "ITArrayModel.h"
+
 @implementation ITDeleteChange (UITableView)
 
 - (void)applyToTableView:(UITableView *)tableView
@@ -20,6 +22,15 @@
     [tableView updateWithBlock:^{
         [tableView deleteRowsAtIndexPaths:@[self.indexPath] withRowAnimation:animation];
     }];
+}
+
+- (void)applyToModel:(ITArrayModel *)model {
+    for (id object in model.objects) {
+        NSArray *objects = self.model.objects;
+        if ([objects containsObject:object]) {
+            [model removeObject:object];
+        }
+    }
 }
 
 @end
@@ -34,6 +45,11 @@
     }];
 }
 
+- (void)applyToModel:(ITArrayModel *)model {
+    NSUInteger index = self.index;
+    [model insertObject:self.model[index] atIndex:index];
+}
+
 @end
 
 @implementation ITMoveChange (UITableView)
@@ -44,6 +60,13 @@
     [tableView updateWithBlock:^{
         [tableView moveRowAtIndexPath:self.indexPath toIndexPath:self.toIndexPath];
     }];
+}
+
+- (void)applyToModel:(ITArrayModel *)model {
+    NSUInteger index = self.index;
+    NSUInteger toIndex = self.toIndex;
+    
+    [model moveObjectAtIndex:index toIndex:toIndex];
 }
 
 @end

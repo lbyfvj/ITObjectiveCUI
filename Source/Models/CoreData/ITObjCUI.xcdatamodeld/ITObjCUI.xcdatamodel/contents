@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16E195" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
     <entity name="ITDBImage" representedClassName="ITDBImage" syncable="YES" codeGenerationType="category">
-        <attribute name="path" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ITDBUser" inverseName="images" inverseEntity="ITDBUser" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="photo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ITDBUser" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ITDBUser" syncable="YES"/>
     </entity>
     <entity name="ITDBUser" representedClassName="ITDBUser" syncable="YES" codeGenerationType="category">
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="friends" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ITDBUser" inverseName="friends" inverseEntity="ITDBUser" syncable="YES"/>
-        <relationship name="images" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ITDBImage" inverseName="user" inverseEntity="ITDBImage" syncable="YES"/>
+        <relationship name="friendsSet" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ITDBUser" inverseName="friendsSet" inverseEntity="ITDBUser" syncable="YES"/>
+        <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ITDBImage" syncable="YES"/>
+        <relationship name="picture" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ITDBImage" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ITDBImage" positionX="-117" positionY="-211" width="128" height="75"/>
-        <element name="ITDBUser" positionX="-378" positionY="-144" width="128" height="120"/>
+        <element name="ITDBImage" positionX="-117" positionY="-211" width="128" height="90"/>
+        <element name="ITDBUser" positionX="-378" positionY="-144" width="128" height="135"/>
     </elements>
 </model>

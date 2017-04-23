@@ -16,4 +16,8 @@
     
 }
 
+- (void)applyToModel:(ITArrayModel *)model {
+    
+}
+
 @end

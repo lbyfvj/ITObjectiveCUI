@@ -10,7 +10,7 @@
 
 #import "ITDBUser.h"
 
-@interface ITLoginViewController : UIViewController
+@interface ITLoginViewController : UIViewController <ITDBObjectObserver>
 @property (nonatomic, strong)       ITDBUser      *user;
 
 - (IBAction)onLoginButtonClicked:(id)sender;

@@ -29,6 +29,10 @@
 #pragma mark -
 #pragma mark Class Methods
 
++ (NSManagedObjectContext *)context {
+    return [[IDPCoreDataManager sharedManager] managedObjectContext];
+}
+
 + (NSArray *)fetchEntity:(NSString *)entityName 
 	 withSortDescriptors:(NSArray *)sortDescriptorsArray 
 			   predicate:(NSPredicate *)predicate 

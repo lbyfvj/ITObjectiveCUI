@@ -10,16 +10,17 @@
 
 #import "ITFBUsersView.h"
 #import "ITMacro.h"
-#import "ITFBUsersContext.h"
+#import "ITFBUserFriendsContext.h"
 #import "ITFBUserCell.h"
 #import "UITableView+ITExtensions.h"
 #import "UIViewController+ITExtensions.h"
+#import "ITDispatchQueue.h"
 
 #import "ITFBFriendViewController.h"
 
 @interface ITFBUsersViewController ()
-@property (nonatomic, strong)           ITFBUsersContext        *usersContext;
-@property (nonatomic, strong)           ITArrayModel            *users;
+@property (nonatomic, strong)           ITFBUserFriendsContext          *userFriendsContext;
+@property (nonatomic, strong)           ITArrayModel                    *friends;
 
 - (IBAction)onLogOutButtonClicked:(id)sender;
 
@@ -29,37 +30,51 @@ ITViewControllerSynthesizeRootView(ITFBUsersViewController, fbUsersView, ITFBUse
 
 @implementation ITFBUsersViewController
 
-@dynamic users;
+@dynamic friends;
+
+#pragma mark -
+#pragma mark Initializations and Deallocations
+
+- (instancetype)initWithUser:(ITDBUser *)user {
+    self = [super init];
+    
+    self.user = user;
+    
+    return self;
+}
 
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setUser:(ITUser *)user {
+- (void)setUser:(ITDBUser *)user {
+    NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     if (user != _user) {
-        [_user.friends removeObserver:self];
+        [_user removeObserverObject:self];
         
         _user = user;
         
-        [_user.friends addObserver:self];
+        [_user addObserverObject:self];
         
-        self.usersContext = [ITFBUsersContext new];
+        if (self.isViewLoaded) {
+            self.fbUsersView.model = self.user;
+        }
     }
 }
 
-- (void)setUsersContext:(ITFBUsersContext *)usersContext {
+- (void)setUserFriendsContext:(ITFBUserFriendsContext *)userFriendsContext {
     NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-    if (usersContext != _usersContext) {
-        [_usersContext cancel];
+    if (userFriendsContext != _userFriendsContext) {
+        [_userFriendsContext cancel];
         
-        _usersContext = usersContext;
+        _userFriendsContext = userFriendsContext;
         
-        _usersContext.model = self.users;
+        _userFriendsContext.model = self.user;
         
-        [_usersContext execute];
+        [_userFriendsContext execute];
     }
 }
 
-- (ITArrayModel *)users {
+- (ITArrayModel *)friends {
     return self.user.friends;
 }
 
@@ -71,6 +86,9 @@ ITViewControllerSynthesizeRootView(ITFBUsersViewController, fbUsersView, ITFBUse
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
+- (void)loadFriends {
+    self.userFriendsContext = [ITFBUserFriendsContext new];
+}
 
 #pragma mark -
 #pragma mark Lifecycle
@@ -85,7 +103,15 @@ ITViewControllerSynthesizeRootView(ITFBUsersViewController, fbUsersView, ITFBUse
                                                                     action:@selector(onLogOutButtonClicked:)];
     [navigationItem setLeftBarButtonItem:logoutButton animated:YES];
 
-    self.fbUsersView.model = self.users;
+    self.fbUsersView.model = self.user;
+    
+    [self loadFriends];
+}
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    self.fbUsersView.model = self.user;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -99,14 +125,14 @@ ITViewControllerSynthesizeRootView(ITFBUsersViewController, fbUsersView, ITFBUse
 - (NSInteger)   tableView:(UITableView *)tableView
     numberOfRowsInSection:(NSInteger)section
 {
-    return self.users.count;
+    return self.friends.count;
 }
 
 - (UITableViewCell *)   tableView:(UITableView *)tableView
             cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {    
     ITFBUserCell *cell = [tableView reusableCellWithClass:[ITFBUserCell class]];
-    ITUser *user = self.users[indexPath.row];
+    ITDBUser *user = self.friends[indexPath.row];
     [cell fillWithUserModel:user];
     
     return cell;
@@ -116,17 +142,19 @@ ITViewControllerSynthesizeRootView(ITFBUsersViewController, fbUsersView, ITFBUse
     didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ITFBFriendViewController *controller = [ITFBFriendViewController new];
-    controller.user = self.users[indexPath.row];
+    controller.user = self.friends[indexPath.row];
     
     [self.navigationController pushViewController:controller animated:YES];
 }
 
 #pragma mark -
-#pragma mark ITArrayModelObserver
+#pragma mark ITDBObjectObserver
 
-- (void)modelDidLoad:(ITArrayModel *)model {
+- (void)objectDidLoadFriends:(ITDBUser *)user {
     NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-    [self.fbUsersView.tableView reloadData];
+    ITAsyncPerformInMainQueue(^{
+        [self.fbUsersView.tableView reloadData];
+    });
 }
 
 @end

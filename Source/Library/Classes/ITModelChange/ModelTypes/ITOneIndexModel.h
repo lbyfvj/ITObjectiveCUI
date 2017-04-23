@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ITArrayModel.h"
 
 @interface ITOneIndexModel : NSObject
 @property (nonatomic, readonly)     NSUInteger     index;
+@property (nonatomic, readonly)     ITArrayModel   *model;
 
-+ (instancetype)modelWithIndex:(NSUInteger)index;
++ (instancetype)model:(id)model withIndex:(NSUInteger)index;
 
-- (instancetype)initWithIndex:(NSUInteger)index;
+- (instancetype)initModel:(id)model withIndex:(NSUInteger)index;
 
 @end

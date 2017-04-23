@@ -11,10 +11,12 @@
 @interface ITTwoIndexModel : ITOneIndexModel
 @property (nonatomic, readonly)     NSUInteger     toIndex;
 
-+ (instancetype)modelWithIndex:(NSUInteger)index
-                       toIndex:(NSUInteger)toIndex;
++ (instancetype)model:(id)model
+            withIndex:(NSUInteger)index
+              toIndex:(NSUInteger)toIndex;
 
-- (instancetype)initWithIndex:(NSUInteger)index
-                       toIndex:(NSUInteger)toIndex;
+- (instancetype)initModel:(id)model
+                withIndex:(NSUInteger)index
+                  toIndex:(NSUInteger)toIndex;
 
 @end

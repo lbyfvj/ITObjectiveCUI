@@ -10,7 +10,18 @@
 
 @implementation ITDBImage
 
-@dynamic path;
-@dynamic user;
+@dynamic url;
+@dynamic imageModel;
+
+#pragma mark -
+#pragma mark Accessores
+
+- (NSURL *)url {
+    return [NSURL URLWithString:self.ID];
+}
+
+- (ITImageModel *)imageModel {
+    return [ITImageModel imageWithURL:self.url];
+}
 
 @end

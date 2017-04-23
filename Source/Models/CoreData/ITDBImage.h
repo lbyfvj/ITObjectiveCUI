@@ -6,13 +6,11 @@
 //  Copyright © 2017 Ivan Tsyganok. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
+#import "ITDBObject.h"
+#import "ITImageModel.h"
 
-@class ITDBUser;
-
-@interface ITDBImage : NSManagedObject
-@property (nonatomic, strong)   NSString        *path;
-@property (nonatomic, strong)   ITDBUser        *user;
+@interface ITDBImage : ITDBObject
+@property (nonatomic, strong)   NSURL               *url;
+@property (nonatomic, strong)   ITImageModel        *imageModel;
 
 @end

@@ -24,6 +24,20 @@ static NSString * const kITId = @"id";
 @dynamic ID;
 
 #pragma mark -
+#pragma mark Initializations and Deallocations
+
+- (NSManagedObject *)initWithEntity:(NSEntityDescription *)entity
+     insertIntoManagedObjectContext:(NSManagedObjectContext *)context
+{
+    self = [super initWithEntity:entity insertIntoManagedObjectContext:context];
+    if (self) {
+        self.object = [ITObservableObject observableObjectWithTarget:self];
+    }
+    
+    return self;
+}
+
+#pragma mark -
 #pragma mark Class Methods
 
 + (id)managedObjectWithID:(NSString *)ID {
@@ -45,24 +59,13 @@ static NSString * const kITId = @"id";
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
-- (NSManagedObject *)initWithEntity:(NSEntityDescription *)entity
-     insertIntoManagedObjectContext:(NSManagedObjectContext *)context
-{
-    self = [super initWithEntity:entity insertIntoManagedObjectContext:context];
-    if (self) {
-        self.object = [ITObservableObject observableObjectWithTarget:self];
-    }
-    
-    return self;
-}
-
 #pragma mark -
 #pragma mark Accessors
 
 - (void)setID:(NSString *)ID {    
     [self setCustomValue:ID forKey:kITId];
     
-    self.state = ITDBObjectDidLoadID;
+    //self.state = ITDBObjectDidLoadID;
 }
 
 - (NSString *)ID {
@@ -83,37 +86,31 @@ static NSString * const kITId = @"id";
 }
 
 #pragma mark -
-#pragma mark ITObservableObject
+#pragma mark ITDBObjectObserver
 
 - (SEL)selectorForState:(NSUInteger)state {
-    SEL selector = nil;
-    
     switch (state) {
         case ITDBObjectDidUnload:
-            selector = @selector(objectDidUnload:);
-            break;
+            return @selector(objectDidUnload:);
+            
         case ITDBObjectDidLoad:
-            selector = @selector(objectDidLoad:);
-            break;
+            return @selector(objectDidLoad:);
+            
         case ITDBObjectDidFailLoading:
-            selector = @selector(objectDidFailLoading:);
-            break;
+            return @selector(objectDidFailLoading:);
+            
         case ITDBObjectDidLoadID:
-            selector = @selector(objectDidLoadID:);
-            break;
+            return @selector(objectDidLoadID:);
+            
         case ITDBObjectDidLoadFriends:
-            selector = @selector(objectDidLoadFriends:);
-            break;
+            return @selector(objectDidLoadFriends:);
+            
         case ITDBObjectDidLoadDetails:
-            selector = @selector(objectDidLoadDetails:);
-            break;
+            return @selector(objectDidLoadDetails:);
             
         default:
-            selector = [self.object selectorForState:state];
-            break;
+            return [self.object selectorForState:state];
     }
-    
-    return selector;
 }
 
 @end

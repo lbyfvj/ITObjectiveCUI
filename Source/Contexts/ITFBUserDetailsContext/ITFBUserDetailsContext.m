@@ -1,36 +1,37 @@
 //
-//  ITFBUserContext.m
+//  ITFBUserDetailsContext.m
 //  ITObjCUI
 //
 //  Created by Ivan Tsyganok on 09.04.17.
 //  Copyright © 2017 Ivan Tsyganok. All rights reserved.
 //
 
-#import "ITFBUserContext.h"
+#import "ITFBUserDetailsContext.h"
 
-#import "ITUser.h"
+#import "ITDBUser.h"
+#import "ITDBImage.h"
 
-@interface ITFBUserContext ()
-@property (nonatomic, readonly)     ITUser      *user;
+@interface ITFBUserDetailsContext ()
+@property (nonatomic, readonly)     ITDBUser      *user;
 
 @end
 
-@implementation ITFBUserContext
+@implementation ITFBUserDetailsContext
 
 @dynamic user;
 
 #pragma mark -
 #pragma mark Accessors
 
-- (ITUser *)user {
-    return (ITUser *)self.model;
+- (ITDBUser *)user {
+    return (ITDBUser *)self.model;
 }
 
 #pragma mark -
 #pragma mark Public
 
 - (NSString *)graphPath {
-    return @"me?fields=id,first_name,last_name,gender,picture";
+    return [NSString stringWithFormat:@"%@?fields=id,first_name,last_name,picture", self.user.ID];
 }
 
 - (NSDictionary *)requestParameters {
@@ -47,14 +48,13 @@
 }
 
 - (void)resultHandler:(NSDictionary *)result {    
-    ITUser *user = self.user;
-    user.userId = result[@"id"];
+    ITDBUser *user = self.user;
+    user.ID = result[@"id"];
     user.firstName = result[@"first_name"];
     user.lastName = result[@"last_name"];
-    user.gender = result[@"gender"];
-    user.imageURL = [NSURL URLWithString:result[@"picture"][@"data"][@"url"]];
+    user.picture = [ITDBImage managedObjectWithID:result[@"picture"][@"data"][@"url"]];
     
-    user.state = ITUserDidLoadFullInfo;
+    user.state = ITDBObjectDidLoadDetails;
 }
 
 @end

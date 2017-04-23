@@ -8,13 +8,22 @@
 
 #import "ITDBObject.h"
 
-@class ITDBImage;
+#import "ITArrayModel.h"
+#import "ITDBArrayObject.h"
 
-@interface ITDBUser : ITDBObject
-@property (nonatomic, strong)   NSString    *firstName;
-@property (nonatomic, strong)   NSString    *lastName;
-@property (nonatomic, strong)   NSSet       *friends;
-@property (nonatomic, strong)   NSSet       *images;
+#import "ITObservableObject.h"
+#import "ITDBImage.h"
+
+@interface ITDBUser : ITDBObject <ITObservableObject>
+@property (nonatomic, strong)   NSString        *firstName;
+@property (nonatomic, strong)   NSString        *lastName;
+@property (nonatomic, readonly) NSString        *fullName;
+
+@property (nonatomic, strong)   NSSet           *friendsSet;
+@property (nonatomic, strong)   ITDBArrayObject *friends;
+
+@property (nonatomic, strong)   ITDBImage       *picture;
+@property (nonatomic, strong)   NSSet           *photos;
 
 @end
 

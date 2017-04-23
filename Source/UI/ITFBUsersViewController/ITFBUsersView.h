@@ -9,7 +9,7 @@
 #import "ITView.h"
 
 @interface ITFBUsersView : ITView <ITModelObserver>
-@property (nonatomic, strong)               ITModel             *model;
-@property (nonatomic, strong)   IBOutlet    UITableView         *tableView;
+@property (nonatomic, strong)               id<ITObservableObject>    model;
+@property (nonatomic, strong)   IBOutlet    UITableView                    *tableView;
 
 @end

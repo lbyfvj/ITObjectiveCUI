@@ -1,5 +1,5 @@
 //
-//  ITFBUserContext.h
+//  ITFBUserDetailsContext.h
 //  ITObjCUI
 //
 //  Created by Ivan Tsyganok on 09.04.17.
@@ -8,6 +8,6 @@
 
 #import "ITFBContext.h"
 
-@interface ITFBUserContext : ITFBContext
+@interface ITFBUserDetailsContext : ITFBContext
 
 @end

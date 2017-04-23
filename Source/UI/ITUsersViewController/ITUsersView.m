@@ -30,11 +30,11 @@ static NSString * const kITEditButtonTitle = @"Edit";
 
 - (void)setModel:(id)model {
     if (_model != model) {
-        [_model removeObserver:self];
+        [_model removeObserverObject:self];
         
         _model = model;
         
-        [_model addObserver:self];
+        [_model addObserverObject:self];
     }
 }
 

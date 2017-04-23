@@ -9,12 +9,13 @@
 #import "ITView.h"
 #import "ITImageView.h"
 
+#import "ITDBUser.h"
+
 @interface ITFBFriendView : ITView
-@property (nonatomic, strong)               ITModel             *model;
+@property (nonatomic, strong)               ITDBUser            *user;
 
 @property (nonatomic, strong)   IBOutlet    UILabel             *firstNameLabel;
 @property (nonatomic, strong)   IBOutlet    UILabel             *lastNameLabel;
-@property (nonatomic, strong)   IBOutlet    UILabel             *genderLabel;
 @property (nonatomic, strong)   IBOutlet    ITImageView         *userImageView;
 
 @end

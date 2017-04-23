@@ -11,9 +11,9 @@
 #import "ITMacro.h"
 
 @interface ITObservableObject ()
-@property (nonatomic, retain)   NSHashTable     *observersHashTable;
-@property (nonatomic, assign)   BOOL            shouldNotify;
-@property (nonatomic, retain)   id              target;
+@property (nonatomic, retain)   NSHashTable                         *observersHashTable;
+@property (nonatomic, assign)   BOOL                                shouldNotify;
+@property (nonatomic, retain)   id<ITObservableObject>              target;
 
 - (void)notifyOfStateWithSelector:(SEL)selector;
 - (void)notifyOfStateWithSelector:(SEL)selector object:(id)object;
@@ -33,16 +33,6 @@
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
-
-//- (instancetype)init {
-//    self = [super init];
-//    if (self) {
-//        self.observersHashTable = [NSHashTable weakObjectsHashTable];
-//        self.shouldNotify = YES;
-//    }
-//    
-//    return self;
-//}
 
 - (instancetype)init {
     return [self initWithTarget:nil];
@@ -84,36 +74,36 @@
 #pragma mark -
 #pragma mark Public
 
-- (void)addObserver:(id)observer {
+- (void)addObserverObject:(id)observer {
     id observersHashTable = self.observersHashTable;
     @synchronized (observersHashTable) {
         [observersHashTable addObject:observer];
     }
 }
 
-- (void)addObservers:(NSArray *)observers {
+- (void)addObserverObjects:(NSArray *)observers {
     id observersHashTable = self.observersHashTable;
     @synchronized(observersHashTable) {
         for (id observer in observers) {
-            [self addObserver:observer];
+            [self addObserverObject:observer];
         }
     }
 }
 
-- (void)removeObserver:(id)observer {
+- (void)removeObserverObject:(id)observer {
     id observersHashTable = self.observersHashTable;
     @synchronized (observersHashTable) {
         [observersHashTable removeObject:observer];
     }
 }
 
-- (void)removeObservers:(NSArray *)observers {
+- (void)removeObserverObjects:(NSArray *)observers {
     for (id observer in observers) {
-        [self removeObserver:observer];
+        [self removeObserverObject:observer];
     }
 }
 
-- (BOOL)containsObserver:(id)observer {
+- (BOOL)containsObserverObject:(id)observer {
     NSHashTable *observers = self.observersHashTable;
     @synchronized (observers) {
         return [observers containsObject:observer];
@@ -121,11 +111,11 @@
 }
 
 - (SEL)selectorForState:(NSUInteger)state {
-    return nil;
+    return [self.target selectorForState:state];
 }
 
 - (SEL)selectorForState:(NSUInteger)state withObject:(id)object {
-    return nil;
+    return [self.target selectorForState:state withObject:object];
 }
 
 - (void)notifyOfState:(NSUInteger)state {
@@ -159,7 +149,6 @@
 }
 
 #pragma clang diagnostic pop
-
 
 - (void)performBlockWithNotifications:(void(^)(void))block {
     [self performBlock:block withNotificationOption:YES];

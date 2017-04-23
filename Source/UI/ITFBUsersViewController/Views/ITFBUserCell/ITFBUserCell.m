@@ -8,7 +8,7 @@
 
 #import "ITFBUserCell.h"
 
-#import "ITUser.h"
+#import "ITDBUser.h"
 
 #import "ITImageView.h"
 
@@ -17,7 +17,7 @@
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setUser:(ITUser *)user {
+- (void)setUser:(ITDBUser *)user {
     if (_user != user) {
         
         _user = user;
@@ -29,10 +29,10 @@
 #pragma mark -
 #pragma mark Public
 
-- (void)fillWithUserModel:(ITUser *)user {
+- (void)fillWithUserModel:(ITDBUser *)user {
     self.fullNameLabel.text = user.fullName;
     
-    self.userImageView.imageModel = user.imageModel;
+    //self.userImageView.imageModel = user.picture.imageModel;
 }
 
 @end

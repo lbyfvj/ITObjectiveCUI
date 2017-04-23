@@ -8,21 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ITObservableObject : NSObject
+@protocol ITObservableObject <NSObject>
+@optional
 @property (nonatomic, assign)           NSUInteger  state;
-@property (nonatomic, readonly)         NSSet       *observersSet;
 
-@property (nonatomic, readonly)         id          target;
 
-+ (id)observableObjectWithTarget:(id)target;
+- (void)addObserverObject:(id)observer;
+- (void)addObserverObjects:(NSArray *)observers;
 
-- (void)addObserver:(id)observer;
-- (void)addObservers:(NSArray *)observers;
+- (void)removeObserverObject:(id)observer;
+- (void)removeObserverObjects:(NSArray *)observers;
 
-- (void)removeObserver:(id)observer;
-- (void)removeObservers:(NSArray *)observers;
-
-- (BOOL)containsObserver:(id)observer;
+- (BOOL)containsObserverObject:(id)observer;
 
 - (SEL)selectorForState:(NSUInteger)state;
 - (SEL)selectorForState:(NSUInteger)state withObject:(id)object;
@@ -37,24 +34,21 @@
 
 @end
 
-@protocol ITObservableObjectMixin <NSObject>
+@interface ITObservableObject : NSObject <ITObservableObject>
+@property (nonatomic, assign)           NSUInteger                      state;
+@property (nonatomic, readonly)         NSSet                           *observersSet;
 
-@optional
-
-@property (nonatomic, assign)           NSUInteger  state;
-@property (nonatomic, readonly)         NSSet       *observersSet;
-
-@property (nonatomic, readonly)         id          target;
+@property (nonatomic, readonly)         id<ITObservableObject>          target;
 
 + (id)observableObjectWithTarget:(id)target;
 
-- (void)addObserver:(id)observer;
-- (void)addObservers:(NSArray *)observers;
+- (void)addObserverObject:(id)observer;
+- (void)addObserverObjects:(NSArray *)observers;
 
-- (void)removeObserver:(id)observer;
-- (void)removeObservers:(NSArray *)observers;
+- (void)removeObserverObject:(id)observer;
+- (void)removeObserverObjects:(NSArray *)observers;
 
-- (BOOL)containsObserver:(id)observer;
+- (BOOL)containsObserverObject:(id)observer;
 
 - (SEL)selectorForState:(NSUInteger)state;
 - (SEL)selectorForState:(NSUInteger)state withObject:(id)object;

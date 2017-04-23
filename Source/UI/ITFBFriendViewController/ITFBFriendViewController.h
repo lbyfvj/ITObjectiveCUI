@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ITUser.h"
+#import "ITDBUser.h"
 
 @interface ITFBFriendViewController : UIViewController
-@property (nonatomic, strong)   ITUser      *user;
+@property (nonatomic, strong)   ITDBUser      *user;
 
 @end

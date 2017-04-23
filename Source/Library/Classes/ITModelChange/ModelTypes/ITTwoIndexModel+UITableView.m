@@ -19,7 +19,7 @@
 + (instancetype)modelWithIndexPath:(NSIndexPath *)indexPath
                     toIndexPath:(NSIndexPath *)toIndexPath
 {
-    return [self modelWithIndex:indexPath.row
+    return [self model:self withIndex:indexPath.row
                      toIndex:toIndexPath.row];
 }
 

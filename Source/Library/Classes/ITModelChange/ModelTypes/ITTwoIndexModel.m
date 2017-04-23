@@ -15,20 +15,22 @@
 
 @implementation ITTwoIndexModel
 
-+ (instancetype)modelWithIndex:(NSUInteger)index
-                       toIndex:(NSUInteger)toIndex
++ (instancetype)model:(id)model
+            withIndex:(NSUInteger)index
+              toIndex:(NSUInteger)toIndex
 {
     
-    return [[self alloc] initWithIndex:index];
+    return [[self alloc] initModel:model withIndex:index toIndex:toIndex];
 }
 
 #pragma mark -
 #pragma mark Public
 
-- (instancetype)initWithIndex:(NSUInteger)index
-                       toIndex:(NSUInteger)toIndex
+- (instancetype)initModel:(id)model
+                withIndex:(NSUInteger)index
+                  toIndex:(NSUInteger)toIndex
 {
-    self = [super initWithIndex:index];
+    self = [super initModel:model withIndex:index];
     
     self.toIndex = toIndex;
     

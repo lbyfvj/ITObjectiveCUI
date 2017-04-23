@@ -39,7 +39,7 @@ static NSString * const kITFBUserFriendsPermission = @"user_friends";
         return nil;
     }
     
-    ITDBUser *user = [ITDBUser new];
+    ITDBUser *user = [ITDBUser managedObject];
     user.ID = accessToken.userID;
     
     return user;
@@ -105,6 +105,8 @@ static NSString * const kITFBUserFriendsPermission = @"user_friends";
         user.ID = accessToken.userID;
         
         [user saveManagedObject];
+        
+        user.state = ITDBObjectDidLoadID;
     }
 }
 

@@ -12,6 +12,8 @@
 
 @interface NSManagedObjectContext (IDPExtensions)
 
++ (id)context;
+
 + (id)managedObjectWithEntity:(NSString *)entityName;
 
 + (NSArray *)fetchEntity:(NSString *)entityName 

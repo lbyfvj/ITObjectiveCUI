@@ -10,15 +10,15 @@
 
 #import "ITModel.h"
 
-@class ITUser;
+@class ITDBUser;
 @class ITImageView;
 
 @interface ITFBUserCell : ITTableViewCell <ITModelObserver>
 @property (nonatomic, strong)   IBOutlet    UILabel                     *fullNameLabel;
 @property (nonatomic, strong)   IBOutlet    ITImageView                 *userImageView;
 
-@property (nonatomic, strong)   ITUser    *user;
+@property (nonatomic, strong)   ITDBUser        *user;
 
-- (void)fillWithUserModel:(ITUser *)user;
+- (void)fillWithUserModel:(ITDBUser *)user;
 
 @end

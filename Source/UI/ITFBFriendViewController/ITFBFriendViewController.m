@@ -10,10 +10,10 @@
 
 #import "ITMacro.h"
 #import "ITFBFriendView.h"
-#import "ITFBUserContext.h"
+#import "ITFBUserDetailsContext.h"
 
 @interface ITFBFriendViewController ()
-@property (nonatomic, strong)           ITFBUserContext        *friendContext;
+@property (nonatomic, strong)           ITFBUserDetailsContext        *friendContext;
 
 @end
 
@@ -24,16 +24,16 @@ ITViewControllerSynthesizeRootView(ITFBFriendViewController, fbFriendView, ITFBF
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setUser:(ITUser *)user {
+- (void)setUser:(ITDBUser *)user {
     if (_user != user) {
-        [_user removeObserver:self];
+        [_user removeObserverObject:self];
         _user = user;
-        [_user addObserver:self];
-        self.friendContext = [ITFBUserContext new];
+        [_user addObserverObject:self];
+        self.friendContext = [ITFBUserDetailsContext new];
     }
 }
 
-- (void)setFriendContext:(ITFBUserContext *)friendContext {
+- (void)setFriendContext:(ITFBUserDetailsContext *)friendContext {
     NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     if (_friendContext != friendContext) {
         [_friendContext cancel];
@@ -49,7 +49,6 @@ ITViewControllerSynthesizeRootView(ITFBFriendViewController, fbFriendView, ITFBF
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.fbFriendView.model = self.user;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,11 +57,11 @@ ITViewControllerSynthesizeRootView(ITFBFriendViewController, fbFriendView, ITFBF
 }
  
 #pragma mark -
-#pragma mark ITUserObserver
+#pragma mark ITDBObjectObserver
 
-- (void)userDidLoadFullInfo:(ITUser *)user {
+- (void)objectDidLoadDetails:(ITDBUser *)user {
     NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-    self.user.state = ITModelLoaded;
+    self.fbFriendView.user = self.user;
 }
 
 

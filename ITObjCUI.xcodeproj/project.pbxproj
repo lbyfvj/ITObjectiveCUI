@@ -35,7 +35,7 @@
 		9332F0541E994DDA007A0A29 /* ITContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 9332F04A1E994DDA007A0A29 /* ITContext.m */; };
 		9332F0551E994DDA007A0A29 /* ITFBContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 9332F04D1E994DDA007A0A29 /* ITFBContext.m */; };
 		9332F0561E994DDA007A0A29 /* ITFBLoginContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 9332F0501E994DDA007A0A29 /* ITFBLoginContext.m */; };
-		9332F0571E994DDA007A0A29 /* ITFBUsersContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 9332F0531E994DDA007A0A29 /* ITFBUsersContext.m */; };
+		9332F0571E994DDA007A0A29 /* ITFBUserFriendsContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 9332F0531E994DDA007A0A29 /* ITFBUserFriendsContext.m */; };
 		9332F0691E994DEB007A0A29 /* ITFBUsersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9332F05A1E994DEB007A0A29 /* ITFBUsersView.m */; };
 		9332F06A1E994DEB007A0A29 /* ITFBUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9332F05C1E994DEB007A0A29 /* ITFBUsersViewController.m */; };
 		9332F06B1E994DEB007A0A29 /* ITFBUsersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9332F05D1E994DEB007A0A29 /* ITFBUsersViewController.xib */; };
@@ -48,7 +48,6 @@
 		9332F07B1E995EF8007A0A29 /* ITFBFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9332F0791E995EF8007A0A29 /* ITFBFriendViewController.m */; };
 		9332F07C1E995EF8007A0A29 /* ITFBFriendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9332F07A1E995EF8007A0A29 /* ITFBFriendViewController.xib */; };
 		9332F07F1E9A0B45007A0A29 /* ITFBFriendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9332F07E1E9A0B45007A0A29 /* ITFBFriendView.m */; };
-		9332F0831E9A0C25007A0A29 /* ITFBUserContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 9332F0821E9A0C25007A0A29 /* ITFBUserContext.m */; };
 		9332F0871E9A959F007A0A29 /* UIViewController+ITExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9332F0861E9A959F007A0A29 /* UIViewController+ITExtensions.m */; };
 		93462D6E1E67739D00FE1BC9 /* ITUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462D6D1E67739D00FE1BC9 /* ITUser.m */; };
 		93462D7B1E68965D00FE1BC9 /* ITTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462D7A1E68965D00FE1BC9 /* ITTableViewCell.m */; };
@@ -93,6 +92,9 @@
 		93C757471E8833FC0007F444 /* ITMacro.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C757451E8833FC0007F444 /* ITMacro.m */; };
 		93C757491E8855C40007F444 /* ITBlockVariablesMacro.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C757481E8855C40007F444 /* ITBlockVariablesMacro.m */; };
 		93C7574D1E8864370007F444 /* ITMutableArraySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C7574C1E8864370007F444 /* ITMutableArraySpec.m */; };
+		93FB09CE1EAB584B0012A77D /* ITDBArrayObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FB09CD1EAB584B0012A77D /* ITDBArrayObject.m */; };
+		93FB09D21EAD28470012A77D /* ITArrayModel+ITExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FB09D11EAD28470012A77D /* ITArrayModel+ITExtensions.m */; };
+		93FB09D61EAD35190012A77D /* ITFBUserDetailsContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FB09D51EAD35190012A77D /* ITFBUserDetailsContext.m */; };
 		BC4456498967AF254D14A97A /* libPods-ITObjCUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03AF09BAA2BA61E48268062F /* libPods-ITObjCUITests.a */; };
 /* End PBXBuildFile section */
 
@@ -166,8 +168,8 @@
 		9332F04D1E994DDA007A0A29 /* ITFBContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITFBContext.m; sourceTree = "<group>"; };
 		9332F04F1E994DDA007A0A29 /* ITFBLoginContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITFBLoginContext.h; sourceTree = "<group>"; };
 		9332F0501E994DDA007A0A29 /* ITFBLoginContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITFBLoginContext.m; sourceTree = "<group>"; };
-		9332F0521E994DDA007A0A29 /* ITFBUsersContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITFBUsersContext.h; sourceTree = "<group>"; };
-		9332F0531E994DDA007A0A29 /* ITFBUsersContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITFBUsersContext.m; sourceTree = "<group>"; };
+		9332F0521E994DDA007A0A29 /* ITFBUserFriendsContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITFBUserFriendsContext.h; sourceTree = "<group>"; };
+		9332F0531E994DDA007A0A29 /* ITFBUserFriendsContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITFBUserFriendsContext.m; sourceTree = "<group>"; };
 		9332F0591E994DEB007A0A29 /* ITFBUsersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITFBUsersView.h; sourceTree = "<group>"; };
 		9332F05A1E994DEB007A0A29 /* ITFBUsersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITFBUsersView.m; sourceTree = "<group>"; };
 		9332F05B1E994DEB007A0A29 /* ITFBUsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITFBUsersViewController.h; sourceTree = "<group>"; };
@@ -188,8 +190,6 @@
 		9332F07A1E995EF8007A0A29 /* ITFBFriendViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ITFBFriendViewController.xib; sourceTree = "<group>"; };
 		9332F07D1E9A0B45007A0A29 /* ITFBFriendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITFBFriendView.h; sourceTree = "<group>"; };
 		9332F07E1E9A0B45007A0A29 /* ITFBFriendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITFBFriendView.m; sourceTree = "<group>"; };
-		9332F0811E9A0C25007A0A29 /* ITFBUserContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITFBUserContext.h; sourceTree = "<group>"; };
-		9332F0821E9A0C25007A0A29 /* ITFBUserContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITFBUserContext.m; sourceTree = "<group>"; };
 		9332F0851E9A959F007A0A29 /* UIViewController+ITExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ITExtensions.h"; sourceTree = "<group>"; };
 		9332F0861E9A959F007A0A29 /* UIViewController+ITExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ITExtensions.m"; sourceTree = "<group>"; };
 		93462D6C1E67739D00FE1BC9 /* ITUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITUser.h; sourceTree = "<group>"; };
@@ -268,6 +268,12 @@
 		93C757481E8855C40007F444 /* ITBlockVariablesMacro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITBlockVariablesMacro.m; sourceTree = "<group>"; };
 		93C7574A1E8855DE0007F444 /* ITBlockVariablesMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITBlockVariablesMacro.h; sourceTree = "<group>"; };
 		93C7574C1E8864370007F444 /* ITMutableArraySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITMutableArraySpec.m; sourceTree = "<group>"; };
+		93FB09CC1EAB584B0012A77D /* ITDBArrayObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITDBArrayObject.h; sourceTree = "<group>"; };
+		93FB09CD1EAB584B0012A77D /* ITDBArrayObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITDBArrayObject.m; sourceTree = "<group>"; };
+		93FB09D01EAD28470012A77D /* ITArrayModel+ITExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ITArrayModel+ITExtensions.h"; sourceTree = "<group>"; };
+		93FB09D11EAD28470012A77D /* ITArrayModel+ITExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ITArrayModel+ITExtensions.m"; sourceTree = "<group>"; };
+		93FB09D41EAD35190012A77D /* ITFBUserDetailsContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITFBUserDetailsContext.h; sourceTree = "<group>"; };
+		93FB09D51EAD35190012A77D /* ITFBUserDetailsContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITFBUserDetailsContext.m; sourceTree = "<group>"; };
 		E1850CAF31651A16191C3E51 /* Pods-ITObjCUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITObjCUI.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ITObjCUI/Pods-ITObjCUI.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -368,6 +374,7 @@
 				931CCBE01E8C14180029095A /* UIView+ITExtensions */,
 				93C757211E8826A50007F444 /* NSMutableArray+ITExtensions */,
 				9365E6751EA522C200402F08 /* ITModelChange+UITableView */,
+				93FB09CF1EAD281D0012A77D /* ITArrayModel+ITExtensions */,
 				93C7571D1E86C79B0007F444 /* NSFileManager+ITExtensions */,
 				931CF0E21E8454A600AE4B4C /* NSArray+ITExtensions */,
 				931CF0E51E8454A600AE4B4C /* NSBundle+ITExtensions */,
@@ -504,7 +511,7 @@
 				9332F04B1E994DDA007A0A29 /* ITFBContext */,
 				9332F04E1E994DDA007A0A29 /* ITFBLoginContext */,
 				9332F0511E994DDA007A0A29 /* ITFBUsersContext */,
-				9332F0801E9A0BFE007A0A29 /* ITFBUserContext */,
+				93FB09D31EAD35190012A77D /* ITFBUserDetailsContext */,
 			);
 			path = Contexts;
 			sourceTree = "<group>";
@@ -539,8 +546,8 @@
 		9332F0511E994DDA007A0A29 /* ITFBUsersContext */ = {
 			isa = PBXGroup;
 			children = (
-				9332F0521E994DDA007A0A29 /* ITFBUsersContext.h */,
-				9332F0531E994DDA007A0A29 /* ITFBUsersContext.m */,
+				9332F0521E994DDA007A0A29 /* ITFBUserFriendsContext.h */,
+				9332F0531E994DDA007A0A29 /* ITFBUserFriendsContext.m */,
 			);
 			path = ITFBUsersContext;
 			sourceTree = "<group>";
@@ -607,15 +614,6 @@
 				9332F07A1E995EF8007A0A29 /* ITFBFriendViewController.xib */,
 			);
 			path = ITFBFriendViewController;
-			sourceTree = "<group>";
-		};
-		9332F0801E9A0BFE007A0A29 /* ITFBUserContext */ = {
-			isa = PBXGroup;
-			children = (
-				9332F0811E9A0C25007A0A29 /* ITFBUserContext.h */,
-				9332F0821E9A0C25007A0A29 /* ITFBUserContext.m */,
-			);
-			path = ITFBUserContext;
 			sourceTree = "<group>";
 		};
 		9332F0841E9A9585007A0A29 /* UIViewController+ITExtensions */ = {
@@ -757,6 +755,8 @@
 				9365E6851EA5697800402F08 /* ITDBUser.m */,
 				9365E6871EA5698F00402F08 /* ITDBImage.h */,
 				9365E6881EA5698F00402F08 /* ITDBImage.m */,
+				93FB09CC1EAB584B0012A77D /* ITDBArrayObject.h */,
+				93FB09CD1EAB584B0012A77D /* ITDBArrayObject.m */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -1018,6 +1018,24 @@
 			path = ITMutableArraySpec;
 			sourceTree = "<group>";
 		};
+		93FB09CF1EAD281D0012A77D /* ITArrayModel+ITExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				93FB09D01EAD28470012A77D /* ITArrayModel+ITExtensions.h */,
+				93FB09D11EAD28470012A77D /* ITArrayModel+ITExtensions.m */,
+			);
+			path = "ITArrayModel+ITExtensions";
+			sourceTree = "<group>";
+		};
+		93FB09D31EAD35190012A77D /* ITFBUserDetailsContext */ = {
+			isa = PBXGroup;
+			children = (
+				93FB09D41EAD35190012A77D /* ITFBUserDetailsContext.h */,
+				93FB09D51EAD35190012A77D /* ITFBUserDetailsContext.m */,
+			);
+			path = ITFBUserDetailsContext;
+			sourceTree = "<group>";
+		};
 		C389A0FADBCBD0EADA4214AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1255,8 +1273,10 @@
 				931CF1071E8454A600AE4B4C /* UITableView+ITExtensions.m in Sources */,
 				931CCC081E8DA59D0029095A /* ITFileSystemImageModel.m in Sources */,
 				9365E6801EA5647800402F08 /* ITObjCUI.xcdatamodeld in Sources */,
+				93FB09D61EAD35190012A77D /* ITFBUserDetailsContext.m in Sources */,
 				932CDAAA1EA646AF0043ED5F /* IDPCoreDataManager.m in Sources */,
 				9365E67B1EA522C200402F08 /* ITChangeTypes+ITModelChangeExtensions.m in Sources */,
+				93FB09CE1EAB584B0012A77D /* ITDBArrayObject.m in Sources */,
 				931CCC0A1E8DA59D0029095A /* ITURLImageModel.m in Sources */,
 				93AA346B1E79DB6600513950 /* ITAddRowCell.m in Sources */,
 				93AA34761E7C3AD000513950 /* ITLoadingView.m in Sources */,
@@ -1272,7 +1292,6 @@
 				93AA34511E787B2000513950 /* ITOneIndexModel.m in Sources */,
 				93C20EE81E5F72DD00B56982 /* ITSquareViewController.m in Sources */,
 				931CF1051E8454A600AE4B4C /* UINib+ITExtensions.m in Sources */,
-				9332F0831E9A0C25007A0A29 /* ITFBUserContext.m in Sources */,
 				93462D9C1E69FD3F00FE1BC9 /* ITUsers.m in Sources */,
 				93C757461E8833FC0007F444 /* ITCompilerMacro.m in Sources */,
 				9332F07B1E995EF8007A0A29 /* ITFBFriendViewController.m in Sources */,
@@ -1292,6 +1311,7 @@
 				9332F07F1E9A0B45007A0A29 /* ITFBFriendView.m in Sources */,
 				931CF1011E8454A600AE4B4C /* NSBundle+ITExtensions.m in Sources */,
 				93462D7B1E68965D00FE1BC9 /* ITTableViewCell.m in Sources */,
+				93FB09D21EAD28470012A77D /* ITArrayModel+ITExtensions.m in Sources */,
 				93C757201E86C7B60007F444 /* NSFileManager+ITExtensions.m in Sources */,
 				93C757471E8833FC0007F444 /* ITMacro.m in Sources */,
 				93C20EE71E5F72DD00B56982 /* ITSquareView.m in Sources */,
@@ -1299,7 +1319,7 @@
 				931CCC091E8DA59D0029095A /* ITImageModel.m in Sources */,
 				931CF1081E8454A600AE4B4C /* UIWindow+ITExtensions.m in Sources */,
 				932CDAAD1EA646AF0043ED5F /* NSManagedObjectID+IDPExtensions.m in Sources */,
-				9332F0571E994DDA007A0A29 /* ITFBUsersContext.m in Sources */,
+				9332F0571E994DDA007A0A29 /* ITFBUserFriendsContext.m in Sources */,
 				931CCBD51E8AE9DE0029095A /* ITModelChangesTypes.m in Sources */,
 				9365E7A21EA63A6400402F08 /* NSObject+IDPExtensions.m in Sources */,
 				9332F06A1E994DEB007A0A29 /* ITFBUsersViewController.m in Sources */,
