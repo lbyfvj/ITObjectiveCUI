@@ -13,6 +13,8 @@
 #import "ITArrayModel.h"
 #import "ITDBArrayObject.h"
 
+#import "ITJSONRepresentation+ITExtensions.h"
+
 @interface ITFBUserFriendsContext ()
 @property (nonatomic, strong, readonly)         ITDBUser          *user;
 
@@ -50,7 +52,7 @@
 }
 
 - (void)resultHandler:(NSDictionary *)result {
-    NSArray *array = [result objectForKey:@"data"];
+    NSArray *array = [[result objectForKey:@"data"] ITJSONRepresentation];
     ITDBArrayObject *friends = self.user.friends;
     
     for (NSDictionary *object in array) {

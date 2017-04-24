@@ -10,8 +10,8 @@
 
 #import "ITModel.h"
 #import "ITMacro.h"
-#import "ITUser.h"
-#import "ITUsers.h"
+
+#import "ITJSONRepresentation+ITExtensions.h"
 
 @interface ITFBContext ()
 @property (nonatomic, strong)       FBSDKGraphRequestConnection   *graphRequestConnection;
@@ -64,7 +64,7 @@
         model.state = ITModelLoading;
 
         ITWeakify(self);
-        self.graphRequestConnection = [self.graphRequest startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+        self.graphRequestConnection = [self.graphRequest startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id<ITJSONRepresentation> result, NSError *error) {
             ITStrongifyAndReturnIfNil(self);
             if (!error) {
                 [self resultHandler:result];

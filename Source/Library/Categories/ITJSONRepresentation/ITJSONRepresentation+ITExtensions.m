@@ -1,25 +1,26 @@
 //
-//  JSONRepresentation+ITExtensions.m
+//  ITJSONRepresentation+ITExtensions.m
 //  ITObjCUI
 //
 //  Created by Ivan Tsyganok on 24.04.17.
 //  Copyright © 2017 Ivan Tsyganok. All rights reserved.
 //
 
-#import "JSONRepresentation+ITExtensions.h"
+#import "ITJSONRepresentation+ITExtensions.h"
 
 @implementation NSDictionary (ITExtensions)
 
-- (instancetype)JSONRepresentation {
+- (instancetype)ITJSONRepresentation {
     NSMutableDictionary *dictionary = [NSMutableDictionary new];
     NSMutableArray *keysToRemove = [NSMutableArray array];
     
-    for(id<JSONRepresentation> key in [dictionary allKeys]){
-        id value = [dictionary[key] JSONRepresentation];
+    [self enumerateKeysAndObjectsUsingBlock:^(id key, id<ITJSONRepresentation> obj, BOOL *stop) {
+        id value = [obj ITJSONRepresentation];
         if(value == [NSNull null]) {
             [keysToRemove addObject:key];
         }
-    }
+        dictionary[key] = value;
+    }];
     
     [dictionary removeObjectsForKeys:keysToRemove];
     
@@ -30,17 +31,17 @@
 
 @implementation NSArray (ITExtensions)
 
-- (instancetype)JSONRepresentation {
+- (instancetype)ITJSONRepresentation {
     NSMutableArray *array = [NSMutableArray array];
     NSMutableArray *objectsToRemove = [NSMutableArray array];
     
-    for(id<JSONRepresentation> object in array){
-        id value = [object JSONRepresentation];
-        
+    [self enumerateObjectsUsingBlock:^(id<ITJSONRepresentation> obj, NSUInteger idx, BOOL *stop) {
+        id value = [obj ITJSONRepresentation];
         if(value == [NSNull null]) {
             [objectsToRemove addObject:value];
         }
-    }
+        [array addObject:value];
+    }];
     
     [array removeObjectsInArray:objectsToRemove];
     
@@ -51,7 +52,7 @@
 
 @implementation NSNumber (ITExtensions)
 
-- (instancetype)JSONRepresentation {
+- (instancetype)ITJSONRepresentation {
     return self;
 }
 
@@ -59,7 +60,7 @@
 
 @implementation NSNull (ITExtensions)
 
-- (instancetype)JSONRepresentation {
+- (instancetype)ITJSONRepresentation {
     return nil;
 }
 
@@ -67,7 +68,7 @@
 
 @implementation NSString (ITExtensions)
 
-- (instancetype)JSONRepresentation {
+- (instancetype)ITJSONRepresentation {
     return self;
 }
 

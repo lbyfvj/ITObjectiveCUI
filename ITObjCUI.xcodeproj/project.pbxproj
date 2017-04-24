@@ -95,7 +95,7 @@
 		93FB09CE1EAB584B0012A77D /* ITDBArrayObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FB09CD1EAB584B0012A77D /* ITDBArrayObject.m */; };
 		93FB09D21EAD28470012A77D /* ITArrayModel+ITExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FB09D11EAD28470012A77D /* ITArrayModel+ITExtensions.m */; };
 		93FB09D61EAD35190012A77D /* ITFBUserDetailsContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FB09D51EAD35190012A77D /* ITFBUserDetailsContext.m */; };
-		93FF7D941EAE69E300233A9E /* JSONRepresentation+ITExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FF7D931EAE69E300233A9E /* JSONRepresentation+ITExtensions.m */; };
+		93FF7D941EAE69E300233A9E /* ITJSONRepresentation+ITExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FF7D931EAE69E300233A9E /* ITJSONRepresentation+ITExtensions.m */; };
 		BC4456498967AF254D14A97A /* libPods-ITObjCUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03AF09BAA2BA61E48268062F /* libPods-ITObjCUITests.a */; };
 /* End PBXBuildFile section */
 
@@ -275,8 +275,8 @@
 		93FB09D11EAD28470012A77D /* ITArrayModel+ITExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ITArrayModel+ITExtensions.m"; sourceTree = "<group>"; };
 		93FB09D41EAD35190012A77D /* ITFBUserDetailsContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITFBUserDetailsContext.h; sourceTree = "<group>"; };
 		93FB09D51EAD35190012A77D /* ITFBUserDetailsContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITFBUserDetailsContext.m; sourceTree = "<group>"; };
-		93FF7D921EAE69E300233A9E /* JSONRepresentation+ITExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JSONRepresentation+ITExtensions.h"; sourceTree = "<group>"; };
-		93FF7D931EAE69E300233A9E /* JSONRepresentation+ITExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JSONRepresentation+ITExtensions.m"; sourceTree = "<group>"; };
+		93FF7D921EAE69E300233A9E /* ITJSONRepresentation+ITExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ITJSONRepresentation+ITExtensions.h"; sourceTree = "<group>"; };
+		93FF7D931EAE69E300233A9E /* ITJSONRepresentation+ITExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ITJSONRepresentation+ITExtensions.m"; sourceTree = "<group>"; };
 		E1850CAF31651A16191C3E51 /* Pods-ITObjCUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITObjCUI.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ITObjCUI/Pods-ITObjCUI.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1043,8 +1043,8 @@
 		93FF7D911EAE69E300233A9E /* ITJSONRepresentation */ = {
 			isa = PBXGroup;
 			children = (
-				93FF7D921EAE69E300233A9E /* JSONRepresentation+ITExtensions.h */,
-				93FF7D931EAE69E300233A9E /* JSONRepresentation+ITExtensions.m */,
+				93FF7D921EAE69E300233A9E /* ITJSONRepresentation+ITExtensions.h */,
+				93FF7D931EAE69E300233A9E /* ITJSONRepresentation+ITExtensions.m */,
 			);
 			path = ITJSONRepresentation;
 			sourceTree = "<group>";
@@ -1305,7 +1305,7 @@
 				93AA34511E787B2000513950 /* ITOneIndexModel.m in Sources */,
 				93C20EE81E5F72DD00B56982 /* ITSquareViewController.m in Sources */,
 				931CF1051E8454A600AE4B4C /* UINib+ITExtensions.m in Sources */,
-				93FF7D941EAE69E300233A9E /* JSONRepresentation+ITExtensions.m in Sources */,
+				93FF7D941EAE69E300233A9E /* ITJSONRepresentation+ITExtensions.m in Sources */,
 				93462D9C1E69FD3F00FE1BC9 /* ITUsers.m in Sources */,
 				93C757461E8833FC0007F444 /* ITCompilerMacro.m in Sources */,
 				9332F07B1E995EF8007A0A29 /* ITFBFriendViewController.m in Sources */,
