@@ -19,4 +19,6 @@
 - (NSDictionary *)requestParameters;
 - (FBSDKGraphRequest *)graphRequest;
 
+- (void)failedLoadingData;
+
 @end

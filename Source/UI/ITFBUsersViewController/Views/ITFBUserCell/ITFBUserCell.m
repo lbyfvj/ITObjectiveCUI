@@ -32,7 +32,7 @@
 - (void)fillWithUserModel:(ITDBUser *)user {
     self.fullNameLabel.text = user.fullName;
     
-    //self.userImageView.imageModel = user.picture.imageModel;
+    self.userImageView.imageModel = user.picture.imageModel;
 }
 
 @end

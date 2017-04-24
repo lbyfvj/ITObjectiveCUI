@@ -69,12 +69,17 @@
             if (!error) {
                 [self resultHandler:result];
             } else {
-                model.state = ITModelFailedLoading;
+                [self failedLoadingData];
             }
         }];
     } else {
         model.state = ITModelFailedLoading;
     }
+}
+
+- (void)failedLoadingData {
+    ITModel *model = self.model;
+    model.state = ITModelFailedLoading;
 }
 
 @end

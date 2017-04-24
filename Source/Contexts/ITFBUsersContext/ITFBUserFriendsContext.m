@@ -73,4 +73,13 @@
     self.user.state = ITDBObjectDidLoadFriends;
 }
 
+- (void)failedLoadingData {
+    ITDBUser *user = self.user;
+    ITDBArrayObject *friends = user.friends;
+    
+    [friends performLoading];
+    
+    user.state = ITDBObjectDidLoadFriends;
+}
+
 @end
