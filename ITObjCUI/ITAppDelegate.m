@@ -15,6 +15,8 @@
 #import "UIWindow+ITExtensions.h"
 #import "ITLoginViewController.h"
 
+#import "ActiveRecordKit.h"
+
 @interface ITAppDelegate ()
 
 @end
@@ -25,6 +27,8 @@
     
     UIWindow *window = [UIWindow window];
     self.window = window;
+    
+    [IDPCoreDataManager sharedManagerWithMomName:@"ITObjCUI"];
 
     ITLoginViewController *controller = [ITLoginViewController new];
     UINavigationController *navigationController = [[UINavigationController alloc]

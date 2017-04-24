@@ -33,7 +33,7 @@ typedef NS_ENUM(NSUInteger, ITDBObjectState) {
 
 @end
 
-@interface ITDBObject : NSManagedObject
+@interface ITDBObject : NSManagedObject <ITObservableObject>
 @property (nonatomic, strong)   NSString    *ID;
 
 + (id)managedObjectWithID:(NSString *)ID;

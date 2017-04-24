@@ -35,10 +35,10 @@
 @end
 
 @interface ITObservableObject : NSObject <ITObservableObject>
-@property (nonatomic, assign)           NSUInteger                      state;
-@property (nonatomic, readonly)         NSSet                           *observersSet;
+@property (nonatomic, assign)                   NSUInteger                      state;
+@property (nonatomic, readonly)                 NSSet                           *observersSet;
 
-@property (nonatomic, readonly)         id<ITObservableObject>          target;
+@property (nonatomic, weak, readonly)           id<ITObservableObject>          target;
 
 + (id)observableObjectWithTarget:(id)target;
 

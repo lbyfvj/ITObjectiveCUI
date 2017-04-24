@@ -64,8 +64,6 @@ static NSString * const kITId = @"id";
 
 - (void)setID:(NSString *)ID {    
     [self setCustomValue:ID forKey:kITId];
-    
-    //self.state = ITDBObjectDidLoadID;
 }
 
 - (NSString *)ID {

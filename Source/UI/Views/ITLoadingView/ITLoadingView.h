@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#import "ITArrayModel.h"
-
 typedef void (^ITComletionBlock)(void);
 
 @interface ITLoadingView : UIView

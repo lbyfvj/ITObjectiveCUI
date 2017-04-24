@@ -13,7 +13,7 @@
 @interface ITObservableObject ()
 @property (nonatomic, retain)   NSHashTable                         *observersHashTable;
 @property (nonatomic, assign)   BOOL                                shouldNotify;
-@property (nonatomic, retain)   id<ITObservableObject>              target;
+@property (nonatomic, weak)     id<ITObservableObject>              target;
 
 - (void)notifyOfStateWithSelector:(SEL)selector;
 - (void)notifyOfStateWithSelector:(SEL)selector object:(id)object;
@@ -142,7 +142,7 @@
     @synchronized(observers) {
         for (id observer in observers) {
             if ([observer respondsToSelector:selector]) {
-                [observer performSelector:selector withObject:self withObject:object];
+                [observer performSelector:selector withObject:self.target withObject:object];
             }
         }
     }

@@ -34,7 +34,7 @@
 #pragma mark -
 #pragma mark Public
 
-- (NSString *)graphPath {
+- (NSString *)graphPath {    
     return [NSString stringWithFormat:@"%@/friends", self.user.ID];
 }
 

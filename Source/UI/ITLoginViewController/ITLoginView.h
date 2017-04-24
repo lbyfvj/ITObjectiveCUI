@@ -6,7 +6,7 @@
 //  Copyright © 2017 Ivan Tsyganok. All rights reserved.
 //
 
-#import "ITUser.h"
+#import <UIKit/UIKit.h>
 
 @interface ITLoginView : UIView
 @property (nonatomic, strong)       IBOutlet    UIButton    *loginButton;

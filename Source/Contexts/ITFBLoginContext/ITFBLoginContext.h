@@ -6,11 +6,11 @@
 //  Copyright © 2017 Ivan Tsyganok. All rights reserved.
 //
 
-#import "ITContext.h"
+#import "ITFBContext.h"
 
 #import "ITDBUser.h"
 
-@interface ITFBLoginContext : ITContext
+@interface ITFBLoginContext : ITFBContext
 
 + (ITDBUser *)user;
 

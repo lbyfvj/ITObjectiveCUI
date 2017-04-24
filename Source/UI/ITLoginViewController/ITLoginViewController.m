@@ -28,15 +28,6 @@
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
-- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        [IDPCoreDataManager sharedManagerWithMomName:@"ITObjCUI"];
-        self.user = [ITDBUser managedObject];
-    }
-    
-    return self;
-}
 
 #pragma mark -
 #pragma mark Accessors
@@ -62,7 +53,6 @@
     if (user) {
         [self pushViewControllerWithUser:user withAnimation:NO];
     }
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -74,8 +64,7 @@
 #pragma mark Private
 
 - (void)pushViewControllerWithUser:(ITDBUser *)user withAnimation:(BOOL)animation {
-    ITFBUsersViewController *controller = [ITFBUsersViewController new];
-    controller.user = user;
+    ITFBUsersViewController *controller = [[ITFBUsersViewController alloc] initWithUser:user];
     
     [self.navigationController pushViewController:controller animated:animation];
 }
@@ -95,7 +84,7 @@
 }
 
 #pragma mark -
-#pragma mark ITObservableObject
+#pragma mark ITDBObjectObserver
 
 - (void)objectDidLoadID:(ITDBUser *)user {
     NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));

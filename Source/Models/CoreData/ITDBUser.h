@@ -14,7 +14,7 @@
 #import "ITObservableObject.h"
 #import "ITDBImage.h"
 
-@interface ITDBUser : ITDBObject <ITObservableObject>
+@interface ITDBUser : ITDBObject
 @property (nonatomic, strong)   NSString        *firstName;
 @property (nonatomic, strong)   NSString        *lastName;
 @property (nonatomic, readonly) NSString        *fullName;

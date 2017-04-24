@@ -68,12 +68,18 @@ static NSString * const kITFBUserFriendsPermission = @"user_friends";
 #pragma mark -
 #pragma mark Public
 
+
+
 - (void)execute {
     if (self.accessToken.userID) {
         [self completeLogin];
     } else {
         [self loginAtFacebook];
     }
+}
+
+- (void)resultHandler:(id)result {
+    
 }
 
 #pragma mark -
@@ -104,9 +110,9 @@ static NSString * const kITFBUserFriendsPermission = @"user_friends";
         ITDBUser *user = self.model;
         user.ID = accessToken.userID;
         
-        [user saveManagedObject];
-        
         user.state = ITDBObjectDidLoadID;
+        
+        [user saveManagedObject];
     }
 }
 
