@@ -29,7 +29,7 @@
 - (NSURLSession *)downloadSession {
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration ephemeralSessionConfiguration]];
     
-    ITReturnSharedInstance(session);
+    ITReturnSharedInstance(^{return session;});
 }
 
 - (void)setDownloadTask:(NSURLSessionDownloadTask *)downloadTask {

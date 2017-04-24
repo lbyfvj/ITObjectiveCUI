@@ -18,21 +18,15 @@
 }
 
 + (NSURL *)documentsDirectoryURL {
-    NSURL *directoryPath = [self directoryPathWithType:NSDocumentDirectory];
-    
-    ITReturnSharedInstance(directoryPath);
+    ITReturnSharedInstance(^{ return [self directoryPathWithType:NSDocumentDirectory]; });
 }
 
 + (NSURL *)libraryDirectoryURL {
-    NSURL *directoryPath = [self directoryPathWithType:NSLibraryDirectory];
-    
-    ITReturnSharedInstance(directoryPath);
+    ITReturnSharedInstance(^{ return [self directoryPathWithType:NSLibraryDirectory]; });
 }
 
-+ (NSURL *)applicationDirectoryURL {
-    NSURL *directoryPath = [self directoryPathWithType:NSApplicationSupportDirectory];
-    
-    ITReturnSharedInstance(directoryPath);
++ (NSURL *)applicationDirectoryURL {    
+    ITReturnSharedInstance(^{ return [self directoryPathWithType:NSApplicationSupportDirectory]; });
 }
 
 - (void)copyItemAtURL:(NSURL *)url

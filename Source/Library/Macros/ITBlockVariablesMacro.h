@@ -41,11 +41,11 @@
         variable = block(__VA_ARGS__); \
     }
 
-#define ITReturnSharedInstance(variable) \
+#define ITReturnSharedInstance(block) \
     static id sharedInstance = nil; \
     static dispatch_once_t onceToken; \
     dispatch_once(&onceToken, ^{ \
-        sharedInstance = variable; \
+        sharedInstance = block(); \
     }); \
     \
     return sharedInstance;
