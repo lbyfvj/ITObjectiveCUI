@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "ITFBConstants.h"
+
 @interface ITContext : NSObject
 @property (nonatomic, strong)     id      model;
 

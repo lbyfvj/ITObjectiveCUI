@@ -35,15 +35,15 @@
 #pragma mark Public
 
 - (NSString *)graphPath {    
-    return [NSString stringWithFormat:@"%@/friends", self.user.ID];
+    return [NSString stringWithFormat:@"%@/%@", self.user.ID, kITFriends];
 }
 
 - (NSDictionary *)requestParameters {
-    return @{@"fields":[NSString stringWithFormat:@"%@, %@, %@, %@",
-                        @"id",
-                        @"first_name",
-                        @"last_name",
-                        @"picture.type(large)"]};;
+    return @{kITFields:[NSString stringWithFormat:@"%@, %@, %@, %@",
+                        kITId,
+                        kITFirstName,
+                        kITLastName,
+                        kITLargePicture]};;
 }
 
 - (FBSDKGraphRequest *)graphRequest {
@@ -52,15 +52,15 @@
 }
 
 - (void)resultHandler:(NSDictionary *)result {
-    NSArray *array = [[result objectForKey:@"data"] ITJSONRepresentation];
+    NSArray *array = [[result objectForKey:kITData] ITJSONRepresentation];
     ITDBArrayObject *friends = self.user.friends;
     
     for (NSDictionary *object in array) {
-        ITDBUser *friend = [ITDBUser managedObjectWithID:object[@"id"]];
-        friend.ID = object[@"id"];
-        friend.firstName = object[@"first_name"];
-        friend.lastName = object[@"last_name"];
-        friend.picture = [ITDBImage managedObjectWithID:object[@"picture"][@"data"][@"url"]];
+        ITDBUser *friend = [ITDBUser managedObjectWithID:object[kITId]];
+        friend.ID = object[kITId];
+        friend.firstName = object[kITFirstName];
+        friend.lastName = object[kITLastName];
+        friend.picture = [ITDBImage managedObjectWithID:object[kITPicture][kITData][kITURL]];
         friend.state = ITDBObjectDidLoadID;
         
         [friends performBlockWithoutNotifications:^{

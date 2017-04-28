@@ -34,4 +34,6 @@
     \
 @end
 
-#define ITStaticConst(name) static NSString * const name = @#name;
+#define kITStaticConst(name) static NSString * const name = @#name;
+
+#define kITStaticConstWithValue(name, value)   static NSString * const name = value

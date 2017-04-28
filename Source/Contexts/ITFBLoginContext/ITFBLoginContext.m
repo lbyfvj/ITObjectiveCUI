@@ -13,8 +13,7 @@
 
 #import "ActiveRecordKit.h"
 
-static NSString * const kITFBPublicPermission = @"public_profile";
-static NSString * const kITFBUserFriendsPermission = @"user_friends";
+#import "ITFBConstants.h"
 
 @interface ITFBLoginContext ()
 @property (nonatomic, readonly)     FBSDKLoginManager   *loginManager;

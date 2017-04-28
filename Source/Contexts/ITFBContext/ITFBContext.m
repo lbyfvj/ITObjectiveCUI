@@ -27,7 +27,6 @@
     if (_graphRequestConnection != graphRequestConnection) {
         [_graphRequestConnection cancel];
         _graphRequestConnection = graphRequestConnection;
-        //[_graphRequestConnection start];
     }
 }
 

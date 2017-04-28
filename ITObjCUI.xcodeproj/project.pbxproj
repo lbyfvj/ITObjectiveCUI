@@ -77,6 +77,7 @@
 		93AA346C1E79DB6600513950 /* ITAddRowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93AA346A1E79DB6600513950 /* ITAddRowCell.xib */; };
 		93AA34761E7C3AD000513950 /* ITLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93AA34741E7C3AD000513950 /* ITLoadingView.m */; };
 		93AA34771E7C3AD000513950 /* ITLoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93AA34751E7C3AD000513950 /* ITLoadingView.xib */; };
+		93B468271EB3CAA00080C4F5 /* ITFBConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 93B468261EB3CAA00080C4F5 /* ITFBConstants.m */; };
 		93C20EAB1E5B99CA00B56982 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C20EA91E5B99CA00B56982 /* main.m */; };
 		93C20EBC1E5B99E900B56982 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93C20EB21E5B99E900B56982 /* Assets.xcassets */; };
 		93C20EBD1E5B99E900B56982 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93C20EB21E5B99E900B56982 /* Assets.xcassets */; };
@@ -244,6 +245,8 @@
 		93AA34731E7C3AD000513950 /* ITLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITLoadingView.h; sourceTree = "<group>"; };
 		93AA34741E7C3AD000513950 /* ITLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITLoadingView.m; sourceTree = "<group>"; };
 		93AA34751E7C3AD000513950 /* ITLoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ITLoadingView.xib; sourceTree = "<group>"; };
+		93B468251EB3CAA00080C4F5 /* ITFBConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITFBConstants.h; sourceTree = "<group>"; };
+		93B468261EB3CAA00080C4F5 /* ITFBConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITFBConstants.m; sourceTree = "<group>"; };
 		93C20E7F1E5B95BF00B56982 /* ITObjCUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITObjCUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C20E981E5B95BF00B56982 /* ITObjCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ITObjCUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C20EA81E5B99CA00B56982 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -516,6 +519,8 @@
 				9332F04E1E994DDA007A0A29 /* ITFBLoginContext */,
 				9332F0511E994DDA007A0A29 /* ITFBUsersContext */,
 				93FB09D31EAD35190012A77D /* ITFBUserDetailsContext */,
+				93B468251EB3CAA00080C4F5 /* ITFBConstants.h */,
+				93B468261EB3CAA00080C4F5 /* ITFBConstants.m */,
 			);
 			path = Contexts;
 			sourceTree = "<group>";
@@ -1325,6 +1330,7 @@
 				9332F07F1E9A0B45007A0A29 /* ITFBFriendView.m in Sources */,
 				931CF1011E8454A600AE4B4C /* NSBundle+ITExtensions.m in Sources */,
 				93462D7B1E68965D00FE1BC9 /* ITTableViewCell.m in Sources */,
+				93B468271EB3CAA00080C4F5 /* ITFBConstants.m in Sources */,
 				93FB09D21EAD28470012A77D /* ITArrayModel+ITExtensions.m in Sources */,
 				93C757201E86C7B60007F444 /* NSFileManager+ITExtensions.m in Sources */,
 				93C757471E8833FC0007F444 /* ITMacro.m in Sources */,

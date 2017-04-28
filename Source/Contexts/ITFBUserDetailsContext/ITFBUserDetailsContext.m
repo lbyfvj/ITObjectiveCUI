@@ -31,15 +31,15 @@
 #pragma mark Public
 
 - (NSString *)graphPath {
-    return [NSString stringWithFormat:@"%@?fields=id,first_name,last_name,picture", self.user.ID];
+    return [NSString stringWithFormat:@"%@?%@=%@,%@,%@,%@", self.user.ID, kITFields, kITId, kITFirstName, kITLargePicture, kITPicture];
 }
 
 - (NSDictionary *)requestParameters {
-    return @{@"fields":[NSString stringWithFormat:@"%@, %@, %@, %@",
-                        @"id",
-                        @"first_name",
-                        @"last_name",
-                        @"picture.type(large)"]};;
+    return @{kITFields:[NSString stringWithFormat:@"%@, %@, %@, %@",
+                        kITId,
+                        kITFirstName,
+                        kITLastName,
+                        kITLargePicture]};;
 }
 
 - (FBSDKGraphRequest *)graphRequest {
@@ -49,10 +49,10 @@
 
 - (void)resultHandler:(NSDictionary *)result {    
     ITDBUser *user = self.user;
-    user.ID = result[@"id"];
-    user.firstName = result[@"first_name"];
-    user.lastName = result[@"last_name"];
-    user.picture = [ITDBImage managedObjectWithID:result[@"picture"][@"data"][@"url"]];
+    user.ID = result[kITId];
+    user.firstName = result[kITFirstName];
+    user.lastName = result[kITLastName];
+    user.picture = [ITDBImage managedObjectWithID:result[kITPicture][kITData][kITURL]];
     
     user.state = ITDBObjectDidLoadDetails;
 }
