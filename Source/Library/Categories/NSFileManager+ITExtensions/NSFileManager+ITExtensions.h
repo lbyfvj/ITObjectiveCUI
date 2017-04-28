@@ -16,6 +16,8 @@
 
 + (NSURL *)applicationDirectoryURL;
 
+- (void)createDirectoryAtURL:(NSURL *)url;
+
 - (void)copyItemAtURL:(NSURL *)url toURL:(NSURL *)toURL;
 
 @end
