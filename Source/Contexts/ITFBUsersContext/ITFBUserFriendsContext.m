@@ -68,11 +68,11 @@
         }];
     }
     
+    self.user.state = ITDBObjectDidLoadFriends;
+    
     [self.user saveManagedObject];
     
     [friends performLoading];
-
-    self.user.state = ITDBObjectDidLoadFriends;
 }
 
 - (void)failedLoadingData {

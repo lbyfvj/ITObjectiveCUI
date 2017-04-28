@@ -15,13 +15,15 @@
 @property (nonatomic, readonly)   NSURLSession              *downloadSession;
 @property (nonatomic, strong)   NSURLSessionDownloadTask    *downloadTask;
 
-- (void)performLoadingFromURLWithBlock:(void (^)(UIImage *, id))block;
+- (void)deleteFile;
 
 @end
 
 @implementation ITURLImageModel
 
 @dynamic downloadSession;
+@dynamic fileURL;
+@dynamic filePath;
 
 #pragma mark -
 #pragma mark Accessors
@@ -46,37 +48,68 @@
     return self.fileURL.isFileURL && [fileManager fileExistsAtPath:self.fileURL.path];
 }
 
+- (NSURL *)fileURL {
+    NSURL *url = self.url;
+    
+    if (url.isFileURL) {
+        return url;
+    }
+    NSString *fileName = [self.url.relativePath stringByAddingPercentEncodingWithalphanumericCharacterSet];
+    NSString *path = [self.filePath stringByAppendingPathComponent:fileName];
+    
+    return [NSURL fileURLWithPath:path isDirectory:NO];
+}
+
+
+- (NSString *)filePath {
+    NSString *cachePath = [[NSFileManager documentsDirectoryURL] path];
+    NSString *host = [self.url.host stringByAddingPercentEncodingWithalphanumericCharacterSet];
+    
+    return [cachePath stringByAppendingPathComponent:host];
+}
+
 #pragma mark -
 #pragma mark Public
 
-- (void)performLoadingWithCompletionBlock:(void (^)(UIImage *image, id error))block {    
-    if (self.cached) {
-        [super performLoadingWithCompletionBlock:block];
-    } else {
-        [self performLoadingFromURLWithBlock:block];
-    }
+- (void)performLoadingWithCompletionBlock:(void (^)(UIImage *image, id error))block {
+    id completionBlock = ^(UIImage *image, NSError *error) {
+        if (!image || error) {
+            
+            [self deleteFile];
+            
+            self.downloadTask = [self.downloadSession downloadTaskWithURL:self.url
+                                                        completionHandler:^(NSURL *location,
+                                                                            NSURLResponse *response,
+                                                                            NSError *error)
+                                 {
+                                     if (error) {
+                                         self.state = ITModelFailedLoading;
+                                         
+                                         return;
+                                     }
+                                     
+                                     [[NSFileManager defaultManager] copyItemAtURL:location
+                                                                             toURL:self.fileURL];
+                                     
+                                     [super performLoadingWithCompletionBlock:block];
+                                 }];
+            
+            return;
+        }
+        
+        ITDispatchBlock(block, image, error);
+    };
+    
+    [super performLoadingWithCompletionBlock:completionBlock];
 }
 
 #pragma mark -
 #pragma mark Private
 
-- (void)performLoadingFromURLWithBlock:(void (^)(UIImage *image, id error))block {
-    ITWeakify(self);
-    id completionBlock = ^(NSURL *location, NSURLResponse *response, NSError *error) {
-        ITStrongifyAndReturnIfNil(self);
-        if (error) {
-            self.state = ITModelFailedLoading;
-            
-            return;
-        }
-        
-        [[NSFileManager defaultManager] copyItemAtURL:location
-                                                toURL:self.fileURL];
-        [super performLoadingWithCompletionBlock:block];
-    };
+- (void)deleteFile {
+    NSError *error = nil;
     
-    self.downloadTask = [self.downloadSession downloadTaskWithURL:self.url
-                                                completionHandler:completionBlock];
+    [[NSFileManager defaultManager] removeItemAtURL:self.fileURL error:&error];
 }
 
 @end
