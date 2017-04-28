@@ -67,7 +67,7 @@
         self.graphRequestConnection = [self.graphRequest startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id<ITJSONRepresentation> result, NSError *error) {
             ITStrongifyAndReturnIfNil(self);
             if (!error) {
-                [self resultHandler:result];
+                [self resultHandler:[result ITJSONRepresentation]];
             } else {
                 [self failedLoadingData];
             }

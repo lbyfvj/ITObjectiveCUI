@@ -12,17 +12,13 @@
 
 - (instancetype)ITJSONRepresentation {
     NSMutableDictionary *dictionary = [NSMutableDictionary new];
-    NSMutableArray *keysToRemove = [NSMutableArray array];
     
     [self enumerateKeysAndObjectsUsingBlock:^(id key, id<ITJSONRepresentation> obj, BOOL *stop) {
         id value = [obj ITJSONRepresentation];
-        if(value == [NSNull null]) {
-            [keysToRemove addObject:key];
+        if(value) {
+            dictionary[key] = value;
         }
-        dictionary[key] = value;
     }];
-    
-    [dictionary removeObjectsForKeys:keysToRemove];
     
     return [[self class] dictionaryWithDictionary:dictionary];
 }
@@ -33,18 +29,14 @@
 
 - (instancetype)ITJSONRepresentation {
     NSMutableArray *array = [NSMutableArray array];
-    NSMutableArray *objectsToRemove = [NSMutableArray array];
     
     [self enumerateObjectsUsingBlock:^(id<ITJSONRepresentation> obj, NSUInteger idx, BOOL *stop) {
         id value = [obj ITJSONRepresentation];
-        if(value == [NSNull null]) {
-            [objectsToRemove addObject:value];
+        if(value) {
+            [array addObject:value];
         }
-        [array addObject:value];
     }];
-    
-    [array removeObjectsInArray:objectsToRemove];
-    
+
     return [[self class] arrayWithArray:array];
 }
 
