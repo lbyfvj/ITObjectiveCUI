@@ -26,12 +26,19 @@
 @dynamic filePath;
 
 #pragma mark -
+#pragma mark Initializations and Deallocations
+
+- (void)dealloc {
+    [self.downloadTask cancel];
+}
+
+#pragma mark -
 #pragma mark Accessors
 
 - (NSURLSession *)downloadSession {
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration ephemeralSessionConfiguration]];
-    
-    ITReturnSharedInstance(^{return session;});
+    ITReturnSharedInstance(^{
+        return [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration ephemeralSessionConfiguration]];
+    });
 }
 
 - (void)setDownloadTask:(NSURLSessionDownloadTask *)downloadTask {
