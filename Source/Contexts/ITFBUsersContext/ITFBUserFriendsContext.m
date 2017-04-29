@@ -12,6 +12,7 @@
 #import "ITDBImage.h"
 #import "ITArrayModel.h"
 #import "ITDBArrayObject.h"
+#import "ITFBUserInteraction.h"
 
 #import "ITJSONRepresentation+ITExtensions.h"
 
@@ -56,11 +57,9 @@
     ITDBArrayObject *friends = self.user.friends;
     
     for (NSDictionary *object in array) {
-        ITDBUser *friend = [ITDBUser managedObjectWithID:object[kITId]];
-        friend.ID = object[kITId];
-        friend.firstName = object[kITFirstName];
-        friend.lastName = object[kITLastName];
-        friend.picture = [ITDBImage managedObjectWithID:object[kITPicture][kITData][kITURL]];
+        ITDBUser *friend = [ITFBUserInteraction userWithId:object[kITId]
+                                    parseObjectInteraction:object];
+        
         friend.state = ITDBObjectDidLoadID;
         
         [friends performBlockWithoutNotifications:^{
