@@ -10,11 +10,11 @@
 
 #import "ITMacro.h"
 
-ITStaticConst(kITCoderUserId);
-ITStaticConst(kITCoderFirstName);
-ITStaticConst(kITCoderLastName);
-ITStaticConst(kITCoderGender);
-ITStaticConst(kITCoderImageURL);
+kITStaticConst(kITCoderUserId);
+kITStaticConst(kITCoderFirstName);
+kITStaticConst(kITCoderLastName);
+kITStaticConst(kITCoderGender);
+kITStaticConst(kITCoderImageURL);
 
 static NSString * const kITImageURL = @"http://www.head.com/fileadmin/content/sports/ski/category_page/desktop/HEAD_Desktop_SKI_Landing_Page_05_50_50_Supershapev3.jpg";
 

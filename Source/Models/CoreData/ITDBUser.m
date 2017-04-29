@@ -11,7 +11,9 @@
 #import "ITDBImage.h"
 #import "NSManagedObject+IDPExtensions.h"
 
-static NSString * const kITId = @"id";
+kITStaticConstWithValue(kITId, @"id");
+kITStaticConstWithValue(kITFriends, @"friends");
+kITStaticConstWithValue(kITFirstName, @"firstName");
 
 @interface ITDBUser ()
 
@@ -36,7 +38,16 @@ static NSString * const kITId = @"id";
 {
     self = [super initWithEntity:entity insertIntoManagedObjectContext:context];
     if (self) {
-        self.friends = [[ITDBArrayObject alloc] initFetchedResultsControllerWithManagedObject:self];
+        
+        NSSortDescriptor *sort = [[NSSortDescriptor alloc]
+                                  initWithKey:kITFirstName
+                                  ascending:YES];
+        NSArray *sortDescriptors = [NSArray arrayWithObject:sort];
+        
+        self.friends = [[ITDBArrayObject alloc] initWithManagedObject:self
+                                                              keyPath:kITFriends
+                                                      sortDescriptors:sortDescriptors
+                                                            predicate:nil];
     }
     
     return self;

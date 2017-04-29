@@ -10,6 +10,8 @@
 
 #import "ActiveRecordKit.h"
 
+#import "ITMacro.h"
+
 typedef NS_ENUM(NSUInteger, ITDBObjectState) {
     ITDBObjectDidUnload,
     ITDBObjectDidLoad,

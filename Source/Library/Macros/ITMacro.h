@@ -36,4 +36,4 @@
 
 #define kITStaticConst(name) static NSString * const name = @#name;
 
-#define kITStaticConstWithValue(name, value)   static NSString * const name = value
+#define kITStaticConstWithValue(name, value) static NSString * const name = value

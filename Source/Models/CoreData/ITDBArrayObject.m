@@ -15,12 +15,14 @@
 #import "NSManagedObjectContext+IDPExtensions.h"
 #import "NSManagedObjectID+IDPExtensions.h"
 
+#import "NSManagedObject+ITExtensions.h"
 #import "ITArrayModel+ITExtensions.h"
 
 @interface ITDBArrayObject ()
 @property (nonatomic, strong)   NSManagedObject                 *managedObject;
-@property (nonatomic,strong)    NSManagedObjectContext          *managedObjectContext;
+@property (nonatomic, strong)   NSManagedObjectContext          *managedObjectContext;
 @property (nonatomic, strong)   NSFetchedResultsController      *fetchedController;
+@property (nonatomic, strong)   NSString                        *keyPath;
 
 @end
 
@@ -28,6 +30,29 @@
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
+
+- (instancetype)initWithManagedObject:(NSManagedObject *)managedObject
+                              keyPath:(NSString *)keyPath
+                      sortDescriptors:(NSArray *)sortDescriptors
+                            predicate:(NSPredicate *)predicate
+{
+    self = [super init];
+    
+    self.managedObject = managedObject;
+    self.keyPath = keyPath;
+    
+    NSFetchRequest *fetchRequest = [[self.managedObject class] fetchRequestWithPredicate:predicate
+                                                                        sortDescriptors:sortDescriptors];
+    
+    
+    self.fetchedController = [[NSFetchedResultsController alloc]
+                              initWithFetchRequest:fetchRequest
+                              managedObjectContext:self.managedObjectContext
+                              sectionNameKeyPath:nil
+                              cacheName:nil];
+
+    return self;
+}
 
 - (instancetype)initFetchedResultsControllerWithManagedObject:(NSManagedObject *)managedObject {
     self = [super init];

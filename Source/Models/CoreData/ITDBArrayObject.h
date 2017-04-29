@@ -12,6 +12,9 @@
 
 @interface ITDBArrayObject : ITArrayModel <NSFetchedResultsControllerDelegate>
 
-- (instancetype)initFetchedResultsControllerWithManagedObject:(NSManagedObject *)managedObject;
+- (instancetype)initWithManagedObject:(NSManagedObject *)managedObject
+                              keyPath:(NSString *)keyPath
+                      sortDescriptors:(NSArray *)sortDescriptors
+                            predicate:(NSPredicate *)predicate;
 
 @end
