@@ -125,6 +125,7 @@ ITViewControllerSynthesizeRootView(ITFBUsersViewController, fbUsersView, ITFBUse
 - (NSInteger)   tableView:(UITableView *)tableView
     numberOfRowsInSection:(NSInteger)section
 {
+    NSLog(@"Friends Count: %lu", self.friends.count);
     return self.friends.count;
 }
 

@@ -114,10 +114,6 @@
     return [self.target selectorForState:state];
 }
 
-- (SEL)selectorForState:(NSUInteger)state withObject:(id)object {
-    return [self.target selectorForState:state withObject:object];
-}
-
 - (void)notifyOfState:(NSUInteger)state {
     [self notifyOfState:state object:nil];
 }
@@ -125,6 +121,9 @@
 - (void)notifyOfState:(NSUInteger)state object:(id)object {
     [self notifyOfStateWithSelector:[self selectorForState:state] object:object];
 }
+
+#pragma mark -
+#pragma mark Private
 
 - (void)notifyOfStateWithSelector:(SEL)selector {
     [self notifyOfStateWithSelector:selector object:nil];

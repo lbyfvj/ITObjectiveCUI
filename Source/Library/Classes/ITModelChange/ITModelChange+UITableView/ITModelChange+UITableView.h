@@ -15,6 +15,4 @@
 - (void)applyToTableView:(UITableView *)tableView
        withRowAnimation:(UITableViewRowAnimation)animation;
 
-- (void)applyToModel:(ITArrayModel *)model;
-
 @end

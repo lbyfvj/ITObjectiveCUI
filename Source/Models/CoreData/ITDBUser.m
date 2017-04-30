@@ -21,7 +21,7 @@ kITStaticConstWithValue(kITFirstName, @"firstName");
 
 @implementation ITDBUser
 
-@synthesize friends = _friends;
+@synthesize friends;
 
 @dynamic firstName;
 @dynamic lastName;
@@ -56,18 +56,6 @@ kITStaticConstWithValue(kITFirstName, @"firstName");
 #pragma mark -
 #pragma mark Accessors
 
-- (ITDBArrayObject *)friends {
-    return _friends;
-}
-
-- (void)setFriends:(ITDBArrayObject *)friends {
-    if (_friends != friends) {
-        _friends = nil;
-        
-        _friends = friends;
-    }
-}
-
 - (NSString *)fullName {
     return [NSString stringWithFormat:@"%@ %@", self.firstName, self.lastName];
 }
@@ -84,11 +72,11 @@ kITStaticConstWithValue(kITFirstName, @"firstName");
 }
 
 - (void)addImage:(ITDBImage *)value {
-    [self addCustomValue:value inMutableSetForKey:NSStringFromSelector(@selector(images))];
+    [self addCustomValue:value inMutableSetForKey:NSStringFromSelector(@selector(photos))];
 }
 
 - (void)removeImage:(ITDBImage *)value {
-    [self addCustomValue:value inMutableSetForKey:NSStringFromSelector(@selector(images))];
+    [self addCustomValue:value inMutableSetForKey:NSStringFromSelector(@selector(photos))];
 }
 
 @end

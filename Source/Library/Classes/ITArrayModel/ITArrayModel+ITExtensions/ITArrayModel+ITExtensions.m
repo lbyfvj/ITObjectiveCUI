@@ -11,7 +11,8 @@
 @implementation ITArrayModel (ITExtensions)
 
 - (void)updateModelWithModelChange:(ITModelChange *)modelChange {
-    [modelChange applyToModel:self];
+    //[modelChange applyToModel:self];
+    [self notifyOfState:ITArrayModelUpdated];
 }
 
 @end

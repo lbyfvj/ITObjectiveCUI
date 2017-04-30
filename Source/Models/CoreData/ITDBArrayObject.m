@@ -1,3 +1,4 @@
+
 //
 //  ITDBArrayObject.m
 //  ITObjCUI
@@ -18,11 +19,19 @@
 #import "NSManagedObject+ITExtensions.h"
 #import "ITArrayModel+ITExtensions.h"
 
+#import "ITMacro.h"
+
+kITStaticConst(kITDefaultCacheName);
+
 @interface ITDBArrayObject ()
 @property (nonatomic, strong)   NSManagedObject                 *managedObject;
 @property (nonatomic, strong)   NSManagedObjectContext          *managedObjectContext;
 @property (nonatomic, strong)   NSFetchedResultsController      *fetchedController;
 @property (nonatomic, strong)   NSString                        *keyPath;
+
+- (ITModelChange *)changeModelAtIndexPath:(NSIndexPath *)indexPath
+                            forChangeType:(NSFetchedResultsChangeType)type
+                             newIndexPath:(NSIndexPath *)newIndexPath;
 
 @end
 
@@ -44,35 +53,11 @@
     NSFetchRequest *fetchRequest = [[self.managedObject class] fetchRequestWithPredicate:predicate
                                                                         sortDescriptors:sortDescriptors];
     
-    
-    self.fetchedController = [[NSFetchedResultsController alloc]
-                              initWithFetchRequest:fetchRequest
-                              managedObjectContext:self.managedObjectContext
-                              sectionNameKeyPath:nil
-                              cacheName:nil];
+    self.fetchedController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                                                 managedObjectContext:self.managedObjectContext
+                                                                   sectionNameKeyPath:nil
+                                                                            cacheName:kITDefaultCacheName];
 
-    return self;
-}
-
-- (instancetype)initFetchedResultsControllerWithManagedObject:(NSManagedObject *)managedObject {
-    self = [super init];
-    
-    self.managedObject = managedObject;
-    
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]
-                                        initWithEntityName:NSStringFromClass([self.managedObject class])];
-    
-    NSSortDescriptor *sort = [[NSSortDescriptor alloc]
-                                                initWithKey:@"firstName"
-                                                  ascending:YES];
-    [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
-    
-    self.fetchedController = [[NSFetchedResultsController alloc]
-                                                initWithFetchRequest:fetchRequest
-                                                managedObjectContext:self.managedObjectContext
-                                                  sectionNameKeyPath:nil
-                                                           cacheName:nil];
-    
     return self;
 }
 
@@ -85,14 +70,14 @@
 
 - (void)setFetchedController:(NSFetchedResultsController *)fetchedController {
     if (_fetchedController != fetchedController) {
+        _fetchedController.delegate = nil;
         _fetchedController = fetchedController;
+        _fetchedController.delegate = self;
     }
-    
-    self.fetchedController.delegate = self;
 }
 
 - (NSArray *)objects {
-    return [self.fetchedController fetchedObjects];
+    return self.fetchedController.fetchedObjects;
 }
 
 - (NSUInteger)count {
@@ -115,6 +100,10 @@
     }
 }
 
+- (id)objectAtIndexedSubscript:(NSUInteger)index {
+    return [self objectAtIndex:index];
+}
+
 - (NSUInteger)indexOfObject:(id)object {
     @synchronized(self) {
         return [self.objects indexOfObject:object];
@@ -122,7 +111,7 @@
 }
 
 - (void)insertObject:(id)object atIndex:(NSUInteger)index {
-    [self addObject:object];
+    [self insertObject:object atIndex:index];
 }
 
 - (void)addObjects:(NSArray *)objects {
@@ -136,7 +125,7 @@
 - (void)addObject:(id)object {
     @synchronized(self) {
         [self.managedObject addCustomValue:object
-                        inMutableSetForKey:@"friends"];
+                        inMutableSetForKey:self.keyPath];
     }
 }
 
@@ -151,7 +140,7 @@
 - (void)removeObject:(id)object {
     @synchronized(self) {
         [self.managedObject removeCustomValue:object
-                           inMutableSetForKey:@"friends"];
+                           inMutableSetForKey:self.keyPath];
     }
 }
 
@@ -164,6 +153,36 @@
 }
 
 #pragma mark -
+#pragma mark Private
+
+- (ITModelChange *)changeModelAtIndexPath:(NSIndexPath *)indexPath
+                            forChangeType:(NSFetchedResultsChangeType)type
+                             newIndexPath:(NSIndexPath *)newIndexPath
+{
+    switch (type) {
+        case NSFetchedResultsChangeInsert:
+            return [ITModelChange insertModelAtIndex:indexPath.row];
+            break;
+            
+        case NSFetchedResultsChangeUpdate:
+            return [ITModelChange insertModelAtIndex:indexPath.row];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            return [ITModelChange deleteModelAtIndex:indexPath.row];
+            break;
+            
+        case NSFetchedResultsChangeMove:
+            return [ITModelChange moveModelAtIndex:indexPath.row toIndex:newIndexPath.row];
+            break;
+            
+        default:
+            return nil;
+            break;
+    }
+}
+
+#pragma mark -
 #pragma mark NSFetchedResultsControllerDelegate
 
 - (void)controller:(NSFetchedResultsController *)controller
@@ -172,29 +191,10 @@
      forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath
 {
-    NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-    ITModelChange *model = nil;
-    
-    switch (type) {
-        case NSFetchedResultsChangeInsert:
-            model = [ITModelChange insertModelAtIndex:indexPath.row];
-            break;
-            
-        case NSFetchedResultsChangeUpdate:
-            model = [ITModelChange insertModelAtIndex:indexPath.row];
-            break;
-            
-        case NSFetchedResultsChangeDelete:
-            model = [ITModelChange deleteModelAtIndex:indexPath.row];
-            break;
-            
-        case NSFetchedResultsChangeMove:
-            model = [ITModelChange moveModelAtIndex:indexPath.row toIndex:newIndexPath.row];
-            break;
-            
-        default:
-            break;
-    }
+    ITPrintDebugLog;
+    ITModelChange *model = [self changeModelAtIndexPath:indexPath
+                                          forChangeType:type
+                                           newIndexPath:newIndexPath];
     
     [self updateModelWithModelChange:model];
 }

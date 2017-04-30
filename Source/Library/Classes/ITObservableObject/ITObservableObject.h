@@ -22,7 +22,6 @@
 - (BOOL)containsObserverObject:(id)observer;
 
 - (SEL)selectorForState:(NSUInteger)state;
-- (SEL)selectorForState:(NSUInteger)state withObject:(id)object;
 
 - (void)setState:(NSUInteger)state withObject:(id)object;
 
@@ -41,24 +40,5 @@
 @property (nonatomic, weak, readonly)           id<ITObservableObject>          target;
 
 + (id)observableObjectWithTarget:(id)target;
-
-- (void)addObserverObject:(id)observer;
-- (void)addObserverObjects:(NSArray *)observers;
-
-- (void)removeObserverObject:(id)observer;
-- (void)removeObserverObjects:(NSArray *)observers;
-
-- (BOOL)containsObserverObject:(id)observer;
-
-- (SEL)selectorForState:(NSUInteger)state;
-- (SEL)selectorForState:(NSUInteger)state withObject:(id)object;
-
-- (void)setState:(NSUInteger)state withObject:(id)object;
-
-- (void)notifyOfState:(NSUInteger)state;
-- (void)notifyOfState:(NSUInteger)state object:(id)object;
-
-- (void)performBlockWithNotifications:(void(^)(void))block;
-- (void)performBlockWithoutNotifications:(void(^)(void))block;
 
 @end
