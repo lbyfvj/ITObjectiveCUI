@@ -11,6 +11,8 @@
 #import "ITDBUser.h"
 #import "ITDBImage.h"
 
+#import "ITFBUserInteraction.h"
+
 @interface ITFBUserDetailsContext ()
 @property (nonatomic, readonly)     ITDBUser      *user;
 
@@ -48,11 +50,16 @@
 }
 
 - (void)resultHandler:(NSDictionary *)result {    
-    ITDBUser *user = self.user;
-    user.ID = result[kITId];
-    user.firstName = result[kITFirstName];
-    user.lastName = result[kITLastName];
-    user.picture = [ITDBImage managedObjectWithID:result[kITPicture][kITData][kITURL]];
+    ITDBUser *user = [ITFBUserInteraction userWithId:result[kITId]
+                              parseObjectInteraction:result];
+    
+    [user saveManagedObject];
+    
+    user.state = ITDBObjectDidLoadDetails;
+}
+
+- (void)failedLoadingData {
+    ITDBUser *user = [ITDBUser managedObjectWithID:self.user.ID];
     
     user.state = ITDBObjectDidLoadDetails;
 }

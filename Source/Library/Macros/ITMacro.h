@@ -37,3 +37,5 @@
 #define kITStaticConst(name) static NSString * const name = @#name;
 
 #define kITStaticConstWithValue(name, value) static NSString * const name = value
+
+#define ITPrintDebugLog NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd))

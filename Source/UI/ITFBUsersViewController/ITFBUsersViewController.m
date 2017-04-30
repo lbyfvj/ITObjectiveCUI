@@ -151,7 +151,7 @@ ITViewControllerSynthesizeRootView(ITFBUsersViewController, fbUsersView, ITFBUse
 #pragma mark ITDBObjectObserver
 
 - (void)objectDidLoadFriends:(ITDBUser *)user {
-    NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+    ITPrintDebugLog;
     ITAsyncPerformInMainQueue(^{
         [self.fbUsersView.tableView reloadData];
     });

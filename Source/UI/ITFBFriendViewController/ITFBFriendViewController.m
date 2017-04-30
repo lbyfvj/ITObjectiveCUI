@@ -15,6 +15,8 @@
 @interface ITFBFriendViewController ()
 @property (nonatomic, strong)           ITFBUserDetailsContext        *friendContext;
 
+- (void)loadFriendDetails;
+
 @end
 
 ITViewControllerSynthesizeRootView(ITFBFriendViewController, fbFriendView, ITFBFriendView)
@@ -29,17 +31,18 @@ ITViewControllerSynthesizeRootView(ITFBFriendViewController, fbFriendView, ITFBF
         [_user removeObserverObject:self];
         _user = user;
         [_user addObserverObject:self];
-        self.friendContext = [ITFBUserDetailsContext new];
+        
+        if (self.isViewLoaded) {
+            self.fbFriendView.user = self.user;
+        }
     }
 }
 
 - (void)setFriendContext:(ITFBUserDetailsContext *)friendContext {
-    NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+    ITPrintDebugLog;
     if (_friendContext != friendContext) {
         [_friendContext cancel];
         _friendContext = friendContext;
-        _friendContext.model = self.user;
-        [_friendContext execute];
     }
 }
 
@@ -49,18 +52,29 @@ ITViewControllerSynthesizeRootView(ITFBFriendViewController, fbFriendView, ITFBF
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self loadFriendDetails];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     
 }
+
+#pragma mark -
+#pragma mark Private
+
+- (void)loadFriendDetails {
+    ITPrintDebugLog;
+    self.friendContext = [ITFBUserDetailsContext new];
+    self.friendContext.model = self.user;
+    [self.friendContext execute];
+}
  
 #pragma mark -
 #pragma mark ITDBObjectObserver
 
 - (void)objectDidLoadDetails:(ITDBUser *)user {
-    NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+    ITPrintDebugLog;
     self.fbFriendView.user = self.user;
 }
 

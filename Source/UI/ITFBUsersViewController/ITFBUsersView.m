@@ -9,6 +9,7 @@
 #import "ITFBUsersView.h"
 
 #import "ITDispatchQueue.h"
+#import "ITMacro.h"
 
 @implementation ITFBUsersView
 
@@ -19,7 +20,7 @@
 #pragma mark Accessors
 
 - (void)setModel:(id)model {
-    NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+    ITPrintDebugLog;
     if (_model != model) {
         [_model removeObserverObject:self];
         _model = model;        
@@ -31,14 +32,14 @@
 #pragma mark - ITModelObserver
 
 - (void)modelDidLoad:(ITModel *)model {
-    NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+    ITPrintDebugLog;
     ITAsyncPerformInMainQueue(^{
         self.loadingViewVisible = NO;
     });
 }
 
 - (void)modelWillLoad:(ITModel *)model {
-    NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+    ITPrintDebugLog;
     ITAsyncPerformInMainQueue(^{
         self.loadingViewVisible = YES;
     });
