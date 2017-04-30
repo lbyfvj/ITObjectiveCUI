@@ -102,16 +102,16 @@
 }
 
 - (void)completeLogin {
-    NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+    ITPrintDebugLog;
     FBSDKAccessToken *accessToken = self.accessToken;
     
     if (accessToken) {
         ITDBUser *user = self.model;
         user.ID = accessToken.userID;
         
-        user.state = ITDBObjectDidLoadID;
-        
         [user saveManagedObject];
+        
+        user.state = ITDBObjectDidLoadID;
     }
 }
 

@@ -10,6 +10,8 @@
 
 @interface UIViewController (ITExtensions)
 
++ (id)viewController;
+
 - (UIViewController *)previousViewController;
 
 @end

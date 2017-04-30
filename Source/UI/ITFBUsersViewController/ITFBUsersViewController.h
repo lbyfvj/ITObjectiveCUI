@@ -14,6 +14,4 @@
 @interface ITFBUsersViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, ITDBObjectObserver>
 @property (nonatomic, strong)           ITDBUser                  *user;
 
-- (instancetype)initWithUser:(ITDBUser *)user;
-
 @end

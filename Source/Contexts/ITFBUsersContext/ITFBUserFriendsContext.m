@@ -54,24 +54,23 @@
 
 - (void)resultHandler:(NSDictionary *)result {
     NSArray *array = [[result objectForKey:kITData] ITJSONRepresentation];
-    ITDBArrayObject *friends = self.user.friends;
+    ITDBUser *user = self.user;
+    ITDBArrayObject *friends = user.friends;
     
     for (NSDictionary *object in array) {
         ITDBUser *friend = [ITFBUserInteraction userWithId:object[kITId]
                                     parseObjectInteraction:object];
-        
-        friend.state = ITDBObjectDidLoadID;
         
         [friends performBlockWithoutNotifications:^{
             [friends addObject:friend];
         }];
     }
     
-    [self.user saveManagedObject];
+    [user saveManagedObject];
     
     [friends performLoading];
     
-    self.user.state = ITDBObjectDidLoadFriends;
+    user.state = ITDBObjectDidLoadFriends;
 }
 
 - (void)failedLoadingData {

@@ -10,6 +10,10 @@
 
 @implementation UIViewController (ITExtensions)
 
++ (id)viewController {
+    return [[self alloc] initWithNibName:NSStringFromClass([self class]) bundle:nil];
+}
+
 - (UIViewController *)previousViewController {
     NSInteger myIndex = [self.navigationController.viewControllers indexOfObject:self];
     

@@ -16,6 +16,8 @@
 
 #import "ActiveRecordKit.h"
 
+#import "UIViewController+ITExtensions.h"
+
 @interface ITLoginViewController ()
 @property (nonatomic, strong)   ITFBLoginContext   *loginContext;
 
@@ -64,7 +66,9 @@
 #pragma mark Private
 
 - (void)pushViewControllerWithUser:(ITDBUser *)user withAnimation:(BOOL)animation {
-    ITFBUsersViewController *controller = [[ITFBUsersViewController alloc] initWithUser:user];
+    //ITFBUsersViewController *controller = [[ITFBUsersViewController alloc] initWithUser:user];
+    ITFBUsersViewController *controller = [ITFBUsersViewController viewController];
+    controller.user = user;
     
     [self.navigationController pushViewController:controller animated:animation];
 }

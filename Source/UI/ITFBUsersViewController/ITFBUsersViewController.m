@@ -33,17 +33,6 @@ ITViewControllerSynthesizeRootView(ITFBUsersViewController, fbUsersView, ITFBUse
 @dynamic friends;
 
 #pragma mark -
-#pragma mark Initializations and Deallocations
-
-- (instancetype)initWithUser:(ITDBUser *)user {
-    self = [super init];
-    
-    self.user = user;
-    
-    return self;
-}
-
-#pragma mark -
 #pragma mark Accessors
 
 - (void)setUser:(ITDBUser *)user {
@@ -142,7 +131,7 @@ ITViewControllerSynthesizeRootView(ITFBUsersViewController, fbUsersView, ITFBUse
 - (void)            tableView:(UITableView *)tableView
     didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ITFBFriendViewController *controller = [ITFBFriendViewController new];
+    ITFBFriendViewController *controller = [ITFBFriendViewController viewController];
     controller.user = self.friends[indexPath.row];
     
     [self.navigationController pushViewController:controller animated:YES];
