@@ -66,7 +66,6 @@
 #pragma mark Private
 
 - (void)pushViewControllerWithUser:(ITDBUser *)user withAnimation:(BOOL)animation {
-    //ITFBUsersViewController *controller = [[ITFBUsersViewController alloc] initWithUser:user];
     ITFBUsersViewController *controller = [ITFBUsersViewController viewController];
     controller.user = user;
     
@@ -77,11 +76,10 @@
 #pragma mark Public
 
 - (IBAction)onLoginButtonClicked:(id)sender {
-    NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     ITDBUser *user  = [ITDBUser managedObject];
-    ITFBLoginContext *loginContext = [[ITFBLoginContext alloc] initWithUser:user];
-    
     self.user = user;
+    
+    ITFBLoginContext *loginContext = [[ITFBLoginContext alloc] initWithUser:user];
     self.loginContext = loginContext;
     
     [loginContext execute];
@@ -91,7 +89,7 @@
 #pragma mark ITDBObjectObserver
 
 - (void)objectDidLoadID:(ITDBUser *)user {
-    NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+    ITPrintDebugLog;
     ITAsyncPerformInMainQueue(^{
         [self pushViewControllerWithUser:user withAnimation:YES];
     });

@@ -77,6 +77,7 @@
 }
 
 - (void)failedLoadingData {
+    ITPrintDebugLog;
     ITModel *model = self.model;
     model.state = ITModelFailedLoading;
 }

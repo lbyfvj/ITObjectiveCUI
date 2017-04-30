@@ -37,18 +37,16 @@ kITStaticConstWithValue(kITFirstName, @"firstName");
      insertIntoManagedObjectContext:(NSManagedObjectContext *)context
 {
     self = [super initWithEntity:entity insertIntoManagedObjectContext:context];
-    if (self) {
-        
-        NSSortDescriptor *sort = [[NSSortDescriptor alloc]
-                                  initWithKey:kITFirstName
-                                  ascending:YES];
-        NSArray *sortDescriptors = [NSArray arrayWithObject:sort];
-        
-        self.friends = [[ITDBArrayObject alloc] initWithManagedObject:self
-                                                              keyPath:kITFriends
-                                                      sortDescriptors:sortDescriptors
-                                                            predicate:nil];
-    }
+    
+    NSSortDescriptor *sort = [[NSSortDescriptor alloc]
+                              initWithKey:kITFirstName
+                              ascending:YES];
+    NSArray *sortDescriptors = [NSArray arrayWithObject:sort];
+    
+    self.friends = [[ITDBArrayObject alloc] initWithManagedObject:self
+                                                          keyPath:kITFriends
+                                                  sortDescriptors:sortDescriptors
+                                                        predicate:nil];
     
     return self;
 }

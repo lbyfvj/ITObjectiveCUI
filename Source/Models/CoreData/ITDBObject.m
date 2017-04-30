@@ -30,10 +30,9 @@ static NSString * const kITId = @"id";
      insertIntoManagedObjectContext:(NSManagedObjectContext *)context
 {
     self = [super initWithEntity:entity insertIntoManagedObjectContext:context];
-    if (self) {
-        self.object = [ITObservableObject observableObjectWithTarget:self];
-    }
     
+    self.object = [ITObservableObject observableObjectWithTarget:self];
+
     return self;
 }
 

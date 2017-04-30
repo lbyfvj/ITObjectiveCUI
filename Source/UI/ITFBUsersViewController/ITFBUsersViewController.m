@@ -18,6 +18,8 @@
 
 #import "ITFBFriendViewController.h"
 
+kITStaticConstWithValue(kITLogoutButtonTitle, @"Logout");
+
 @interface ITFBUsersViewController ()
 @property (nonatomic, strong)           ITFBUserFriendsContext          *userFriendsContext;
 @property (nonatomic, strong)           ITArrayModel                    *friends;
@@ -36,7 +38,7 @@ ITViewControllerSynthesizeRootView(ITFBUsersViewController, fbUsersView, ITFBUse
 #pragma mark Accessors
 
 - (void)setUser:(ITDBUser *)user {
-    NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+    ITPrintDebugLog;
     if (user != _user) {
         [_user removeObserverObject:self];
         
@@ -51,7 +53,7 @@ ITViewControllerSynthesizeRootView(ITFBUsersViewController, fbUsersView, ITFBUse
 }
 
 - (void)setUserFriendsContext:(ITFBUserFriendsContext *)userFriendsContext {
-    NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+    ITPrintDebugLog;
     if (userFriendsContext != _userFriendsContext) {
         [_userFriendsContext cancel];
         
@@ -86,7 +88,7 @@ ITViewControllerSynthesizeRootView(ITFBUsersViewController, fbUsersView, ITFBUse
     [super viewDidLoad];
     
     UINavigationItem *navigationItem = self.navigationItem;
-    UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Logout"
+    UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:kITLogoutButtonTitle
                                                                      style:UIBarButtonItemStylePlain
                                                                     target:self
                                                                     action:@selector(onLogOutButtonClicked:)];
@@ -114,7 +116,6 @@ ITViewControllerSynthesizeRootView(ITFBUsersViewController, fbUsersView, ITFBUse
 - (NSInteger)   tableView:(UITableView *)tableView
     numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"Friends Count: %lu", self.friends.count);
     return self.friends.count;
 }
 

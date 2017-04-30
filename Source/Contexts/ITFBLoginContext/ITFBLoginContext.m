@@ -67,8 +67,6 @@
 #pragma mark -
 #pragma mark Public
 
-
-
 - (void)execute {
     if (self.accessToken.userID) {
         [self completeLogin];
