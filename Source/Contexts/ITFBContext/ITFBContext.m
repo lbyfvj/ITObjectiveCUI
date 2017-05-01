@@ -61,6 +61,7 @@
         }
         
         model.state = ITModelLoading;
+        
 
         ITWeakify(self);
         self.graphRequestConnection = [self.graphRequest startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id<ITJSONRepresentation> result, NSError *error) {

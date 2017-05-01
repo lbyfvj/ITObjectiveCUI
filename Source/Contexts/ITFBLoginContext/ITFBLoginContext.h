@@ -14,6 +14,4 @@
 
 + (ITDBUser *)user;
 
-- (instancetype)initWithUser:(ITDBUser *)user;
-
 @end

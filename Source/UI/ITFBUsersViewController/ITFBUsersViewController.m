@@ -59,9 +59,7 @@ ITViewControllerSynthesizeRootView(ITFBUsersViewController, fbUsersView, ITFBUse
         
         _userFriendsContext = userFriendsContext;
         
-        _userFriendsContext.model = self.user;
-        
-        [_userFriendsContext execute];
+        //[_userFriendsContext execute];
     }
 }
 
@@ -78,7 +76,9 @@ ITViewControllerSynthesizeRootView(ITFBUsersViewController, fbUsersView, ITFBUse
 }
 
 - (void)loadFriends {
-    self.userFriendsContext = [ITFBUserFriendsContext new];
+    self.userFriendsContext = [ITFBUserFriendsContext contextWithModel:self.user];
+    
+    [self.userFriendsContext execute];
 }
 
 #pragma mark -

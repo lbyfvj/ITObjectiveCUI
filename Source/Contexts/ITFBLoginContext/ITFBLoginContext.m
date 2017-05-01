@@ -45,15 +45,6 @@
 }
 
 #pragma mark -
-#pragma mark Initializatiions and Deallocations
-
-- (instancetype)initWithUser:(ITDBUser *)user {
-    self = [super initWithModel:user];
-    
-    return self;
-}
-
-#pragma mark -
 #pragma mark Accessors
 
 - (FBSDKLoginManager *)loginManager {
@@ -76,7 +67,7 @@
 }
 
 - (void)resultHandler:(id)result {
-    
+
 }
 
 #pragma mark -

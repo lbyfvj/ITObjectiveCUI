@@ -76,10 +76,9 @@
 #pragma mark Public
 
 - (IBAction)onLoginButtonClicked:(id)sender {
-    ITDBUser *user  = [ITDBUser managedObject];
-    self.user = user;
+    self.user = [ITDBUser managedObject];
     
-    ITFBLoginContext *loginContext = [[ITFBLoginContext alloc] initWithUser:user];
+    ITFBLoginContext *loginContext = [ITFBLoginContext contextWithModel:self.user];
     self.loginContext = loginContext;
     
     [loginContext execute];
