@@ -53,24 +53,29 @@
 }
 
 - (void)resultHandler:(NSDictionary *)result {
-    NSArray *array = [[result objectForKey:kITData] JSONRepresentation];
     ITDBUser *user = self.user;
     ITDBArrayObject *friends = user.friends;
     
     [friends performLoading];
     
-    for (NSDictionary *object in array) {
-        ITDBUser *friend = [ITFBUserInteraction userWithId:object[kITId]
-                                    parseObjectInteraction:object];
-        
-        [friends performBlockWithoutNotifications:^{
-            [friends addObject:friend];
-        }];
-    }
+    [friends addObjects:[self friendsWithResult:[result JSONRepresentation]]];
     
     [user saveManagedObject];
     
     user.state = ITDBObjectDidLoadFriends;
+}
+
+- (NSArray *)friendsWithResult: (NSDictionary *)result {
+    NSMutableArray *friends = [NSMutableArray new];
+    NSArray *objects = [result objectForKey:kITData];
+    
+    for (NSDictionary *object in objects) {
+        ITDBUser *friend = [ITFBUserInteraction userWithId:object[kITId]
+                                    parseObjectInteraction:object];
+        [friends addObject:friend];
+    }
+    
+    return friends;
 }
 
 - (void)failedLoadingData {

@@ -58,8 +58,6 @@ ITViewControllerSynthesizeRootView(ITFBUsersViewController, fbUsersView, ITFBUse
         [_userFriendsContext cancel];
         
         _userFriendsContext = userFriendsContext;
-        
-        //[_userFriendsContext execute];
     }
 }
 
