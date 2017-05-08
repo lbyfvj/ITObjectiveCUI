@@ -58,6 +58,7 @@
 		93462DAC1E6A114E00FE1BC9 /* ITUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462DA51E6A114E00FE1BC9 /* ITUsersViewController.m */; };
 		93462DAD1E6A114E00FE1BC9 /* ITUsersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93462DA61E6A114E00FE1BC9 /* ITUsersViewController.xib */; };
 		93462DBA1E71DB2900FE1BC9 /* ITDispatchQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 93462DB91E71DB2900FE1BC9 /* ITDispatchQueue.m */; };
+		935A25141EC0C640004719CC /* JSONRepresentation+ITExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 935A25131EC0C640004719CC /* JSONRepresentation+ITExtensions.m */; };
 		9365E6801EA5647800402F08 /* ITObjCUI.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9365E67E1EA5647800402F08 /* ITObjCUI.xcdatamodeld */; };
 		9365E6831EA5694400402F08 /* ITDBObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9365E6821EA5694400402F08 /* ITDBObject.m */; };
 		9365E6861EA5697800402F08 /* ITDBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9365E6851EA5697800402F08 /* ITDBUser.m */; };
@@ -100,7 +101,6 @@
 		93C7574D1E8864370007F444 /* ITMutableArraySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C7574C1E8864370007F444 /* ITMutableArraySpec.m */; };
 		93FB09CE1EAB584B0012A77D /* ITDBArrayObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FB09CD1EAB584B0012A77D /* ITDBArrayObject.m */; };
 		93FB09D61EAD35190012A77D /* ITFBUserDetailsContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FB09D51EAD35190012A77D /* ITFBUserDetailsContext.m */; };
-		93FF7D941EAE69E300233A9E /* ITJSONRepresentation+ITExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FF7D931EAE69E300233A9E /* ITJSONRepresentation+ITExtensions.m */; };
 		BC4456498967AF254D14A97A /* libPods-ITObjCUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03AF09BAA2BA61E48268062F /* libPods-ITObjCUITests.a */; };
 /* End PBXBuildFile section */
 
@@ -215,6 +215,8 @@
 		93462DA61E6A114E00FE1BC9 /* ITUsersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ITUsersViewController.xib; sourceTree = "<group>"; };
 		93462DB81E71DB2900FE1BC9 /* ITDispatchQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITDispatchQueue.h; sourceTree = "<group>"; };
 		93462DB91E71DB2900FE1BC9 /* ITDispatchQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITDispatchQueue.m; sourceTree = "<group>"; };
+		935A25121EC0C640004719CC /* JSONRepresentation+ITExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JSONRepresentation+ITExtensions.h"; sourceTree = "<group>"; };
+		935A25131EC0C640004719CC /* JSONRepresentation+ITExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JSONRepresentation+ITExtensions.m"; sourceTree = "<group>"; };
 		9365E67F1EA5647800402F08 /* ITObjCUI.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ITObjCUI.xcdatamodel; sourceTree = "<group>"; };
 		9365E6811EA5694400402F08 /* ITDBObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITDBObject.h; sourceTree = "<group>"; };
 		9365E6821EA5694400402F08 /* ITDBObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITDBObject.m; sourceTree = "<group>"; };
@@ -290,8 +292,6 @@
 		93FB09CD1EAB584B0012A77D /* ITDBArrayObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITDBArrayObject.m; sourceTree = "<group>"; };
 		93FB09D41EAD35190012A77D /* ITFBUserDetailsContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITFBUserDetailsContext.h; sourceTree = "<group>"; };
 		93FB09D51EAD35190012A77D /* ITFBUserDetailsContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITFBUserDetailsContext.m; sourceTree = "<group>"; };
-		93FF7D921EAE69E300233A9E /* ITJSONRepresentation+ITExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ITJSONRepresentation+ITExtensions.h"; sourceTree = "<group>"; };
-		93FF7D931EAE69E300233A9E /* ITJSONRepresentation+ITExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ITJSONRepresentation+ITExtensions.m"; sourceTree = "<group>"; };
 		E1850CAF31651A16191C3E51 /* Pods-ITObjCUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITObjCUI.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ITObjCUI/Pods-ITObjCUI.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -385,8 +385,8 @@
 		931CF0D81E8454A600AE4B4C /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				935A25111EC0C640004719CC /* JSONRepresentation */,
 				93B468281EB4A1D10080C4F5 /* NSManagedObject+ITExtensions */,
-				93FF7D911EAE69E300233A9E /* ITJSONRepresentation */,
 				9365E7A31EA63D3300402F08 /* NSArray */,
 				9365E79B1EA63A6400402F08 /* NSFileManager */,
 				9365E79E1EA63A6400402F08 /* NSObject */,
@@ -747,6 +747,15 @@
 			path = ITDispatchQueue;
 			sourceTree = "<group>";
 		};
+		935A25111EC0C640004719CC /* JSONRepresentation */ = {
+			isa = PBXGroup;
+			children = (
+				935A25121EC0C640004719CC /* JSONRepresentation+ITExtensions.h */,
+				935A25131EC0C640004719CC /* JSONRepresentation+ITExtensions.m */,
+			);
+			path = JSONRepresentation;
+			sourceTree = "<group>";
+		};
 		9365E67D1EA563F700402F08 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -1097,15 +1106,6 @@
 			path = ITFBUserDetailsContext;
 			sourceTree = "<group>";
 		};
-		93FF7D911EAE69E300233A9E /* ITJSONRepresentation */ = {
-			isa = PBXGroup;
-			children = (
-				93FF7D921EAE69E300233A9E /* ITJSONRepresentation+ITExtensions.h */,
-				93FF7D931EAE69E300233A9E /* ITJSONRepresentation+ITExtensions.m */,
-			);
-			path = ITJSONRepresentation;
-			sourceTree = "<group>";
-		};
 		C389A0FADBCBD0EADA4214AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1357,6 +1357,7 @@
 				93C20EAB1E5B99CA00B56982 /* main.m in Sources */,
 				93462DBA1E71DB2900FE1BC9 /* ITDispatchQueue.m in Sources */,
 				93AA34581E7880AD00513950 /* ITArrayModel.m in Sources */,
+				935A25141EC0C640004719CC /* JSONRepresentation+ITExtensions.m in Sources */,
 				93B468461EB655680080C4F5 /* ITArrayModel+ITExtensions.m in Sources */,
 				93AA34511E787B2000513950 /* ITOneIndexModel.m in Sources */,
 				93C20EE81E5F72DD00B56982 /* ITSquareViewController.m in Sources */,
@@ -1364,7 +1365,6 @@
 				93B468421EB655020080C4F5 /* ITModelChange+UITableView.m in Sources */,
 				93B4682F1EB4A98E0080C4F5 /* ITFBUserInteraction.m in Sources */,
 				93B468361EB653780080C4F5 /* ITModelChange+ITArrayModel.m in Sources */,
-				93FF7D941EAE69E300233A9E /* ITJSONRepresentation+ITExtensions.m in Sources */,
 				93462D9C1E69FD3F00FE1BC9 /* ITUsers.m in Sources */,
 				93C757461E8833FC0007F444 /* ITCompilerMacro.m in Sources */,
 				9332F07B1E995EF8007A0A29 /* ITFBFriendViewController.m in Sources */,

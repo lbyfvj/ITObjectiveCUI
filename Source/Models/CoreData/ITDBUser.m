@@ -21,7 +21,7 @@ kITStaticConstWithValue(kITFirstName, @"firstName");
 
 @implementation ITDBUser
 
-@synthesize friends;
+@synthesize friends = _friends;
 
 @dynamic firstName;
 @dynamic lastName;

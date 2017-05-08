@@ -34,8 +34,10 @@
     \
 @end
 
-#define kITStaticConst(name) static NSString * const name = @#name;
-
 #define kITStaticConstWithValue(name, value) static NSString * const name = value
 
+#define kITStaticConst(name) kITStaticConstWithValue(name, @#name)
+
 #define ITPrintDebugLog NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd))
+
+#define ITDirectoryPathWithType(type) [self directoryPathWithType:type]

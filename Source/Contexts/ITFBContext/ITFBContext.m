@@ -11,7 +11,7 @@
 #import "ITModel.h"
 #import "ITMacro.h"
 
-#import "ITJSONRepresentation+ITExtensions.h"
+#import "JSONRepresentation+ITExtensions.h"
 
 @interface ITFBContext ()
 @property (nonatomic, strong)       FBSDKGraphRequestConnection   *graphRequestConnection;
@@ -64,10 +64,10 @@
         
 
         ITWeakify(self);
-        self.graphRequestConnection = [self.graphRequest startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id<ITJSONRepresentation> result, NSError *error) {
+        self.graphRequestConnection = [self.graphRequest startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id<JSONRepresentation> result, NSError *error) {
             ITStrongifyAndReturnIfNil(self);
             if (!error) {
-                [self resultHandler:[result ITJSONRepresentation]];
+                [self resultHandler:[result JSONRepresentation]];
             } else {
                 [self failedLoadingData];
             }

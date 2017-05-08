@@ -14,6 +14,8 @@
 #import "ITFileSystemImageModel.h"
 #import "ITURLImageModel.h"
 
+kITStaticConstWithValue(kITFile, @"file");
+
 @interface ITImageModel ()
 @property (nonatomic, strong)     UIImage     *image;
 @property (nonatomic, strong)     NSURL       *url;
@@ -26,7 +28,7 @@
 #pragma marl Class Methods
 
 + (instancetype)imageWithURL:(NSURL *)url {    
-    Class cls = [url.scheme isEqualToString:@"file"] ? [ITFileSystemImageModel class] : [ITURLImageModel class];
+    Class cls = [url.scheme isEqualToString:kITFile] ? [ITFileSystemImageModel class] : [ITURLImageModel class];
     
     return [[cls alloc] initWithURL:url];
 }

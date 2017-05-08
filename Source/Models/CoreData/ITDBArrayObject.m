@@ -20,14 +20,15 @@
 #import "ITArrayModel+ITExtensions.h"
 
 #import "ITMacro.h"
+#import "ITDispatchQueue.h"
 
 kITStaticConst(kITDefaultCacheName);
 
 @interface ITDBArrayObject ()
-@property (nonatomic, strong)   NSManagedObject                 *managedObject;
-@property (nonatomic, strong)   NSManagedObjectContext          *managedObjectContext;
-@property (nonatomic, strong)   NSFetchedResultsController      *fetchedController;
-@property (nonatomic, strong)   NSString                        *keyPath;
+@property (nonatomic, strong)       NSManagedObject                 *managedObject;
+@property (nonatomic, readonly)     NSManagedObjectContext          *managedObjectContext;
+@property (nonatomic, strong)       NSFetchedResultsController      *fetchedController;
+@property (nonatomic, strong)       NSString                        *keyPath;
 
 - (ITModelChange *)changeModelAtIndexPath:(NSIndexPath *)indexPath
                             forChangeType:(NSFetchedResultsChangeType)type
@@ -36,6 +37,8 @@ kITStaticConst(kITDefaultCacheName);
 @end
 
 @implementation ITDBArrayObject
+
+@dynamic managedObjectContext;
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
@@ -88,10 +91,12 @@ kITStaticConst(kITDefaultCacheName);
 #pragma mark Public
 
 - (void)performLoading {
-    NSError *error = nil;
-    if (![self.fetchedController performFetch:&error]) {
-        NSLog(@"ERROR in %@: %@", [self.class description], [error description]);
-    }
+    ITAsyncPerformInMainQueue(^{
+        NSError *error = nil;
+        if (![self.fetchedController performFetch:&error]) {
+            NSLog(@"ERROR in %@: %@", [self.class description], [error description]);
+        }
+    });
 }
 
 - (id)objectAtIndex:(NSUInteger)index {
@@ -159,26 +164,23 @@ kITStaticConst(kITDefaultCacheName);
                             forChangeType:(NSFetchedResultsChangeType)type
                              newIndexPath:(NSIndexPath *)newIndexPath
 {
+    NSInteger row = indexPath.row;
+    
     switch (type) {
         case NSFetchedResultsChangeInsert:
-            return [ITModelChange insertModelAtIndex:indexPath.row];
-            break;
+            return [ITModelChange insertModelAtIndex:row];
             
         case NSFetchedResultsChangeUpdate:
-            return [ITModelChange insertModelAtIndex:indexPath.row];
-            break;
+            return [ITModelChange insertModelAtIndex:row];
             
         case NSFetchedResultsChangeDelete:
-            return [ITModelChange deleteModelAtIndex:indexPath.row];
-            break;
+            return [ITModelChange deleteModelAtIndex:row];
             
         case NSFetchedResultsChangeMove:
-            return [ITModelChange moveModelAtIndex:indexPath.row toIndex:newIndexPath.row];
-            break;
+            return [ITModelChange moveModelAtIndex:row toIndex:newIndexPath.row];
             
         default:
             return nil;
-            break;
     }
 }
 

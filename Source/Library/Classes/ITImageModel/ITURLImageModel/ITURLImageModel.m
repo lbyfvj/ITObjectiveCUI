@@ -29,7 +29,7 @@
 #pragma mark Initializations and Deallocations
 
 - (void)dealloc {
-    [self.downloadTask cancel];
+    self.downloadTask = nil;
 }
 
 #pragma mark -
@@ -56,11 +56,6 @@
 }
 
 - (NSURL *)fileURL {
-    NSURL *url = self.url;
-    
-    if (url.isFileURL) {
-        return url;
-    }
     NSString *fileName = [self.url.relativePath stringByAddingPercentEncodingWithalphanumericCharacterSet];
     NSString *path = [self.filePath stringByAppendingPathComponent:fileName];
     
@@ -79,27 +74,24 @@
 #pragma mark Public
 
 - (void)performLoadingWithCompletionBlock:(void (^)(UIImage *image, id error))block {
+    
     id completionBlock = ^(UIImage *image, NSError *error) {
         if (!image || error) {
-            
             [self deleteFile];
             
+            id downloadBlock = ^(NSURL *location, NSURLResponse *response, NSError *error) {
+                if (error) {
+                    self.state = ITModelFailedLoading;
+                    
+                    return;
+                }
+                [[NSFileManager defaultManager] copyItemAtURL:location
+                                                        toURL:self.fileURL];
+                [super performLoadingWithCompletionBlock:block];
+            };
+            
             self.downloadTask = [self.downloadSession downloadTaskWithURL:self.url
-                                                        completionHandler:^(NSURL *location,
-                                                                            NSURLResponse *response,
-                                                                            NSError *error)
-                                 {
-                                     if (error) {
-                                         self.state = ITModelFailedLoading;
-                                         
-                                         return;
-                                     }
-                                     
-                                     [[NSFileManager defaultManager] copyItemAtURL:location
-                                                                             toURL:self.fileURL];
-                                     
-                                     [super performLoadingWithCompletionBlock:block];
-                                 }];
+                                                        completionHandler: downloadBlock];
             
             return;
         }
@@ -114,9 +106,7 @@
 #pragma mark Private
 
 - (void)deleteFile {
-    NSError *error = nil;
-    
-    [[NSFileManager defaultManager] removeItemAtURL:self.fileURL error:&error];
+    [[NSFileManager defaultManager] removeItemAtURL:self.fileURL error:NULL];
 }
 
 @end

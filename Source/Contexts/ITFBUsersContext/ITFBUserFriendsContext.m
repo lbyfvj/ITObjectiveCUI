@@ -14,7 +14,7 @@
 #import "ITDBArrayObject.h"
 #import "ITFBUserInteraction.h"
 
-#import "ITJSONRepresentation+ITExtensions.h"
+#import "JSONRepresentation+ITExtensions.h"
 
 @interface ITFBUserFriendsContext ()
 @property (nonatomic, strong, readonly)         ITDBUser          *user;
@@ -53,9 +53,11 @@
 }
 
 - (void)resultHandler:(NSDictionary *)result {
-    NSArray *array = [[result objectForKey:kITData] ITJSONRepresentation];
+    NSArray *array = [[result objectForKey:kITData] JSONRepresentation];
     ITDBUser *user = self.user;
     ITDBArrayObject *friends = user.friends;
+    
+    [friends performLoading];
     
     for (NSDictionary *object in array) {
         ITDBUser *friend = [ITFBUserInteraction userWithId:object[kITId]
@@ -67,8 +69,6 @@
     }
     
     [user saveManagedObject];
-    
-    [friends performLoading];
     
     user.state = ITDBObjectDidLoadFriends;
 }

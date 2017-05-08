@@ -10,6 +10,8 @@
 
 #import "ITMacro.h"
 
+kITStaticConstWithValue(kITCacheDirectoryName, @"appCache");
+
 @implementation NSFileManager (ITExtensions)
 
 + (NSURL *)directoryPathWithType:(NSSearchPathDirectory)type {
@@ -18,27 +20,40 @@
 }
 
 + (NSURL *)documentsDirectoryURL {
-    ITReturnSharedInstance(^{ return [self directoryPathWithType:NSDocumentDirectory]; });
+    ITReturnSharedInstance(^{ return ITDirectoryPathWithType(NSDocumentDirectory); });
 }
 
 + (NSURL *)libraryDirectoryURL {
-    ITReturnSharedInstance(^{ return [self directoryPathWithType:NSLibraryDirectory]; });
+    ITReturnSharedInstance(^{ return ITDirectoryPathWithType(NSLibraryDirectory); });
 }
 
 + (NSURL *)applicationDirectoryURL {    
-    ITReturnSharedInstance(^{ return [self directoryPathWithType:NSApplicationSupportDirectory]; });
+    ITReturnSharedInstance(^{ return ITDirectoryPathWithType(NSApplicationSupportDirectory); });
+}
+
++ (NSURL *)appCacheDirectoryURL {
+    
+    ITReturnSharedInstance(^{
+        NSURL *libaryDirectoryURL = [NSFileManager libraryDirectoryURL];
+        
+        NSURL *cacheDirectoryURL = [libaryDirectoryURL URLByAppendingPathComponent:kITCacheDirectoryName];
+        
+        NSFileManager *fileManager = [self defaultManager];
+        
+        [fileManager createDirectoryAtURL:cacheDirectoryURL];
+        
+        return cacheDirectoryURL;
+    });
 }
 
 - (void)createDirectoryAtURL:(NSURL *)url {
-    NSError *error = nil;
-    
     if (url.isFileURL) {
         NSString *path = url.path;
         if (![self fileExistsAtPath:path]) {
             [self createDirectoryAtPath:path
             withIntermediateDirectories:YES
                              attributes:nil
-                                  error:&error];
+                                  error:NULL];
         }
     }
 }

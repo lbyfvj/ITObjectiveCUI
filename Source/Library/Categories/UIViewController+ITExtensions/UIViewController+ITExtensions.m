@@ -11,7 +11,11 @@
 @implementation UIViewController (ITExtensions)
 
 + (id)viewController {
-    return [[self alloc] initWithNibName:NSStringFromClass([self class]) bundle:nil];
+    return [[self alloc] initWithNibName:[self nibName] bundle:nil];
+}
+
++ (NSString *)nibName {
+    return NSStringFromClass([self class]);
 }
 
 - (UIViewController *)previousViewController {
